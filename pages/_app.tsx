@@ -1,7 +1,8 @@
-import '../styles/globals.css';
-import type { AppProps } from 'next/app';
+import "../styles/globals.css";
+import type { AppProps } from "next/app";
+import { appWithTranslation } from "next-i18next";
 
-import Layout from '../components/Layout';
+import Layout from "../components/Layout";
 
 function App({ Component, pageProps }: AppProps) {
   return (
@@ -11,4 +12,4 @@ function App({ Component, pageProps }: AppProps) {
   );
 }
 
-export default App;
+export default appWithTranslation(App);

@@ -1,10 +1,16 @@
 import Image from 'next/image';
+import { useRouter } from 'next/router';
+
+import { LANG } from '../lib/constants';
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
 const Layout = ({ children }: LayoutProps) => {
+  const router = useRouter();
+  const { pathname, asPath, query } = router;
+
   return (
     <div className="h-full">
       <div className="flex items-center justify-center bg-header">
@@ -16,12 +22,17 @@ const Layout = ({ children }: LayoutProps) => {
             <h1 className="font-semibold uppercase">Kawasanku</h1>
           </div>
           <div className="grid grid-cols-4 divide-x border">
-            {['EN', 'BM', 'CN', 'TM'].map((lang, index) => (
+            {LANG.map((lang, index) => (
               <button
                 key={index}
+                onClick={() =>
+                  router.push({ pathname, query }, asPath, {
+                    locale: lang.locale,
+                  })
+                }
                 className="flex items-center justify-center py-1 px-2 text-sm hover:bg-white/30"
               >
-                {lang}
+                {lang.display}
               </button>
             ))}
           </div>

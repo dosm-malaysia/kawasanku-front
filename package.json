@@ -7,8 +7,13 @@
   },
   "dependencies": {
     "next": "latest",
+    "next-i18next": "^11.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
+  },
+  "resolutions": {
+    "@types/react": "17.0.2",
+    "@types/react-dom": "17.0.2"
   },
   "devDependencies": {
     "@types/node": "17.0.4",
