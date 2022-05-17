@@ -1,44 +1,23 @@
-import Image from 'next/image';
-import { useRouter } from 'next/router';
-
-import { LANG } from '../lib/constants';
+import Header from "./Header";
+import Footer from "./Footer";
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
 const Layout = ({ children }: LayoutProps) => {
-  const router = useRouter();
-  const { pathname, asPath, query } = router;
-
   return (
-    <div className="h-full">
-      <div className="flex items-center justify-center bg-header">
-        <nav className="flex w-full max-w-screen-lg items-center justify-between bg-header p-3 text-white">
-          <div className="flex items-center justify-center gap-4">
-            <div className="flex w-10 items-center justify-center">
-              <Image src="/static/jata_logo.png" width={128} height={96} />
-            </div>
-            <h1 className="font-semibold uppercase">Kawasanku</h1>
-          </div>
-          <div className="grid grid-cols-4 divide-x border">
-            {LANG.map((lang, index) => (
-              <button
-                key={index}
-                onClick={() =>
-                  router.push({ pathname, query }, asPath, {
-                    locale: lang.locale,
-                  })
-                }
-                className="flex items-center justify-center py-1 px-2 text-sm hover:bg-white/30"
-              >
-                {lang.display}
-              </button>
-            ))}
-          </div>
-        </nav>
+    <div className="h-full min-h-screen">
+      {/* HEADER */}
+      <Header />
+      {/* CONTENT */}
+      <div className="flex h-full w-full justify-center bg-gray-100">
+        <div className="h-full max-w-screen-lg px-3 py-8 md:py-10 lg:px-0">
+          {children}
+        </div>
       </div>
-      {children}
+      {/* FOOTER */}
+      <Footer />
     </div>
   );
 };
