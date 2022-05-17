@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.section-title {
+  @apply py-4 text-xl font-semibold;
+}
