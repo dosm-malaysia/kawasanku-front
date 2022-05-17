@@ -12,7 +12,7 @@ const Layout = ({ children }: LayoutProps) => {
       <Header />
       {/* CONTENT */}
       <div className="flex h-full w-full justify-center bg-gray-100">
-        <div className="h-full max-w-screen-lg px-3 py-8 md:py-10 lg:px-0">
+        <div className="h-full w-full max-w-screen-lg px-3 py-8 md:py-10 lg:px-0">
           {children}
         </div>
       </div>
