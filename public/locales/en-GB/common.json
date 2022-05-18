@@ -6,5 +6,9 @@
   "filter2_placeholder": "Select state",
   "filter3_placeholder": "Select sub-national area",
   "section1_title": "What does the population of my area look like?",
-  "section2_title": "How does my {area} compare to other {areas}?"
+  "section2_title": "How does my {area} compare to other {areas}?",
+  "district": "District",
+  "mukim": "Mukim",
+  "parliament": "Parliament Constituency",
+  "assembly": "State Legislative Assembly"
 }

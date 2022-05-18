@@ -1,9 +1,10 @@
 interface CardProps {
+  className?: string;
   children: React.ReactNode;
 }
 
-const Card = ({ children }: CardProps) => (
-  <div className="flex h-full w-full items-center justify-center rounded-lg bg-white p-2">
+const Card = ({ className, children }: CardProps) => (
+  <div className={`h-full w-full rounded-lg bg-white p-4 ${className}`}>
     {children}
   </div>
 );
