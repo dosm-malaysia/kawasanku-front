@@ -1,9 +1,12 @@
-import type { GetStaticProps, NextPage } from "next";
+import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import Card from "../components/Card";
 
-const Home: NextPage = () => {
+import Card from "../components/Card";
+import GeoFilters from "../components/GeoFilters";
+import SexBarChart from "../components/Charts/BarCharts/Sex";
+
+const Home: NextPage = ({}: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { t } = useTranslation();
 
   return (
@@ -14,24 +17,26 @@ const Home: NextPage = () => {
       <p className="mb-4 text-lg font-light">{t("description")}</p>
       {/* GEO FILTERS */}
       <div className="flex w-full flex-col gap-4 md:flex-row">
-        <div className="h-80 w-full md:w-1/3">
-          <Card>Geo filters</Card>
+        <div className="w-full md:w-2/5">
+          <GeoFilters />
         </div>
-        <div className="h-80 w-full md:w-2/3">
+        <div className="w-full md:w-3/5">
           <Card>Map</Card>
         </div>
       </div>
       {/* AREA SNAPSHOT */}
       <h3 className="section-title">{t("section1_title")}</h3>
       <div className="flex w-full flex-col gap-4 md:flex-row">
-        <div className="h-80 w-full md:w-1/3">
+        <div className="h-[650px] w-full md:h-[500px] md:w-2/5">
           <Card>Pyramid bar chart</Card>
         </div>
-        <div className="grid h-[640px] w-full grid-cols-2 grid-rows-3 gap-4 rounded-lg md:h-80 md:w-2/3 md:grid-cols-3 md:grid-rows-2">
+        <div className="grid h-[640px] w-full grid-cols-2 grid-rows-3 gap-4 rounded-lg md:h-[500px] md:w-3/5 md:grid-cols-2 md:grid-rows-3">
           {Array(6)
             .fill(0)
             .map((_, index) => (
-              <Card key={index}>Metric {index + 1}</Card>
+              <Card key={index}>
+                <SexBarChart />
+              </Card>
             ))}
         </div>
       </div>
