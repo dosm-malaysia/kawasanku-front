@@ -11,11 +11,7 @@ const Layout = ({ children }: LayoutProps) => {
       {/* HEADER */}
       <Header />
       {/* CONTENT */}
-      <div className="flex h-full w-full justify-center bg-gray-100">
-        <div className="h-full w-full max-w-screen-lg px-3 py-8 md:py-10 lg:px-0">
-          {children}
-        </div>
-      </div>
+      {children}
       {/* FOOTER */}
       <Footer />
     </div>
