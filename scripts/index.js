@@ -136,27 +136,31 @@ Promise.all(files).then((data) => {
     );
   });
 
-  // write to file
-  // const writeFiles = [
-  //   fs.writeFile(
-  //     path.join(process.cwd(), "data/json/jitter.json"),
-  //     JSON.stringify(jitterJson)
-  //   ),
-  //   fs.writeFile(
-  //     path.join(process.cwd(), "data/json/snapshot.json"),
-  //     JSON.stringify(snapshotJson)
-  //   ),
-  //   fs.writeFile(
-  //     path.join(process.cwd(), "data/json/mapping.json"),
-  //     JSON.stringify(serializedMapping)
-  //   ),
-  // ];
+  try {
+    // write to file
+    const writeFiles = [
+      fs.writeFile(
+        path.join(process.cwd(), "data/json/jitter.json"),
+        JSON.stringify(jitterJson)
+      ),
+      fs.writeFile(
+        path.join(process.cwd(), "data/json/snapshot.json"),
+        JSON.stringify(snapshotJson)
+      ),
+      fs.writeFile(
+        path.join(process.cwd(), "data/json/mapping.json"),
+        JSON.stringify(serializedMapping)
+      ),
+    ];
 
-  // Promise.all(writeFiles).then(() => {
-  //   console.log("---- FILES WRITTEN ----");
-  //   console.log("data/json/jitter.json");
-  //   console.log("data/json/snapshot.json");
-  //   console.log("data/json/mapping.json");
-  //   console.log("-----------------------");
-  // });
+    Promise.all(writeFiles).then(() => {
+      console.log("---- FILES WRITTEN ----");
+      console.log("data/json/jitter.json");
+      console.log("data/json/snapshot.json");
+      console.log("data/json/mapping.json");
+      console.log("-----------------------");
+    });
+  } catch (err) {
+    console.log(err);
+  }
 });
