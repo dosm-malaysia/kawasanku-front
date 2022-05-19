@@ -1,7 +1,7 @@
 import React, { useState, createContext, useContext, useEffect } from "react";
 
 import { GEO_FILTER, STATES } from "../lib/constants";
-import geoFilters from "../data/json/mapping.json";
+// import geoFilters from "../data/json/mapping.json";
 
 // TODO: add type for LocationContext
 const LocationContext = createContext({} as any);
@@ -19,7 +19,7 @@ const LocationContextProvider = ({
   const [area, setArea] = useState<string>();
 
   useEffect(() => {
-    if (geoFilter) setAreaOptions(geoFilters[state as STATES][geoFilter]);
+    // if (geoFilter) setAreaOptions(geoFilters[state as STATES][geoFilter]);
   }, [geoFilter, state]);
 
   return (
