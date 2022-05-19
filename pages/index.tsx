@@ -3,8 +3,9 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 import Card from "../components/Card";
+// import { PieChart } from "../components/Charts/PieCharts";
+// import SexPieChart from "../components/Charts/PieCharts/Sex";
 import GeoFilters from "../components/GeoFilters";
-import SexBarChart from "../components/Charts/BarCharts/Sex";
 
 const Home: NextPage = ({}: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { t } = useTranslation();
@@ -34,9 +35,8 @@ const Home: NextPage = ({}: InferGetStaticPropsType<typeof getStaticProps>) => {
           {Array(6)
             .fill(0)
             .map((_, index) => (
-              <Card key={index}>
-                <SexBarChart />
-              </Card>
+              // <SexPieChart key={index} />
+              <Card>Metric {index + 1}</Card>
             ))}
         </div>
       </div>
