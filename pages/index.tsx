@@ -5,8 +5,6 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Card from "../components/Card";
 import GeoFilters from "../components/GeoFilters";
 import SexBarChart from "../components/Charts/BarCharts/Sex";
-// TODO: create prebuild script to generate mappings
-import { getMappingsFromFile } from "../lib/helpers";
 
 const Home: NextPage = ({}: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { t } = useTranslation();
@@ -51,9 +49,6 @@ const Home: NextPage = ({}: InferGetStaticPropsType<typeof getStaticProps>) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  // TODO: create script to run prebuild instead of in getStaticProps
-  // const filterMapping = await getMappingsFromFile();
-
   return {
     props: {
       ...(locale && (await serverSideTranslations(locale, ["common"]))),

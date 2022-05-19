@@ -1,7 +1,9 @@
 {
   "private": true,
   "scripts": {
+    "predev": "node ./scripts/index.js",
     "dev": "next dev",
+    "prebuild": "node ./scripts/index.js",
     "build": "next build",
     "start": "next start"
   },

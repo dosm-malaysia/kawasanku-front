@@ -1,7 +1,7 @@
 import React, { useState, createContext, useContext, useEffect } from "react";
 
 import { GEO_FILTER, STATES } from "../lib/constants";
-import geoFilters from "../lib/mappings/geoFilters.json";
+import geoFilters from "../data/json/mapping.json";
 
 // TODO: add type for LocationContext
 const LocationContext = createContext({} as any);
