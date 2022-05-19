@@ -1,11 +1,12 @@
 import { Fragment } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 
+// TODO: use generic type
 interface SelectMenuProps {
-  options: string[];
+  options: { label: string; value: string }[];
   selected: string;
   placeholder?: string;
-  onChange: (value: string) => void;
+  onChange: (value: any) => void;
 }
 
 export default function SelectMenu({
@@ -33,10 +34,10 @@ export default function SelectMenu({
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
-                  stroke-width="2"
+                  strokeWidth="2"
                 >
                   <path
-                    stroke-linecap="round"
+                    strokeLinecap="round"
                     strokeLinejoin="round"
                     d="M8 9l4-4 4 4m0 6l-4 4-4-4"
                   />
@@ -59,7 +60,7 @@ export default function SelectMenu({
                         ${active ? "bg-gray-100" : ""}
                         relative cursor-pointer select-none py-2 pl-3 pr-9
                     `}
-                    value={option}
+                    value={option.value}
                   >
                     {({ selected }) => (
                       <span
@@ -68,7 +69,7 @@ export default function SelectMenu({
                           ${selected ? "font-semibold" : "font-normal"}
                         `}
                       >
-                        {option}
+                        {option.label}
                       </span>
                     )}
                   </Listbox.Option>

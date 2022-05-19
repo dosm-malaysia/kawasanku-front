@@ -1,4 +1,10 @@
 import { promises as fs } from "fs";
+import {
+  STATES,
+  GEO_FILTER,
+  GEO_STATE_DISTRICT_MUKIM_FILE_PATH,
+  GEO_STATE_PARLIAMENT_SLA_FILE_PATH,
+} from "./constants";
 
 export const readFile = async (filePath: string) => {
   try {
@@ -9,59 +15,92 @@ export const readFile = async (filePath: string) => {
   }
 };
 
-export const getGeoFilterMapping = (csvFile: string) => {
+export const getGeoFilterMapping = (sdmFile: string, spsFile: string) => {
   type MappingType = {
-    [key: string]: {
-      [key: string]: string[];
+    [key in STATES]: {
+      [GEO_FILTER.District]: Set<string>;
+      [GEO_FILTER.Mukim]: string[];
+      [GEO_FILTER.Parliament]: Set<string>;
+      [GEO_FILTER.Assembly]: string[];
     };
   };
 
-  const mapping: MappingType = {};
+  // initialize mapping object
+  let mapping = {} as MappingType;
+  Object.values(STATES).forEach((state) => {
+    mapping[state] = {
+      [GEO_FILTER.District]: new Set(),
+      [GEO_FILTER.Mukim]: [],
+      [GEO_FILTER.Parliament]: new Set(),
+      [GEO_FILTER.Assembly]: [],
+    };
+  });
 
-  let rawArr = csvFile.split("\n");
+  let rawSdmArr = sdmFile.split("\n");
+  let rawSpsArr = spsFile.split("\n");
 
   // remove column headers
-  rawArr.shift();
+  rawSdmArr.shift();
+  rawSpsArr.shift();
 
-  rawArr.forEach((line) => {
+  rawSdmArr.forEach((line) => {
     let arr = line.split(",");
 
     if (arr.length === 3) {
-      let state = arr[0];
+      let state = arr[0] as STATES;
       let district = arr[1];
       let mukim = arr[2];
 
-      if (!mapping.hasOwnProperty(state)) {
-        mapping[state] = {};
-      }
-      if (!mapping[state].hasOwnProperty(district)) {
-        mapping[state][district] = [];
-      }
-      mapping[state][district].push(mukim);
+      if (district) mapping[state][GEO_FILTER.District].add(district);
+      if (mukim) mapping[state][GEO_FILTER.Mukim].push(mukim);
     }
   });
 
-  return mapping;
+  rawSpsArr.forEach((line) => {
+    let arr = line.split(",");
+
+    if (arr.length === 3) {
+      let state = arr[0] as STATES;
+      let parliament = arr[1];
+      let assembly = arr[2];
+
+      if (parliament) mapping[state][GEO_FILTER.Parliament].add(parliament);
+      if (assembly) mapping[state][GEO_FILTER.Assembly].push(assembly);
+    }
+  });
+
+  let serializedMapping: any = mapping;
+
+  // serialize mapping
+  Object.values(STATES).forEach((state) => {
+    serializedMapping[state][GEO_FILTER.District] = Array.from(
+      mapping[state][GEO_FILTER.District]
+    );
+    serializedMapping[state][GEO_FILTER.Parliament] = Array.from(
+      mapping[state][GEO_FILTER.Parliament]
+    );
+  });
+
+  return serializedMapping;
 };
 
 // used to preprocess mappings in lib/mapping.ts
 export const getMappingsFromFile = async () => {
   const stateDistrictMukimFile = await readFile(
-    "public/data/geo_state_district_mukim.csv"
+    GEO_STATE_DISTRICT_MUKIM_FILE_PATH
   );
   const stateParliamentSlaFile = await readFile(
-    "public/data/geo_state_parliament_sla.csv"
+    GEO_STATE_PARLIAMENT_SLA_FILE_PATH
   );
 
-  let stateDistrictMukimMapping, stateParliamentSlaMapping;
+  let filterMapping;
 
-  if (stateDistrictMukimFile)
-    stateDistrictMukimMapping = getGeoFilterMapping(stateDistrictMukimFile);
-  if (stateParliamentSlaFile)
-    stateParliamentSlaMapping = getGeoFilterMapping(stateParliamentSlaFile);
+  if (stateDistrictMukimFile && stateParliamentSlaFile) {
+    filterMapping = getGeoFilterMapping(
+      stateDistrictMukimFile,
+      stateParliamentSlaFile
+    );
+  }
 
-  return {
-    stateDistrictMukimMapping,
-    stateParliamentSlaMapping,
-  };
+  return filterMapping;
 };

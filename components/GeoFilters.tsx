@@ -23,20 +23,26 @@ const GeoFilters = () => {
       <p className="mb-4 text-xl font-medium">{t("filter_title")}</p>
       <div className="mb-2 flex flex-col gap-4">
         <SelectMenu
-          options={Object.values(STATES)}
+          options={Object.values(STATES).map((state) => {
+            return { label: state, value: state };
+          })}
           selected={state}
           onChange={setState}
           placeholder={t("filter2_placeholder")}
         />
         <SelectMenu
-          options={Object.values(GEO_FILTER).map((filter) => t(filter))}
+          options={Object.values(GEO_FILTER).map((filter) => {
+            return { label: t(filter), value: filter };
+          })}
           selected={geoFilter}
           onChange={setGeoFilter}
           placeholder={t("filter1_placeholder")}
         />
         {/* TODO: make sure geo filter is selected first before allowing selection */}
         <SelectMenu
-          options={areaOptions}
+          options={areaOptions.map((area: string) => {
+            return { label: area, value: area };
+          })}
           selected={area}
           onChange={setArea}
           placeholder={t("filter3_placeholder")}

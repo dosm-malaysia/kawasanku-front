@@ -21,7 +21,7 @@ export enum GEO_FILTER {
   District = "district",
   Mukim = "mukim",
   Parliament = "parliament",
-  Assembly = "assembly",
+  Assembly = "sla",
 }
 
 export enum STATES {
@@ -42,3 +42,9 @@ export enum STATES {
   LABUAN = "W.P. Labuan",
   PUTRAJAYA = "W.P. Putrajaya",
 }
+
+export const GEO_STATE_DISTRICT_MUKIM_FILE_PATH =
+  "public/static/data/geo_state_district_mukim.csv";
+
+export const GEO_STATE_PARLIAMENT_SLA_FILE_PATH =
+  "public/static/data/geo_state_parliament_sla.csv";
