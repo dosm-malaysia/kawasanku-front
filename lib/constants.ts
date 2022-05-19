@@ -43,8 +43,28 @@ export enum STATES {
   PUTRAJAYA = "W.P. Putrajaya",
 }
 
-export const GEO_STATE_DISTRICT_MUKIM_FILE_PATH =
-  "public/static/data/geo_state_district_mukim.csv";
-
-export const GEO_STATE_PARLIAMENT_SLA_FILE_PATH =
-  "public/static/data/geo_state_parliament_sla.csv";
+export enum SNAPSHOT_COLUMNS {
+  AreaType = "area_type",
+  Area = "area",
+  Male = "sex_male",
+  Female = "sex_female",
+  Bumi = "ethnicity_bumi",
+  Chinese = "ethnicity_chinese",
+  Indian = "ethnicity_indian",
+  OtherEthnicity = "ethnicity_other",
+  Muslim = "religion_muslim",
+  Christian = "religion_christian",
+  Buddhist = "religion_buddhist",
+  Hindu = "religion_hindu",
+  Atheist = "religion_atheist",
+  OtherReligion = "religion_other",
+  Urban = "dev_urban",
+  Rural = "dev_rural",
+  Single = "marital_never_married",
+  Married = "marital_married",
+  Widowed = "marital_widowed",
+  Divorced = "marital_divorced",
+  Child = "agegroup_child",
+  Working = "agegroup_working",
+  Elderly = "agegroup_elderly",
+}

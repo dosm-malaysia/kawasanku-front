@@ -5,3 +5,7 @@
 .section-title {
   @apply py-4 text-xl font-semibold;
 }
+
+.doughnut-chart-title {
+  @apply text-sm font-bold;
+}

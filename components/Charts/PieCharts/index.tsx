@@ -21,7 +21,7 @@ export const PieChart = ({ data }: PieChartProps) => {
     plugins: {
       legend: {
         position: "right" as const,
-        boxWidth: 10,
+        maxWidth: 80,
         labels: {
           usePointStyle: true,
           pointStyle: "circle",
