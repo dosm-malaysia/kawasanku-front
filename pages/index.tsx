@@ -1,56 +1,70 @@
+import dynamic from "next/dynamic";
 import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+
+// TODO: remove after getting actual mapping from backend
+import mappingJson from "../data/json/mapping.json";
 
 import Card from "../components/Card";
 import Container from "../components/Container";
 import Introduction from "../components/Introduction";
 
-// Pie charts
-import SexPieChart from "../components/Charts/PieCharts/Sex";
-import EthnicityPieChart from "../components/Charts/PieCharts/Ethnicity";
-import ReligionPieChart from "../components/Charts/PieCharts/Religion";
-import DevelopmentPieChart from "../components/Charts/PieCharts/Development";
-import MaritalPieChart from "../components/Charts/PieCharts/Marital";
-import AgePieChart from "../components/Charts/PieCharts/Age";
-
-const Home: NextPage = ({}: InferGetStaticPropsType<typeof getStaticProps>) => {
+const Home: NextPage = ({
+  state_key,
+  state,
+  areaType,
+  area,
+  mapping,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { t } = useTranslation();
 
   return (
     <>
-      <Introduction />
-      <Container backgroundColor="bg-gray-100" className="px-3 py-14 lg:px-0">
-        <div className="flex flex-col">
-          {/* AREA SNAPSHOT */}
-          <h3 className="section-title">{t("section1_title")}</h3>
-          <div className="mb-16 flex w-full flex-col gap-4 md:flex-row">
-            <div className="w-full md:w-2/5">
-              <Card>Pyramid bar chart</Card>
-            </div>
-            <div className="grid w-full grid-cols-2 grid-rows-3 gap-4 rounded-lg md:w-3/5 md:grid-cols-3 md:grid-rows-2">
-              <SexPieChart />
-              <EthnicityPieChart />
-              <ReligionPieChart />
-              <DevelopmentPieChart />
-              <MaritalPieChart />
-              <AgePieChart />
-            </div>
-          </div>
-          {/* JITTERPLOT */}
-          <h3 className="section-title">{t("section2_title")}</h3>
-          <div className="h-[750px] w-full">
-            <Card>Jitterplot</Card>
-          </div>
+      <Introduction
+        state_key={state_key}
+        state={state}
+        areaType={areaType}
+        area={area}
+        mapping={mapping}
+      />
+      {/* AREA SNAPSHOT */}
+      <Container
+        backgroundColor="bg-gray-100"
+        className="flex flex-col px-3 py-14 lg:px-0"
+      >
+        <h3 className="section-title">{t("section1_title")}</h3>
+        <div className="mb-16 flex w-full flex-col gap-4 md:flex-row">
+          <div className="w-full md:w-2/5"></div>
+          <div className="grid w-full grid-cols-2 grid-rows-3 gap-4 rounded-lg md:w-3/5 md:grid-cols-2 md:grid-rows-3"></div>
         </div>
+        {/* JITTERPLOT */}
+        <h3 className="section-title">{t("section2_title")}</h3>
+        <Card>
+          <div className="flex h-full w-full flex-col gap-2"></div>
+        </Card>
       </Container>
     </>
   );
 };
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  const geoFilterSelection = {
+    state_key: "",
+    state: "",
+    areaType: "",
+    area: "",
+  };
+
+  const mappingData = mappingJson;
+
   return {
     props: {
+      state_key: geoFilterSelection.state_key,
+      state: geoFilterSelection.state,
+      areaType: geoFilterSelection.areaType,
+      area: geoFilterSelection.area,
+      mapping: mappingData,
       ...(locale && (await serverSideTranslations(locale, ["common"]))),
     },
   };

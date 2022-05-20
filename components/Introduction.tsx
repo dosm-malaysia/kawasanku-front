@@ -1,12 +1,24 @@
 import { useTranslation } from "next-i18next";
 
-import { useLocationContext } from "../contexts/GeoFiltersContext";
 import Container from "./Container";
 import GeoFilters from "./GeoFilters";
 
-const Introduction = () => {
+interface IntroductionProps {
+  state_key: string;
+  state: string;
+  areaType: string;
+  area: string;
+  mapping: any;
+}
+
+const Introduction = ({
+  state_key,
+  state,
+  areaType,
+  area,
+  mapping,
+}: IntroductionProps) => {
   const { t } = useTranslation();
-  const { state, area } = useLocationContext();
 
   return (
     <Container backgroundColor="bg-white" className="flex gap-16 pt-28 pb-14">
@@ -27,7 +39,13 @@ const Introduction = () => {
           </svg>
           <h3 className="text-xl font-semibold">{t("filter_title")}</h3>
         </div>
-        <GeoFilters />
+        <GeoFilters
+          state_key={state_key}
+          state={state}
+          areaType={areaType}
+          area={area}
+          mapping={mapping}
+        />
       </div>
       <div className="flex w-3/5 flex-col">
         <div className="mb-4 flex items-center gap-3">
@@ -39,9 +57,9 @@ const Introduction = () => {
             fill="currentColor"
           >
             <path
-              fill-rule="evenodd"
+              fillRule="evenodd"
               d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
-              clip-rule="evenodd"
+              clipRule="evenodd"
             />
           </svg>
           {/* LOCATION */}

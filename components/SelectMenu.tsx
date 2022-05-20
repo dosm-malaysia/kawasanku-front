@@ -1,32 +1,38 @@
 import { Fragment } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 
-// TODO: use generic type
-interface SelectMenuProps {
-  options: { label: string; value: string }[];
-  selected: string;
-  placeholder?: string;
-  onChange: (value: any) => void;
+export interface SelectMenuOption {
+  label: string;
+  value: string;
 }
 
-export default function SelectMenu({
+interface SelectMenuProps {
+  options: SelectMenuOption[];
+  selected?: SelectMenuOption;
+  placeholder?: string;
+  onChange: (value?: string) => void;
+}
+
+const SelectMenu = ({
   options,
   selected,
   placeholder,
   onChange,
-}: SelectMenuProps) {
+}: SelectMenuProps) => {
   return (
-    <Listbox value={selected} onChange={onChange}>
+    <Listbox value={selected?.value} onChange={onChange}>
       {({ open }) => (
         <>
           <div className="relative mt-1">
             <Listbox.Button
               className={`
                 relative w-full cursor-pointer rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm focus:outline-none focus:ring-0 sm:text-sm
-                ${selected ? "" : "text-gray-500"} 
+                ${selected?.value ? "" : "text-gray-500"} 
               `}
             >
-              <span className="block truncate">{selected ?? placeholder}</span>
+              <span className="block truncate">
+                {selected?.label ?? placeholder}
+              </span>
               <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2 text-gray-500">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -81,4 +87,6 @@ export default function SelectMenu({
       )}
     </Listbox>
   );
-}
+};
+
+export default SelectMenu;
