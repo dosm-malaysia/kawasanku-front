@@ -1,18 +1,19 @@
 {
   "private": true,
   "scripts": {
-    "predev": "node ./scripts/index.js",
     "dev": "next dev",
-    "prebuild": "node ./scripts/index.js",
     "build": "next build",
     "start": "next start"
   },
   "dependencies": {
     "@headlessui/react": "^1.6.1",
-    "chart.js": "^3.7.1",
-    "danfojs": "^1.1.1",
+    "@nivo/bar": "^0.79.1",
+    "@nivo/core": "^0.79.0",
+    "@nivo/pie": "^0.79.1",
+    "@nivo/scatterplot": "^0.79.1",
     "next": "latest",
     "next-i18next": "^11.0.0",
+    "prop-types": "^15.8.1",
     "react": "^17.0.2",
     "react-chartjs-2": "^4.1.0",
     "react-dom": "^17.0.2",
