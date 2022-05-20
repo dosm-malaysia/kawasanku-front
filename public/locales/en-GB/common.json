@@ -10,5 +10,31 @@
   "district": "District",
   "mukim": "Mukim",
   "parliament": "Parliament Constituency",
-  "sla": "State Legislative Assembly"
+  "sla": "State Legislative Assembly",
+  "jitterplot": {
+    "title1": "Population",
+    "title2": "Public services",
+    "title3": "Special feature: COVID-19",
+    "metric_1": "Metric 1",
+    "metric_2": "Metric 2",
+    "metric_3": "Metric 3",
+    "metric_4": "Metric 4",
+    "metric_5": "Metric 5",
+    "metric_6": "Metric 6",
+    "metric_7": "Metric 7",
+    "metric_8": "Metric 8",
+    "metric_9": "Metric 9",
+    "metric_10": "Metric 10",
+    "metric_11": "Metric 11",
+    "metric_12": "Metric 12",
+    "metric_13": "Metric 13",
+    "metric_14": "Metric 14",
+    "metric_15": "Metric 15",
+    "metric_16": "Metric 16",
+    "metric_17": "Metric 17",
+    "metric_18": "Metric 18",
+    "metric_19": "Metric 19",
+    "metric_20": "Metric 20",
+    "metric_21": "Metric 21"
+  }
 }
