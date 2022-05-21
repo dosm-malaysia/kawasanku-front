@@ -42,19 +42,25 @@ const Home: NextPage = ({
         area={area}
         mapping={mapping}
       />
-      {/* AREA SNAPSHOT */}
+      {/* CHARTS */}
       <Container
         backgroundColor="bg-gray-100"
-        className="flex flex-col px-3 py-14 lg:px-0"
+        className="flex flex-col px-4 pt-5 md:pt-14 lg:px-0"
       >
-        <h3 className="section-title">{t("section1_title")}</h3>
-        <div className="mb-16 flex w-full flex-col gap-4 md:flex-row">
+        {/* BAR CHART TITLE */}
+        <div className="mb-5 flex w-full flex-col items-start justify-between gap-2 md:mb-7 md:flex-row md:items-center md:gap-0">
+          <h3 className="section-title">{t("section1_title")}</h3>
+          <p className="text-sm text-gray-400">{t("census_2020")}</p>
+        </div>
+        <div className="mb-10 flex w-full flex-col gap-4 md:mb-15 md:flex-row">
+          {/* BAR CHART */}
           <div className="w-full md:w-2/5">
             <Card>
               <BarChart data={barChartData} />
             </Card>
           </div>
-          <div className="grid w-full grid-cols-2 grid-rows-3 gap-4 rounded-lg md:w-3/5 md:grid-cols-2 md:grid-rows-3">
+          {/* DOUGHNUT CHARTS */}
+          <div className="grid w-full grid-cols-1 gap-4 rounded-lg sm:grid-cols-2 sm:grid-rows-3 md:w-3/5">
             {Array(6)
               .fill(0)
               .map((_, index) => (
@@ -62,8 +68,17 @@ const Home: NextPage = ({
               ))}
           </div>
         </div>
-        {/* JITTERPLOT */}
-        <h3 className="section-title">{t("section2_title")}</h3>
+        {/* JITTERPLOT TITLE */}
+        <div className="mb-6 flex w-full flex-col items-start justify-between gap-2 md:mb-7 md:flex-row md:items-center md:gap-0">
+          <h3 className="section-title">{t("section2_title")}</h3>
+          <p className="text-sm text-gray-400">{t("census_2020")}</p>
+        </div>
+      </Container>
+      {/* JITTERPLOTS */}
+      <Container
+        backgroundColor="bg-white md:bg-gray-100"
+        className="pb-5 md:pb-8"
+      >
         <Card>
           <div className="flex h-full w-full flex-col gap-2">
             {Array(20)

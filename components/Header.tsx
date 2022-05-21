@@ -14,11 +14,13 @@ const Header = () => {
       <nav className="flex w-full max-w-screen-lg items-center justify-between p-3 text-white lg:py-3 lg:px-0">
         <div className="flex items-center justify-center gap-4">
           {/* LOGO */}
-          <div className="flex w-12 items-center justify-center">
+          <div className="flex w-9 items-center justify-center md:w-12">
             <Image src="/static/jata_logo.png" width={128} height={96} />
           </div>
           {/* SITE NAME */}
-          <h1 className="text-xl font-semibold uppercase">Kawasanku</h1>
+          <h1 className="text-lg font-semibold uppercase md:text-xl">
+            Kawasanku
+          </h1>
         </div>
         {/* LANGUAGE PICKER */}
         <div className="grid grid-cols-4 divide-x divide-white overflow-hidden rounded-lg border border-white">

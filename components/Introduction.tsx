@@ -21,12 +21,15 @@ const Introduction = ({
   const { t } = useTranslation();
 
   return (
-    <Container backgroundColor="bg-white" className="flex gap-16 pt-28 pb-14">
-      <div className="w-2/5">
+    <Container
+      backgroundColor="bg-white"
+      className="flex flex-col gap-7 pt-18 pb-5 md:flex-row md:gap-16 md:pt-28 md:pb-14"
+    >
+      <div className="w-full px-4 md:w-2/5 md:px-0">
         {/* TITLE */}
         <h2 className="mb-4 text-xl font-semibold">{t("title")}</h2>
         {/* DESCRIPTION */}
-        <p className="mb-12">{t("description")}</p>
+        <p className="mb-7 md:mb-12">{t("description")}</p>
         {/* GEO FILTER */}
         <div className="mb-5 flex items-center gap-3">
           <svg
@@ -47,7 +50,7 @@ const Introduction = ({
           mapping={mapping}
         />
       </div>
-      <div className="flex w-3/5 flex-col">
+      <div className="flex w-full flex-col px-4 md:w-3/5 md:px-0">
         <div className="mb-4 flex items-center gap-3">
           {/* ICON */}
           <svg
@@ -65,10 +68,10 @@ const Introduction = ({
           {/* LOCATION */}
           <p className="text-xl font-semibold">
             {area ? `${area}, ` : ""}
-            {state}
+            {state || t("malaysia")}
           </p>
         </div>
-        <div className="h-full rounded-lg bg-gray-200" />
+        <div className="h-64 rounded-lg bg-gray-200 md:h-full" />
       </div>
     </Container>
   );

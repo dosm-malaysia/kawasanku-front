@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .section-title {
-  @apply mb-7 text-xl font-semibold;
+  @apply text-xl font-semibold;
 }
 
 .doughnut-chart-title {
