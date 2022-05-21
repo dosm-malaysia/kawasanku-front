@@ -9,6 +9,8 @@ import mappingJson from "../data/json/mapping.json";
 import Card from "../components/Card";
 import Container from "../components/Container";
 import Introduction from "../components/Introduction";
+import Indicators from "../components/Charts/JitterPlots/Indicators";
+import PercentileOverlay from "../components/Charts/JitterPlots/PercentileOverlay";
 
 const BarChart = dynamic(() => import("../components/Charts/BarChart"), {
   ssr: false,
@@ -74,22 +76,40 @@ const Home: NextPage = ({
           <p className="text-sm text-gray-400">{t("census_2020")}</p>
         </div>
       </Container>
-      {/* JITTERPLOTS */}
       <Container
         backgroundColor="bg-white md:bg-gray-100"
         className="pb-5 md:pb-8"
       >
-        <Card>
-          <div className="flex h-full w-full flex-col gap-2">
-            {Array(20)
-              .fill(0)
-              .map((_, index) => (
-                <JitterPlot
-                  key={index}
-                  label={t(`jitterplot.metric_${index + 1}`)}
-                  data={jitterplotData}
-                />
-              ))}
+        <Card className="relative">
+          {/* MEDIAN INDICATORS */}
+          <Indicators />
+          <div className="relative h-full w-full">
+            {/* JITTERPLOT CHARTS */}
+            <div className="relative flex h-full w-full flex-col gap-2">
+              {/* PERCENTILE OVERLAY */}
+              <PercentileOverlay />
+              {Array(20)
+                .fill(0)
+                .map((_, index) => (
+                  <>
+                    {index % 5 === 0 && (
+                      <p
+                        className={`z-10 w-fit bg-white font-semibold text-accent ${
+                          index > 0 ? "pt-2" : ""
+                        }`}
+                      >
+                        Metric Section {index + 1}
+                      </p>
+                    )}
+                    {/* JITTERPLOT CHART */}
+                    <JitterPlot
+                      key={index}
+                      label={t(`jitterplot.metric_${index + 1}`)}
+                      data={jitterplotData}
+                    />
+                  </>
+                ))}
+            </div>
           </div>
         </Card>
       </Container>

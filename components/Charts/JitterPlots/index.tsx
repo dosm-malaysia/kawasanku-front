@@ -8,11 +8,11 @@ interface JitterPlotProps {
 
 const JitterPlot = ({ label, data }: JitterPlotProps) => {
   return (
-    <div className="flex h-10 w-full">
-      <div className="w-1/3">
+    <div className="flex h-full w-full flex-col items-center gap-2 md:flex-row md:gap-0">
+      <div className="z-10 w-full bg-white text-sm md:w-1/3">
         <p>{label}</p>
       </div>
-      <div className="w-2/3 bg-gray-100">
+      <div className="h-10 w-full rounded-lg bg-gray-50 md:w-2/3">
         <ResponsiveScatterPlotCanvas
           data={data}
           margin={{ top: 0, right: 0, bottom: 0, left: 0 }}

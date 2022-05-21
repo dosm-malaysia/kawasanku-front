@@ -10,7 +10,7 @@ const Header = () => {
   const { pathname, asPath, query } = router;
 
   return (
-    <div className="fixed top-0 z-20 flex h-14 w-full items-center justify-center bg-accent">
+    <div className="fixed top-0 z-40 flex h-14 w-full items-center justify-center bg-accent">
       <nav className="flex w-full max-w-screen-lg items-center justify-between p-3 text-white lg:py-3 lg:px-0">
         <div className="flex items-center justify-center gap-4">
           {/* LOGO */}
