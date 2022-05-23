@@ -2,6 +2,7 @@ import { useTranslation } from "next-i18next";
 
 import Container from "./Container";
 import GeoFilters from "./GeoFilters";
+import Map from "./Map";
 
 interface IntroductionProps {
   state_key: string;
@@ -71,7 +72,8 @@ const Introduction = ({
             {state || t("malaysia")}
           </p>
         </div>
-        <div className="h-64 rounded-lg bg-gray-200 md:h-full" />
+        {/* MAP */}
+        <Map />
       </div>
     </Container>
   );

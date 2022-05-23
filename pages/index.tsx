@@ -1,3 +1,4 @@
+import React from "react";
 import dynamic from "next/dynamic";
 import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 import { useTranslation } from "next-i18next";
@@ -91,7 +92,7 @@ const Home: NextPage = ({
               {Array(20)
                 .fill(0)
                 .map((_, index) => (
-                  <>
+                  <React.Fragment key={index}>
                     {index % 5 === 0 && (
                       <p
                         className={`z-10 w-fit bg-white font-semibold text-accent ${
@@ -107,7 +108,7 @@ const Home: NextPage = ({
                       label={t(`jitterplot.metric_${index + 1}`)}
                       data={jitterplotData}
                     />
-                  </>
+                  </React.Fragment>
                 ))}
             </div>
           </div>
