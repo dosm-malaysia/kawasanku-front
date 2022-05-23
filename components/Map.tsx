@@ -85,7 +85,7 @@ const GoogleMap: React.FC<google.maps.MapOptions> = ({ center, zoom }) => {
   }, []);
 
   // GOOGLE MAP CONTAINER
-  return <div className="h-full w-full rounded-lg" ref={ref} />;
+  return <div className="h-64 w-full rounded-lg md:h-full" ref={ref} />;
 };
 
 export default Map;
