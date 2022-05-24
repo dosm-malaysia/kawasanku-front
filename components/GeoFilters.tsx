@@ -44,7 +44,7 @@ const GeoFilters = ({
             : undefined
         }
         onChange={(newStateKey) => router.push(`/${newStateKey}`)}
-        placeholder={t("filter2_placeholder")}
+        placeholder={t("filter1_placeholder")}
       />
       <SelectMenu
         options={Object.values(GEO_FILTER).map((filter) => {
@@ -61,7 +61,7 @@ const GeoFilters = ({
         onChange={(newAreaType) =>
           newAreaType ? setSelectedAreaType(newAreaType) : {}
         }
-        placeholder={t("filter1_placeholder")}
+        placeholder={t("filter2_placeholder")}
       />
       {/* TODO: make sure geo filter is selected first before allowing selection */}
       <SelectMenu

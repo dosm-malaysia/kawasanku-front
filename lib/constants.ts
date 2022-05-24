@@ -19,7 +19,6 @@ export const LANG = [
 
 export enum GEO_FILTER {
   District = "district",
-  Mukim = "mukim",
   Parliament = "parliament",
   Assembly = "sla",
 }
