@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import dynamic from "next/dynamic";
 import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 import { useTranslation } from "next-i18next";
@@ -12,6 +12,8 @@ import Container from "../components/Container";
 import Introduction from "../components/Introduction";
 import Indicators from "../components/Charts/JitterPlots/Indicators";
 import PercentileOverlay from "../components/Charts/JitterPlots/PercentileOverlay";
+import Spotlight from "../components/Spotlight";
+import { Option } from "../components/Dropdowns/interface";
 
 const BarChart = dynamic(() => import("../components/Charts/BarChart"), {
   ssr: false,
@@ -35,6 +37,8 @@ const Home: NextPage = ({
   jitterplotData,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { t } = useTranslation();
+
+  const [jitterComparisons, setJitterComparisons] = useState<Option[]>([]);
 
   return (
     <>
@@ -82,6 +86,13 @@ const Home: NextPage = ({
         className="pb-5 md:pb-8"
       >
         <Card className="relative">
+          {/* SPOTLIGHT */}
+          <Spotlight
+            // TODO: set current location based on location returned from backend
+            currentLocation={{ label: "Ipoh", value: "Ipoh" }}
+            jitterComparisons={jitterComparisons}
+            setJitterComparisons={setJitterComparisons}
+          />
           {/* MEDIAN INDICATORS */}
           <Indicators />
           <div className="relative h-full w-full">
