@@ -6,18 +6,20 @@ import type {
 } from "next";
 import { useState } from "react";
 import dynamic from "next/dynamic";
+import { ParsedUrlQuery } from "querystring";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 // TODO: remove after getting actual mapping from backend
 import mappingJson from "../../data/json/mapping.json";
-import { getStatePaths } from "../../lib/api";
+import { getSnapshot, getStateGeojson, getStatePaths } from "../../lib/api";
 
 import Card from "../../components/Card";
 import Container from "../../components/Container";
 import Spotlight from "../../components/Spotlight";
 import Introduction from "../../components/Introduction";
 import { Option } from "../../components/Dropdowns/interface";
+import { translateDoughnutChart } from "../../lib/helpers";
 
 const BarChart = dynamic(() => import("../../components/Charts/BarChart"), {
   ssr: false,
@@ -37,7 +39,11 @@ const State: NextPage = ({
   area,
   mapping,
   barChartData,
-  doughnutChartData,
+  sex,
+  ethnicity,
+  religion,
+  maritalStatus,
+  ageGroup,
   jitterplotData,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { t } = useTranslation();
@@ -71,12 +77,17 @@ const State: NextPage = ({
             </Card>
           </div>
           {/* DOUGHNUT CHARTS */}
-          <div className="grid w-full grid-cols-1 gap-4 rounded-lg sm:grid-cols-2 sm:grid-rows-3 md:w-3/5">
-            {Array(6)
-              .fill(0)
-              .map((_, index) => (
-                <DoughnutChart key={index} data={doughnutChartData} />
-              ))}
+          <div className="grid w-full grid-cols-1 overflow-hidden rounded-lg border sm:grid-cols-2 sm:grid-rows-3 md:w-3/5">
+            <DoughnutChart title={t("doughnut.metric_1")} data={sex} />
+            <DoughnutChart title={t("doughnut.metric_2")} data={ethnicity} />
+            {/* TODO: add nationality data */}
+            <DoughnutChart title={t("doughnut.metric_5")} data={religion} />
+            <DoughnutChart
+              title={t("doughnut.metric_6")}
+              data={maritalStatus}
+            />
+            <DoughnutChart title={t("doughnut.metric_4")} data={ageGroup} />
+            <DoughnutChart title={t("doughnut.metric_4")} data={ageGroup} />
           </div>
         </div>
         {/* JITTERPLOT TITLE */}
@@ -108,21 +119,60 @@ const State: NextPage = ({
 export const getStaticPaths: GetStaticPaths = async () => {
   const statePaths = await getStatePaths();
   const paths = statePaths.map((state) => {
+    // state returned as "/state"
     return { params: { state: state.substring(1) } };
   });
 
   return { paths, fallback: false };
 };
 
+interface IParams extends ParsedUrlQuery {
+  state: string;
+}
+
 export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
+  const { state } = params as IParams;
+
+  const translationReq = serverSideTranslations(locale!);
+  const geoReq = getStateGeojson(state);
+  const snapshotReq = getSnapshot({ state });
+
+  const res = await Promise.all([translationReq, geoReq, snapshotReq]);
+
+  // TRANSLATION
+  const translation = res[0];
+  const translationStore =
+    translation._nextI18Next.initialI18nStore[locale!]["common"];
+
+  // SNAPSHOT DATA
+  const snapshot = res[2].doughnut_charts as any;
+  const sex = snapshot[0].sex;
+  const ethnicity = snapshot[1].ethnicity;
+  const religion = snapshot[2].religion;
+  const maritalStatus = snapshot[4].marital;
+  const ageGroup = snapshot[5].agegroup;
+
+  // TRANSLATED SNAPSHOT DATA
+  const translatedSex = translateDoughnutChart(translationStore, sex);
+  const translatedEthnicity = translateDoughnutChart(
+    translationStore,
+    ethnicity
+  );
+  const translatedReligion = translateDoughnutChart(translationStore, religion);
+  const translatedMaritalStatus = translateDoughnutChart(
+    translationStore,
+    maritalStatus
+  );
+  const translatedAgeGroup = translateDoughnutChart(translationStore, ageGroup);
+
+  const mappingData = mappingJson;
+
   const geoFilterSelection = {
-    state_key: params?.state,
+    state_key: state,
     state: "",
     areaType: "",
     area: "",
   };
-
-  const mappingData = mappingJson;
 
   const barChartData = [
     {
@@ -156,34 +206,6 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
     },
   ];
 
-  const doughnutChartData = [
-    {
-      id: "go",
-      label: "go",
-      value: 574,
-    },
-    {
-      id: "c",
-      label: "c",
-      value: 15,
-    },
-    {
-      id: "erlang",
-      label: "erlang",
-      value: 407,
-    },
-    {
-      id: "css",
-      label: "css",
-      value: 245,
-    },
-    {
-      id: "hack",
-      label: "hack",
-      value: 129,
-    },
-  ];
-
   const jitterplotArr = Array(100)
     .fill(0)
     .map((_, index) => {
@@ -205,17 +227,6 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
       jitterplotData[`metric_${index + 1}`] = jitterplotArr;
     });
 
-  const translation = await serverSideTranslations(locale!);
-  const translationStore =
-    translation._nextI18Next.initialI18nStore[locale!]["common"];
-
-  let translatedDoughtnutChartData = doughnutChartData.map((d) => {
-    return {
-      ...d,
-      label: translationStore["title"],
-    };
-  });
-
   return {
     props: {
       state_key: geoFilterSelection.state_key,
@@ -224,7 +235,12 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
       area: geoFilterSelection.area,
       mapping: mappingData,
       barChartData,
-      doughnutChartData: translatedDoughtnutChartData,
+      // SNAPSHOT DATA
+      sex: translatedSex,
+      ethnicity: translatedEthnicity,
+      religion: translatedReligion,
+      maritalStatus: translatedMaritalStatus,
+      ageGroup: translatedAgeGroup,
       jitterplotData,
       ...(locale && (await serverSideTranslations(locale, ["common"]))),
     },

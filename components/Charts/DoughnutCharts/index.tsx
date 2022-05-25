@@ -3,25 +3,35 @@ import { IDoughnutChartData } from "../../../lib/interfaces";
 import Card from "../../Card";
 
 interface DoughnutChartProps {
+  title: string;
   data: IDoughnutChartData[];
 }
 
-const DoughnutChart = ({ data }: DoughnutChartProps) => {
+const DoughnutChart = ({ title, data }: DoughnutChartProps) => {
   return (
-    <Card>
+    <Card rounded={false} className="border-0.5">
+      <p className="text-sm">{title}</p>
       <div className="h-44 w-full">
         <ResponsivePie
           data={data}
           margin={{ top: 0, right: 100, bottom: 0, left: 0 }}
           innerRadius={0.5}
-          padAngle={0.7}
-          cornerRadius={3}
           borderWidth={1}
-          borderColor={{
-            from: "color",
-            modifiers: [["darker", 0.2]],
+          theme={{
+            textColor: "white",
           }}
+          colors={[
+            "#2A3343",
+            "#465570",
+            "#62789D",
+            "#8F9EB9",
+            "#BCC5D5",
+            "#E9ECF1",
+          ]}
+          borderColor="white"
           enableArcLinkLabels={false}
+          arcLabelsSkipAngle={15}
+          valueFormat={(value) => `${value.toFixed(0)}%`}
           legends={[
             {
               anchor: "right",
@@ -37,14 +47,6 @@ const DoughnutChart = ({ data }: DoughnutChartProps) => {
               itemOpacity: 1,
               symbolSize: 18,
               symbolShape: "circle",
-              effects: [
-                {
-                  on: "hover",
-                  style: {
-                    itemTextColor: "#000",
-                  },
-                },
-              ],
             },
           ]}
         />
