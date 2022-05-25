@@ -11,6 +11,12 @@ export const getStatePaths = async () =>
 export const getAreaPaths = async () =>
   await API.get<string[]>("/links?type=area").then((res) => res.data);
 
+export const getStateGeojson = async (state: string) =>
+  await API.get<any>(`/geo?area=${state}`).then((res) => res.data);
+
+export const getAreaGeojson = async (area: string) =>
+  await API.get<any>(`/geo?area=${area}`).then((res) => res.data);
+
 type GetSnapshotReq = {
   state: string;
   district?: string;
