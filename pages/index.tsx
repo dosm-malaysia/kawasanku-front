@@ -59,17 +59,21 @@ const Home: NextPage = ({
         </div>
         <div className="mb-10 flex w-full flex-col gap-4 md:mb-15 md:flex-row">
           {/* BAR CHART */}
-          <div className="w-full md:w-2/5">
-            <Card>
+          <div className="w-full md:w-1/3">
+            <Card className="border">
               <BarChart data={barChartData} />
             </Card>
           </div>
           {/* DOUGHNUT CHARTS */}
-          <div className="grid w-full grid-cols-1 gap-4 rounded-lg sm:grid-cols-2 sm:grid-rows-3 md:w-3/5">
+          <div className="grid w-full grid-cols-1 overflow-hidden rounded-lg border md:w-2/3 md:grid-cols-3 md:grid-rows-2">
             {Array(6)
               .fill(0)
               .map((_, index) => (
-                <DoughnutChart key={index} data={doughnutChartData} />
+                <DoughnutChart
+                  key={index}
+                  title={`Metric ${index + 1}`}
+                  data={doughnutChartData}
+                />
               ))}
           </div>
         </div>
@@ -83,7 +87,7 @@ const Home: NextPage = ({
         backgroundColor="bg-white md:bg-gray-100"
         className="pb-5 md:pb-8"
       >
-        <Card className="relative">
+        <Card className="relative md:border">
           {/* SPOTLIGHT */}
           <Spotlight
             // TODO: set current location based on location returned from backend

@@ -26,7 +26,7 @@ const Introduction = ({
       backgroundColor="bg-white"
       className="flex flex-col gap-7 pt-18 pb-5 md:flex-row md:gap-16 md:pt-28 md:pb-14"
     >
-      <div className="w-full px-4 md:w-2/5 md:px-0">
+      <div className="w-full px-4 md:w-1/3 md:px-0">
         {/* TITLE */}
         <h2 className="mb-4 text-xl font-semibold">{t("title")}</h2>
         {/* DESCRIPTION */}
@@ -51,7 +51,7 @@ const Introduction = ({
           mapping={mapping}
         />
       </div>
-      <div className="flex w-full flex-col px-4 md:w-3/5 md:px-0">
+      <div className="flex w-full flex-col px-4 md:w-2/3 md:px-0">
         <div className="mb-4 flex items-center gap-3">
           {/* ICON */}
           <svg
