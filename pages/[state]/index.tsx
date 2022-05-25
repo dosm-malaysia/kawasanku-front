@@ -109,7 +109,7 @@ const State: NextPage = ({
             setJitterComparisons={setJitterComparisons}
           />
           {/* JITTERPLOTS */}
-          <JitterPlots data={jitterplotData} />
+          <JitterPlots data={jitterplotData} comparisons={jitterComparisons} />
         </Card>
       </Container>
     </>
