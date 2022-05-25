@@ -45,7 +45,7 @@ const Spotlight = ({
       </div>
       <div className="flex flex-wrap items-center gap-3">
         {/* CURRENT LOCATION */}
-        <Label color="bg-blue-500" text={currentLocation?.label} />
+        <Label color="bg-accent" text={currentLocation?.label} />
         {/* JITTER COMPARISONS */}
         {jitterComparisons.length !== 0 &&
           jitterComparisons.map((comparison, index) => {
@@ -54,10 +54,10 @@ const Spotlight = ({
                 key={index}
                 color={
                   index === 0
-                    ? "bg-orange-500"
+                    ? "bg-[#D44647]"
                     : index === 1
-                    ? "bg-green-500"
-                    : "bg-red-500"
+                    ? "bg-[#2873E8]"
+                    : "bg-[#EC9E29]"
                 }
                 text={comparison.label}
                 isClearable={true}

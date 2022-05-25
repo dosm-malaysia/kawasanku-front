@@ -1,12 +1,14 @@
 import { ResponsiveScatterPlotCanvas } from "@nivo/scatterplot";
 import { IJitterplotData } from "../../../lib/interfaces";
+import { Option } from "../../Dropdowns/interface";
 
 interface JitterPlotProps {
   label: string;
   data: IJitterplotData[];
+  comparisons: Option[];
 }
 
-const JitterPlot = ({ label, data }: JitterPlotProps) => {
+const JitterPlot = ({ label, data, comparisons }: JitterPlotProps) => {
   return (
     <div className="flex h-full w-full flex-col items-center gap-2 md:flex-row md:gap-0">
       <div className="z-10 w-full bg-white text-sm md:w-1/3">
@@ -16,9 +18,9 @@ const JitterPlot = ({ label, data }: JitterPlotProps) => {
         <ResponsiveScatterPlotCanvas
           data={data}
           margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
-          xScale={{ type: "linear", min: 0, max: "auto" }}
+          xScale={{ type: "linear", min: -1, max: 1 }}
           xFormat=">-.2f"
-          yScale={{ type: "linear", min: 0, max: "auto" }}
+          yScale={{ type: "linear", min: 0, max: 1 }}
           yFormat=">-.2f"
           enableGridX={false}
           enableGridY={false}
@@ -26,13 +28,21 @@ const JitterPlot = ({ label, data }: JitterPlotProps) => {
           axisRight={null}
           axisBottom={null}
           axisLeft={null}
-          nodeSize={({ serieId }) => {
-            if (serieId === "Area 50") return 15;
-            else return 9;
+          tooltip={({ node: { serieId } }) => {
+            return (
+              <div className="flex items-center justify-center rounded-[2px] bg-white py-[5px] px-[9px] text-sm shadow">
+                <p className="">{serieId}</p>
+              </div>
+            );
           }}
           colors={({ serieId }) => {
-            if (serieId === "Area 50") return "#212936";
-            return "#E0E0E0";
+            if (serieId === "Area 1" && comparisons.length >= 3)
+              return "#EC9E29";
+            else if (serieId === "Area 2" && comparisons.length >= 2)
+              return "#2873E8";
+            else if (serieId === "Area 3" && comparisons.length >= 1)
+              return "#D44647";
+            else return "#E0E0E0";
           }}
         />
       </div>

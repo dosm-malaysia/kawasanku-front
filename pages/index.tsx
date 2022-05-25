@@ -96,7 +96,7 @@ const Home: NextPage = ({
             setJitterComparisons={setJitterComparisons}
           />
           {/* JITTERPLOTS */}
-          <JitterPlots data={jitterplotData} />
+          <JitterPlots data={jitterplotData} comparisons={jitterComparisons} />
         </Card>
       </Container>
     </>
@@ -173,7 +173,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
     },
   ];
 
-  const jitterplotArr = Array(100)
+  const jitterplotArr = Array(10)
     .fill(0)
     .map((_, index) => {
       return {
