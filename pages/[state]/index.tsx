@@ -1,30 +1,36 @@
-import React, { useState } from "react";
+import type {
+  GetStaticPaths,
+  GetStaticProps,
+  InferGetStaticPropsType,
+  NextPage,
+} from "next";
+import { useState } from "react";
 import dynamic from "next/dynamic";
-import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 // TODO: remove after getting actual mapping from backend
-import mappingJson from "../data/json/mapping.json";
+import mappingJson from "../../data/json/mapping.json";
+import { getStatePaths } from "../../lib/api";
 
-import Card from "../components/Card";
-import Container from "../components/Container";
-import Spotlight from "../components/Spotlight";
-import Introduction from "../components/Introduction";
-import { Option } from "../components/Dropdowns/interface";
+import Card from "../../components/Card";
+import Container from "../../components/Container";
+import Spotlight from "../../components/Spotlight";
+import Introduction from "../../components/Introduction";
+import { Option } from "../../components/Dropdowns/interface";
 
-const BarChart = dynamic(() => import("../components/Charts/BarChart"), {
+const BarChart = dynamic(() => import("../../components/Charts/BarChart"), {
   ssr: false,
 });
 const DoughnutChart = dynamic(
-  () => import("../components/Charts/DoughnutCharts"),
+  () => import("../../components/Charts/DoughnutCharts"),
   { ssr: false }
 );
-const JitterPlots = dynamic(() => import("../components/JitterPlots"), {
+const JitterPlots = dynamic(() => import("../../components/JitterPlots"), {
   ssr: false,
 });
 
-const Home: NextPage = ({
+const State: NextPage = ({
   state_key,
   state,
   areaType,
@@ -99,9 +105,18 @@ const Home: NextPage = ({
   );
 };
 
-export const getStaticProps: GetStaticProps = async ({ locale }) => {
+export const getStaticPaths: GetStaticPaths = async () => {
+  const statePaths = await getStatePaths();
+  const paths = statePaths.map((state) => {
+    return { params: { state: state.substring(1) } };
+  });
+
+  return { paths, fallback: false };
+};
+
+export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
   const geoFilterSelection = {
-    state_key: "",
+    state_key: params?.state,
     state: "",
     areaType: "",
     area: "",
@@ -216,4 +231,4 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
   };
 };
 
-export default Home;
+export default State;
