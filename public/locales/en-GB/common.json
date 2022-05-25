@@ -77,12 +77,12 @@
     "metric_19": "Surface forest area (%)",
     "metric_20": "Forest loss between 2000 to 2001",
     "metric_21": "Population density",
-    "mteric_22": "Median age",
-    "mteric_23": "Median household size",
-    "mteric_24": "Birth rate",
-    "mteric_25": "All-cause mortality",
-    "mteric_26": "Child dependency ratio",
-    "mteric_27": "Elderly dependency ratio"
+    "metric_22": "Median age",
+    "metric_23": "Median household size",
+    "metric_24": "Birth rate",
+    "metric_25": "All-cause mortality",
+    "metric_26": "Child dependency ratio",
+    "metric_27": "Elderly dependency ratio"
   },
   "share": "Share",
   "dosm": "Department of Statistics Malaysia (DOSM)",
