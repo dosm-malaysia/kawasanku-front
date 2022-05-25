@@ -25,8 +25,31 @@ export interface IJitterplotData {
 export interface IJitterplots {
   metric_1: IJitterplotData[];
   metric_2: IJitterplotData[];
-  // ...
-  // to have as many metrics as there is on the dataset
+  metric_3: IJitterplotData[];
+  metric_4: IJitterplotData[];
+  metric_5: IJitterplotData[];
+  metric_6: IJitterplotData[];
+  metric_7: IJitterplotData[];
+  metric_8: IJitterplotData[];
+  metric_9: IJitterplotData[];
+  metric_10: IJitterplotData[];
+  metric_11: IJitterplotData[];
+  metric_12: IJitterplotData[];
+  metric_13: IJitterplotData[];
+  metric_14: IJitterplotData[];
+  metric_15: IJitterplotData[];
+  metric_16: IJitterplotData[];
+  metric_17: IJitterplotData[];
+  metric_18: IJitterplotData[];
+  metric_19: IJitterplotData[];
+  metric_20: IJitterplotData[];
+  metric_21: IJitterplotData[];
+  metric_22: IJitterplotData[];
+  metric_23: IJitterplotData[];
+  metric_24: IJitterplotData[];
+  metric_25: IJitterplotData[];
+  metric_26: IJitterplotData[];
+  metric_27: IJitterplotData[];
 }
 
 // EXAMPLE
