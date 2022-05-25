@@ -134,7 +134,7 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
   const { state } = params as IParams;
 
   const translationReq = serverSideTranslations(locale!);
-  const geoReq = getStateGeojson(state);
+  const geoReq = Promise.resolve(null); // getStateGeojson(state);
   const snapshotReq = getSnapshot({ state });
 
   const res = await Promise.all([translationReq, geoReq, snapshotReq]);
