@@ -83,7 +83,7 @@ export interface IDoughnutChartData {
   value: number;
 }
 
-export interface IDoughnutCharts {
+export interface ISnapshot {
   sex: IDoughnutChartData[];
   ethnicity: IDoughnutChartData[];
   nationality: IDoughnutChartData;
