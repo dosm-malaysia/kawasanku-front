@@ -12,6 +12,7 @@ import Container from "../components/Container";
 import Spotlight from "../components/Spotlight";
 import Introduction from "../components/Introduction";
 import { Option } from "../components/Dropdowns/interface";
+import ShareButton from "../components/Share/Button";
 
 const BarChart = dynamic(() => import("../components/Charts/BarChart"), {
   ssr: false,
@@ -60,21 +61,29 @@ const Home: NextPage = ({
         <div className="mb-10 flex w-full flex-col gap-4 md:mb-15 md:flex-row">
           {/* BAR CHART */}
           <div className="w-full md:w-1/3">
-            <Card className="border">
-              <BarChart data={barChartData} />
-            </Card>
+            <div className="flex h-full w-full flex-col divide-y overflow-hidden rounded-lg border bg-white">
+              <Card>
+                <BarChart data={barChartData} />
+              </Card>
+              <ShareButton />
+            </div>
           </div>
           {/* DOUGHNUT CHARTS */}
-          <div className="grid w-full grid-cols-1 overflow-hidden rounded-lg border md:w-2/3 md:grid-cols-3 md:grid-rows-2">
-            {Array(6)
-              .fill(0)
-              .map((_, index) => (
-                <DoughnutChart
-                  key={index}
-                  title={`Metric ${index + 1}`}
-                  data={doughnutChartData}
-                />
-              ))}
+          <div className="w-full md:w-2/3">
+            <div className="flex h-full w-full flex-col divide-y-0.5 overflow-hidden rounded-lg border bg-white">
+              <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2">
+                {Array(6)
+                  .fill(0)
+                  .map((_, index) => (
+                    <DoughnutChart
+                      key={index}
+                      title={`Metric ${index + 1}`}
+                      data={doughnutChartData}
+                    />
+                  ))}
+              </div>
+              <ShareButton />
+            </div>
           </div>
         </div>
         {/* JITTERPLOT TITLE */}
@@ -87,17 +96,23 @@ const Home: NextPage = ({
         backgroundColor="bg-white md:bg-gray-100"
         className="pb-5 md:pb-8"
       >
-        <Card className="relative md:border">
-          {/* SPOTLIGHT */}
-          <Spotlight
-            // TODO: set current location based on location returned from backend
-            currentLocation={{ label: "Ipoh", value: "Ipoh" }}
-            jitterComparisons={jitterComparisons}
-            setJitterComparisons={setJitterComparisons}
-          />
-          {/* JITTERPLOTS */}
-          <JitterPlots data={jitterplotData} comparisons={jitterComparisons} />
-        </Card>
+        <div className="flex h-full w-full flex-col divide-y overflow-hidden border-0 border-b bg-white md:rounded-lg md:border">
+          <Card className="relative">
+            {/* SPOTLIGHT */}
+            <Spotlight
+              // TODO: set current location based on location returned from backend
+              currentLocation={{ label: "Ipoh", value: "Ipoh" }}
+              jitterComparisons={jitterComparisons}
+              setJitterComparisons={setJitterComparisons}
+            />
+            {/* JITTERPLOTS */}
+            <JitterPlots
+              data={jitterplotData}
+              comparisons={jitterComparisons}
+            />
+          </Card>
+          <ShareButton />
+        </div>
       </Container>
     </>
   );
