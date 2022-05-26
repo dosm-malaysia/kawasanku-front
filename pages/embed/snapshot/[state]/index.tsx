@@ -1,15 +1,15 @@
 import dynamic from "next/dynamic";
-import Portal from "../../components/Portal";
+import Portal from "../../../../components/Portal";
 
 const DoughnutChart = dynamic(
-  () => import("../../components/Charts/DoughnutCharts"),
+  () => import("../../../../components/Charts/DoughnutCharts"),
   { ssr: false }
 );
 
-const TestIframe = () => {
+const EmbedSnapshotState = () => {
   return (
     <Portal>
-      <div className="mt-14 min-h-screen">
+      <div>
         <DoughnutChart
           data={Array(4)
             .fill(0)
@@ -23,4 +23,4 @@ const TestIframe = () => {
   );
 };
 
-export default TestIframe;
+export default EmbedSnapshotState;
