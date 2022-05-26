@@ -9,3 +9,31 @@
 .doughnut-chart-title {
   @apply text-sm font-bold;
 }
+
+.tooltip {
+   @apply relative;
+}
+
+.tooltip .tooltip-content {
+    width: max-content;
+    @apply absolute inline-block z-10 left-6 -top-2 invisible max-w-sm bg-gray-700 p-3 rounded text-white;
+}
+
+.tooltip-content::before {
+    content: '';
+    display:block;
+    width:0;
+    height:0;
+    position:absolute;
+    
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent; 
+    border-right:8px solid rgb(55 65 81);
+    left:-7px;
+    
+    top:7px;
+}
+
+.tooltip:hover .tooltip-content {
+    @apply visible;
+}
