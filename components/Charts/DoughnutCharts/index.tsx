@@ -9,7 +9,7 @@ interface DoughnutChartProps {
 
 const DoughnutChart = ({ title, data }: DoughnutChartProps) => {
   return (
-    <Card rounded={false} className="border-0.5">
+    <Card className="border-0.5">
       <p className="text-sm">{title}</p>
       <div className="h-44 w-full">
         <ResponsivePie
