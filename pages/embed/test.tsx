@@ -1,19 +1,25 @@
-import Frame from "react-frame-component";
-import DoughnutChart from "../../components/Charts/DoughnutCharts";
+import dynamic from "next/dynamic";
+import Portal from "../../components/Portal";
+
+const DoughnutChart = dynamic(
+  () => import("../../components/Charts/DoughnutCharts"),
+  { ssr: false }
+);
 
 const TestIframe = () => {
   return (
-    <Frame>
-      <DoughnutChart
-        title="Test Embed Chart"
-        data={Array(4)
-          .fill(0)
-          .map((_, i) => ({
-            id: "Item" + i + 1,
-            value: i * 10,
-          }))}
-      />
-    </Frame>
+    <Portal>
+      <div className="mt-14 min-h-screen">
+        <DoughnutChart
+          data={Array(4)
+            .fill(0)
+            .map((_, i) => ({
+              id: "Item" + i + 1,
+              value: i * 10,
+            }))}
+        />
+      </div>
+    </Portal>
   );
 };
 

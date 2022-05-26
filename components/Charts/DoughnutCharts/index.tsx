@@ -3,14 +3,14 @@ import { IDoughnutChartData } from "../../../lib/interfaces";
 import Card from "../../Card";
 
 interface DoughnutChartProps {
-  title: string;
+  title?: string;
   data: IDoughnutChartData[];
 }
 
 const DoughnutChart = ({ title, data }: DoughnutChartProps) => {
   return (
     <Card className="border-0.5">
-      <p className="text-sm">{title}</p>
+      {title && <p className="text-sm">{title}</p>}
       <div className="h-44 w-full">
         <ResponsivePie
           data={data}
