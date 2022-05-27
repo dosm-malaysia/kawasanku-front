@@ -190,8 +190,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   const en: AreaPathsType = [];
   const ms: AreaPathsType = [];
-  const zh: AreaPathsType = [];
-  const ta: AreaPathsType = [];
+  // const zh: AreaPathsType = [];
+  // const ta: AreaPathsType = [];
 
   areaPaths.forEach((area) => {
     // area returned as "/state/area"
@@ -202,18 +202,19 @@ export const getStaticPaths: GetStaticPaths = async () => {
       params: { state: areaArr[0], area: areaArr[1] },
       locale: "ms-MY",
     });
-    ta.push({
-      params: { state: areaArr[0], area: areaArr[1] },
-      locale: "ta-IN",
-    });
-    zh.push({
-      params: { state: areaArr[0], area: areaArr[1] },
-      locale: "zh-CN",
-    });
+    // ta.push({
+    //   params: { state: areaArr[0], area: areaArr[1] },
+    //   locale: "ta-IN",
+    // });
+    // zh.push({
+    //   params: { state: areaArr[0], area: areaArr[1] },
+    //   locale: "zh-CN",
+    // });
   });
 
-  // return { paths: [], fallback: false };
-  return { paths: [...en, ...ms, ...zh, ...ta], fallback: false };
+  // TODO: build all paths but just test if 2 languages can build on Netlify
+  return { paths: [...en, ...ms], fallback: false };
+  // return { paths: [...en, ...ms, ...zh, ...ta], fallback: false };
 };
 
 interface IParams extends ParsedUrlQuery {
