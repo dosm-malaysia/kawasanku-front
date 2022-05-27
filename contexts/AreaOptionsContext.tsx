@@ -13,6 +13,7 @@ interface AreaOptionsContextProviderInterface {
   children: React.ReactNode;
 }
 
+// TODO: remove context since spotlight and geo filter are now separate to prevent rerenders
 const AreaOptionsContextProvider = ({
   children,
 }: AreaOptionsContextProviderInterface) => {

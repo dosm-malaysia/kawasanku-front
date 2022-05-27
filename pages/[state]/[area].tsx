@@ -148,6 +148,7 @@ const Area: NextPage = ({
         <Card className="relative overflow-hidden rounded-lg md:border">
           {/* SPOTLIGHT */}
           <Spotlight
+            areaType={areaType}
             currentLocation={{ label: areaName, value: areaKey }}
             jitterComparisons={jitterComparisons}
             setJitterComparisons={setJitterComparisons}

@@ -77,7 +77,7 @@ export const getJitterplots = async ({ area }: GetJitterplotsReq) =>
   });
 
 type GetAreaOptionsReq = {
-  state: string;
+  state?: string;
   filter: string;
 };
 

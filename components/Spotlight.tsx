@@ -1,22 +1,30 @@
+import { useEffect, useState } from "react";
 import { useTranslation } from "next-i18next";
 
 import ComboBox from "./Dropdowns/ComboBox";
 import { Option } from "../components/Dropdowns/interface";
-import { useAreaOptions } from "../contexts/AreaOptionsContext";
+import { getAreaOptions } from "../lib/api";
+import { STATES_KEY } from "../lib/constants";
 
 interface SpotlightProps {
+  areaType?: string;
   currentLocation?: Option;
   jitterComparisons: Option[];
   setJitterComparisons: React.Dispatch<React.SetStateAction<Option[]>>;
 }
 
 const Spotlight = ({
+  areaType,
   currentLocation,
   jitterComparisons,
   setJitterComparisons,
 }: SpotlightProps) => {
   const { t } = useTranslation();
-  const { options } = useAreaOptions();
+  const [options, setOptions] = useState<Option[]>(
+    Object.values(STATES_KEY).map((state) => {
+      return { label: t(`states.${state}`), value: state };
+    })
+  );
 
   const handleComparisons = (newOption?: Option) => {
     if (!newOption || jitterComparisons?.length === 3) return;
@@ -29,6 +37,13 @@ const Spotlight = ({
       jitterComparisons.filter((option) => option.value !== removedOption.value)
     );
   };
+
+  useEffect(() => {
+    if (areaType)
+      getAreaOptions({ filter: areaType })
+        .then((res) => setOptions(res))
+        .catch((err) => console.log(err));
+  }, [areaType]);
 
   return (
     <div className="mb-6 flex flex-col items-center justify-between gap-4 md:flex-row md:gap-0">
