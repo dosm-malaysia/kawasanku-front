@@ -25,6 +25,7 @@ import Spotlight from "../../components/Spotlight";
 import Introduction from "../../components/Introduction";
 import { Option } from "../../components/Dropdowns/interface";
 import { translateDoughnutChart } from "../../lib/helpers";
+import { STATES_KEY } from "../../lib/constants";
 
 const BarChart = dynamic(() => import("../../components/Charts/BarChart"), {
   ssr: false,
@@ -122,10 +123,14 @@ const State: NextPage = ({
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const statePaths = await getStatePaths();
-  const paths = statePaths.map((state) => {
-    // state returned as "/state"
-    return { params: { state: state.substring(1) } };
+  // const statePaths = await getStatePaths();
+  // const paths = statePaths.map((state) => {
+  //   // state returned as "/state"
+  //   return { params: { state: state.substring(1) } };
+  // });
+
+  const paths = Object.values(STATES_KEY).map((state) => {
+    return { params: { state } };
   });
 
   return { paths, fallback: false };
