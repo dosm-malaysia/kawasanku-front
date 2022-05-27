@@ -22,6 +22,7 @@ import {
 import Card from "../../components/Card";
 import Container from "../../components/Container";
 import Spotlight from "../../components/Spotlight";
+import ShareButton from "../../components/Share/Button";
 import Introduction from "../../components/Introduction";
 import { Option } from "../../components/Dropdowns/interface";
 import { translateDoughnutChart } from "../../lib/helpers";
@@ -75,22 +76,35 @@ const State: NextPage = ({
         <div className="mb-10 flex w-full flex-col gap-4 md:mb-15 md:flex-row">
           {/* BAR CHART */}
           <div className="w-full md:w-1/3">
-            <Card className="border">
-              <BarChart data={barChartData} />
-            </Card>
+            <div className="flex h-full w-full flex-col divide-y overflow-hidden rounded-lg border bg-white">
+              <Card>
+                <BarChart data={barChartData} />
+              </Card>
+              <ShareButton />
+            </div>
           </div>
           {/* DOUGHNUT CHARTS */}
-          <div className="grid w-full grid-cols-1 overflow-hidden rounded-lg border md:w-2/3 md:grid-cols-3 md:grid-rows-2">
-            <DoughnutChart title={t("doughnut.metric_1")} data={sex} />
-            <DoughnutChart title={t("doughnut.metric_2")} data={ethnicity} />
-            {/* TODO: add nationality data */}
-            <DoughnutChart title={t("doughnut.metric_3")} data={nationality} />
-            <DoughnutChart title={t("doughnut.metric_4")} data={religion} />
-            <DoughnutChart
-              title={t("doughnut.metric_5")}
-              data={maritalStatus}
-            />
-            <DoughnutChart title={t("doughnut.metric_6")} data={ageGroup} />
+          <div className="w-full md:w-2/3">
+            <div className="flex h-full w-full flex-col divide-y-0.5 overflow-hidden rounded-lg border bg-white">
+              <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2">
+                <DoughnutChart title={t("doughnut.metric_1")} data={sex} />
+                <DoughnutChart
+                  title={t("doughnut.metric_2")}
+                  data={ethnicity}
+                />
+                <DoughnutChart
+                  title={t("doughnut.metric_3")}
+                  data={nationality}
+                />
+                <DoughnutChart title={t("doughnut.metric_4")} data={religion} />
+                <DoughnutChart
+                  title={t("doughnut.metric_5")}
+                  data={maritalStatus}
+                />
+                <DoughnutChart title={t("doughnut.metric_6")} data={ageGroup} />
+              </div>
+              <ShareButton />
+            </div>
           </div>
         </div>
         {/* JITTERPLOT TITLE */}
@@ -103,17 +117,23 @@ const State: NextPage = ({
         backgroundColor="bg-white md:bg-gray-100"
         className="pb-5 md:pb-8"
       >
-        <Card className="relative md:border">
-          {/* SPOTLIGHT */}
-          <Spotlight
-            // TODO: set current location based on location returned from backend
-            currentLocation={{ label: "Ipoh", value: "Ipoh" }}
-            jitterComparisons={jitterComparisons}
-            setJitterComparisons={setJitterComparisons}
-          />
-          {/* JITTERPLOTS */}
-          <JitterPlots data={jitterplotData} comparisons={jitterComparisons} />
-        </Card>
+        <div className="flex h-full w-full flex-col divide-y overflow-hidden border-0 border-b bg-white md:rounded-lg md:border">
+          <Card className="relative">
+            {/* SPOTLIGHT */}
+            <Spotlight
+              // TODO: set current location based on location returned from backend
+              currentLocation={{ label: "Ipoh", value: "Ipoh" }}
+              jitterComparisons={jitterComparisons}
+              setJitterComparisons={setJitterComparisons}
+            />
+            {/* JITTERPLOTS */}
+            <JitterPlots
+              data={jitterplotData}
+              comparisons={jitterComparisons}
+            />
+          </Card>
+          <ShareButton />
+        </div>
       </Container>
     </>
   );
