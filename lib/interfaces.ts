@@ -1,12 +1,11 @@
 // -----------------------------------------------------------------------------
-// GEO MAPPING
+// GEOJSON
 // -----------------------------------------------------------------------------
-
-export interface IGeoSelection {
-  state_key: string;
-  state: string;
+export interface IGeojson {
+  name: string;
   area_type: string;
-  area: string;
+  shape_type: string;
+  coordinates: any;
 }
 
 // -----------------------------------------------------------------------------

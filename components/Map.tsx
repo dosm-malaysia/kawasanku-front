@@ -1,13 +1,14 @@
 import { useRef, useEffect } from "react";
 import { Wrapper, Status } from "@googlemaps/react-wrapper";
 
-// TODO: remove after backend is ready
-import malaysia from "../data/geojson/malaysia.json";
-
 const API_KEY = process.env.NEXT_PUBLIC_GMAPS_API_KEY;
 if (API_KEY === undefined) throw new Error("Google Maps API key required.");
 
-const Map = () => {
+interface MapProps {
+  geojson: any;
+}
+
+const Map = ({ geojson }: MapProps) => {
   const render = (status: Status) => {
     switch (status) {
       case Status.LOADING:
@@ -44,14 +45,18 @@ const Map = () => {
         );
       case Status.SUCCESS:
         const center = new window.google.maps.LatLng(4, 109.5);
-        return <GoogleMap center={center} zoom={5} />;
+        return <GoogleMap center={center} zoom={5} geojson={geojson} />;
     }
   };
 
   return <Wrapper apiKey={API_KEY} render={render} />;
 };
 
-const GoogleMap: React.FC<google.maps.MapOptions> = ({ center, zoom }) => {
+interface GoogleMapProps extends google.maps.MapOptions {
+  geojson: any;
+}
+
+const GoogleMap: React.FC<GoogleMapProps> = ({ center, zoom, geojson }) => {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -62,13 +67,13 @@ const GoogleMap: React.FC<google.maps.MapOptions> = ({ center, zoom }) => {
       });
 
       // LOAD GEOJSON
-      map.data.addGeoJson(malaysia);
+      map.data.addGeoJson(geojson);
 
       // SET GEOJSON STYLE
       map.data.setStyle({
         fillColor: "#ffffff",
         fillOpacity: 0.25,
-        strokeColor: "#e94336",
+        strokeColor: "#13293d",
         strokeWeight: 1,
       });
 
@@ -82,7 +87,7 @@ const GoogleMap: React.FC<google.maps.MapOptions> = ({ center, zoom }) => {
 
       map.fitBounds(bounds);
     }
-  }, []);
+  }, [geojson]);
 
   // GOOGLE MAP CONTAINER
   return <div className="h-64 w-full rounded-lg md:h-full" ref={ref} />;

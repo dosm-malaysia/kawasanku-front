@@ -2,6 +2,7 @@ import axios from "axios";
 import {
   IBarChartData,
   IDoughnutChartData,
+  IGeojson,
   IJitterplotData,
 } from "./interfaces";
 
@@ -16,7 +17,21 @@ export const getAreaPaths = async () =>
   await API.get<string[]>("/links?type=area").then((res) => res.data);
 
 export const getGeojson = async (area: string) =>
-  await API.get<any>(`/geo?area=${area}`).then((res) => res.data);
+  await API.get<IGeojson>(`/geo?area=${area}`).then((res) => {
+    const geojsonData = res.data;
+    return {
+      type: "FeatureCollection",
+      features: [
+        {
+          type: "Feature",
+          geometry: {
+            type: geojsonData.shape_type,
+            coordinates: geojsonData.coordinates,
+          },
+        },
+      ],
+    };
+  });
 
 type GetSnapshotReq = {
   state: string;

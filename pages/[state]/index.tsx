@@ -38,10 +38,8 @@ const JitterPlots = dynamic(() => import("../../components/JitterPlots"), {
 });
 
 const State: NextPage = ({
-  state_key,
-  state,
-  areaType,
-  area,
+  stateKey,
+  geojson,
   mapping,
   barChartData,
   sex,
@@ -59,10 +57,9 @@ const State: NextPage = ({
   return (
     <>
       <Introduction
-        state_key={state_key}
-        state={state}
-        areaType={areaType}
-        area={area}
+        stateKey={stateKey}
+        state={t(`states.${stateKey}`)}
+        geojson={geojson}
         mapping={mapping}
       />
       {/* CHARTS */}
@@ -156,6 +153,9 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
   const translationStore =
     translation._nextI18Next.initialI18nStore[locale!]["common"];
 
+  // GEOJSON
+  const geojson = res[1];
+
   // DOUGHNUT CHARTS DATA
   const doughnutCharts = res[2].doughnut_charts;
   const sex = doughnutCharts.sex;
@@ -189,13 +189,6 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
   const jitterplotData = res[3];
 
   const mappingData = mappingJson;
-
-  const geoFilterSelection = {
-    state_key: state,
-    state: "",
-    areaType: "",
-    area: "",
-  };
 
   const barChartData = [
     {
@@ -231,10 +224,8 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
 
   return {
     props: {
-      state_key: geoFilterSelection.state_key,
-      state: geoFilterSelection.state,
-      areaType: geoFilterSelection.areaType,
-      area: geoFilterSelection.area,
+      stateKey: state,
+      geojson,
       mapping: mappingData,
       // DOUGHNUT CHARTS DATA
       sex: translatedSex,

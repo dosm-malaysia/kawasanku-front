@@ -94,5 +94,23 @@
   "facebook": "Facebook",
   "twitter": "Twitter",
   "embed": "Embed",
-  "copy_link": "Copy link"
+  "copy_link": "Copy link",
+  "states": {
+    "jhr": "Johor",
+    "kdh": "Kedah",
+    "ktn": "Kelantan",
+    "mlk": "Melaka",
+    "nsn": "Negeri Sembilan",
+    "phg": "Pahang",
+    "prk": "Perak",
+    "pls": "Perlis",
+    "png": "Penang",
+    "sbh": "Sabah",
+    "swk": "Sarawak",
+    "sgr": "Selangor",
+    "trg": "Terengganu",
+    "kul": "Kuala Lumpur",
+    "lbn": "Labuan",
+    "pjy": "Putrajaya"
+  }
 }
