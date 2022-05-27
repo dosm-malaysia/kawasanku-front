@@ -12,18 +12,18 @@ import SelectMenu from "./SelectMenu";
 interface GeoFiltersProps {
   stateKey?: string;
   areaType?: string;
+  areaKey?: string;
   area?: string;
   mapping: any;
 }
 
-const GeoFilters = ({ stateKey, areaType, area, mapping }: GeoFiltersProps) => {
+const GeoFilters = ({ stateKey, areaType, areaKey, area }: GeoFiltersProps) => {
   const router = useRouter();
   const { t } = useTranslation();
   const { options, setOptions } = useAreaOptions();
 
   // options for area type: district, parlimen, dun
   const [selectedAreaType, setSelectedAreaType] = useState(areaType);
-  const [selectedArea, setSelectedArea] = useState(area);
 
   useEffect(() => {
     if (stateKey && selectedAreaType) {
@@ -76,15 +76,15 @@ const GeoFilters = ({ stateKey, areaType, area, mapping }: GeoFiltersProps) => {
       <SelectMenu
         options={options}
         selected={
-          selectedArea
+          area && areaKey
             ? {
-                label: t(selectedArea), // TODO: figure how to map area key to actual area name
-                value: selectedArea,
+                label: area,
+                value: areaKey,
               }
             : undefined
         }
-        onChange={(newSelectedArea) =>
-          newSelectedArea ? router.push(`/${stateKey}/${newSelectedArea}`) : {}
+        onChange={(newArea) =>
+          newArea ? router.push(`/${stateKey}/${newArea}`) : {}
         }
         placeholder={t("filter3_placeholder")}
       />

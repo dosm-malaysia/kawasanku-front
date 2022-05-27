@@ -8,6 +8,7 @@ interface IntroductionProps {
   stateKey?: string;
   state?: string;
   areaType?: string;
+  areaKey?: string;
   area?: string;
   geojson: any;
   mapping: any;
@@ -17,6 +18,7 @@ const Introduction = ({
   stateKey,
   state,
   areaType,
+  areaKey,
   area,
   geojson,
   mapping,
@@ -47,8 +49,9 @@ const Introduction = ({
         </div>
         <GeoFilters
           stateKey={stateKey}
-          areaType={areaType}
+          areaKey={areaKey}
           area={area}
+          areaType={areaType}
           mapping={mapping}
         />
       </div>

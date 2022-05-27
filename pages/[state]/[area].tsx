@@ -66,7 +66,9 @@ const Area: NextPage = ({
       <Introduction
         stateKey={stateKey}
         state={t(`states.${stateKey}`)}
+        areaKey={areaKey}
         areaType={areaType}
+        area={areaName}
         geojson={geojson}
         mapping={mapping}
       />
