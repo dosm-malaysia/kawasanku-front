@@ -1,4 +1,7 @@
+import { useTranslation } from "next-i18next";
 import { BarDatum, ResponsiveBarCanvas } from "@nivo/bar";
+
+import { formatKOrM } from "../../../lib/helpers";
 import { IBarChartData } from "../../../lib/interfaces";
 
 interface BarChartProps {
@@ -6,77 +9,50 @@ interface BarChartProps {
 }
 
 const BarChart = ({ data }: BarChartProps) => {
+  const { t } = useTranslation();
+
   return (
-    <div className="h-96 w-full">
-      <ResponsiveBarCanvas
-        data={data}
-        keys={["fries", "burger", "sandwich", "kebab"]}
-        indexBy="country"
-        margin={{ top: 25, right: 20, bottom: 50, left: 60 }}
-        padding={0.3}
-        layout="horizontal"
-        valueScale={{ type: "linear" }}
-        indexScale={{ type: "band", round: true }}
-        minValue={-200}
-        maxValue={200}
-        colors={{ scheme: "nivo" }}
-        borderColor={{
-          from: "color",
-          modifiers: [["darker", 1.6]],
-        }}
-        axisBottom={{
-          tickSize: 5,
-          tickPadding: 5,
-          tickRotation: 0,
-          legend: "country",
-          legendPosition: "middle",
-          legendOffset: 32,
-          tickValues: [-200, -100, 0, 100, 200],
-          format: (val) => {
-            let formattedVal = val;
-            if (val < 0) formattedVal *= -1;
-            return formattedVal + "k";
-          },
-        }}
-        axisLeft={{
-          tickSize: 5,
-          tickPadding: 5,
-          tickRotation: 0,
-          legend: "food",
-          legendPosition: "middle",
-          legendOffset: -40,
-        }}
-        labelSkipWidth={12}
-        labelSkipHeight={12}
-        labelTextColor={{
-          from: "color",
-          modifiers: [["darker", 1.6]],
-        }}
-        legends={[
-          {
-            dataFrom: "keys",
-            anchor: "top",
-            direction: "row",
-            justify: false,
-            translateX: 0,
-            translateY: -25,
-            itemsSpacing: 2,
-            itemWidth: 100,
-            itemHeight: 20,
-            itemDirection: "left-to-right",
-            itemOpacity: 0.85,
-            symbolSize: 20,
-            effects: [
-              {
-                on: "hover",
-                style: {
-                  itemOpacity: 1,
-                },
-              },
-            ],
-          },
-        ]}
-      />
+    <div>
+      <div className="flex items-center justify-between pl-10 text-xs font-bold">
+        <p className="text-accent">{t("pyramid.male")}</p>
+        <p className="text-[#8F9EB9]">{t("pyramid.female")}</p>
+      </div>
+      <div className="h-96 min-h-full w-full">
+        <ResponsiveBarCanvas
+          data={data}
+          indexBy="id"
+          keys={["male", "male_surplus", "female", "female_surplus"]}
+          margin={{ top: 0, right: 20, bottom: 20, left: 40 }}
+          padding={0.3}
+          layout="horizontal"
+          valueScale={{ type: "linear" }}
+          indexScale={{ type: "band", round: true }}
+          valueFormat=">-,"
+          colors={["#465570", "#2A3343", "#8F9EB9", "#62789D"]}
+          enableLabel={false}
+          axisBottom={{
+            format: (value) => formatKOrM(Math.abs(value)),
+          }}
+          tooltip={({ id, formattedValue, color }) => {
+            return (
+              <div className="flex items-center justify-center rounded-[2px] bg-white py-[5px] px-[9px] shadow">
+                <div
+                  className="mr-2 h-3 w-3"
+                  style={{ backgroundColor: color }}
+                />
+                <p>
+                  {t(`pyramid.${id}`)}:{" "}
+                  <span className="font-bold">
+                    {formattedValue[0] === "-"
+                      ? formattedValue.substring(1)
+                      : formattedValue}
+                  </span>
+                </p>
+              </div>
+            );
+          }}
+        />
+      </div>
     </div>
   );
 };

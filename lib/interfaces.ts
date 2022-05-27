@@ -1,12 +1,20 @@
 // -----------------------------------------------------------------------------
-// GEO MAPPING
+// GEOJSON
+// -----------------------------------------------------------------------------
+export interface IGeojson {
+  name: string;
+  area_type: string;
+  shape_type: string;
+  coordinates: any;
+}
+
+// -----------------------------------------------------------------------------
+// AREA OPTIONS FOR GEO FILTER DROPDOWN
 // -----------------------------------------------------------------------------
 
-export interface IGeoSelection {
-  state_key: string;
-  state: string;
-  area_type: string;
-  area: string;
+export interface IAreaOptions {
+  label: string;
+  value: string;
 }
 
 // -----------------------------------------------------------------------------
@@ -83,15 +91,15 @@ export interface IDoughnutChartData {
   value: number;
 }
 
-export interface ISnapshot {
+export interface IDoughnutCharts {
   sex: IDoughnutChartData[];
   ethnicity: IDoughnutChartData[];
-  nationality: IDoughnutChartData;
-  age_group: IDoughnutChartData;
-  religion: IDoughnutChartData;
-  marital_status: IDoughnutChartData;
-  households: IDoughnutChartData;
-  employment_status: IDoughnutChartData;
+  nationality: IDoughnutChartData[];
+  agegroup: IDoughnutChartData[];
+  religion?: IDoughnutChartData[];
+  marital?: IDoughnutChartData[];
+  housing?: IDoughnutChartData[];
+  labour?: IDoughnutChartData[];
 }
 
 // EXAMPLE

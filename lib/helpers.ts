@@ -11,3 +11,8 @@ export const translateDoughnutChart = (
     };
   });
 };
+
+export const formatKOrM = (n: number) => {
+  if (n > 999999) return `${(n / 1000000).toFixed(1)}M`;
+  else return n > 999 ? `${(n / 1000).toFixed(0)}k` : n;
+};

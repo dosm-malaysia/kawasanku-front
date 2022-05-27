@@ -1,36 +1,46 @@
-import React, { useState } from "react";
+import type {
+  GetStaticPaths,
+  GetStaticProps,
+  InferGetStaticPropsType,
+  NextPage,
+} from "next";
+import { useState } from "react";
 import dynamic from "next/dynamic";
-import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
+import { ParsedUrlQuery } from "querystring";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
-// TODO: remove after getting actual mapping from backend
-import mappingJson from "../data/json/mapping.json";
+import {
+  getSnapshot,
+  getGeojson,
+  getStatePaths,
+  getJitterplots,
+  getAreaType,
+} from "../../lib/api";
 
-import Card from "../components/Card";
-import Container from "../components/Container";
-import Spotlight from "../components/Spotlight";
-import Introduction from "../components/Introduction";
-import { Option } from "../components/Dropdowns/interface";
-import ShareButton from "../components/Share/Button";
+import Card from "../../components/Card";
+import Container from "../../components/Container";
+import Spotlight from "../../components/Spotlight";
+import ShareButton from "../../components/Share/Button";
+import Introduction from "../../components/Introduction";
+import { Option } from "../../components/Dropdowns/interface";
+import { translateDoughnutChart } from "../../lib/helpers";
 
-import { translateDoughnutChart } from "../lib/helpers";
-import { AREA_TYPES, MALAYSIA, STATES_KEY } from "../lib/constants";
-import { getGeojson, getJitterplots, getSnapshot } from "../lib/api";
-
-const BarChart = dynamic(() => import("../components/Charts/BarChart"), {
+const BarChart = dynamic(() => import("../../components/Charts/BarChart"), {
   ssr: false,
 });
 const DoughnutChart = dynamic(
-  () => import("../components/Charts/DoughnutCharts"),
+  () => import("../../components/Charts/DoughnutCharts"),
   { ssr: false }
 );
-const JitterPlots = dynamic(() => import("../components/JitterPlots"), {
+const JitterPlots = dynamic(() => import("../../components/JitterPlots"), {
   ssr: false,
 });
 
-const Home: NextPage = ({
+const State: NextPage = ({
+  stateKey,
   geojson,
+  areaType,
   mapping,
   barChartData,
   sex,
@@ -47,7 +57,12 @@ const Home: NextPage = ({
 
   return (
     <>
-      <Introduction geojson={geojson} mapping={mapping} />
+      <Introduction
+        stateKey={stateKey}
+        state={t(`states.${stateKey}`)}
+        geojson={geojson}
+        mapping={mapping}
+      />
       {/* CHARTS */}
       <Container
         backgroundColor="bg-gray-100"
@@ -57,7 +72,7 @@ const Home: NextPage = ({
         <div className="mb-5 flex w-full flex-col items-start justify-between gap-2 md:mb-7 md:flex-row md:items-center md:gap-0">
           <h3 className="section-title">
             {t("section1_title1")}{" "}
-            <span className="underline">{t("malaysia")}</span>{" "}
+            <span className="underline">{t(`states.${stateKey}`)}</span>{" "}
             {t("section1_title2")}
           </h3>
           <p className="text-sm text-gray-400">{t("census_2020")}</p>
@@ -98,7 +113,13 @@ const Home: NextPage = ({
         </div>
         {/* JITTERPLOT TITLE */}
         <div className="mb-6 flex w-full flex-col items-start justify-between gap-2 md:mb-7 md:flex-row md:items-center md:gap-0">
-          <h3 className="section-title">{t("section2_title1")}</h3>
+          <h3 className="section-title">
+            {t("section2_title2_1")}{" "}
+            <span className="underline">{t(`states.${stateKey}`)}</span>{" "}
+            {t("section2_title2_2", {
+              area_types: t(`area_types.${areaType}`),
+            })}
+          </h3>
           <p className="text-sm text-gray-400">{t("census_2020")}</p>
         </div>
       </Container>
@@ -110,12 +131,14 @@ const Home: NextPage = ({
           <Card className="relative">
             {/* SPOTLIGHT */}
             <Spotlight
+              // TODO: set current location based on location returned from backend
+              currentLocation={{ label: "Ipoh", value: "Ipoh" }}
               jitterComparisons={jitterComparisons}
               setJitterComparisons={setJitterComparisons}
             />
             {/* JITTERPLOTS */}
             <JitterPlots
-              areaType={AREA_TYPES.National}
+              areaType={areaType}
               data={jitterplotData}
               comparisons={jitterComparisons}
             />
@@ -127,18 +150,47 @@ const Home: NextPage = ({
   );
 };
 
-export const getStaticProps: GetStaticProps = async ({ locale }) => {
+export const getStaticPaths: GetStaticPaths = async () => {
+  const statePaths = await getStatePaths();
+
+  type StatePathsType = { params: { state: string }; locale?: string }[];
+
+  const en: StatePathsType = [];
+  const ms: StatePathsType = [];
+  const zh: StatePathsType = [];
+  const ta: StatePathsType = [];
+
+  statePaths.forEach((state) => {
+    // state returned as "/state"
+    const formattedState = state.substring(1);
+    en.push({ params: { state: formattedState } });
+    ms.push({ params: { state: formattedState }, locale: "ms-MY" });
+    zh.push({ params: { state: formattedState }, locale: "ta-IN" });
+    ta.push({ params: { state: formattedState }, locale: "zh-CN" });
+  });
+
+  return { paths: [...en, ...ms, ...zh, ...ta], fallback: false };
+};
+
+interface IParams extends ParsedUrlQuery {
+  state: string;
+}
+
+export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
+  const { state } = params as IParams;
+
   const translationReq = serverSideTranslations(locale!, ["common"]);
-  const geoReq = getGeojson(MALAYSIA);
-  const snapshotReq = getSnapshot({ area: MALAYSIA });
-  // get data accross state level as default (use any state for area param)
-  const jitterplotsReq = getJitterplots({ area: STATES_KEY.JOHOR });
+  const geoReq = getGeojson(state);
+  const snapshotReq = getSnapshot({ area: state });
+  const jitterplotsReq = getJitterplots({ area: state });
+  const areaTypeReq = getAreaType(state);
 
   const res = await Promise.all([
     translationReq,
     geoReq,
     snapshotReq,
     jitterplotsReq,
+    areaTypeReq,
   ]);
 
   // TRANSLATION
@@ -181,12 +233,13 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
   // JITTERPLOTS DATA
   const jitterplotData = res[3];
 
-  const mappingData = mappingJson;
+  const areaType = res[4].area_type;
 
   return {
     props: {
+      stateKey: state,
       geojson,
-      mapping: mappingData,
+      areaType,
       // DOUGHNUT CHARTS DATA
       sex: translatedSex,
       ethnicity: translatedEthnicity,
@@ -203,4 +256,4 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
   };
 };
 
-export default Home;
+export default State;

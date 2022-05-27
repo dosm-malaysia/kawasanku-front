@@ -5,18 +5,20 @@ import GeoFilters from "./GeoFilters";
 import Map from "./Map";
 
 interface IntroductionProps {
-  state_key: string;
-  state: string;
-  areaType: string;
-  area: string;
+  stateKey?: string;
+  state?: string;
+  areaType?: string;
+  area?: string;
+  geojson: any;
   mapping: any;
 }
 
 const Introduction = ({
-  state_key,
+  stateKey,
   state,
   areaType,
   area,
+  geojson,
   mapping,
 }: IntroductionProps) => {
   const { t } = useTranslation();
@@ -44,8 +46,7 @@ const Introduction = ({
           <h3 className="text-xl font-semibold">{t("filter_title")}</h3>
         </div>
         <GeoFilters
-          state_key={state_key}
-          state={state}
+          stateKey={stateKey}
           areaType={areaType}
           area={area}
           mapping={mapping}
@@ -73,7 +74,7 @@ const Introduction = ({
           </p>
         </div>
         {/* MAP */}
-        <Map />
+        <Map geojson={geojson} />
       </div>
     </Container>
   );
