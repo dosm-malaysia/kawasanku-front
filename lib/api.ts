@@ -1,5 +1,9 @@
 import axios from "axios";
-import { IBarChartData, IDoughnutChartData } from "./interfaces";
+import {
+  IBarChartData,
+  IDoughnutChartData,
+  IJitterplotData,
+} from "./interfaces";
 
 export const API = axios.create({
   baseURL: process.env.NEXT_PUBLIC_BASE_URL,
@@ -46,4 +50,22 @@ export const getSnapshot = async ({
     });
 
     return { ...res.data, doughnut_charts: new_doughnut_charts };
+  });
+
+type GetJitterplotsReq = {
+  area: string;
+};
+
+export const getJitterplots = async ({ area }: GetJitterplotsReq) =>
+  await API.get<{ [key: string]: IJitterplotData[] }[]>(
+    `/jitter?area=${area}`
+  ).then((res) => {
+    const new_jitterplots: { [key: string]: IJitterplotData[] } = {};
+    res.data.forEach((metric) => {
+      Object.entries(metric).forEach(([key, value]) => {
+        new_jitterplots[key] = value;
+      });
+    });
+
+    return new_jitterplots;
   });

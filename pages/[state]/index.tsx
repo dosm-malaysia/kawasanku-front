@@ -12,7 +12,12 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 // TODO: remove after getting actual mapping from backend
 import mappingJson from "../../data/json/mapping.json";
-import { getSnapshot, getGeojson, getStatePaths } from "../../lib/api";
+import {
+  getSnapshot,
+  getGeojson,
+  getStatePaths,
+  getJitterplots,
+} from "../../lib/api";
 
 import Card from "../../components/Card";
 import Container from "../../components/Container";
@@ -137,8 +142,14 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
   const translationReq = serverSideTranslations(locale!);
   const geoReq = getGeojson(state);
   const snapshotReq = getSnapshot({ state });
+  const jitterplotsReq = getJitterplots({ area: state });
 
-  const res = await Promise.all([translationReq, geoReq, snapshotReq]);
+  const res = await Promise.all([
+    translationReq,
+    geoReq,
+    snapshotReq,
+    jitterplotsReq,
+  ]);
 
   // TRANSLATION
   const translation = res[0];
@@ -173,6 +184,9 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
 
   // PYRAMID CHART DATA
   const pyramidCharts = res[2].pyramid_charts;
+
+  // JITTERPLOTS DATA
+  const jitterplotData = res[3];
 
   const mappingData = mappingJson;
 
@@ -215,27 +229,6 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
     },
   ];
 
-  const jitterplotArr = Array(100)
-    .fill(0)
-    .map((_, index) => {
-      return {
-        id: `Area ${index}`,
-        data: [
-          {
-            x: Math.random() * (Math.random() > 0.5 ? 1 : -1),
-            y: Math.random(),
-          },
-        ],
-      };
-    });
-
-  let jitterplotData: { [key: string]: any } = {};
-  Array(27)
-    .fill(0)
-    .forEach((_, index) => {
-      jitterplotData[`metric_${index + 1}`] = jitterplotArr;
-    });
-
   return {
     props: {
       state_key: geoFilterSelection.state_key,
@@ -252,6 +245,7 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
       ageGroup: translatedAgeGroup,
       // PYRAMID CHART DATA
       barChartData,
+      // JITTERPLOT DATA
       jitterplotData,
       ...(locale && (await serverSideTranslations(locale, ["common"]))),
     },
