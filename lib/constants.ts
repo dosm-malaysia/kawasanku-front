@@ -19,8 +19,8 @@ export const LANG = [
 
 export enum GEO_FILTER {
   District = "district",
-  Parliament = "parliament",
-  Assembly = "sla",
+  Parliament = "parliamen",
+  Dun = "dun",
 }
 
 export enum STATES {
@@ -124,3 +124,5 @@ export enum SNAPSHOT_COLUMNS {
   Working = "agegroup_working",
   Elderly = "agegroup_elderly",
 }
+
+export const MALAYSIA = "mys";

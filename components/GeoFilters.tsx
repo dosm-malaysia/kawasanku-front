@@ -8,7 +8,7 @@ import SelectMenu from "./SelectMenu";
 // import { getAreaOptions } from "../lib/api";
 
 interface GeoFiltersProps {
-  stateKey: string;
+  stateKey?: string;
   areaType?: string;
   area?: string;
   mapping: any;

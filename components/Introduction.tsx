@@ -5,8 +5,8 @@ import GeoFilters from "./GeoFilters";
 import Map from "./Map";
 
 interface IntroductionProps {
-  stateKey: string;
-  state: string;
+  stateKey?: string;
+  state?: string;
   areaType?: string;
   area?: string;
   geojson: any;

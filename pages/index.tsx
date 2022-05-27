@@ -14,6 +14,10 @@ import Introduction from "../components/Introduction";
 import { Option } from "../components/Dropdowns/interface";
 import ShareButton from "../components/Share/Button";
 
+import { translateDoughnutChart } from "../lib/helpers";
+import { MALAYSIA, STATES_KEY } from "../lib/constants";
+import { getGeojson, getJitterplots, getSnapshot } from "../lib/api";
+
 const BarChart = dynamic(() => import("../components/Charts/BarChart"), {
   ssr: false,
 });
@@ -26,13 +30,15 @@ const JitterPlots = dynamic(() => import("../components/JitterPlots"), {
 });
 
 const Home: NextPage = ({
-  state_key,
-  state,
-  areaType,
-  area,
+  geojson,
   mapping,
   barChartData,
-  doughnutChartData,
+  sex,
+  ethnicity,
+  nationality,
+  religion,
+  maritalStatus,
+  ageGroup,
   jitterplotData,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { t } = useTranslation();
@@ -41,13 +47,7 @@ const Home: NextPage = ({
 
   return (
     <>
-      <Introduction
-        state_key={state_key}
-        state={state}
-        areaType={areaType}
-        area={area}
-        mapping={mapping}
-      />
+      <Introduction geojson={geojson} mapping={mapping} />
       {/* CHARTS */}
       <Container
         backgroundColor="bg-gray-100"
@@ -72,15 +72,21 @@ const Home: NextPage = ({
           <div className="w-full md:w-2/3">
             <div className="flex h-full w-full flex-col divide-y-0.5 overflow-hidden rounded-lg border bg-white">
               <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2">
-                {Array(6)
-                  .fill(0)
-                  .map((_, index) => (
-                    <DoughnutChart
-                      key={index}
-                      title={`Metric ${index + 1}`}
-                      data={doughnutChartData}
-                    />
-                  ))}
+                <DoughnutChart title={t("doughnut.metric_1")} data={sex} />
+                <DoughnutChart
+                  title={t("doughnut.metric_2")}
+                  data={ethnicity}
+                />
+                <DoughnutChart
+                  title={t("doughnut.metric_3")}
+                  data={nationality}
+                />
+                <DoughnutChart title={t("doughnut.metric_4")} data={religion} />
+                <DoughnutChart
+                  title={t("doughnut.metric_5")}
+                  data={maritalStatus}
+                />
+                <DoughnutChart title={t("doughnut.metric_6")} data={ageGroup} />
               </div>
               <ShareButton />
             </div>
@@ -119,12 +125,58 @@ const Home: NextPage = ({
 };
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  const geoFilterSelection = {
-    state_key: "",
-    state: "",
-    areaType: "",
-    area: "",
-  };
+  const translationReq = serverSideTranslations(locale!);
+  const geoReq = getGeojson(MALAYSIA);
+  const snapshotReq = getSnapshot({ state: MALAYSIA });
+  // get data accross state level as default (use any state for area param)
+  const jitterplotsReq = getJitterplots({ area: STATES_KEY.JOHOR });
+
+  const res = await Promise.all([
+    translationReq,
+    geoReq,
+    snapshotReq,
+    jitterplotsReq,
+  ]);
+
+  // TRANSLATION
+  const translation = res[0];
+  const translationStore =
+    translation._nextI18Next.initialI18nStore[locale!]["common"];
+
+  // GEOJSON
+  const geojson = res[1];
+
+  // DOUGHNUT CHARTS DATA
+  const doughnutCharts = res[2].doughnut_charts;
+  const sex = doughnutCharts.sex;
+  const ethnicity = doughnutCharts.ethnicity;
+  const nationality = doughnutCharts.nationality;
+  const religion = doughnutCharts.religion;
+  const maritalStatus = doughnutCharts.marital;
+  const ageGroup = doughnutCharts.agegroup;
+
+  // TRANSLATED DOUGHNUT CHARTS DATA
+  const translatedSex = translateDoughnutChart(translationStore, sex);
+  const translatedEthnicity = translateDoughnutChart(
+    translationStore,
+    ethnicity
+  );
+  const translatedNationality = translateDoughnutChart(
+    translationStore,
+    nationality
+  );
+  const translatedReligion = translateDoughnutChart(translationStore, religion);
+  const translatedMaritalStatus = translateDoughnutChart(
+    translationStore,
+    maritalStatus
+  );
+  const translatedAgeGroup = translateDoughnutChart(translationStore, ageGroup);
+
+  // PYRAMID CHART DATA
+  const pyramidCharts = res[2].pyramid_charts;
+
+  // JITTERPLOTS DATA
+  const jitterplotData = res[3];
 
   const mappingData = mappingJson;
 
@@ -160,75 +212,20 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
     },
   ];
 
-  const doughnutChartData = [
-    {
-      id: "go",
-      label: "go",
-      value: 574,
-    },
-    {
-      id: "c",
-      label: "c",
-      value: 15,
-    },
-    {
-      id: "erlang",
-      label: "erlang",
-      value: 407,
-    },
-    {
-      id: "css",
-      label: "css",
-      value: 245,
-    },
-    {
-      id: "hack",
-      label: "hack",
-      value: 129,
-    },
-  ];
-
-  const jitterplotArr = Array(10)
-    .fill(0)
-    .map((_, index) => {
-      return {
-        id: `Area ${index}`,
-        data: [
-          {
-            x: Math.random() * (Math.random() > 0.5 ? 1 : -1),
-            y: Math.random(),
-          },
-        ],
-      };
-    });
-
-  let jitterplotData: { [key: string]: any } = {};
-  Array(27)
-    .fill(0)
-    .forEach((_, index) => {
-      jitterplotData[`metric_${index + 1}`] = jitterplotArr;
-    });
-
-  const translation = await serverSideTranslations(locale!);
-  const translationStore =
-    translation._nextI18Next.initialI18nStore[locale!]["common"];
-
-  let translatedDoughtnutChartData = doughnutChartData.map((d) => {
-    return {
-      ...d,
-      label: translationStore["title"],
-    };
-  });
-
   return {
     props: {
-      state_key: geoFilterSelection.state_key,
-      state: geoFilterSelection.state,
-      areaType: geoFilterSelection.areaType,
-      area: geoFilterSelection.area,
+      geojson,
       mapping: mappingData,
+      // DOUGHNUT CHARTS DATA
+      sex: translatedSex,
+      ethnicity: translatedEthnicity,
+      nationality: translatedNationality,
+      religion: translatedReligion,
+      maritalStatus: translatedMaritalStatus,
+      ageGroup: translatedAgeGroup,
+      // PYRAMID CHART DATA
       barChartData,
-      doughnutChartData: translatedDoughtnutChartData,
+      // JITTERPLOT DATA
       jitterplotData,
       ...(locale && (await serverSideTranslations(locale, ["common"]))),
     },
