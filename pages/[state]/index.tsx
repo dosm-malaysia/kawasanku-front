@@ -95,7 +95,7 @@ const State: NextPage = ({
         </div>
         {/* JITTERPLOT TITLE */}
         <div className="mb-6 flex w-full flex-col items-start justify-between gap-2 md:mb-7 md:flex-row md:items-center md:gap-0">
-          <h3 className="section-title">{t("section2_title")}</h3>
+          <h3 className="section-title">{t("section2_title2")}</h3>
           <p className="text-sm text-gray-400">{t("census_2020")}</p>
         </div>
       </Container>

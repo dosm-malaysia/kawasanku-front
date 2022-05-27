@@ -45,7 +45,8 @@
     "agegroup_working": "Working",
     "agegroup_elderly": "Elderly"
   },
-  "section2_title": "How does {{location}} compare to other {{area_types}}?",
+  "section2_title1": "A comparison of key variables across states",
+  "section2_title2": "How does {{location}} compare to other {{area_types}}?",
   "census_2020": "Data correct as of Census 2020",
   "spotlight": "Spotlight",
   "spotlight_placeholder": "Select up to 3 {{area_type}}s",
