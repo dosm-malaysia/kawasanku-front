@@ -10,8 +10,6 @@ import { ParsedUrlQuery } from "querystring";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
-// TODO: remove after getting actual mapping from backend
-import mappingJson from "../../data/json/mapping.json";
 import {
   getSnapshot,
   getGeojson,
@@ -171,7 +169,7 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
 
   const translationReq = serverSideTranslations(locale!, ["common"]);
   const geoReq = getGeojson(state);
-  const snapshotReq = getSnapshot({ state });
+  const snapshotReq = getSnapshot({ area: state });
   const jitterplotsReq = getJitterplots({ area: state });
   const areaTypeReq = getAreaType(state);
 
@@ -225,14 +223,11 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
 
   const areaType = res[4].area_type;
 
-  const mappingData = mappingJson;
-
   return {
     props: {
       stateKey: state,
       geojson,
       areaType,
-      mapping: mappingData,
       // DOUGHNUT CHARTS DATA
       sex: translatedSex,
       ethnicity: translatedEthnicity,

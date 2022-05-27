@@ -2,9 +2,10 @@ import { useTranslation } from "next-i18next";
 
 import ComboBox from "./Dropdowns/ComboBox";
 import { Option } from "../components/Dropdowns/interface";
+import { useAreaOptions } from "../contexts/AreaOptionsContext";
 
 interface SpotlightProps {
-  currentLocation: Option;
+  currentLocation?: Option;
   jitterComparisons: Option[];
   setJitterComparisons: React.Dispatch<React.SetStateAction<Option[]>>;
 }
@@ -15,6 +16,7 @@ const Spotlight = ({
   setJitterComparisons,
 }: SpotlightProps) => {
   const { t } = useTranslation();
+  const { options } = useAreaOptions();
 
   const handleComparisons = (newOption?: Option) => {
     if (!newOption || jitterComparisons?.length === 3) return;
@@ -32,20 +34,13 @@ const Spotlight = ({
     <div className="mb-6 flex flex-col items-center justify-between gap-4 md:flex-row md:gap-0">
       <div className="flex h-full w-full items-center justify-between gap-2 md:w-auto">
         <p className="text-sm">{t("spotlight")}:</p>
-        <ComboBox
-          // TODO: use actual options based on mapping returned from backend
-          options={Array(10)
-            .fill(0)
-            .map((_, index) => ({
-              label: `Option ${index + 1}`,
-              value: `option-${index + 1}`,
-            }))}
-          onChange={handleComparisons}
-        />
+        <ComboBox options={options} onChange={handleComparisons} />
       </div>
-      <div className="flex flex-wrap items-center gap-3">
+      <div className="flex w-full flex-wrap items-start gap-3 md:w-min md:items-center">
         {/* CURRENT LOCATION */}
-        <Label color="bg-accent" text={currentLocation?.label} />
+        {currentLocation && (
+          <Label color="bg-accent" text={currentLocation?.label} />
+        )}
         {/* JITTER COMPARISONS */}
         {jitterComparisons.length !== 0 &&
           jitterComparisons.map((comparison, index) => {

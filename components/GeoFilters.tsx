@@ -30,6 +30,12 @@ const GeoFilters = ({ stateKey, areaType, area, mapping }: GeoFiltersProps) => {
       getAreaOptions({ state: stateKey, filter: selectedAreaType }).then(
         (res) => setOptions(res)
       );
+    } else if (!stateKey || (stateKey && !selectedAreaType)) {
+      setOptions(
+        Object.values(STATES_KEY).map((state) => {
+          return { label: t(`states.${state}`), value: state };
+        })
+      );
     }
   }, [stateKey, selectedAreaType]);
 

@@ -15,7 +15,12 @@ export const getStatePaths = async () =>
   await API.get<string[]>("/links?type=state").then((res) => res.data);
 
 export const getAreaPaths = async () =>
-  await API.get<string[]>("/links?type=area").then((res) => res.data);
+  await API.get<{ district: string[]; parlimen: string[]; dun: string[] }>(
+    "/links"
+  ).then((res) => {
+    const { district, parlimen, dun } = res.data;
+    return [...district, ...parlimen, ...dun];
+  });
 
 export const getGeojson = async (area: string) =>
   await API.get<IGeojson>(`/geo?area=${area}`).then((res) => {
@@ -35,29 +40,14 @@ export const getGeojson = async (area: string) =>
   });
 
 type GetSnapshotReq = {
-  state: string;
-  district?: string;
-  parliamen?: string;
-  dun?: string;
+  area: string;
 };
 
-export const getSnapshot = async ({
-  state,
-  district,
-  parliamen,
-  dun,
-}: GetSnapshotReq) =>
+export const getSnapshot = async ({ area }: GetSnapshotReq) =>
   await API.get<{
     doughnut_charts: { [key: string]: IDoughnutChartData[] }[];
     pyramid_charts: IBarChartData[];
-  }>("/snapshot", {
-    params: {
-      state,
-      ...(district && { district }),
-      ...(parliamen && { parliamen }),
-      ...(dun && { dun }),
-    },
-  }).then((res) => {
+  }>(`/snapshot?area=${area}`).then((res) => {
     const new_doughnut_charts: { [key: string]: IDoughnutChartData[] } = {};
     res.data.doughnut_charts.forEach((chart) => {
       Object.entries(chart).forEach(([key, value]) => {
@@ -98,3 +88,8 @@ export const getAreaOptions = async ({ state, filter }: GetAreaOptionsReq) =>
       filter,
     },
   }).then((res) => res.data);
+
+export const getAreaType = async (area: string) =>
+  await API.get<{ area_type: string; area_name: string }>(
+    `/area-type?area=${area}`
+  ).then((res) => res.data);

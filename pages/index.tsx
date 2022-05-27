@@ -110,8 +110,6 @@ const Home: NextPage = ({
           <Card className="relative">
             {/* SPOTLIGHT */}
             <Spotlight
-              // TODO: set current location based on location returned from backend
-              currentLocation={{ label: "Ipoh", value: "Ipoh" }}
               jitterComparisons={jitterComparisons}
               setJitterComparisons={setJitterComparisons}
             />
@@ -132,7 +130,7 @@ const Home: NextPage = ({
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const translationReq = serverSideTranslations(locale!, ["common"]);
   const geoReq = getGeojson(MALAYSIA);
-  const snapshotReq = getSnapshot({ state: MALAYSIA });
+  const snapshotReq = getSnapshot({ area: MALAYSIA });
   // get data accross state level as default (use any state for area param)
   const jitterplotsReq = getJitterplots({ area: STATES_KEY.JOHOR });
 
