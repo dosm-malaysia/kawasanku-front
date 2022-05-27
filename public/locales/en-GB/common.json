@@ -6,7 +6,7 @@
   "filter2_placeholder": "Select geo-filter",
   "filter3_placeholder": "Select sub-national area",
   "district": "District",
-  "parliamen": "Parliament Constituency",
+  "parlimen": "Parliament Constituency",
   "dun": "State Legislative Assembly",
   "malaysia": "Malaysia",
   "section1_title1": "What does the population of",
@@ -46,7 +46,13 @@
     "marital_divorced": "Divorced",
     "agegroup_child": "Child",
     "agegroup_working": "Working",
-    "agegroup_elderly": "Elderly"
+    "agegroup_elderly": "Elderly",
+    "housing_owned": "Owned",
+    "housing_rented": "Rented",
+    "housing_quarters": "Quarters",
+    "labour_working": "Working",
+    "labour_unemployed": "Unemployed",
+    "labour_out": "Out"
   },
   "section2_title1": "A comparison of key variables across states",
   "section2_title2_1": "How does",
@@ -54,7 +60,7 @@
   "area_types": {
     "state": "states",
     "district": "districts",
-    "parliamen": "parliaments",
+    "parlimen": "parliaments",
     "dun": "assemblies"
   },
   "census_2020": "Data correct as of Census 2020",

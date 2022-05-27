@@ -94,12 +94,12 @@ export interface IDoughnutChartData {
 export interface IDoughnutCharts {
   sex: IDoughnutChartData[];
   ethnicity: IDoughnutChartData[];
-  nationality: IDoughnutChartData;
-  agegroup: IDoughnutChartData;
-  religion: IDoughnutChartData;
-  marital: IDoughnutChartData;
-  // households: IDoughnutChartData;
-  // employment_status: IDoughnutChartData;
+  nationality: IDoughnutChartData[];
+  agegroup: IDoughnutChartData[];
+  religion?: IDoughnutChartData[];
+  marital?: IDoughnutChartData[];
+  housing?: IDoughnutChartData[];
+  labour?: IDoughnutChartData[];
 }
 
 // EXAMPLE

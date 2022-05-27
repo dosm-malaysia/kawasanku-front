@@ -21,7 +21,7 @@ const GeoFilters = ({ stateKey, areaType, area, mapping }: GeoFiltersProps) => {
   const { t } = useTranslation();
   const { options, setOptions } = useAreaOptions();
 
-  // options for area type: district, parliamen, dun
+  // options for area type: district, parlimen, dun
   const [selectedAreaType, setSelectedAreaType] = useState(areaType);
   const [selectedArea, setSelectedArea] = useState(area);
 
