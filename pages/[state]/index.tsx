@@ -17,6 +17,7 @@ import {
   getGeojson,
   getStatePaths,
   getJitterplots,
+  getAreaType,
 } from "../../lib/api";
 
 import Card from "../../components/Card";
@@ -41,6 +42,7 @@ const JitterPlots = dynamic(() => import("../../components/JitterPlots"), {
 const State: NextPage = ({
   stateKey,
   geojson,
+  areaType,
   mapping,
   barChartData,
   sex,
@@ -70,7 +72,11 @@ const State: NextPage = ({
       >
         {/* BAR CHART TITLE */}
         <div className="mb-5 flex w-full flex-col items-start justify-between gap-2 md:mb-7 md:flex-row md:items-center md:gap-0">
-          <h3 className="section-title">{t("section1_title")}</h3>
+          <h3 className="section-title">
+            {t("section1_title1")}{" "}
+            <span className="underline">{t(`states.${stateKey}`)}</span>{" "}
+            {t("section1_title2")}
+          </h3>
           <p className="text-sm text-gray-400">{t("census_2020")}</p>
         </div>
         <div className="mb-10 flex w-full flex-col gap-4 md:mb-15 md:flex-row">
@@ -109,7 +115,13 @@ const State: NextPage = ({
         </div>
         {/* JITTERPLOT TITLE */}
         <div className="mb-6 flex w-full flex-col items-start justify-between gap-2 md:mb-7 md:flex-row md:items-center md:gap-0">
-          <h3 className="section-title">{t("section2_title2")}</h3>
+          <h3 className="section-title">
+            {t("section2_title2_1")}{" "}
+            <span className="underline">{t(`states.${stateKey}`)}</span>{" "}
+            {t("section2_title2_2", {
+              area_types: t(`area_types.${areaType}`),
+            })}
+          </h3>
           <p className="text-sm text-gray-400">{t("census_2020")}</p>
         </div>
       </Container>
@@ -128,6 +140,7 @@ const State: NextPage = ({
             />
             {/* JITTERPLOTS */}
             <JitterPlots
+              areaType={areaType}
               data={jitterplotData}
               comparisons={jitterComparisons}
             />
@@ -160,12 +173,14 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
   const geoReq = getGeojson(state);
   const snapshotReq = getSnapshot({ state });
   const jitterplotsReq = getJitterplots({ area: state });
+  const areaTypeReq = getAreaType(state);
 
   const res = await Promise.all([
     translationReq,
     geoReq,
     snapshotReq,
     jitterplotsReq,
+    areaTypeReq,
   ]);
 
   // TRANSLATION
@@ -208,12 +223,15 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
   // JITTERPLOTS DATA
   const jitterplotData = res[3];
 
+  const areaType = res[4].area_type;
+
   const mappingData = mappingJson;
 
   return {
     props: {
       stateKey: state,
-      geojson: geojson,
+      geojson,
+      areaType,
       mapping: mappingData,
       // DOUGHNUT CHARTS DATA
       sex: translatedSex,
