@@ -87,12 +87,9 @@ const Area: NextPage = ({
           {/* BAR CHART (DISTRICT ONLY) */}
           {areaType === GEO_FILTER.District && (
             <div className="w-full md:w-1/3">
-              <div className="flex h-full w-full flex-col divide-y overflow-hidden rounded-lg border bg-white">
-                <Card>
-                  <BarChart data={barChartData} />
-                </Card>
-                <ShareButton />
-              </div>
+              <Card className="rounded-lg border">
+                <BarChart data={barChartData} />
+              </Card>
             </div>
           )}
           {/* DOUGHNUT CHARTS */}
@@ -101,43 +98,34 @@ const Area: NextPage = ({
               areaType === GEO_FILTER.District ? "w-full md:w-2/3" : "w-full"
             }
           >
-            <div className="flex h-full w-full flex-col divide-y-0.5 overflow-hidden rounded-lg border bg-white">
-              <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2">
-                <DoughnutChart title={t("doughnut.metric_1")} data={sex} />
-                <DoughnutChart
-                  title={t("doughnut.metric_2")}
-                  data={ethnicity}
-                />
-                <DoughnutChart
-                  title={t("doughnut.metric_3")}
-                  data={nationality}
-                />
-                {areaType === GEO_FILTER.District ? (
-                  <>
-                    <DoughnutChart
-                      title={t("doughnut.metric_4")}
-                      data={religion}
-                    />
-                    <DoughnutChart
-                      title={t("doughnut.metric_5")}
-                      data={maritalStatus}
-                    />
-                  </>
-                ) : (
-                  <>
-                    <DoughnutChart
-                      title={t("doughnut.metric_7")}
-                      data={housing}
-                    />
-                    <DoughnutChart
-                      title={t("doughnut.metric_8")}
-                      data={labour}
-                    />
-                  </>
-                )}
-                <DoughnutChart title={t("doughnut.metric_6")} data={ageGroup} />
-              </div>
-              <ShareButton />
+            <div className="grid grid-cols-1 overflow-hidden rounded-lg border md:grid-cols-3 md:grid-rows-2">
+              <DoughnutChart title={t("doughnut.metric_1")} data={sex} />
+              <DoughnutChart title={t("doughnut.metric_2")} data={ethnicity} />
+              <DoughnutChart
+                title={t("doughnut.metric_3")}
+                data={nationality}
+              />
+              {areaType === GEO_FILTER.District ? (
+                <>
+                  <DoughnutChart
+                    title={t("doughnut.metric_4")}
+                    data={religion}
+                  />
+                  <DoughnutChart
+                    title={t("doughnut.metric_5")}
+                    data={maritalStatus}
+                  />
+                </>
+              ) : (
+                <>
+                  <DoughnutChart
+                    title={t("doughnut.metric_7")}
+                    data={housing}
+                  />
+                  <DoughnutChart title={t("doughnut.metric_8")} data={labour} />
+                </>
+              )}
+              <DoughnutChart title={t("doughnut.metric_6")} data={ageGroup} />
             </div>
           </div>
         </div>
@@ -157,23 +145,20 @@ const Area: NextPage = ({
         backgroundColor="bg-white md:bg-gray-100"
         className="pb-5 md:pb-8"
       >
-        <div className="flex h-full w-full flex-col divide-y overflow-hidden border-0 border-b bg-white md:rounded-lg md:border">
-          <Card className="relative">
-            {/* SPOTLIGHT */}
-            <Spotlight
-              currentLocation={{ label: areaName, value: areaKey }}
-              jitterComparisons={jitterComparisons}
-              setJitterComparisons={setJitterComparisons}
-            />
-            {/* JITTERPLOTS */}
-            <JitterPlots
-              areaType={areaType}
-              data={jitterplotData}
-              comparisons={jitterComparisons}
-            />
-          </Card>
-          <ShareButton />
-        </div>
+        <Card className="relative overflow-hidden rounded-lg md:border">
+          {/* SPOTLIGHT */}
+          <Spotlight
+            currentLocation={{ label: areaName, value: areaKey }}
+            jitterComparisons={jitterComparisons}
+            setJitterComparisons={setJitterComparisons}
+          />
+          {/* JITTERPLOTS */}
+          <JitterPlots
+            areaType={areaType}
+            data={jitterplotData}
+            comparisons={jitterComparisons}
+          />
+        </Card>
       </Container>
     </>
   );
@@ -211,7 +196,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     // });
   });
 
-  // TODO: build all paths but just test if 2 languages can build on Netlify
+  // TODO: build all paths but just test if 1 language can build on Netlify
   return { paths: [...en], fallback: false };
   // return { paths: [...en, ...ms, ...zh, ...ta], fallback: false };
 };
@@ -290,6 +275,8 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
 
   // JITTERPLOTS DATA
   const jitterplotData = res[3];
+
+  console.log(res);
 
   return {
     props: {

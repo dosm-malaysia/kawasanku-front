@@ -21,7 +21,6 @@ import {
 import Card from "../../components/Card";
 import Container from "../../components/Container";
 import Spotlight from "../../components/Spotlight";
-import ShareButton from "../../components/Share/Button";
 import Introduction from "../../components/Introduction";
 import { Option } from "../../components/Dropdowns/interface";
 import { translateDoughnutChart } from "../../lib/helpers";
@@ -78,34 +77,25 @@ const State: NextPage = ({
         <div className="mb-10 flex w-full flex-col gap-4 md:mb-15 md:flex-row">
           {/* BAR CHART */}
           <div className="w-full md:w-1/3">
-            <div className="flex h-full w-full flex-col divide-y overflow-hidden rounded-lg border bg-white">
-              <Card>
-                <BarChart data={barChartData} />
-              </Card>
-              <ShareButton />
-            </div>
+            <Card className="rounded-lg border">
+              <BarChart data={barChartData} />
+            </Card>
           </div>
           {/* DOUGHNUT CHARTS */}
           <div className="w-full md:w-2/3">
-            <div className="flex h-full w-full flex-col divide-y-0.5 overflow-hidden rounded-lg border bg-white">
-              <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2">
-                <DoughnutChart title={t("doughnut.metric_1")} data={sex} />
-                <DoughnutChart
-                  title={t("doughnut.metric_2")}
-                  data={ethnicity}
-                />
-                <DoughnutChart
-                  title={t("doughnut.metric_3")}
-                  data={nationality}
-                />
-                <DoughnutChart title={t("doughnut.metric_4")} data={religion} />
-                <DoughnutChart
-                  title={t("doughnut.metric_5")}
-                  data={maritalStatus}
-                />
-                <DoughnutChart title={t("doughnut.metric_6")} data={ageGroup} />
-              </div>
-              <ShareButton />
+            <div className="grid grid-cols-1 overflow-hidden rounded-lg border md:grid-cols-3 md:grid-rows-2">
+              <DoughnutChart title={t("doughnut.metric_1")} data={sex} />
+              <DoughnutChart title={t("doughnut.metric_2")} data={ethnicity} />
+              <DoughnutChart
+                title={t("doughnut.metric_3")}
+                data={nationality}
+              />
+              <DoughnutChart title={t("doughnut.metric_4")} data={religion} />
+              <DoughnutChart
+                title={t("doughnut.metric_5")}
+                data={maritalStatus}
+              />
+              <DoughnutChart title={t("doughnut.metric_6")} data={ageGroup} />
             </div>
           </div>
         </div>
@@ -125,26 +115,23 @@ const State: NextPage = ({
         backgroundColor="bg-white md:bg-gray-100"
         className="pb-5 md:pb-8"
       >
-        <div className="flex h-full w-full flex-col divide-y overflow-hidden border-0 border-b bg-white md:rounded-lg md:border">
-          <Card className="relative">
-            {/* SPOTLIGHT */}
-            <Spotlight
-              currentLocation={{
-                label: t(`states.${stateKey}`),
-                value: stateKey,
-              }}
-              jitterComparisons={jitterComparisons}
-              setJitterComparisons={setJitterComparisons}
-            />
-            {/* JITTERPLOTS */}
-            <JitterPlots
-              areaType={areaType}
-              data={jitterplotData}
-              comparisons={jitterComparisons}
-            />
-          </Card>
-          <ShareButton />
-        </div>
+        <Card className="relative overflow-hidden rounded-lg md:border">
+          {/* SPOTLIGHT */}
+          <Spotlight
+            currentLocation={{
+              label: t(`states.${stateKey}`),
+              value: stateKey,
+            }}
+            jitterComparisons={jitterComparisons}
+            setJitterComparisons={setJitterComparisons}
+          />
+          {/* JITTERPLOTS */}
+          <JitterPlots
+            areaType={areaType}
+            data={jitterplotData}
+            comparisons={jitterComparisons}
+          />
+        </Card>
       </Container>
     </>
   );
