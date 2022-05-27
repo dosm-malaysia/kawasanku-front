@@ -4,9 +4,6 @@ import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
-// TODO: remove after getting actual mapping from backend
-import mappingJson from "../data/json/mapping.json";
-
 import Card from "../components/Card";
 import Container from "../components/Container";
 import Spotlight from "../components/Spotlight";
@@ -31,7 +28,6 @@ const JitterPlots = dynamic(() => import("../components/JitterPlots"), {
 
 const Home: NextPage = ({
   geojson,
-  mapping,
   barChartData,
   sex,
   ethnicity,
@@ -47,7 +43,7 @@ const Home: NextPage = ({
 
   return (
     <>
-      <Introduction geojson={geojson} mapping={mapping} />
+      <Introduction geojson={geojson} />
       {/* CHARTS */}
       <Container
         backgroundColor="bg-gray-100"
@@ -181,12 +177,9 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
   // JITTERPLOTS DATA
   const jitterplotData = res[3];
 
-  const mappingData = mappingJson;
-
   return {
     props: {
       geojson,
-      mapping: mappingData,
       // DOUGHNUT CHARTS DATA
       sex: translatedSex,
       ethnicity: translatedEthnicity,

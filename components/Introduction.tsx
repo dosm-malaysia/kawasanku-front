@@ -11,7 +11,6 @@ interface IntroductionProps {
   areaKey?: string;
   area?: string;
   geojson: any;
-  mapping: any;
 }
 
 const Introduction = ({
@@ -21,7 +20,6 @@ const Introduction = ({
   areaKey,
   area,
   geojson,
-  mapping,
 }: IntroductionProps) => {
   const { t } = useTranslation();
 
@@ -52,7 +50,6 @@ const Introduction = ({
           areaKey={areaKey}
           area={area}
           areaType={areaType}
-          mapping={mapping}
         />
       </div>
       <div className="flex w-full flex-col px-4 md:w-2/3 md:px-0">

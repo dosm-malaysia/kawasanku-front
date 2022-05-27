@@ -41,7 +41,6 @@ const State: NextPage = ({
   stateKey,
   geojson,
   areaType,
-  mapping,
   barChartData,
   sex,
   ethnicity,
@@ -61,7 +60,6 @@ const State: NextPage = ({
         stateKey={stateKey}
         state={t(`states.${stateKey}`)}
         geojson={geojson}
-        mapping={mapping}
       />
       {/* CHARTS */}
       <Container

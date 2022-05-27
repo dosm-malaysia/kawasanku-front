@@ -14,7 +14,6 @@ interface GeoFiltersProps {
   areaType?: string;
   areaKey?: string;
   area?: string;
-  mapping: any;
 }
 
 const GeoFilters = ({ stateKey, areaType, areaKey, area }: GeoFiltersProps) => {

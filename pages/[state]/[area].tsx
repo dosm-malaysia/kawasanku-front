@@ -45,7 +45,6 @@ const Area: NextPage = ({
   areaKey,
   areaType,
   areaName,
-  mapping,
   barChartData,
   sex,
   ethnicity,
@@ -70,7 +69,6 @@ const Area: NextPage = ({
         areaType={areaType}
         area={areaName}
         geojson={geojson}
-        mapping={mapping}
       />
       {/* CHARTS */}
       <Container
