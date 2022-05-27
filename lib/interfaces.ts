@@ -83,15 +83,15 @@ export interface IDoughnutChartData {
   value: number;
 }
 
-export interface ISnapshot {
+export interface IDoughnutCharts {
   sex: IDoughnutChartData[];
   ethnicity: IDoughnutChartData[];
   nationality: IDoughnutChartData;
-  age_group: IDoughnutChartData;
+  agegroup: IDoughnutChartData;
   religion: IDoughnutChartData;
-  marital_status: IDoughnutChartData;
-  households: IDoughnutChartData;
-  employment_status: IDoughnutChartData;
+  marital: IDoughnutChartData;
+  // households: IDoughnutChartData;
+  // employment_status: IDoughnutChartData;
 }
 
 // EXAMPLE
