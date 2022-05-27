@@ -1,5 +1,6 @@
 import axios from "axios";
 import {
+  IAreaOptions,
   IBarChartData,
   IDoughnutChartData,
   IGeojson,
@@ -84,3 +85,16 @@ export const getJitterplots = async ({ area }: GetJitterplotsReq) =>
 
     return new_jitterplots;
   });
+
+type GetAreaOptionsReq = {
+  state: string;
+  filter: string;
+};
+
+export const getAreaOptions = async ({ state, filter }: GetAreaOptionsReq) =>
+  await API.get<IAreaOptions[]>("/dropdown", {
+    params: {
+      state,
+      filter,
+    },
+  }).then((res) => res.data);

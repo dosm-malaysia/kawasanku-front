@@ -2,10 +2,12 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useTranslation } from "next-i18next";
 
+import { getAreaOptions } from "../lib/api";
 import { GEO_FILTER, STATES_KEY } from "../lib/constants";
 
+import { useAreaOptions } from "../contexts/AreaOptionsContext";
+
 import SelectMenu from "./SelectMenu";
-// import { getAreaOptions } from "../lib/api";
 
 interface GeoFiltersProps {
   stateKey?: string;
@@ -17,19 +19,19 @@ interface GeoFiltersProps {
 const GeoFilters = ({ stateKey, areaType, area, mapping }: GeoFiltersProps) => {
   const router = useRouter();
   const { t } = useTranslation();
+  const { options, setOptions } = useAreaOptions();
 
   // options for area type: district, parliamen, dun
   const [selectedAreaType, setSelectedAreaType] = useState(areaType);
   const [selectedArea, setSelectedArea] = useState(area);
 
-  // TODO: pending backend fix CORS issue
-  // useEffect(() => {
-  //   if (stateKey && selectedAreaType) {
-  //     getAreaOptions({ state: stateKey, filter: selectedAreaType }).then(
-  //       (res) => console.log(res)
-  //     );
-  //   }
-  // }, [stateKey, selectedAreaType]);
+  useEffect(() => {
+    if (stateKey && selectedAreaType) {
+      getAreaOptions({ state: stateKey, filter: selectedAreaType }).then(
+        (res) => setOptions(res)
+      );
+    }
+  }, [stateKey, selectedAreaType]);
 
   return (
     <div className="flex flex-col gap-4">
@@ -65,27 +67,18 @@ const GeoFilters = ({ stateKey, areaType, area, mapping }: GeoFiltersProps) => {
         }
         placeholder={t("filter2_placeholder")}
       />
-      {/* TODO: make sure geo filter is selected first before allowing selection */}
       <SelectMenu
-        options={
-          stateKey && selectedAreaType
-            ? mapping[stateKey][selectedAreaType].map((area: string) => {
-                return { label: area, value: area };
-              })
-            : []
-        }
+        options={options}
         selected={
           selectedArea
             ? {
-                label: t(selectedArea),
+                label: t(selectedArea), // TODO: figure how to map area key to actual area name
                 value: selectedArea,
               }
             : undefined
         }
         onChange={(newSelectedArea) =>
-          newSelectedArea
-            ? router.push(`/${stateKey}/${encodeURIComponent(newSelectedArea)}`)
-            : {}
+          newSelectedArea ? router.push(`/${stateKey}/${newSelectedArea}`) : {}
         }
         placeholder={t("filter3_placeholder")}
       />

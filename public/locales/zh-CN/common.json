@@ -6,8 +6,8 @@
   "filter2_placeholder": "Select geo-filter",
   "filter3_placeholder": "Select sub-national area",
   "district": "District",
-  "parliament": "Parliament Constituency",
-  "sla": "State Legislative Assembly",
+  "parliamen": "Parliament Constituency",
+  "dun": "State Legislative Assembly",
   "malaysia": "Malaysia",
   "section1_title": "What does the population of {{location}} look like?",
   "pyramid": {
