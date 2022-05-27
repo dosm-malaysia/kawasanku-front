@@ -15,7 +15,7 @@ import { Option } from "../components/Dropdowns/interface";
 import ShareButton from "../components/Share/Button";
 
 import { translateDoughnutChart } from "../lib/helpers";
-import { MALAYSIA, STATES_KEY } from "../lib/constants";
+import { AREA_TYPES, MALAYSIA, STATES_KEY } from "../lib/constants";
 import { getGeojson, getJitterplots, getSnapshot } from "../lib/api";
 
 const BarChart = dynamic(() => import("../components/Charts/BarChart"), {
@@ -113,6 +113,7 @@ const Home: NextPage = ({
             />
             {/* JITTERPLOTS */}
             <JitterPlots
+              areaType={AREA_TYPES.National}
               data={jitterplotData}
               comparisons={jitterComparisons}
             />

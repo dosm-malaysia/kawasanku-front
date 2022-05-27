@@ -1,24 +1,27 @@
 import React from "react";
 import { useTranslation } from "next-i18next";
 
+import { AREA_TYPES } from "../lib/constants";
 import { IJitterplots } from "../lib/interfaces";
+
+import { Option } from "./Dropdowns/interface";
 import JitterPlot from "./Charts/JitterPlots";
 import Indicators from "./Charts/JitterPlots/Indicators";
 import PercentileOverlay from "./Charts/JitterPlots/PercentileOverlay";
-import { Option } from "./Dropdowns/interface";
 
 interface JitterplotsProps {
+  areaType: AREA_TYPES;
   data: IJitterplots;
   comparisons: Option[];
 }
 
-const Jitterplots = ({ data, comparisons }: JitterplotsProps) => {
+const Jitterplots = ({ areaType, data, comparisons }: JitterplotsProps) => {
   const { t } = useTranslation();
 
   return (
     <>
       {/* MEDIAN INDICATORS */}
-      <Indicators />
+      <Indicators areaType={areaType} />
       <div className="relative h-full w-full overflow-hidden">
         {/* JITTERPLOT CHARTS */}
         <div className="relative flex h-full w-full flex-col gap-2">

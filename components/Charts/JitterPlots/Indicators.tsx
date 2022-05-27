@@ -1,6 +1,12 @@
 import { useTranslation } from "next-i18next";
 
-const Indicators = () => {
+import { AREA_TYPES } from "../../../lib/constants";
+
+interface IndicatorsProps {
+  areaType: AREA_TYPES;
+}
+
+const Indicators = ({ areaType }: IndicatorsProps) => {
   const { t } = useTranslation();
 
   return (
@@ -27,7 +33,9 @@ const Indicators = () => {
         </div>
         {/* MEDIAN */}
         <div className="flex w-1/3 flex-col items-center text-accent">
-          <p className="text-sm font-semibold">{t("median")}</p>
+          <p className="text-sm font-semibold">
+            {t("median", { area_type: areaType })}
+          </p>
         </div>
         {/* BETTER THAN MEDIAN */}
         <div className="flex w-1/3 items-center justify-end text-gray-400 md:justify-center">
