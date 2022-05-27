@@ -55,7 +55,11 @@ const Home: NextPage = ({
       >
         {/* BAR CHART TITLE */}
         <div className="mb-5 flex w-full flex-col items-start justify-between gap-2 md:mb-7 md:flex-row md:items-center md:gap-0">
-          <h3 className="section-title">{t("section1_title")}</h3>
+          <h3 className="section-title">
+            {t("section1_title1")}{" "}
+            <span className="underline">{t("malaysia")}</span>{" "}
+            {t("section1_title2")}
+          </h3>
           <p className="text-sm text-gray-400">{t("census_2020")}</p>
         </div>
         <div className="mb-10 flex w-full flex-col gap-4 md:mb-15 md:flex-row">

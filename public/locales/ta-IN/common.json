@@ -9,7 +9,8 @@
   "parliamen": "Parliament Constituency",
   "dun": "State Legislative Assembly",
   "malaysia": "Malaysia",
-  "section1_title": "What does the population of {{location}} look like?",
+  "section1_title1": "What does the population of",
+  "section1_title2": "look like?",
   "pyramid": {
     "male": "Male",
     "male_surplus": "Male Surplus",
