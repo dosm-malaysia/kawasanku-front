@@ -152,12 +152,24 @@ const State: NextPage = ({
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const statePaths = await getStatePaths();
-  const paths = statePaths.map((state) => {
+
+  type StatePathsType = { params: { state: string }; locale?: string }[];
+
+  const en: StatePathsType = [];
+  const ms: StatePathsType = [];
+  const zh: StatePathsType = [];
+  const ta: StatePathsType = [];
+
+  statePaths.forEach((state) => {
     // state returned as "/state"
-    return { params: { state: state.substring(1) } };
+    const formattedState = state.substring(1);
+    en.push({ params: { state: formattedState } });
+    ms.push({ params: { state: formattedState }, locale: "ms-MY" });
+    zh.push({ params: { state: formattedState }, locale: "ta-IN" });
+    ta.push({ params: { state: formattedState }, locale: "zh-CN" });
   });
 
-  return { paths, fallback: false };
+  return { paths: [...en, ...ms, ...zh, ...ta], fallback: false };
 };
 
 interface IParams extends ParsedUrlQuery {
