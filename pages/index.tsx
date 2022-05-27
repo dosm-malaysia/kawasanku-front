@@ -125,7 +125,7 @@ const Home: NextPage = ({
 };
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  const translationReq = serverSideTranslations(locale!);
+  const translationReq = serverSideTranslations(locale!, ["common"]);
   const geoReq = getGeojson(MALAYSIA);
   const snapshotReq = getSnapshot({ state: MALAYSIA });
   // get data accross state level as default (use any state for area param)
@@ -227,7 +227,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
       barChartData,
       // JITTERPLOT DATA
       jitterplotData,
-      ...(locale && (await serverSideTranslations(locale, ["common"]))),
+      ...translation,
     },
   };
 };

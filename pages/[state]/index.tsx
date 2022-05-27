@@ -136,7 +136,7 @@ interface IParams extends ParsedUrlQuery {
 export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
   const { state } = params as IParams;
 
-  const translationReq = serverSideTranslations(locale!);
+  const translationReq = serverSideTranslations(locale!, ["common"]);
   const geoReq = getGeojson(state);
   const snapshotReq = getSnapshot({ state });
   const jitterplotsReq = getJitterplots({ area: state });
@@ -238,7 +238,7 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
       barChartData,
       // JITTERPLOT DATA
       jitterplotData,
-      ...(locale && (await serverSideTranslations(locale, ["common"]))),
+      ...translation,
     },
   };
 };
