@@ -25,7 +25,6 @@ import Spotlight from "../../components/Spotlight";
 import Introduction from "../../components/Introduction";
 import { Option } from "../../components/Dropdowns/interface";
 import { translateDoughnutChart } from "../../lib/helpers";
-import { STATES_KEY } from "../../lib/constants";
 
 const BarChart = dynamic(() => import("../../components/Charts/BarChart"), {
   ssr: false,
@@ -54,8 +53,6 @@ const State: NextPage = ({
   const { t } = useTranslation();
 
   const [jitterComparisons, setJitterComparisons] = useState<Option[]>([]);
-
-  return <></>;
 
   return (
     <>
@@ -123,14 +120,10 @@ const State: NextPage = ({
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  // const statePaths = await getStatePaths();
-  // const paths = statePaths.map((state) => {
-  //   // state returned as "/state"
-  //   return { params: { state: state.substring(1) } };
-  // });
-
-  const paths = Object.values(STATES_KEY).map((state) => {
-    return { params: { state } };
+  const statePaths = await getStatePaths();
+  const paths = statePaths.map((state) => {
+    // state returned as "/state"
+    return { params: { state: state.substring(1) } };
   });
 
   return { paths, fallback: false };
@@ -145,8 +138,7 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
 
   const translationReq = serverSideTranslations(locale!, ["common"]);
   const geoReq = getGeojson(state);
-  const snapshotReq = Promise.resolve(null);
-  // const snapshotReq = getSnapshot({ state });
+  const snapshotReq = getSnapshot({ state });
   const jitterplotsReq = getJitterplots({ area: state });
 
   const res = await Promise.all([
@@ -164,34 +156,34 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
   // GEOJSON
   const geojson = res[1];
 
-  // // DOUGHNUT CHARTS DATA
-  // const doughnutCharts = res[2].doughnut_charts;
-  // const sex = doughnutCharts.sex;
-  // const ethnicity = doughnutCharts.ethnicity;
-  // const nationality = doughnutCharts.nationality;
-  // const religion = doughnutCharts.religion;
-  // const maritalStatus = doughnutCharts.marital;
-  // const ageGroup = doughnutCharts.agegroup;
+  // DOUGHNUT CHARTS DATA
+  const doughnutCharts = res[2].doughnut_charts;
+  const sex = doughnutCharts.sex;
+  const ethnicity = doughnutCharts.ethnicity;
+  const nationality = doughnutCharts.nationality;
+  const religion = doughnutCharts.religion;
+  const maritalStatus = doughnutCharts.marital;
+  const ageGroup = doughnutCharts.agegroup;
 
-  // // TRANSLATED DOUGHNUT CHARTS DATA
-  // const translatedSex = translateDoughnutChart(translationStore, sex);
-  // const translatedEthnicity = translateDoughnutChart(
-  //   translationStore,
-  //   ethnicity
-  // );
-  // const translatedNationality = translateDoughnutChart(
-  //   translationStore,
-  //   nationality
-  // );
-  // const translatedReligion = translateDoughnutChart(translationStore, religion);
-  // const translatedMaritalStatus = translateDoughnutChart(
-  //   translationStore,
-  //   maritalStatus
-  // );
-  // const translatedAgeGroup = translateDoughnutChart(translationStore, ageGroup);
+  // TRANSLATED DOUGHNUT CHARTS DATA
+  const translatedSex = translateDoughnutChart(translationStore, sex);
+  const translatedEthnicity = translateDoughnutChart(
+    translationStore,
+    ethnicity
+  );
+  const translatedNationality = translateDoughnutChart(
+    translationStore,
+    nationality
+  );
+  const translatedReligion = translateDoughnutChart(translationStore, religion);
+  const translatedMaritalStatus = translateDoughnutChart(
+    translationStore,
+    maritalStatus
+  );
+  const translatedAgeGroup = translateDoughnutChart(translationStore, ageGroup);
 
   // PYRAMID CHART DATA
-  // const pyramidCharts = res[2].pyramid_charts;
+  const pyramidCharts = res[2].pyramid_charts;
 
   // JITTERPLOTS DATA
   const jitterplotData = res[3];
@@ -233,15 +225,15 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
   return {
     props: {
       stateKey: state,
-      geojson,
+      geojson: geojson,
       mapping: mappingData,
       // DOUGHNUT CHARTS DATA
-      // sex: translatedSex,
-      // ethnicity: translatedEthnicity,
-      // nationality: translatedNationality,
-      // religion: translatedReligion,
-      // maritalStatus: translatedMaritalStatus,
-      // ageGroup: translatedAgeGroup,
+      sex: translatedSex,
+      ethnicity: translatedEthnicity,
+      nationality: translatedNationality,
+      religion: translatedReligion,
+      maritalStatus: translatedMaritalStatus,
+      ageGroup: translatedAgeGroup,
       // PYRAMID CHART DATA
       barChartData,
       // JITTERPLOT DATA
