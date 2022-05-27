@@ -129,8 +129,10 @@ const State: NextPage = ({
           <Card className="relative">
             {/* SPOTLIGHT */}
             <Spotlight
-              // TODO: set current location based on location returned from backend
-              currentLocation={{ label: "Ipoh", value: "Ipoh" }}
+              currentLocation={{
+                label: t(`states.${stateKey}`),
+                value: stateKey,
+              }}
               jitterComparisons={jitterComparisons}
               setJitterComparisons={setJitterComparisons}
             />

@@ -36,7 +36,7 @@ const Spotlight = ({
         <p className="text-sm">{t("spotlight")}:</p>
         <ComboBox options={options} onChange={handleComparisons} />
       </div>
-      <div className="flex w-full flex-wrap items-start gap-3 md:w-min md:items-center">
+      <div className="flex w-full flex-wrap items-start gap-3 md:w-auto md:items-center">
         {/* CURRENT LOCATION */}
         {currentLocation && (
           <Label color="bg-accent" text={currentLocation?.label} />

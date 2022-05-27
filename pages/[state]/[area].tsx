@@ -161,8 +161,7 @@ const Area: NextPage = ({
           <Card className="relative">
             {/* SPOTLIGHT */}
             <Spotlight
-              // TODO: set current location based on location returned from backend
-              currentLocation={{ label: "Ipoh", value: "Ipoh" }}
+              currentLocation={{ label: areaName, value: areaKey }}
               jitterComparisons={jitterComparisons}
               setJitterComparisons={setJitterComparisons}
             />
@@ -213,7 +212,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   });
 
   // TODO: build all paths but just test if 2 languages can build on Netlify
-  return { paths: [...en, ...ms], fallback: false };
+  return { paths: [...en], fallback: false };
   // return { paths: [...en, ...ms, ...zh, ...ta], fallback: false };
 };
 
