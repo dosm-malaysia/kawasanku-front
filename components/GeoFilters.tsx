@@ -5,7 +5,7 @@ import { useTranslation } from "next-i18next";
 import { GEO_FILTER, STATES_KEY } from "../lib/constants";
 
 import SelectMenu from "./SelectMenu";
-import { getAreaOptions } from "../lib/api";
+// import { getAreaOptions } from "../lib/api";
 
 interface GeoFiltersProps {
   stateKey: string;
