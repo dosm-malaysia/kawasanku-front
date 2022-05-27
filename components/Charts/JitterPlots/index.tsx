@@ -36,12 +36,9 @@ const JitterPlot = ({ label, data, comparisons }: JitterPlotProps) => {
             );
           }}
           colors={({ serieId }) => {
-            if (serieId === "Area 1" && comparisons.length >= 3)
-              return "#EC9E29";
-            else if (serieId === "Area 2" && comparisons.length >= 2)
-              return "#2873E8";
-            else if (serieId === "Area 3" && comparisons.length >= 1)
-              return "#D44647";
+            if (comparisons[0]?.label === serieId) return "#D44647";
+            else if (comparisons[2]?.label === serieId) return "#EC9E29";
+            else if (comparisons[1]?.label === serieId) return "#2873E8";
             else return "#E0E0E0";
           }}
         />
