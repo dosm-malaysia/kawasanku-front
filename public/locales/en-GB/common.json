@@ -12,7 +12,9 @@
   "section1_title": "What does the population of {{location}} look like?",
   "pyramid": {
     "male": "Male",
-    "female": "Female"
+    "male_surplus": "Male Surplus",
+    "female": "Female",
+    "female_surplus": "Female Surplus"
   },
   "doughnut": {
     "metric_1": "Sex",

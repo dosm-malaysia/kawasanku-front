@@ -180,38 +180,6 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
 
   const mappingData = mappingJson;
 
-  const barChartData = [
-    {
-      country: "AD",
-      fries: 50,
-      burger: 60,
-      sandwich: -60,
-      kebab: -50,
-    },
-    {
-      country: "AC",
-      fries: 40,
-      burger: 50,
-      sandwich: -50,
-      kebab: -40,
-    },
-    {
-      country: "AB",
-      fries: 30,
-      burger: 40,
-      sandwich: -40,
-      kebab: -30,
-    },
-
-    {
-      country: "AA",
-      fries: 20,
-      burger: 30,
-      sandwich: -30,
-      kebab: -20,
-    },
-  ];
-
   return {
     props: {
       geojson,
@@ -224,7 +192,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
       maritalStatus: translatedMaritalStatus,
       ageGroup: translatedAgeGroup,
       // PYRAMID CHART DATA
-      barChartData,
+      barChartData: pyramidCharts,
       // JITTERPLOT DATA
       jitterplotData,
       ...translation,
