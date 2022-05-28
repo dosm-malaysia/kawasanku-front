@@ -57,7 +57,7 @@ const State: NextPage = ({
   return (
     <>
       <Head>
-        <title>{t(`states.${stateKey}`)} &middot; {t("title")} | DOSM</title>
+        <title>{t(`states.${stateKey}`)} &middot; {t("title")}</title>
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>

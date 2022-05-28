@@ -64,7 +64,7 @@ const Area: NextPage = ({
   return (
     <>
       <Head>
-        <title>{areaName} &middot; {t("title")} | DOSM</title>
+        <title>{areaName} &middot; {t("title")}</title>
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
