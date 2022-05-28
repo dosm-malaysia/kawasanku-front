@@ -30,7 +30,7 @@ const Introduction = ({
     >
       <div className="w-full px-4 md:w-1/3 md:px-0">
         {/* TITLE */}
-        <h2 className="mb-4 text-xl font-semibold">{t("title")}</h2>
+        <h2 className="mb-4 text-xl font-semibold">{t("header")}</h2>
         {/* DESCRIPTION */}
         <p className="mb-7 md:mb-12">{t("description")}</p>
         {/* GEO FILTER */}

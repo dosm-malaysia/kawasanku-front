@@ -33,7 +33,7 @@ const Indicators = ({ areaType }: IndicatorsProps) => {
         </div>
         {/* MEDIAN */}
         <div className="flex w-1/3 flex-col items-center text-accent">
-          <p className="text-sm font-semibold">
+          <p className="text-base font-semibold">
             {t("median", { area_type: areaType })}
           </p>
         </div>

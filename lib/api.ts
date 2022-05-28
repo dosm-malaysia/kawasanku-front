@@ -24,7 +24,7 @@ export const getAreaPaths = async () =>
 
 export const getGeojson = async (area: string) =>
   await API.get<IGeojson>(`/geo?area=${area}`).then((res) => {
-    const geojsonData = res.data;
+    const geojsonData = res.data.mys;
     return {
       type: "FeatureCollection",
       features: [

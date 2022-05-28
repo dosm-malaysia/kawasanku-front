@@ -2,6 +2,7 @@
 // GEOJSON
 // -----------------------------------------------------------------------------
 export interface IGeojson {
+  mys: any
   name: string;
   area_type: string;
   shape_type: string;
@@ -58,6 +59,7 @@ export interface IJitterplots {
   metric_25: IJitterplotData[];
   metric_26: IJitterplotData[];
   metric_27: IJitterplotData[];
+  metric_28: IJitterplotData[];
 }
 
 // EXAMPLE

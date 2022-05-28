@@ -64,7 +64,7 @@ const Area: NextPage = ({
   return (
     <>
       <Head>
-        <title>{areaName} &middot; Kawasanku | DOSM</title>
+        <title>{areaName} &middot; {t("title")} | DOSM</title>
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
@@ -280,8 +280,6 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
 
   // JITTERPLOTS DATA
   const jitterplotData = res[3];
-
-  console.log(res);
 
   return {
     props: {

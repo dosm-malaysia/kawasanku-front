@@ -26,11 +26,11 @@ const PercentileOverlay = () => {
               key={index}
               className={
                 index === 0
-                  ? "border-r border-gray-400"
+                  ? "border-opacity-50 border-r border-gray-300"
                   : index === 1
                   ? "border-r border-accent"
                   : index === 2
-                  ? "border-l border-r border-l-accent border-r-gray-400"
+                  ? "border-opacity-50 border-l border-r border-l-accent border-r-gray-300"
                   : ""
               }
             />

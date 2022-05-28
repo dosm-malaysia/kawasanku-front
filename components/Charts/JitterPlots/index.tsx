@@ -1,4 +1,4 @@
-import { ResponsiveScatterPlotCanvas } from "@nivo/scatterplot";
+import { ResponsiveScatterPlotCanvas, ScatterPlotMouseHandler } from "@nivo/scatterplot";
 import { IJitterplotData } from "../../../lib/interfaces";
 import { Option } from "../../Dropdowns/interface";
 import Tooltip from '../../Tooltip'
@@ -8,16 +8,20 @@ interface JitterPlotProps {
   data: IJitterplotData[];
   comparisons: Option[];
   tooltip?: string
+  // TODO: sync hovers
+  hoverNode?: any,
+  onHoverIn?: ScatterPlotMouseHandler<{ x: number; y: number; }>,
+  onHoverOut?: ScatterPlotMouseHandler<{ x: number; y: number; }>
 }
 
-const JitterPlot = ({ label, data, comparisons, tooltip }: JitterPlotProps) => {
+const JitterPlot = ({ label, data, comparisons, tooltip, hoverNode, onHoverIn, onHoverOut }: JitterPlotProps) => {
   return (
     <div className="flex h-full w-full flex-col items-center gap-2 md:flex-row md:gap-0">
-      <div className="w-full bg-white text-sm md:w-1/3 space-x-2 flex items-center">
+      <div className="w-full z-10 md:z-auto py-2 bg-white text-sm md:w-1/3 space-x-2 flex items-center">
         <p>{label}</p>
         {tooltip && <Tooltip>{tooltip}</Tooltip>}
       </div>
-      <div className="h-10 w-full rounded-lg bg-gray-50 md:w-2/3">
+      <div className="h-10 w-full rounded-full bg-gray-50 md:w-2/3">
         <ResponsiveScatterPlotCanvas
           data={data}
           margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
@@ -31,18 +35,28 @@ const JitterPlot = ({ label, data, comparisons, tooltip }: JitterPlotProps) => {
           axisRight={null}
           axisBottom={null}
           axisLeft={null}
+          nodeSize={16}
+        //   nodeSize={hoverNode().size}
+        //   onMouseEnter={onHoverIn}
+        //   onMouseLeave={onHoverOut}
+          onMouseEnter={(node) => {
+            node.color = "#13293d"
+          }}
+          onMouseLeave={(node) => {
+            node.color = "#E0E0E0CC"
+          }}
           tooltip={({ node: { serieId } }) => {
             return (
-              <div className="flex items-center justify-center rounded-[2px] bg-white py-[5px] px-[9px] text-sm shadow">
+              <div className="flex items-center justify-center rounded text-white bg-accent py-[5px] px-[9px] text-sm shadow">
                 <p className="">{serieId}</p>
-              </div>
+               </div>
             );
           }}
           colors={({ serieId }) => {
             if (comparisons[0]?.label === serieId) return "#D44647";
             else if (comparisons[2]?.label === serieId) return "#EC9E29";
             else if (comparisons[1]?.label === serieId) return "#2873E8";
-            else return "#E0E0E0";
+            else return "#E0E0E0CC";
           }}
         />
       </div>
