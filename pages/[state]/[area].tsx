@@ -6,6 +6,7 @@ import type {
 } from "next";
 import { useState } from "react";
 import dynamic from "next/dynamic";
+import Head from 'next/head'
 import { ParsedUrlQuery } from "querystring";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -62,6 +63,11 @@ const Area: NextPage = ({
 
   return (
     <>
+      <Head>
+        <title>{areaName} &middot; Kawasanku | DOSM</title>
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <Introduction
         stateKey={stateKey}
         state={t(`states.${stateKey}`)}
