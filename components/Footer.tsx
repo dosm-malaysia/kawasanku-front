@@ -14,13 +14,13 @@ const Footer = () => {
           <Image src="/static/jata_logo.png" width={128} height={96} />
         </div>
         <div>
-          <div className="text-xl font-semibold uppercase">
+          <div className="text-sm md:text-lg font-semibold uppercase">
             <p>{t("dosm")}</p>
             <p>{t("pmo")}</p>
           </div>
           <br />
-          <p>{t("copyrights")}</p>
-          <p>
+          <p className='text-xs md:text-base'>{t("copyrights")}</p>
+          <p className="text-xs md:text-base">
             {t("open_data")}:{" "}
             <a
               href="https://github.com/dosm-malaysia/kawasanku"

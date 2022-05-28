@@ -90,7 +90,7 @@ const GoogleMap: React.FC<GoogleMapProps> = ({ center, zoom, geojson }) => {
   }, [geojson]);
 
   // GOOGLE MAP CONTAINER
-  return <div className="h-64 w-full rounded-lg md:h-full" ref={ref} />;
+  return <div className="h-64 w-full rounded-lg lg:h-full" ref={ref} />;
 };
 
 export default Map;

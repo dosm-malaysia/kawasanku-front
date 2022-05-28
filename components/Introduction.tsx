@@ -26,13 +26,13 @@ const Introduction = ({
   return (
     <Container
       backgroundColor="bg-white"
-      className="flex flex-col gap-7 pt-18 pb-5 md:flex-row md:gap-16 md:pt-28 md:pb-14"
+      className="flex flex-col gap-7 pt-18 pb-5 lg:flex-row lg:gap-16 lg:pt-28 lg:pb-14"
     >
-      <div className="w-full px-4 md:w-1/3 md:px-0">
+      <div className="w-full px-4 lg:w-1/3 md:px-0">
         {/* TITLE */}
         <h2 className="mb-4 text-xl font-semibold">{t("header")}</h2>
         {/* DESCRIPTION */}
-        <p className="mb-7 md:mb-12">{t("description")}</p>
+        <p className="mb-7 lg:mb-12">{t("description")}</p>
         {/* GEO FILTER */}
         <div className="mb-5 flex items-center gap-3">
           <svg
@@ -52,7 +52,7 @@ const Introduction = ({
           areaType={areaType}
         />
       </div>
-      <div className="flex w-full flex-col px-4 md:w-2/3 md:px-0">
+      <div className="flex w-full flex-col px-4 lg:w-2/3 lg:px-0">
         <div className="mb-4 flex items-center gap-3">
           {/* ICON */}
           <svg

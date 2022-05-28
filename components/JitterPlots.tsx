@@ -61,13 +61,14 @@ const Jitterplots = ({ areaType, data, comparisons }: JitterplotsProps) => {
             // hoverNode={syncHighlightNode}
             // onHoverIn={syncHoverIn}
             // onHoverOut={syncHoverOut}
-            tooltip="The average income per family in Malaysia"
+            tooltip={t("jitterplot.metric_1.tooltip")}
           />
           <JitterPlot
             label={t("jitterplot.metric_2.label")}
             data={data.metric_2}
             comparisons={comparisons}
-            tooltip="Hello there"
+            tooltip={t("jitterplot.metric_2.tooltip")}
+
             // hoverNode={syncHighlightNode}
             // onHoverIn={syncHoverIn}
             // onHoverOut={syncHoverOut}
