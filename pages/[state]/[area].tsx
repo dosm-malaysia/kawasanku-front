@@ -79,7 +79,7 @@ const Area: NextPage = ({
       {/* CHARTS */}
       <Container
         backgroundColor="bg-gray-100"
-        className="flex flex-col px-4 pt-5 md:pt-14 lg:px-0"
+        className="flex flex-col px-4 pt-5 md:pt-14"
       >
         {/* BAR CHART TITLE */}
         <div className="mb-5 flex w-full flex-col items-start justify-between gap-2 md:mb-7 md:flex-row md:items-center md:gap-0">
@@ -89,10 +89,10 @@ const Area: NextPage = ({
           </h3>
           <p className="text-sm text-gray-400">{t("census_2020")}</p>
         </div>
-        <div className="mb-10 flex w-full flex-col gap-4 md:mb-15 md:flex-row">
+        <div className="mb-10 flex w-full flex-col gap-4 md:mb-15 lg:flex-row">
           {/* BAR CHART (DISTRICT ONLY) */}
           {areaType === GEO_FILTER.District && (
-            <div className="w-full md:w-1/3">
+            <div className="w-full lg:w-1/3">
               <Card className="rounded-lg border">
                 <BarChart data={barChartData} />
               </Card>
@@ -101,7 +101,7 @@ const Area: NextPage = ({
           {/* DOUGHNUT CHARTS */}
           <div
             className={
-              areaType === GEO_FILTER.District ? "w-full md:w-2/3" : "w-full"
+              areaType === GEO_FILTER.District ? "w-full lg:w-2/3" : "w-full"
             }
           >
             <div className="grid grid-cols-1 overflow-hidden rounded-lg border md:grid-cols-3 md:grid-rows-2">
@@ -136,7 +136,7 @@ const Area: NextPage = ({
           </div>
         </div>
         {/* JITTERPLOT TITLE */}
-        <div className="mb-6 flex w-full flex-col items-start justify-between gap-2 md:mb-7 md:flex-row md:items-center md:gap-0">
+        <div className="mb-6 flex w-full flex-col items-start justify-between gap-2 md:mb-7 lg:flex-row md:items-center md:gap-0">
           <h3 className="section-title">
             {t("section2_title2_1")}{" "}
             <span className="underline">{areaName}</span>{" "}

@@ -36,7 +36,7 @@ const Introduction = ({
       backgroundColor="bg-white"
       className="flex flex-col gap-7 pt-18 pb-5 lg:flex-row lg:gap-16 lg:pt-28 lg:pb-14"
     >
-      <div className="w-full px-4 lg:w-1/3 md:px-0">
+      <div className="w-full lg:w-1/3 md:px-0">
         {/* TITLE */}
         <h2 className="mb-4 text-xl font-semibold">{t("header")}</h2>
         {/* DESCRIPTION */}

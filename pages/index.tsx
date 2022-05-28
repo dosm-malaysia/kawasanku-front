@@ -52,7 +52,7 @@ const Home: NextPage = ({
       {/* CHARTS */}
       <Container
         backgroundColor="bg-gray-100"
-        className="flex flex-col px-4 pt-5 md:pt-14 xl:px-0"
+        className="flex flex-col pt-5 md:pt-14"
       >
 
           {/* BAR CHART TITLE */}
@@ -64,15 +64,15 @@ const Home: NextPage = ({
           </h3>
           <p className="text-sm text-gray-400">{t("census_2020")}</p>
         </div>
-        <div className="mb-10 flex w-full flex-col gap-4 md:mb-15 md:flex-row">
+        <div className="mb-10 flex w-full flex-col gap-4 md:mb-15 lg:flex-row">
           {/* BAR CHART */}
-          <div className="w-full md:w-1/3">
+          <div className="w-full lg:w-1/3">
             <Card className="rounded-lg border">
               <BarChart data={barChartData} />
             </Card>
           </div>
           {/* DOUGHNUT CHARTS */}
-          <div className="w-full md:w-2/3">
+          <div className="w-full lg:w-2/3">
             <div className="grid grid-cols-1 overflow-hidden rounded-lg border md:grid-cols-3 md:grid-rows-2">
               <DoughnutChart title={t("doughnut.metric_1")} data={sex} />
               <DoughnutChart title={t("doughnut.metric_2")} data={ethnicity} />
@@ -97,7 +97,7 @@ const Home: NextPage = ({
       </Container>
       <Container
         backgroundColor="bg-white md:bg-gray-100"
-        className="pb-5 md:rounded-lg"
+        className="pb-5 px-0 md:rounded-lg"
       >
         <Card className="relative overflow-hidden rounded-lg md:border">
           {/* SPOTLIGHT */}
