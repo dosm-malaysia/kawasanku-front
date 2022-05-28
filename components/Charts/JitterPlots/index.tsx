@@ -22,12 +22,12 @@ const JitterPlot = ({ label, data, comparisons, tooltip, currentLocation, hoverN
         <p>{label}</p>
         {tooltip && <Tooltip>{tooltip}</Tooltip>}
       </div>
-      <div className="h-10 w-full rounded-full bg-gray-50 md:w-2/3">
+      <div className="h-10 w-full rounded-full bg-gray-50 md:w-2/3 px-3">
         <ResponsiveScatterPlotCanvas
           data={data}
-          margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
-          xScale={{ type: "linear", min: -1.15, max: 1.15 }}
-          xFormat=">-.2f"
+          margin={{ top: 2, right: 5, bottom: 2, left: 5 }}
+          xScale={{ type: "linear", min: -1.0, max: 1.0 }}
+          xFormat=">-0.2f"
           yScale={{ type: "linear", min: 0, max: 10 }}
           yFormat=">-.2f"
           enableGridX={false}
@@ -36,12 +36,23 @@ const JitterPlot = ({ label, data, comparisons, tooltip, currentLocation, hoverN
           axisRight={null}
           axisBottom={null}
           axisLeft={null}
-          nodeSize={data.length > 40 ? 8 : 14}
+          nodeSize={data.length > 10 ? 8 : 14}
           onMouseEnter={(node) => {
-            node.color = "#13293d"
+              if (comparisons.some(item => item.label === node.serieId)) return
+              node.color = "#13293d"
           }}
           onMouseLeave={(node) => {
-            node.color = "#E0E0E0CC"
+            // ACCENT
+            if (currentLocation?.label === node.serieId) node.color = "#13293d"
+            // RED
+            else if (comparisons[0]?.label === node.serieId) node.color = "#D44647"
+            // BLUE
+            else if (comparisons[1]?.label === node.serieId) node.color = "#EC9E29";
+            // YELLOW
+            else if (comparisons[2]?.label === node.serieId) node.color = "#2873E8";
+            // GRAY
+            else node.color = "#E0E0E0CC"
+
           }}
           tooltip={({ node: { serieId } }) => {
             return (

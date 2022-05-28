@@ -136,6 +136,7 @@ const State: NextPage = ({
             areaType={areaType}
             data={jitterplotData}
             comparisons={jitterComparisons}
+            currentLocation={{ label: t(`states.${stateKey}`), value: stateKey }}
           />
         </Card>
       </Container>
