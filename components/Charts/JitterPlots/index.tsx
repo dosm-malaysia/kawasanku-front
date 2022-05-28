@@ -25,7 +25,7 @@ const JitterPlot = ({ label, data, comparisons, tooltip, hoverNode, onHoverIn, o
         <ResponsiveScatterPlotCanvas
           data={data}
           margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
-          xScale={{ type: "linear", min: -1, max: 1 }}
+          xScale={{ type: "linear", min: -1.15, max: 1.15 }}
           xFormat=">-.2f"
           yScale={{ type: "linear", min: 0, max: 10 }}
           yFormat=">-.2f"
@@ -35,7 +35,7 @@ const JitterPlot = ({ label, data, comparisons, tooltip, hoverNode, onHoverIn, o
           axisRight={null}
           axisBottom={null}
           axisLeft={null}
-          nodeSize={16}
+          nodeSize={14}
         //   nodeSize={hoverNode().size}
         //   onMouseEnter={onHoverIn}
         //   onMouseLeave={onHoverOut}

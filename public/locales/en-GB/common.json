@@ -69,7 +69,7 @@
   "spotlight_placeholder": "Select up to 3 {{area_type}}s",
   "no_results": "No results found",
   "median": "{{area_type}} median",
-  "worse_than_median": "Worse",
+  "worse_than_median": "Worse than median",
   "better_than_median": "Better",
   "jitterplot": {
     "title_1": "Economy",
@@ -77,37 +77,121 @@
     "title_3": "Geography",
     "title_4": "Population",
 
-    "metric_1": "Mean income per household",
-    "metric_2": "Mean expenditure per household",
-    "metric_3": "Inequality",
-    "metric_4": "Incidence of poverty",
-    "metric_5": "Unemployment rate",
-    "metric_6": "Labour force participation rate",
-    "metric_7": "Labour force population ratio",
+    "metric_1": {
+        "label": "Mean income per household",
+        "tooltip": ""
+    },
+    "metric_2": {
+        "label": "Mean expenditure per household",
+        "tooltip": ""
+    },
+    "metric_3": {
+        "label": "Inequality",
+        "tooltip": ""
+    },
+    "metric_4": {
+        "label": "Incidence of poverty",
+        "tooltip": ""
+    },
+    "metric_5": {
+        "label": "Unemployment rate",
+        "tooltip": ""
+    },
+    "metric_6": {
+        "label": "Labour force participation rate",
+        "tooltip": ""
+    },
+    "metric_7": {
+        "label": "Labour force population ratio",
+        "tooltip": ""
+    },
 
-    "metric_8": "Access to electricity",
-    "metric_9": "Access to piped water at home",
-    "metric_10": "Hospitals per 1000 people",
-    "metric_11": "Health cliniics per 1000 people",
-    "metric_12": "Schools per 1000 people",
-    "metric_13": "Police stations per 1000 people",
-    "metric_14": "Fire stations per 1000 people",
+    "metric_8": {
+        "label": "Access to electricity",
+        "tooltip": ""
+    },
+    "metric_9": {
+        "label": "Access to piped water at home",
+        "tooltip": ""
+    },
+    "metric_10": {
+        "label": "Hospitals per 1000 people",
+        "tooltip": ""
+    },
+    "metric_11": {
+        "label": "Health cliniics per 1000 people",
+        "tooltip": ""
+    },
+    "metric_12": {
+        "label": "Schools per 1000 people",
+        "tooltip": ""
+    },
+    "metric_13": {
+        "label": "Police stations per 1000 people",
+        "tooltip": ""
+    },
+    "metric_14": {
+        "label": "Fire stations per 1000 people",
+        "tooltip": ""
+    },
 
-    "metric_15": "Land area",
-    "metric_16": "Maximum elevation",
-    "metric_17": "Terrain ruggedness",
-    "metric_18": "Water surface area (%)",
-    "metric_19": "Forest surface area",
-    "metric_20": "Forest loss between 2000 to 2001",
-    "metric_21": "Intensity of lights at night",
-
-    "metric_22": "Population density",
-    "metric_23": "Median age",
-    "metric_24": "Median household size",
-    "metric_25": "Birth rate",
-    "metric_26": "All-cause mortality",
-    "metric_27": "Child dependency ratio",
-    "metric_28": "Elderly dependency ratio"
+    "metric_15": {
+        "label": "Land area",
+        "tooltip": ""
+    },
+    "metric_16": {
+        "label": "Maximum elevation",
+        "tooltip": ""
+    },
+    "metric_17": {
+        "label": "Terrain ruggedness",
+        "tooltip": ""
+    },
+    "metric_18": {
+        "label": "Water surface area (%)",
+        "tooltip": ""
+    },
+    "metric_19": {
+        "label": "Forest surface area (%)",
+        "tooltip": ""
+    },
+    "metric_20": {
+        "label": "Forest loss between 2000 to 2001",
+        "tooltip": ""
+    },
+    "metric_21": {
+        "label": "Intensity of lights at night",
+        "tooltip": ""
+    },
+    
+    "metric_22": {
+        "label": "Population density",
+        "tooltip": ""
+    },
+    "metric_23": {
+        "label": "Median age",
+        "tooltip": ""
+    },
+    "metric_24": {
+        "label": "Median household size",
+        "tooltip": ""
+    },
+    "metric_25": {
+        "label": "Birth rate",
+        "tooltip": ""
+    },
+    "metric_26": {
+        "label": "All-cause mortality",
+        "tooltip": ""
+    },
+    "metric_27": {
+        "label": "Child dependency ratio",
+        "tooltip": ""
+    },
+    "metric_28": {
+        "label": "Elderly dependency ratio",
+        "tooltip": ""
+    }
   },
   "share": "Share",
   "dosm": "Department of Statistics Malaysia (DOSM)",

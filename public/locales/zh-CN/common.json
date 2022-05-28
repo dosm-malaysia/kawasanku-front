@@ -69,8 +69,8 @@
   "spotlight_placeholder": "Select up to 3 {{area_type}}s",
   "no_results": "No results found",
   "median": "{{area_type}} median",
-  "worse_than_median": "Worse",
-  "better_than_median": "Better",
+  "worse_than_median": "Worse than median",
+  "better_than_median": "Better than median",
   "jitterplot": {
     "title_1": "Economy",
     "title_2": "Public services",

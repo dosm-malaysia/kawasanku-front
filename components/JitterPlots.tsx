@@ -55,7 +55,7 @@ const Jitterplots = ({ areaType, data, comparisons }: JitterplotsProps) => {
           </p>
           {/* SECTION 1 METRICS */}
           <JitterPlot
-            label={t("jitterplot.metric_1")}
+            label={t("jitterplot.metric_1.label")}
             data={data.metric_1}
             comparisons={comparisons}
             // hoverNode={syncHighlightNode}
@@ -64,7 +64,7 @@ const Jitterplots = ({ areaType, data, comparisons }: JitterplotsProps) => {
             tooltip="The average income per family in Malaysia"
           />
           <JitterPlot
-            label={t("jitterplot.metric_2")}
+            label={t("jitterplot.metric_2.label")}
             data={data.metric_2}
             comparisons={comparisons}
             tooltip="Hello there"
@@ -73,28 +73,28 @@ const Jitterplots = ({ areaType, data, comparisons }: JitterplotsProps) => {
             // onHoverOut={syncHoverOut}
           />
            <JitterPlot
-            label={t("jitterplot.metric_3")}
+            label={t("jitterplot.metric_3.label")}
             data={data.metric_3}
             comparisons={comparisons}
           />
           <JitterPlot
-            label={t("jitterplot.metric_4")}
+            label={t("jitterplot.metric_4.label")}
             data={data.metric_4}
             comparisons={comparisons}
             tooltip="General Kenobi"
           />
           <JitterPlot
-            label={t("jitterplot.metric_5")}
+            label={t("jitterplot.metric_5.label")}
             data={data.metric_5}
             comparisons={comparisons}
           />
           <JitterPlot
-            label={t("jitterplot.metric_6")}
+            label={t("jitterplot.metric_6.label")}
             data={data.metric_6}
             comparisons={comparisons}
           />
           <JitterPlot
-            label={t("jitterplot.metric_7")}
+            label={t("jitterplot.metric_7.label")}
             data={data.metric_7}
             comparisons={comparisons}
           />
@@ -105,38 +105,38 @@ const Jitterplots = ({ areaType, data, comparisons }: JitterplotsProps) => {
           </p>
           {/* SECTION 2 METRICS */}
           <JitterPlot
-            label={t("jitterplot.metric_8")}
+            label={t("jitterplot.metric_8.label")}
             data={data.metric_8}
             comparisons={comparisons}
           />
           <JitterPlot
-            label={t("jitterplot.metric_9")}
+            label={t("jitterplot.metric_9.label")}
             data={data.metric_9}
             comparisons={comparisons}
             tooltip="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur quos nesciunt voluptates mollitia ex, eveniet adipisci corporis quo sequi odio aperiam vitae ut quaerat laudantium sint eum nobis est vel."
           />
           <JitterPlot
-            label={t("jitterplot.metric_10")}
+            label={t("jitterplot.metric_10.label")}
             data={data.metric_10}
             comparisons={comparisons}
           />
           <JitterPlot
-            label={t("jitterplot.metric_11")}
+            label={t("jitterplot.metric_11.label")}
             data={data.metric_11}
             comparisons={comparisons}
           />
           <JitterPlot
-            label={t("jitterplot.metric_12")}
+            label={t("jitterplot.metric_12.label")}
             data={data.metric_12}
             comparisons={comparisons}
           />
           <JitterPlot
-            label={t("jitterplot.metric_13")}
+            label={t("jitterplot.metric_13.label")}
             data={data.metric_13}
             comparisons={comparisons}
           />
           <JitterPlot
-            label={t("jitterplot.metric_14")}
+            label={t("jitterplot.metric_14.label")}
             data={data.metric_14}
             comparisons={comparisons}
           />
@@ -147,37 +147,37 @@ const Jitterplots = ({ areaType, data, comparisons }: JitterplotsProps) => {
           </p>
           {/* SECTION 3 METRICS */}
           <JitterPlot
-            label={t("jitterplot.metric_15")}
+            label={t("jitterplot.metric_15.label")}
             data={data.metric_15}
             comparisons={comparisons}
           />
           <JitterPlot
-            label={t("jitterplot.metric_16")}
+            label={t("jitterplot.metric_16.label")}
             data={data.metric_16}
             comparisons={comparisons}
           />
           <JitterPlot
-            label={t("jitterplot.metric_17")}
+            label={t("jitterplot.metric_17.label")}
             data={data.metric_17}
             comparisons={comparisons}
           />
           <JitterPlot
-            label={t("jitterplot.metric_18")}
+            label={t("jitterplot.metric_18.label")}
             data={data.metric_18}
             comparisons={comparisons}
           />
           <JitterPlot
-            label={t("jitterplot.metric_19")}
+            label={t("jitterplot.metric_19.label")}
             data={data.metric_19}
             comparisons={comparisons}
           />
           <JitterPlot
-            label={t("jitterplot.metric_20")}
+            label={t("jitterplot.metric_20.label")}
             data={data.metric_20}
             comparisons={comparisons}
           />
           <JitterPlot
-            label={t("jitterplot.metric_21")}
+            label={t("jitterplot.metric_21.label")}
             data={data.metric_21}
             comparisons={comparisons}
           />
@@ -188,37 +188,37 @@ const Jitterplots = ({ areaType, data, comparisons }: JitterplotsProps) => {
           </p>
           {/* SECTION 4 METRICS */}
           <JitterPlot
-            label={t("jitterplot.metric_22")}
+            label={t("jitterplot.metric_22.label")}
             data={data.metric_22}
             comparisons={comparisons}
           />
           <JitterPlot
-            label={t("jitterplot.metric_23")}
+            label={t("jitterplot.metric_23.label")}
             data={data.metric_23}
             comparisons={comparisons}
           />
           <JitterPlot
-            label={t("jitterplot.metric_24")}
+            label={t("jitterplot.metric_24.label")}
             data={data.metric_24}
             comparisons={comparisons}
           />
           <JitterPlot
-            label={t("jitterplot.metric_25")}
+            label={t("jitterplot.metric_25.label")}
             data={data.metric_25}
             comparisons={comparisons}
           />
           <JitterPlot
-            label={t("jitterplot.metric_26")}
+            label={t("jitterplot.metric_26.label")}
             data={data.metric_26}
             comparisons={comparisons}
           />
           <JitterPlot
-            label={t("jitterplot.metric_27")}
+            label={t("jitterplot.metric_27.label")}
             data={data.metric_27}
             comparisons={comparisons}
           />
           <JitterPlot
-            label={t("jitterplot.metric_28")}
+            label={t("jitterplot.metric_28.label")}
             data={data.metric_28}
             comparisons={comparisons}
           />
