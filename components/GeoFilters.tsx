@@ -24,7 +24,6 @@ const GeoFilters = ({ stateKey, areaType, areaKey, area }: GeoFiltersProps) => {
 
   // options for area type: district, parlimen, dun
   const [selectedAreaType, setSelectedAreaType] = useState(areaType);
-  console.log(query)
 
   useEffect(() => {
     if (stateKey && selectedAreaType) {
@@ -88,7 +87,7 @@ const GeoFilters = ({ stateKey, areaType, areaKey, area }: GeoFiltersProps) => {
         onChange={(newArea) =>
           newArea ? router.push(`/${stateKey}/${newArea}`) : {}
         }
-        disabled={!query.state}
+        disabled={!selectedAreaType}
         placeholder={t("filter3_placeholder")}
       />
     </div>

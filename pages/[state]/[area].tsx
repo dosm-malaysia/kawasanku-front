@@ -90,20 +90,18 @@ const Area: NextPage = ({
           <p className="text-sm text-gray-400">{t("census_2020")}</p>
         </div>
         <div className="mb-10 flex w-full flex-col gap-4 md:mb-15 lg:flex-row">
+
+            {/* hide pyramid for all area types */}
           {/* BAR CHART (DISTRICT ONLY) */}
-          {areaType === GEO_FILTER.District && (
+          {/* {areaType === GEO_FILTER.District && (
             <div className="w-full lg:w-1/3">
               <Card className="rounded-lg border">
                 <BarChart data={barChartData} />
               </Card>
             </div>
-          )}
+          )} */}
           {/* DOUGHNUT CHARTS */}
-          <div
-            className={
-              areaType === GEO_FILTER.District ? "w-full lg:w-2/3" : "w-full"
-            }
-          >
+          <div className="w-full">
             <div className="grid grid-cols-1 overflow-hidden rounded-lg border md:grid-cols-3 md:grid-rows-2">
               <DoughnutChart title={t("doughnut.metric_1")} data={sex} />
               <DoughnutChart title={t("doughnut.metric_2")} data={ethnicity} />
