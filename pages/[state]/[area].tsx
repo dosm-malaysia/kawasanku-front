@@ -164,6 +164,7 @@ const Area: NextPage = ({
             areaType={areaType}
             data={jitterplotData}
             comparisons={jitterComparisons}
+            currentLocation={{ label: areaName, value: areaKey }}
           />
         </Card>
       </Container>

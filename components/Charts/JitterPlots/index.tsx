@@ -8,13 +8,14 @@ interface JitterPlotProps {
   data: IJitterplotData[];
   comparisons: Option[];
   tooltip?: string
+  currentLocation?: Option;
   // TODO: sync hovers
   hoverNode?: any,
   onHoverIn?: ScatterPlotMouseHandler<{ x: number; y: number; }>,
   onHoverOut?: ScatterPlotMouseHandler<{ x: number; y: number; }>
 }
 
-const JitterPlot = ({ label, data, comparisons, tooltip, hoverNode, onHoverIn, onHoverOut }: JitterPlotProps) => {
+const JitterPlot = ({ label, data, comparisons, tooltip, currentLocation, hoverNode, onHoverIn, onHoverOut }: JitterPlotProps) => {
   return (
     <div className="flex h-full w-full flex-col items-center gap-2 md:flex-row md:gap-0">
       <div className="w-full z-10 md:z-auto py-2 bg-white text-sm md:w-1/3 space-x-2 flex items-center">
@@ -35,10 +36,7 @@ const JitterPlot = ({ label, data, comparisons, tooltip, hoverNode, onHoverIn, o
           axisRight={null}
           axisBottom={null}
           axisLeft={null}
-          nodeSize={14}
-        //   nodeSize={hoverNode().size}
-        //   onMouseEnter={onHoverIn}
-        //   onMouseLeave={onHoverOut}
+          nodeSize={data.length > 40 ? 8 : 14}
           onMouseEnter={(node) => {
             node.color = "#13293d"
           }}
@@ -53,6 +51,8 @@ const JitterPlot = ({ label, data, comparisons, tooltip, hoverNode, onHoverIn, o
             );
           }}
           colors={({ serieId }) => {
+            if (currentLocation?.label === serieId) return "#13293d"
+
             if (comparisons[0]?.label === serieId) return "#D44647";
             else if (comparisons[2]?.label === serieId) return "#EC9E29";
             else if (comparisons[1]?.label === serieId) return "#2873E8";

@@ -68,7 +68,7 @@
   },
   "census_2020": "Data correct as of Census 2020",
   "spotlight": "Spotlight",
-  "spotlight_placeholder": "Select up to 3 states",
+  "spotlight_placeholder": "Select up to 3 options",
   "no_results": "No results found",
   "median": "{{area_type}} median",
   "worse_than_median": "Worse than median",

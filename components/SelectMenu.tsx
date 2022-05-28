@@ -10,6 +10,7 @@ interface SelectMenuProps {
   options: SelectMenuOption[];
   selected?: SelectMenuOption;
   placeholder?: string;
+  disabled?: boolean;
   onChange: (value?: string) => void;
 }
 
@@ -18,9 +19,10 @@ const SelectMenu = ({
   selected,
   placeholder,
   onChange,
+  disabled
 }: SelectMenuProps) => {
   return (
-    <Listbox value={selected?.value} onChange={onChange}>
+    <Listbox value={selected?.value} onChange={onChange} disabled={disabled ?? false}>
       {({ open }) => (
         <>
           <div className="relative mt-1">

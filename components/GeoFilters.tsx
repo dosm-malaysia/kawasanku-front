@@ -20,9 +20,11 @@ const GeoFilters = ({ stateKey, areaType, areaKey, area }: GeoFiltersProps) => {
   const router = useRouter();
   const { t } = useTranslation();
   const { options, setOptions } = useAreaOptions();
+  const { query } = router;
 
   // options for area type: district, parlimen, dun
   const [selectedAreaType, setSelectedAreaType] = useState(areaType);
+  console.log(query)
 
   useEffect(() => {
     if (stateKey && selectedAreaType) {
@@ -70,6 +72,7 @@ const GeoFilters = ({ stateKey, areaType, areaKey, area }: GeoFiltersProps) => {
         onChange={(newAreaType) =>
           newAreaType ? setSelectedAreaType(newAreaType) : {}
         }
+        disabled={!query.state}
         placeholder={t("filter2_placeholder")}
       />
       <SelectMenu
@@ -85,6 +88,7 @@ const GeoFilters = ({ stateKey, areaType, areaKey, area }: GeoFiltersProps) => {
         onChange={(newArea) =>
           newArea ? router.push(`/${stateKey}/${newArea}`) : {}
         }
+        disabled={!query.state}
         placeholder={t("filter3_placeholder")}
       />
     </div>
