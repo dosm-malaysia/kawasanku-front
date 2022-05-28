@@ -1,18 +1,21 @@
 import { ResponsiveScatterPlotCanvas } from "@nivo/scatterplot";
 import { IJitterplotData } from "../../../lib/interfaces";
 import { Option } from "../../Dropdowns/interface";
+import Tooltip from '../../Tooltip'
 
 interface JitterPlotProps {
   label: string;
   data: IJitterplotData[];
   comparisons: Option[];
+  tooltip?: string
 }
 
-const JitterPlot = ({ label, data, comparisons }: JitterPlotProps) => {
+const JitterPlot = ({ label, data, comparisons, tooltip }: JitterPlotProps) => {
   return (
     <div className="flex h-full w-full flex-col items-center gap-2 md:flex-row md:gap-0">
-      <div className="z-10 w-full bg-white text-sm md:w-1/3">
+      <div className="w-full bg-white text-sm md:w-1/3 space-x-2 flex items-center">
         <p>{label}</p>
+        {tooltip && <Tooltip>{tooltip}</Tooltip>}
       </div>
       <div className="h-10 w-full rounded-lg bg-gray-50 md:w-2/3">
         <ResponsiveScatterPlotCanvas

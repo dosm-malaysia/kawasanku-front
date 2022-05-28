@@ -28,7 +28,7 @@ const Jitterplots = ({ areaType, data, comparisons }: JitterplotsProps) => {
           {/* PERCENTILE OVERLAY */}
           <PercentileOverlay />
           {/* SECTION 1 TITLE */}
-          <p className="z-10 w-fit bg-white font-semibold text-accent">
+          <p className="font-semibold text-accent">
             {t("jitterplot.title_1")}
           </p>
           {/* SECTION 1 METRICS */}
@@ -36,11 +36,13 @@ const Jitterplots = ({ areaType, data, comparisons }: JitterplotsProps) => {
             label={t("jitterplot.metric_1")}
             data={data.metric_1}
             comparisons={comparisons}
+            tooltip="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur quos nesciunt voluptates mollitia ex, eveniet adipisci corporis quo sequi odio aperiam vitae ut quaerat laudantium sint eum nobis est vel."
           />
           <JitterPlot
             label={t("jitterplot.metric_2")}
             data={data.metric_2}
             comparisons={comparisons}
+            tooltip="General Kenobi"
           />
           <JitterPlot
             label={t("jitterplot.metric_3")}
@@ -64,7 +66,7 @@ const Jitterplots = ({ areaType, data, comparisons }: JitterplotsProps) => {
           />
 
           {/* SECTION 2 TITLE */}
-          <p className="z-10 w-fit bg-white pt-2 font-semibold text-accent">
+          <p className="w-fit bg-white pt-2 font-semibold text-accent">
             {t("jitterplot.title_2")}
           </p>
           {/* SECTION 2 METRICS */}
@@ -110,7 +112,7 @@ const Jitterplots = ({ areaType, data, comparisons }: JitterplotsProps) => {
           />
 
           {/* SECTION 3 TITLE */}
-          <p className="z-10 w-fit bg-white pt-2 font-semibold text-accent">
+          <p className="w-fit bg-white pt-2 font-semibold text-accent">
             {t("jitterplot.title_3")}
           </p>
           {/* SECTION 3 METRICS */}
@@ -146,7 +148,7 @@ const Jitterplots = ({ areaType, data, comparisons }: JitterplotsProps) => {
           />
 
           {/* SECTION 4 TITLE */}
-          <p className="z-10 w-fit bg-white pt-2 font-semibold text-accent">
+          <p className="w-fit bg-white pt-2 font-semibold text-accent">
             {t("jitterplot.title_4")}
           </p>
           {/* SECTION 4 METRICS */}
