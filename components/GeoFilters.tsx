@@ -73,7 +73,7 @@ const GeoFilters = ({ stateKey, areaType, areaKey, area }: GeoFiltersProps) => {
         placeholder={t("filter2_placeholder")}
       />
       <SelectMenu
-        options={options}
+        options={options.sort((a, b) => a.label.localeCompare(b.label))}
         selected={
           area && areaKey
             ? {
