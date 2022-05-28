@@ -50,9 +50,9 @@ const Jitterplots = ({ areaType, data, comparisons }: JitterplotsProps) => {
           {/* PERCENTILE OVERLAY */}
           <PercentileOverlay />
           {/* SECTION 1 TITLE */}
-          <p className="z-1 font-semibold text-accent">
+          <span className="z-10 inline-block w-fit bg-white font-semibold text-accent">
             {t("jitterplot.title_1")}
-          </p>
+          </span>
           {/* SECTION 1 METRICS */}
           <JitterPlot
             label={t("jitterplot.metric_1.label")}
@@ -101,9 +101,9 @@ const Jitterplots = ({ areaType, data, comparisons }: JitterplotsProps) => {
           />
 
           {/* SECTION 2 TITLE */}
-          <p className="w-fit bg-white pt-2 font-semibold text-accent">
+          <span className="z-10 inline-block w-fit bg-white pt-2 font-semibold text-accent">
             {t("jitterplot.title_2")}
-          </p>
+          </span>
           {/* SECTION 2 METRICS */}
           <JitterPlot
             label={t("jitterplot.metric_8.label")}
@@ -143,9 +143,9 @@ const Jitterplots = ({ areaType, data, comparisons }: JitterplotsProps) => {
           />
 
           {/* SECTION 3 TITLE */}
-          <p className="w-fit bg-white pt-2 font-semibold text-accent">
+          <span className="w-fit z-10 bg-white pt-2 font-semibold text-accent">
             {t("jitterplot.title_3")}
-          </p>
+          </span>
           {/* SECTION 3 METRICS */}
           <JitterPlot
             label={t("jitterplot.metric_15.label")}
@@ -184,9 +184,9 @@ const Jitterplots = ({ areaType, data, comparisons }: JitterplotsProps) => {
           />
 
           {/* SECTION 4 TITLE */}
-          <p className="w-fit bg-white pt-2 font-semibold text-accent">
+          <span className="w-fit z-10 bg-white pt-2 font-semibold text-accent">
             {t("jitterplot.title_4")}
-          </p>
+          </span>
           {/* SECTION 4 METRICS */}
           <JitterPlot
             label={t("jitterplot.metric_22.label")}

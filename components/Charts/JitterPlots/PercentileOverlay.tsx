@@ -2,11 +2,11 @@ const PercentileOverlay = () => {
   return (
     <div className="pointer-events-none absolute top-0 left-0 flex h-full w-full">
       <div className="h-full w-0 md:w-1/3" />
-      <div className="relative grid h-full w-full grid-cols-12 md:w-2/3">
+      <div className="relative grid h-full w-full grid-cols-14 md:w-2/3">
         <div className="absolute top-0 left-0 col-span-4 flex w-full items-center justify-center text-accent">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="-mt-0.5 h-3 w-3 rotate-180"
+            className="-mt-0.5 h-3 w-3 rotate-180 z-10"
             fill="#13293d"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -19,21 +19,28 @@ const PercentileOverlay = () => {
             />
           </svg>
         </div>
-        {Array(12)
+        {Array(14)
           .fill(0)
           .map((_, index) => (
             <div
               key={index}
               className={
-                index === 0
-                  ? "border-opacity-50 border-r border-gray-300"
-                  : index === 5
-                  ? "border-r border-l border-r-accent bg-gray-200 bg-opacity-20 border-gray-300"
+                index === 8 
+                  ? "border-r bg-gray-200 bg-opacity-20 border-gray-300"
+                  : index === 7
+                  ? "border-l border-accent bg-gray-200 bg-opacity-20" 
                   : index === 6
-                  ? "border-r border-l border-l-accent bg-gray-200 bg-opacity-20 border-gray-300"
-                  : index === 11
-                  ? "border-opacity-50 border-l border-l-gray-300"
-                  : ""
+                  ? "border-r border-accent bg-gray-200 bg-opacity-20" 
+                  : index === 5
+                  ? "border-l bg-gray-200 bg-opacity-20 border-gray-300" : ""
+                  
+                //   : index === 6 
+                //   ? "border-r border-l border-r-accent bg-gray-200 bg-opacity-20 border-gray-300"
+                //   : index === 8
+                //   ? "border-r border-l border-l-accent bg-gray-200 bg-opacity-20 border-gray-300"
+                //   : index === 13
+                //   ? "border-opacity-50 border-l border-l-gray-300"
+                //   : ""
               }
             />
           ))}

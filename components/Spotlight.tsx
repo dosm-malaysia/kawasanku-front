@@ -49,7 +49,7 @@ const Spotlight = ({
     <div className="mb-6 flex flex-col items-center justify-between gap-4 md:flex-row md:gap-0">
       <div className="flex h-full w-full items-center justify-between gap-2 md:w-auto">
         <p className="text-sm">{t("spotlight")}:</p>
-        <ComboBox options={options} onChange={handleComparisons} />
+        <ComboBox options={options} onChange={handleComparisons} placeholder={t('spotlight_placeholder')}></ComboBox>
       </div>
       <div className="flex w-full flex-wrap items-start gap-3 md:w-auto md:items-center">
         {/* CURRENT LOCATION */}

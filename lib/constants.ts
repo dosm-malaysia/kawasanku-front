@@ -24,10 +24,10 @@ export enum GEO_FILTER {
 }
 
 export enum AREA_TYPES {
-  National = "National",
-  District = "District",
-  Parliament = "Parliament",
-  Dun = "Assembly",
+  National = "national",
+  District = "district",
+  Parliament = "parliament",
+  Dun = "assembly",
 }
 
 export enum STATES {

@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Children, Fragment, useState } from "react";
 import { Combobox, Transition } from "@headlessui/react";
 import { useTranslation } from "next-i18next";
 import { Option } from "./interface";
@@ -7,9 +7,10 @@ interface ComboBoxProps {
   options: Option[];
   selected?: Option;
   onChange: (option?: Option) => void;
+  placeholder?: string;
 }
 
-const ComboBox = ({ options, selected, onChange }: ComboBoxProps) => {
+const ComboBox = ({ options, selected, onChange, placeholder }: ComboBoxProps) => {
   const { t } = useTranslation();
   const [query, setQuery] = useState("");
 
@@ -29,6 +30,7 @@ const ComboBox = ({ options, selected, onChange }: ComboBoxProps) => {
         <div className="relative mt-1">
           <div className="relative w-full cursor-pointer overflow-hidden rounded-lg border bg-white text-left focus:outline-none focus-visible:ring-0 sm:text-sm">
             <Combobox.Input
+              placeholder={placeholder}
               className="w-full border-none py-2 pl-3 pr-10 text-sm leading-5 text-gray-900 focus:outline-none focus:ring-0"
               displayValue={(option: Option) => option?.label}
               onChange={(event) => setQuery(event.target.value)}
