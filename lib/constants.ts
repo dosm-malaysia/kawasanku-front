@@ -18,9 +18,9 @@ export const LANG = [
 ];
 
 export enum GEO_FILTER {
-  District = "district",
-  Parliament = "parlimen",
-  Dun = "dun",
+  District = "District",
+  Parliament = "Parliament",
+  Dun = "DUN",
 }
 
 export enum AREA_TYPES {
