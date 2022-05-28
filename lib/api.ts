@@ -24,7 +24,7 @@ export const getAreaPaths = async () =>
 
 export const getGeojson = async (area: string) =>
   await API.get<IGeojson>(`/geo?area=${area}`).then((res) => {
-    const geojsonData = res.data.mys;
+    const geojsonData = res.data;
     return {
       type: "FeatureCollection",
       features: [
@@ -67,9 +67,10 @@ export const getJitterplots = async ({ area }: GetJitterplotsReq) =>
     `/jitter?area=${area}`
   ).then((res) => {
     const new_jitterplots: { [key: string]: IJitterplotData[] } = {};
-    res.data.forEach((metric) => {
+
+    Object.values(res.data).forEach((metric) => {
       Object.entries(metric).forEach(([key, value]) => {
-        new_jitterplots[key] = value;
+          new_jitterplots[key] = value;
       });
     });
 

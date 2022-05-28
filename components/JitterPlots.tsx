@@ -25,20 +25,20 @@ const Jitterplots = ({ areaType, data, comparisons }: JitterplotsProps) => {
   const { t } = useTranslation();
   
   // TODO: sync hover
-  const [hoverNode, setHoverNode] = useState(null)
-  const syncHoverIn = useCallback((node) => { setHoverNode(node.id) }, [setHoverNode])
-  const syncHoverOut = useCallback(() => { setHoverNode(null)}, [setHoverNode])
+//   const [hoverNode, setHoverNode] = useState(null)
+//   const syncHoverIn = useCallback((node) => { setHoverNode(node.id) }, [setHoverNode])
+//   const syncHoverOut = useCallback(() => { setHoverNode(null)}, [setHoverNode])
   
   
-  const syncHighlightNode = useMemo(() => (node: any) => {
-    if (hoverNode !== null && hoverNode === node.id) {
-        return {
-            size: 32,
-            color: "#13293d"
-        }
-    }
-    return DEFAULT_NODE_STYLE
-  }, [hoverNode])
+//   const syncHighlightNode = useMemo(() => (node: any) => {
+//     if (hoverNode !== null && hoverNode === node.id) {
+//         return {
+//             size: 32,
+//             color: "#13293d"
+//         }
+//     }
+//     return DEFAULT_NODE_STYLE
+//   }, [hoverNode])
 
   return (
     <>
@@ -58,9 +58,9 @@ const Jitterplots = ({ areaType, data, comparisons }: JitterplotsProps) => {
             label={t("jitterplot.metric_1")}
             data={data.metric_1}
             comparisons={comparisons}
-            hoverNode={syncHighlightNode}
-            onHoverIn={syncHoverIn}
-            onHoverOut={syncHoverOut}
+            // hoverNode={syncHighlightNode}
+            // onHoverIn={syncHoverIn}
+            // onHoverOut={syncHoverOut}
             tooltip="The average income per family in Malaysia"
           />
           <JitterPlot
@@ -68,9 +68,9 @@ const Jitterplots = ({ areaType, data, comparisons }: JitterplotsProps) => {
             data={data.metric_2}
             comparisons={comparisons}
             tooltip="Hello there"
-            hoverNode={syncHighlightNode}
-            onHoverIn={syncHoverIn}
-            onHoverOut={syncHoverOut}
+            // hoverNode={syncHighlightNode}
+            // onHoverIn={syncHoverIn}
+            // onHoverOut={syncHoverOut}
           />
            <JitterPlot
             label={t("jitterplot.metric_3")}
