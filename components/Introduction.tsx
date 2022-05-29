@@ -91,7 +91,7 @@ const Introduction = ({
             />
           </svg>
           {/* LOCATION */}
-          <p className="text-xl font-semibold">
+          <p className="text-xl font-semibold capitalize">
             {area ? `${area}, ` : ""}
             {state || t("malaysia")}
           </p>

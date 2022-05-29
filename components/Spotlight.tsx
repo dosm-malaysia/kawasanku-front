@@ -28,7 +28,6 @@ const Spotlight = ({
 
   const handleComparisons = (newOption?: Option) => {
     if (!newOption || jitterComparisons?.length === 3) return;
-    console.log(newOption)
 
     setJitterComparisons([...jitterComparisons, newOption]);
   };

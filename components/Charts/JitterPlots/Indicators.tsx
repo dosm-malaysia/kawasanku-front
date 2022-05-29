@@ -9,7 +9,6 @@ interface IndicatorsProps {
 const Indicators = ({ areaType }: IndicatorsProps) => {
   const { t } = useTranslation();
 
-  console.log(areaType)
   return (
     <div className="mb-3 flex h-full w-full items-center">
       <div className="w-0 md:w-1/3" />

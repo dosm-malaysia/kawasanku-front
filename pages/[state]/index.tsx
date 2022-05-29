@@ -121,7 +121,7 @@ const State: NextPage = ({
         backgroundColor="bg-white md:bg-gray-100"
         className="pb-5 px-0 md:pb-8 md:rounded-lg"
       >
-        <Card className="relative overflow-hidden rounded-lg md:border">
+        <Card className="relative overflow-visible rounded-lg md:border">
           {/* SPOTLIGHT */}
           <Spotlight
             currentLocation={{

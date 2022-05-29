@@ -59,7 +59,7 @@ const Home: NextPage = ({
         <div className="mb-5 flex w-full flex-col items-start justify-between gap-2 md:mb-7 md:flex-row md:items-center md:gap-0">
           <h3 className="section-title">
             {t("section1_title1")}{" "}
-            <span className="underline">{t("malaysia")}</span>{" "}
+            <span className="underline capitalize">{t("malaysia")}</span>{" "}
             {t("section1_title2")}
           </h3>
           <p className="text-sm text-gray-400">{t("census_2020")}</p>
@@ -99,7 +99,7 @@ const Home: NextPage = ({
         backgroundColor="bg-white md:bg-gray-100"
         className="pb-5 px-0 md:rounded-lg"
       >
-        <Card className="relative overflow-hidden rounded-lg md:border">
+        <Card className="relative overflow-visible rounded-lg md:border">
           {/* SPOTLIGHT */}
           <Spotlight
             jitterComparisons={jitterComparisons}
@@ -107,7 +107,7 @@ const Home: NextPage = ({
           />
           {/* JITTERPLOTS */}
           <JitterPlots
-            areaType={AREA_TYPES.National}
+            areaType={AREA_TYPES.State}
             data={jitterplotData}
             comparisons={jitterComparisons}
           />

@@ -24,7 +24,7 @@ const DEFAULT_NODE_STYLE = {
 
 const Jitterplots = ({ areaType, data, comparisons, currentLocation }: JitterplotsProps) => {
   const { t } = useTranslation();
-  
+
   // TODO: sync hover
 //   const [hoverNode, setHoverNode] = useState(null)
 //   const syncHoverIn = useCallback((node) => { setHoverNode(node.id) }, [setHoverNode])
@@ -45,7 +45,7 @@ const Jitterplots = ({ areaType, data, comparisons, currentLocation }: Jitterplo
     <>
       {/* MEDIAN INDICATORS */}
       <Indicators areaType={areaType} />
-      <div className="relative h-full w-full overflow-hidden">
+      <div className="relative h-full w-full overflow-visible">
         {/* JITTERPLOT CHARTS */}
         <div className="relative flex h-full w-full flex-col gap-2">
           {/* PERCENTILE OVERLAY */}
@@ -55,34 +55,35 @@ const Jitterplots = ({ areaType, data, comparisons, currentLocation }: Jitterplo
             {t("jitterplot.title_1")}
           </span>
           {/* SECTION 1 METRICS */}
+            <JitterPlot
+                label={t("jitterplot.metric_1.label")}
+                data={data.metric_1}
+                comparisons={comparisons}
+                currentLocation={currentLocation}
+                // hoverNode={syncHighlightNode}
+                // onHoverIn={syncHoverIn}
+                // onHoverOut={syncHoverOut}
+                tooltip={t("jitterplot.metric_1.tooltip")}
+              />
+            
+              <JitterPlot
+                label={t("jitterplot.metric_2.label")}
+                data={data.metric_2}
+                comparisons={comparisons}
+                currentLocation={currentLocation}
+                tooltip={t("jitterplot.metric_2.tooltip")}
+                // hoverNode={syncHighlightNode}
+                // onHoverIn={syncHoverIn}
+                // onHoverOut={syncHoverOut}
+            />
           <JitterPlot
-            label={t("jitterplot.metric_1.label")}
-            data={data.metric_1}
-            comparisons={comparisons}
-            currentLocation={currentLocation}
-            // hoverNode={syncHighlightNode}
-            // onHoverIn={syncHoverIn}
-            // onHoverOut={syncHoverOut}
-            tooltip={t("jitterplot.metric_1.tooltip")}
-          />
-          <JitterPlot
-            label={t("jitterplot.metric_2.label")}
-            data={data.metric_2}
-            comparisons={comparisons}
-            currentLocation={currentLocation}
-            tooltip={t("jitterplot.metric_2.tooltip")}
-
-            // hoverNode={syncHighlightNode}
-            // onHoverIn={syncHoverIn}
-            // onHoverOut={syncHoverOut}
-          />
-           <JitterPlot
             label={t("jitterplot.metric_3.label")}
             data={data.metric_3}
             comparisons={comparisons}
             currentLocation={currentLocation}
             tooltip={t("jitterplot.metric_3.tooltip")}
           />
+
           <JitterPlot
             label={t("jitterplot.metric_4.label")}
             data={data.metric_4}

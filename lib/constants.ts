@@ -24,6 +24,7 @@ export enum GEO_FILTER {
 }
 
 export enum AREA_TYPES {
+  State = "state",
   National = "national",
   District = "district",
   Parliament = "parliament",

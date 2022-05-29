@@ -1,5 +1,5 @@
 import { ResponsiveScatterPlotCanvas, ScatterPlotMouseHandler } from "@nivo/scatterplot";
-import {useEffect} from 'react'
+import {useEffect, useState} from 'react'
 import { IJitterplotData } from "../../../lib/interfaces";
 import { Option } from "../../Dropdowns/interface";
 import Tooltip from '../../Tooltip'
@@ -17,26 +17,23 @@ interface JitterPlotProps {
 }
 
 const JitterPlot = ({ label, data, comparisons, tooltip, currentLocation, hoverNode, onHoverIn, onHoverOut }: JitterPlotProps) => {
+    const [plot, setPlot] = useState(data)
     useEffect(() => {
-        data.forEach((item, index) => {
-            // console.log(item.id)
-            // if ([...comparisons, currentLocation].some(highlight => highlight?.label === item.id))
-            if ([...comparisons, currentLocation].some(highlight => highlight?.label === item.id)) {
-                const temp = data!.splice(index, 1).pop()
-                data.push(temp!)
-            }
-        })
+        let temp = plot.filter((item) => [...comparisons, currentLocation].some(highlight => highlight?.label === item.id))
+        setPlot([...plot.filter((item) => [...comparisons, currentLocation].some(highlight => highlight?.label !== item.id)), ...temp])       
     }, [comparisons])
 
   return (
-    <div className="flex h-full w-full flex-col items-center gap-2 md:flex-row md:gap-0">
-      <div className="w-full z-10 md:z-auto py-2 bg-white text-sm md:w-1/3 space-x-2 flex items-center">
+      <>
+      { (!isNaN(plot[0].data[0].x) || plot[0].data[0].x) && (
+    <div className="flex h-full w-full flex-col items-center gap-2 md:flex-row md:gap-0 overflow-visible">
+      <div className="w-full z-10 md:z-auto py-2 bg-white text-sm md:w-1/3 space-x-2 flex items-center overflow-visible">
         <p>{label}</p>
         {tooltip && <Tooltip>{tooltip}</Tooltip>}
       </div>
       <div className="h-10 w-full rounded-full bg-gray-50 md:w-2/3 px-3">
         <ResponsiveScatterPlotCanvas
-          data={data}
+          data={plot}
           margin={{ top: 2, right: 5, bottom: 2, left: 5 }}
           xScale={{ type: "linear", min: -1.0, max: 1.0 }}
           xFormat=">-0.2f"
@@ -96,6 +93,8 @@ const JitterPlot = ({ label, data, comparisons, tooltip, currentLocation, hoverN
         />
       </div>
     </div>
+  )}
+  </>
   );
 };
 
