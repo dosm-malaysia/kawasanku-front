@@ -1,141 +1,220 @@
 {
-  "title": "KAWASANKU | DOSM",
-  "header": "Learn about your area today!",
-  "description": "Following the completion of Census 2020, DOSM released population data at Parliament Constituency and State Legislative Assembly level for the first time in history. The Kawasanku dashboard is intended to give citizens, policymakers, and the international community an accessible way to explore the dataset, which we have also made available via our GitHub.",
-  "filter_title": "Find my area",
-  "filter_clear": "Clear Selection",
-  "filter1_placeholder": "Select state",
-  "filter2_placeholder": "Select geo-filter",
-  "filter3_placeholder": "Select sub-national area",
-  "map_infotip": "Scroll down to learn about your area!",
-  "district": "District",
-  "parlimen": "Parliament Constituency",
-  "dun": "State Legislative Assembly",
-  "malaysia": "Malaysia",
-  "section1_title1": "What does the population of",
-  "section1_title2": "look like?",
-  "pyramid": {
-    "male": "Male",
-    "male_surplus": "Male Surplus",
-    "female": "Female",
-    "female_surplus": "Female Surplus"
-  },
-  "doughnut": {
-    "metric_1": "Sex",
-    "metric_2": "Ethnicity",
-    "metric_3": "Nationality",
-    "metric_4": "Religion",
-    "metric_5": "Marital status",
-    "metric_6": "Age group",
-    "metric_7": "Households",
-    "metric_8": "Employment status",
-    "sex_male": "Male",
-    "sex_female": "Female",
-    "ethnicity_bumi": "Bumi",
-    "ethnicity_chinese": "Chinese",
-    "ethnicity_indian": "Indian",
-    "ethnicity_other": "Other",
-    "nationality_local": "Local",
-    "nationality_foreign": "Foreign",
-    "religion_muslim": "Muslim",
-    "religion_christian": "Christian",
-    "religion_buddhist": "Buddhist",
-    "religion_hindu": "Hindu",
-    "religion_atheist": "Atheist",
-    "religion_other": "Other",
-    "marital_never_married": "Single",
-    "marital_married": "Married",
-    "marital_widowed": "Widowed",
-    "marital_divorced": "Divorced",
-    "agegroup_child": "Child",
-    "agegroup_working": "Working",
-    "agegroup_elderly": "Elderly",
-    "housing_owned": "Owned",
-    "housing_rented": "Rented",
-    "housing_quarters": "Quarters",
-    "labour_working": "Working",
-    "labour_unemployed": "Unemployed",
-    "labour_out": "Out"
-  },
-  "section2_title1": "A comparison of key variables across states",
-  "section2_title2_1": "How does",
-  "section2_title2_2": "compare to other {{area_types}}?",
-  "area_types": {
-    "state": "states",
-    "district": "districts",
-    "parlimen": "parliaments",
-    "dun": "assemblies"
-  },
-  "census_2020": "Data correct as of Census 2020",
-  "spotlight": "Spotlight",
-  "spotlight_placeholder": "Select up to 3 options",
-  "no_results": "No results found",
-  "median": "{{area_type}} median",
-  "worse_than_median": "Worse than median",
-  "better_than_median": "Better than median",
-  "jitterplot": {
-    "title_1": "Economy",
-    "title_2": "Public services",
-    "title_3": "Geography",
-    "title_4": "Population",
-
-    "metric_1": "Mean income per household",
-    "metric_2": "Mean expenditure per household",
-    "metric_3": "Inequality",
-    "metric_4": "Incidence of poverty",
-    "metric_5": "Unemployment rate",
-    "metric_6": "Labour force participation rate",
-    "metric_7": "Labour force population ratio",
-
-    "metric_8": "Access to electricity",
-    "metric_9": "Access to piped water at home",
-    "metric_10": "Hospitals per 1000 people",
-    "metric_11": "Health cliniics per 1000 people",
-    "metric_12": "Schools per 1000 people",
-    "metric_13": "Police stations per 1000 people",
-    "metric_14": "Fire stations per 1000 people",
-
-    "metric_15": "Land area",
-    "metric_16": "Maximum elevation",
-    "metric_17": "Terrain ruggedness",
-    "metric_18": "Water surface area (%)",
-    "metric_19": "Forest surface area",
-    "metric_20": "Forest loss between 2000 to 2001",
-    "metric_21": "Intensity of lights at night",
-
-    "metric_22": "Population density",
-    "metric_23": "Median age",
-    "metric_24": "Median household size",
-    "metric_25": "Birth rate",
-    "metric_26": "All-cause mortality",
-    "metric_27": "Child dependency ratio",
-    "metric_28": "Elderly dependency ratio"
-  },
-  "share": "Share",
-  "dosm": "Department of Statistics Malaysia (DOSM)",
-  "pmo": "Prime Minister's Office",
-  "copyrights": "© 2020 Department of Statistics Malaysia (DOSM)",
-  "open_data": "Open data",
-  "facebook": "Facebook",
-  "twitter": "Twitter",
-  "embed": "Embed",
-  "copy_link": "Copy link",
-  "states": {
-    "jhr": "Johor",
-    "kdh": "Kedah",
-    "ktn": "Kelantan",
-    "mlk": "Melaka",
-    "nsn": "Negeri Sembilan",
-    "phg": "Pahang",
-    "prk": "Perak",
-    "pls": "Perlis",
-    "png": "Penang",
-    "sbh": "Sabah",
-    "swk": "Sarawak",
-    "sgr": "Selangor",
-    "trg": "Terengganu",
-    "kul": "Kuala Lumpur",
-    "lbn": "Labuan",
-    "pjy": "Putrajaya"
-  }
+    "title": "KAWASANKU | DOSM",
+    "header": "认识您的地区！",
+    "description": "随着马来西亚2020年人口与住房普查(MyCensus 2020)的完成，人口与住房局有史以来首次在议会选区和州立法议会层面发布了人口数据。Kawasanku Dashboard旨在为公民、政策制定者和国际社会提供一种可访问的方式来探索数据集。",
+    "filter_title": "寻找我的地区",
+    "filter_clear": "清空选项",
+    "filter1_placeholder": "选择状态",
+    "filter2_placeholder": "选择地理筛选器",
+    "filter3_placeholder": "选择",
+    "map_infotip": "",
+    "district": "县",
+    "parlimen": "国会议员选区",
+    "dun": "州立法议会",
+    "section1_title1": "",
+    "section1_title2": "的人口是什么样子?",
+    "pyramid": {
+        "male": "男",
+        "male_surplus": "过量的男",
+        "female": "女",
+        "female_surplus": "过量的女"
+    },
+    "doughnut": {
+        "metric_1": "性别",
+        "metric_2": "种族",
+        "metric_3": "国籍",
+        "metric_4": "宗教",
+        "metric_5": "婚姻状况",
+        "metric_6": "年龄组",
+        "metric_7": "有人居住",
+        "metric_8": "就业状况",
+        "sex_male": "男",
+        "sex_female": "女",
+        "ethnicity_bumi": "土著",
+        "ethnicity_chinese": "华人",
+        "ethnicity_indian": "印度人",
+        "ethnicity_other": "其他",
+        "nationality_local": "本地",
+        "nationality_foreign": "外国",
+        "religion_muslim": "穆斯林",
+        "religion_christian": "基督教",
+        "religion_buddhist": "佛教",
+        "religion_hindu": "印度教",
+        "religion_other": "其他",
+        "religion_atheist": "无神论者",
+        "marital_never_married": "单身",
+        "marital_married": "已婚",
+        "marital_widowed": "丧偶",
+        "marital_divorced": "离婚",
+        "agegroup_child": "儿童",
+        "agegroup_working": "已工人士",
+        "agegroup_elderly": "老年人",
+        "housing_owned": "拥有",
+        "housing_rented": "租用",
+        "housing_quarters": "宿舍",
+        "labour_working": "就业",
+        "labour_unemployed": "失业",
+        "labour_out": "缺乏劳动能力"
+    },
+    "census_2020": "2020年MyCensus数据正确",
+    "section2_title1": "各州关键变量的比较",
+    "section2_title2_1": "",
+    "section2_title2_2": "如何与其他{{area_types}}比较?",
+    "area_types": {
+        "state": "州",
+        "district": "县",
+        "parlimen": "国会议员选区",
+        "dun": "州立法议会"
+    },
+    "spotlight": "焦点",
+    "spotlight_placeholder": "最多选择三个选项",
+    "no_results": "未找到结果",
+    "median": "{{area_type}}的中位数",
+    "better_than_median": "高于中为数",
+    "worse_than_median": "低于中位数",
+    "jitterplot": {
+        "title_1": "地理",
+        "title_2": "人口",
+        "title_3": "经济",
+        "title_4": "公共设施",
+        "metric_1": {
+            "label": "土地面积",
+            "tooltip": ""
+        },
+        "metric_2": {
+            "label": "最高海拔高度",
+            "tooltip": "地形热度数据来自免费获得的全球多分辨率地形高程数据2010 (GMTED2010)数据集，分辨率为7.5弧秒。地理空间分析是采用DOSM进行的。"
+        },
+        "metric_3": {
+            "label": "地形畸形指数",
+            "tooltip": "地形的崎岖程度表明一个地区的平均“参差不齐”或“平坦”程度。指数是在Riley et al. (1999)之后计算出来的，使用的是免费获得的GMTED2010数据集，分辨率为30角秒。地理空间分析是采用DOSM进行的。"
+        },
+        "metric_4": {
+            "label": "水覆盖的百分比",
+            "tooltip": "水覆盖数据来自EC JRC和谷歌在哥白尼计划下免费提供的全球地表水数据集(Pekel et al., 2016)。地理空间分析是采用DOSM进行的。"
+        },
+        "metric_5": {
+            "label": "被森林覆盖的面积",
+            "tooltip": "树木覆盖数据来自UMD、谷歌、美国地质调查局和美国宇航局免费提供的全球森林变化数据集(Hansen et al., 2013)。地理空间分析是采用DOSM进行的。"
+        },
+        "metric_6": {
+            "label": "2000 - 2021年森林损失",
+            "tooltip": "树木损失数据来自UMD、谷歌、美国地质调查局和美国宇航局免费提供的全球森林变化数据集(Hansen et al. 2013)。地理空间分析是采用DOSM进行的。"
+        },
+        "metric_7": {
+            "label": "夜晚的灯光强度",
+            "tooltip": "VIIRS Nighttime Light' 来自免费获得的全球VIIRS夜间灯光数据集(Elvidge et al., 2020)。地理空间分析是采用DOSM进行的。"
+        },
+        "metric_8": {
+            "label": "人口密度",
+            "tooltip": ""
+        },
+        "metric_9": {
+            "label": "男女比例",
+            "tooltip": ""
+        },
+        "metric_10": {
+            "label": "平均家庭规模",
+            "tooltip": ""
+        },
+        "metric_11": {
+            "label": "每1000个女性的活产率",
+            "tooltip": ""
+        },
+        "metric_12": {
+            "label": "每1000个人的死亡率",
+            "tooltip": ""
+        },
+        "metric_13": {
+            "label": "年幼人士的依赖比率",
+            "tooltip": "年幼年龄群（0-14）与工作人士年龄群（15-64）的比率"
+        },
+        "metric_14": {
+            "label": "年老人士的依赖比率",
+            "tooltip": "年老年龄群（65+）与工作人士年龄群（15-64）的比率"
+        },
+        "metric_15": {
+            "label": "家庭收入",
+            "tooltip": "根据2020年家庭收入、支出和基本设施(HIES/BA)调查数据估算。某些选区的标准误差可能比较高。"
+        },
+        "metric_16": {
+            "label": "家庭开支",
+            "tooltip": ""
+        },
+        "metric_17": {
+            "label": "不平等(基尼系数)",
+            "tooltip": ""
+        },
+        "metric_18": {
+            "label": "贫困的发生率",
+            "tooltip": "如果一个人或一个家庭的总收入低于2019年的贫困线收入，就会被归为贫困。"
+        },
+        "metric_19": {
+            "label": "失业率",
+            "tooltip": "各选区的劳动力指数是根据2020年劳动力调查数据和2020年估计的人口因素估计得出的。由于某些选区的标准误差相对比较高，因此应谨慎使用此数据。"
+        },
+        "metric_20": {
+            "label": "劳动力参与率",
+            "tooltip": ""
+        },
+        "metric_21": {
+            "label": "工作人士年龄占人口的百分比",
+            "tooltip": ""
+        },
+        "metric_22": {
+            "label": "电能源的使用权",
+            "tooltip": "包括24小时供应和间歇供应"
+        },
+        "metric_23": {
+            "label": "家庭自来水供应的使用权",
+            "tooltip": ""
+        },
+        "metric_24": {
+            "label": "每1000个人的医院数量",
+            "tooltip": "包括截至2022年5月1日运营的所有公立和私立医院。医院的数据来自马来西亚卫生部。地理空间分析是采用DOSM进行的。"
+        },
+        "metric_25": {
+            "label": "每1000个人的诊所数量",
+            "tooltip": "包括截至2022年5月1日运营的所有公共和私人诊所。有关诊所的数据来自马来西亚卫生部。地理空间分析是采用DOSM进行的。"
+        },
+        "metric_26": {
+            "label": "每1000个人的学校数量",
+            "tooltip": "包括2022年5月1日开始运营的所有公立学校。学校数据来自教育部。地理空间分析是采用DOSM进行的。"
+        },
+        "metric_27": {
+            "label": "每1000个人的警察局和消防局的数量",
+            "tooltip": "包括2022年5月1日开始运作的警察局和消防局。警察局和消防局的数据分别来自马来西亚皇家警察和马来西亚消防救援部门。地理空间分析是采用DOSM进行的。"
+        },
+        "metric_28": {
+            "label": "每1000个人的便利店数量",
+            "tooltip": "包括公有和私有的杂货店。相当于马来西亚标准工业分类(MSIC) 2008年1.0版的粮食商店。"
+        }
+    },
+    "share": "分享",
+    "dosm": "Department of Statistics Malaysia",
+    "pmo": "Prime Minister's Office",
+    "copyrights": "© 2020 Department of Statistics Malaysia (DOSM)",
+    "open_data": "",
+    "facebook": "Facebook",
+    "twitter": "Twitter",
+    "embed": "Embed",
+    "copy_link": "Copy link",
+    "states": {
+        "jhr": "Johor",
+        "kdh": "Kedah",
+        "ktn": "Kelantan",
+        "mlk": "Melaka",
+        "nsn": "Negeri Sembilan",
+        "phg": "Pahang",
+        "prk": "Perak",
+        "pls": "Perlis",
+        "png": "Pulau Pinang",
+        "sbh": "Sabah",
+        "swk": "Sarawak",
+        "sgr": "Selangor",
+        "trg": "Terengganu",
+        "kul": "W.P. Kuala Lumpur",
+        "lbn": "W.P. Labuan",
+        "pjy": "W.P. Putrajaya"
+    }
 }

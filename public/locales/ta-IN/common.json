@@ -1,141 +1,220 @@
 {
-  "title": "KAWASANKU | DOSM",
-  "header": "Learn about your area today!",
-  "description": "Following the completion of Census 2020, DOSM released population data at Parliament Constituency and State Legislative Assembly level for the first time in history. The Kawasanku dashboard is intended to give citizens, policymakers, and the international community an accessible way to explore the dataset, which we have also made available via our GitHub.",
-  "filter_title": "Find my area",
-  "filter_clear": "Clear Selection",
-  "filter1_placeholder": "Select state",
-  "filter2_placeholder": "Select geo-filter",
-  "filter3_placeholder": "Select sub-national area",
-  "map_infotip": "Scroll down to learn about your area!",
-  "district": "District",
-  "parlimen": "Parliament Constituency",
-  "dun": "State Legislative Assembly",
-  "malaysia": "Malaysia",
-  "section1_title1": "What does the population of",
-  "section1_title2": "look like?",
-  "pyramid": {
-    "male": "Male",
-    "male_surplus": "Male Surplus",
-    "female": "Female",
-    "female_surplus": "Female Surplus"
-  },
-  "doughnut": {
-    "metric_1": "Sex",
-    "metric_2": "Ethnicity",
-    "metric_3": "Nationality",
-    "metric_4": "Religion",
-    "metric_5": "Marital status",
-    "metric_6": "Age group",
-    "metric_7": "Households",
-    "metric_8": "Employment status",
-    "sex_male": "Male",
-    "sex_female": "Female",
-    "ethnicity_bumi": "Bumi",
-    "ethnicity_chinese": "Chinese",
-    "ethnicity_indian": "Indian",
-    "ethnicity_other": "Other",
-    "nationality_local": "Local",
-    "nationality_foreign": "Foreign",
-    "religion_muslim": "Muslim",
-    "religion_christian": "Christian",
-    "religion_buddhist": "Buddhist",
-    "religion_hindu": "Hindu",
-    "religion_atheist": "Atheist",
-    "religion_other": "Other",
-    "marital_never_married": "Single",
-    "marital_married": "Married",
-    "marital_widowed": "Widowed",
-    "marital_divorced": "Divorced",
-    "agegroup_child": "Child",
-    "agegroup_working": "Working",
-    "agegroup_elderly": "Elderly",
-    "housing_owned": "Owned",
-    "housing_rented": "Rented",
-    "housing_quarters": "Quarters",
-    "labour_working": "Working",
-    "labour_unemployed": "Unemployed",
-    "labour_out": "Out"
-  },
-  "section2_title1": "A comparison of key variables across states",
-  "section2_title2_1": "How does",
-  "section2_title2_2": "compare to other {{area_types}}?",
-  "area_types": {
-    "state": "states",
-    "district": "districts",
-    "parlimen": "parliaments",
-    "dun": "assemblies"
-  },
-  "census_2020": "Data correct as of Census 2020",
-  "spotlight": "Spotlight",
-  "spotlight_placeholder": "Select up to 3 options",
-  "no_results": "No results found",
-  "median": "{{area_type}} median",
-  "worse_than_median": "Worse than median",
-  "better_than_median": "Better than median",
-  "jitterplot": {
-    "title_1": "Economy",
-    "title_2": "Public services",
-    "title_3": "Geography",
-    "title_4": "Population",
-
-    "metric_1": "Mean income per household",
-    "metric_2": "Mean expenditure per household",
-    "metric_3": "Inequality",
-    "metric_4": "Incidence of poverty",
-    "metric_5": "Unemployment rate",
-    "metric_6": "Labour force participation rate",
-    "metric_7": "Labour force population ratio",
-
-    "metric_8": "Access to electricity",
-    "metric_9": "Access to piped water at home",
-    "metric_10": "Hospitals per 1000 people",
-    "metric_11": "Health cliniics per 1000 people",
-    "metric_12": "Schools per 1000 people",
-    "metric_13": "Police stations per 1000 people",
-    "metric_14": "Fire stations per 1000 people",
-
-    "metric_15": "Land area",
-    "metric_16": "Maximum elevation",
-    "metric_17": "Terrain ruggedness",
-    "metric_18": "Water surface area (%)",
-    "metric_19": "Forest surface area",
-    "metric_20": "Forest loss between 2000 to 2001",
-    "metric_21": "Intensity of lights at night",
-
-    "metric_22": "Population density",
-    "metric_23": "Median age",
-    "metric_24": "Median household size",
-    "metric_25": "Birth rate",
-    "metric_26": "All-cause mortality",
-    "metric_27": "Child dependency ratio",
-    "metric_28": "Elderly dependency ratio"
-  },
-  "share": "Share",
-  "dosm": "Department of Statistics Malaysia (DOSM)",
-  "pmo": "Prime Minister's Office",
-  "copyrights": "© 2020 Department of Statistics Malaysia (DOSM)",
-  "open_data": "Open data",
-  "facebook": "Facebook",
-  "twitter": "Twitter",
-  "embed": "Embed",
-  "copy_link": "Copy link",
-  "states": {
-    "jhr": "Johor",
-    "kdh": "Kedah",
-    "ktn": "Kelantan",
-    "mlk": "Melaka",
-    "nsn": "Negeri Sembilan",
-    "phg": "Pahang",
-    "prk": "Perak",
-    "pls": "Perlis",
-    "png": "Penang",
-    "sbh": "Sabah",
-    "swk": "Sarawak",
-    "sgr": "Selangor",
-    "trg": "Terengganu",
-    "kul": "Kuala Lumpur",
-    "lbn": "Labuan",
-    "pjy": "Putrajaya"
-  }
+    "title": "KAWASANKU | DOSM",
+    "header": "உங்கள் தொகுதியைப் பற்றி அறிக!",
+    "description": "மக்கள் தொகை கணக்கெடுப்பைத் (MyCensus 2020) தொடர்ந்து, மலேசியப் புள்ளிவிவரத் துறை முதல் முறையாக நாடாளுமன்ற மற்றும் சட்டமனற தொகுதிகளின் வாரியாக மக்கள் தொகையை வெளியிட்டுள்ளது. Dashboard Kawasanku பொதுமக்கள், கொள்கைகள் தயாரிப்போர் மற்றும் உலக மக்களுக்கு பயன்படும்.",
+    "filter_title": "தொகுதியைத் தேடுக",
+    "filter_clear": "தெளிவான தேர்வு",
+    "filter1_placeholder": "மாநிலம் தெரிவு செய்க",
+    "filter2_placeholder": "தொகுதி வகை",
+    "filter3_placeholder": "தெரிவு செய்க",
+    "map_infotip": "",
+    "district": "மாவட்டம்",
+    "parlimen": "நாடாளுமன்ற தொகுதி",
+    "dun": "மாநில சட்டமன்ற தொகுதி",
+    "section1_title1": "மக்கள் தொகை",
+    "section1_title2": "இல் எவ்வாறு உள்ளது?",
+    "pyramid":{
+        "male": "ஆண்",
+        "male_surplus": "மேலும் ஆண்",
+        "female": "பெண்",
+        "female_surplus": "மேலும் பெண்"
+    },
+    "doughnut": {
+        "metric_1": "பாலினம்",
+        "metric_2": "இனம்",
+        "metric_3": "குடியுரிமை",
+        "metric_4": "மதம்",
+        "metric_5": "திருமண நிலை",
+        "metric_6": "வயது பகுப்பு",
+        "metric_7": "இருப்பிட நிலை",
+        "metric_8": "தொழில் நிலை",
+        "sex_male": "ஆண்",
+        "sex_female": "பெண்",
+        "ethnicity_bumi": "பூமிபுத்ரா",
+        "ethnicity_chinese": "சீனர்",
+        "ethnicity_indian": "இந்தியர்",
+        "ethnicity_other": "பிறர்",
+        "nationality_local": "மலேசியனர்",
+        "nationality_foreign": "வெளிநாட்டவர்",
+        "religion_muslim": "இசுலாம்",
+        "religion_christian": "கிறித்துவம்",
+        "religion_buddhist": "பௌத்தம்",
+        "religion_hindu": "இந்து",
+        "religion_other": "நாத்திகம்",
+        "religion_atheist": "பிற",
+        "marital_never_married": "மணமாகதவர்",
+        "marital_married": "மணமுடித்தவர்",
+        "marital_widowed": "துணை இழந்தவர்",
+        "marital_divorced": "விவகாரத்தானவர்",
+        "agegroup_child": "குழந்தைகள்",
+        "agegroup_working": "பணிபுரிவோர்",
+        "agegroup_elderly": "முதியவர்",
+        "housing_owned": "சொந்த வீடு",
+        "housing_rented": "வாடகை வீடு",
+        "housing_quarters": "நிறுவனக் குடியிருப்பு",
+        "labour_working": "வேலை செய்வோர்",
+        "labour_unemployed": "வேலை இல்லாதவர்",
+        "labour_out": "தொழிலில் ஈடுபடாதோர்"
+    },
+    "census_2020": "2020 கணக்கெடுப்பின் படி மக்கள்தொகை",
+    "section2_title1": "மாநிலங்களுக்கிடையே குறியீட்டு ஒப்பீடு",
+    "section2_title2_1": "",
+    "section2_title2_2": "-ஓடு {{area_types}}-ஐ ஒப்பிட்டால்?",
+    "area_types": {
+        "state": "மாநிலம்",
+        "district": "மாவட்டம்",
+        "parlimen": "நாடாளுமன்ற தொகுதி",
+        "dun": "மாநில சட்டமன்ற தொகுதி"
+    },
+    "spotlight": "முன்னிலை",
+    "spotlight_placeholder": "மூன்று விருப்பங்கள் வரை தேர்ந்தெடுக்கவும்",
+    "no_results": "முடிவுகள் எதுவும் இல்லை",
+    "median": "{{area_type}} இடையே இடைநிலை",
+    "better_than_median": "இடைநிலைக்கு மேல்",
+    "worse_than_median": "இடைநிலைக்குக் கீழ்",
+    "jitterplot": {
+        "title_1": "நில அமைப்பு",
+        "title_2": "மக்கள் தொகை",
+        "title_3": "பொருளாதாரம்",
+        "title_4": "பொது வசதிகள்",
+        "metric_1": {
+            "label": "பரப்பளவு",
+            "tooltip": ""
+        },
+        "metric_2": {
+            "label": "அதிகபட்ச உயரம்",
+            "tooltip": "நிலப்பரப்புத் தன்மை, 7.5 கோணத்துளி அளவில் GMTED2010 தரவுடன் DOSM-ஆல் கணக்கிடப்பட்டது."
+        },
+        "metric_3": {
+            "label": "நிலப்பரப்பு கரடுமுரடான குறியீடு",
+            "tooltip": "நிலப்பரப்பு கரடுமுரடான குறியீடு 'மலைப்பாங்கான' அல்லது 'சமதரையான' நிலத்தை குறிக்கும். Riley et al. (1999) முறைபடி, 30 கோணத்துளி அளவில் GMTED2010 தரவுடன், DOSM-ஆல் கணக்கிடப்பட்டது."
+        },
+        "metric_4": {
+            "label": "நீர் சூழ்ந்த நிலப்பரப்பு விகிதம்",
+            "tooltip": "EC JRC தரவும் கூகிள் உலக நீர் பரப்பு தரவும் கோப்பர்னிக்கஸ் மென்பொருள் (Pekel et al., 2016) கொண்டு, DOSM-ஆல் கணக்கிடப்பட்டது."
+        },
+        "metric_5": {
+            "label": "காடு சூழ்ந்த நிலப்பரப்பு விகிதம்",
+            "tooltip": "UMD, கூகிள், USGS மற்றும் நாசா-வின் 'Global Forest Change' தரவைக் கொண்டு (Hansan et al., 2013), DOSM-ஆல் கணக்கிடப்பட்டது. "
+        },
+        "metric_6": {
+            "label": "2000 முதல் 2021 இழுந்த காடுகள்",
+            "tooltip": "UMD, கூகிள், USGS மற்றும் நாசா-வின் 'Global Forest Change' தரவைக் கொண்டு (Hansan et al., 2013), DOSM-ஆல் கணக்கிடப்பட்டது. "
+        },
+        "metric_7": {
+            "label": "இரவில் ஒளித் தீவிரம்",
+            "tooltip": " 'VIIRS Nighttime Light' தரவுகளின் மூலம் (Elvidge et al., 2010), DOSM-ஆல் கணக்கிடப்பட்டது.  "
+        },
+        "metric_8": {
+            "label": "மக்களடர்த்தி",
+            "tooltip": ""
+        },
+        "metric_9": {
+            "label": "பெண்ணுக்கு ஆண் விகிதம்",
+            "tooltip": ""
+        },
+        "metric_10": {
+            "label": "சராசரி வீட்டு அளவு",
+            "tooltip": ""
+        },
+        "metric_11": {
+            "label": "1000 பெண்களுக்கான மகப்பேறு விகிதம்",
+            "tooltip": ""
+        },
+        "metric_12": {
+            "label": "1000 பேருக்கான இறப்பு விகிதம்",
+            "tooltip": ""
+        },
+        "metric_13": {
+            "label": "இளையோர் சார்பு விகிதம்",
+            "tooltip": "குழந்தைகளுக்கும் (0-14) வேலை செய்வோருக்குமான (15-64) மக்கள்தொகை விகிதம்"
+        },
+        "metric_14": {
+            "label": "முதியோர் சார்பு விகிதம்",
+            "tooltip": "முதியோருக்கும் (65+) வேலை செய்வோருக்குமான (15-64) மக்கள்தொகை விகிதம்"
+        },
+        "metric_15": {
+            "label": "குடும்ப வருமானம்",
+            "tooltip": "2020 குடும்ப வருமான, செலவு மற்றும் அடிப்படை வசதிகளின் ஆய்வு படி நிர்ணயிக்கப்பட்டது. சில தொகுதிகளின் கணக்கில் மிகுந்த வேறுபாடு இருக்கலாம்."
+        },
+        "metric_16": {
+            "label": "குடும்பச் செலவு",
+            "tooltip": ""
+        },
+        "metric_17": {
+            "label": "சமத்துவமின்மை (கினி குணகம்)",
+            "tooltip": ""
+        },
+        "metric_18": {
+            "label": "வறுமை விகிதம்",
+            "tooltip": "2019 வறுமைக் கோட்டு வருமான வரம்பிற்குக் கீழ் உள்ளவர்கள் வறுமைகுட்பட்டவர்கள்."
+        },
+        "metric_19": {
+            "label": "வேலையின்மை விகிதம்",
+            "tooltip": "ஊழியர் தொகைக்கான குறியீடுகள், 2020 ஊழியர் கணக்கெடுப்பின் படியும் 2020 மக்கள் தொகை காரணிகளையும் கொண்டு நிர்ணயிக்கப்பட்டது. சில தொகுதிகளின் கணக்கில் மிகுந்த வேறுபாடு இருக்கலாம்."
+        },
+        "metric_20": {
+            "label": "தொழிலாளர் பங்கேற்பு விகிதம்",
+            "tooltip": ""
+        },
+        "metric_21": {
+            "label": "தொழில் செய்வோர் %",
+            "tooltip": ""
+        },
+        "metric_22": {
+            "label": "மின்வசதிகளுக்கான அனுகல்",
+            "tooltip": "24-மணி நேர மற்றும் கட்டுப்படுத்தப்பட்ட விநியோகமும்"
+        },
+        "metric_23": {
+            "label": "நீர் வசதிகளுக்கான அனுகல்",
+            "tooltip": ""
+        },
+        "metric_24": {
+            "label": "1000 பேருக்கு ஒரு பொது மருத்துவமனை விகிதம்",
+            "tooltip": "1 மே 2022 வரை இயங்கும் அரசு மற்றும் தனியார் மருத்துவமனைகளை உள்ளடக்கும். மலேசியச் சுகாதார அமைச்சிடமிருந்து தரவு பெற்று DOSM-ஆல் ஆய்வு செய்யப்பட்டது."
+        },
+        "metric_25": {
+            "label": "1000 பேருக்கு ஒரு பண்டுவ விகிதம்",
+            "tooltip": "1 மே 2022 வரை இயங்கும் அரசு மற்றும் தனியார் பண்டுவங்கள் (கிலினிக்) உள்ளடக்கும். மலேசியச் சுகாதார அமைச்சிடமிருந்து தரவு பெற்று DOSM-ஆல் ஆய்வு செய்யப்பட்டது"
+        },
+        "metric_26": {
+            "label": "1000 குழந்தைகளுக்கு ஒரு பள்ளி விகிதம்",
+            "tooltip": "1 மே 2022 வரை இயங்கும் அரசுப்பள்ளிகளை உள்ளடக்கும். மலேசியக் கல்வி அமைச்சிடமிருந்து தரவு பெற்று DOSM-ஆல் ஆய்வு செய்யப்பட்டது"
+        },
+        "metric_27": {
+            "label": "1000 பேருக்கு ஒரு காவல் மற்றும் தீயணைப்பு நிலைய விகிதம்",
+            "tooltip": "1 மே 2022 வரை இயங்கும் காவல் மற்றும் தீயணைப்பு நிலையங்களை உள்ளடக்கும். மலேசிய அரசு காவல்துறை மற்றும் மலேசியத் தீயணைப்பு மற்றும் மீட்புத் துறையிடமிருந்து தரவு பெற்று DOSM-ஆல் ஆய்வு செய்யப்பட்டது"
+        },
+        "metric_28": {
+            "label": "1000 பேருக்கு ஒரு மளிகை கடை விகிதம்",
+            "tooltip": "பொது மற்றும் தனியார் மளிகை கடைகளை கணக்கில் கொண்டுள்ளது. மலேசிய தரநிலை தொழில்துறை வகைப்பாடு (MSIC) 2008 தரவின்படி ஆய்வு செய்யப்பட்டது."
+        }
+    },
+    "share": "பகிர்க",
+    "dosm": "Department of Statistics Malaysia",
+    "pmo": "Prime Minister's Office",
+    "copyrights": "© 2020 Department of Statistics Malaysia (DOSM)",
+    "open_data": "",
+    "facebook": "Facebook",
+    "twitter": "Twitter",
+    "embed": "Embed",
+    "copy_link": "Copy link",
+    "states": {
+        "jhr": "Johor",
+        "kdh": "Kedah",
+        "ktn": "Kelantan",
+        "mlk": "Melaka",
+        "nsn": "Negeri Sembilan",
+        "phg": "Pahang",
+        "prk": "Perak",
+        "pls": "Perlis",
+        "png": "Pulau Pinang",
+        "sbh": "Sabah",
+        "swk": "Sarawak",
+        "sgr": "Selangor",
+        "trg": "Terengganu",
+        "kul": "W.P. Kuala Lumpur",
+        "lbn": "W.P. Labuan",
+        "pjy": "W.P. Putrajaya"
+    }
 }

@@ -1,4 +1,5 @@
 import { ResponsiveScatterPlotCanvas, ScatterPlotMouseHandler } from "@nivo/scatterplot";
+import {useEffect} from 'react'
 import { IJitterplotData } from "../../../lib/interfaces";
 import { Option } from "../../Dropdowns/interface";
 import Tooltip from '../../Tooltip'
@@ -16,6 +17,17 @@ interface JitterPlotProps {
 }
 
 const JitterPlot = ({ label, data, comparisons, tooltip, currentLocation, hoverNode, onHoverIn, onHoverOut }: JitterPlotProps) => {
+    useEffect(() => {
+        data.forEach((item, index) => {
+            // console.log(item.id)
+            // if ([...comparisons, currentLocation].some(highlight => highlight?.label === item.id))
+            if ([...comparisons, currentLocation].some(highlight => highlight?.label === item.id)) {
+                const temp = data!.splice(index, 1).pop()
+                data.push(temp!)
+            }
+        })
+    }, [comparisons])
+
   return (
     <div className="flex h-full w-full flex-col items-center gap-2 md:flex-row md:gap-0">
       <div className="w-full z-10 md:z-auto py-2 bg-white text-sm md:w-1/3 space-x-2 flex items-center">
@@ -36,7 +48,19 @@ const JitterPlot = ({ label, data, comparisons, tooltip, currentLocation, hoverN
           axisRight={null}
           axisBottom={null}
           axisLeft={null}
-          nodeSize={data.length > 10 ? 8 : 14}
+          renderNode={(canvas, node) => {
+            canvas.beginPath()
+            canvas.arc(node.x, node.y, node.size / 2, 0, 2 * Math.PI)
+            canvas.fillStyle = node.color
+            canvas.fill()
+          }}
+          nodeSize={node => { 
+            if ([...comparisons, currentLocation].some(item => item?.label === node.serieId)) {
+                node.index = 200
+                return 14
+            }
+            return 8
+          }}
           onMouseEnter={(node) => {
               if (comparisons.some(item => item.label === node.serieId)) return
               node.color = "#13293d"

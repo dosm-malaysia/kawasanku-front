@@ -9,6 +9,7 @@ interface IndicatorsProps {
 const Indicators = ({ areaType }: IndicatorsProps) => {
   const { t } = useTranslation();
 
+  console.log(areaType)
   return (
     <div className="mb-3 flex h-full w-full items-center">
       <div className="w-0 md:w-1/3" />
@@ -34,7 +35,7 @@ const Indicators = ({ areaType }: IndicatorsProps) => {
         {/* MEDIAN */}
         <div className="flex w-1/3 flex-col items-center text-accent">
           <p className="text-base font-semibold capitalize text-center">
-            {t("median", { area_type: areaType })}
+            {t("median", { area_type: t(`area_types.${areaType}`) })}
           </p>
         </div>
         {/* BETTER THAN MEDIAN */}
