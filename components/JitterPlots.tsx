@@ -279,6 +279,7 @@ const Jitterplots = ({ areaType, data, comparisons, currentLocation }: Jitterplo
           />
          
         </div>
+        <small className="inline-block pt-4 text-gray-500"><i>{t('jitterplot.dislaimer')}</i></small>
       </div>
     </>
   );

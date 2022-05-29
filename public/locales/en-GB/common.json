@@ -77,6 +77,8 @@
         "title_2": "Population",
         "title_3": "Economy",
         "title_4": "Public Services",
+        "dislaimer": "Note: Dispersions across variables are not intended to be perfectly comparable",
+
         "metric_1": {
             "label": "Land area",
             "tooltip": ""

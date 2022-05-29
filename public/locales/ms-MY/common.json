@@ -77,6 +77,8 @@
         "title_2": "Populasi",
         "title_3": "Ekonomi",
         "title_4": "Perkhidmatan awam",
+        "dislaimer": "Nota: Julat bagi setiap pembolehubah tidak boleh dibandingkan secara mutlak.",
+
         "metric_1": {
             "label": "Keluasan",
             "tooltip": ""

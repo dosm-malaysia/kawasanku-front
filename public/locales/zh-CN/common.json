@@ -77,6 +77,7 @@
         "title_2": "人口",
         "title_3": "经济",
         "title_4": "公共设施",
+        "disclaimer": "注意：每个变量的范围不能绝对具有可比性。",
         "metric_1": {
             "label": "土地面积",
             "tooltip": ""
