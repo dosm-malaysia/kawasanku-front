@@ -28,9 +28,9 @@ const SelectMenu = ({
           <div className={`relative mt-1 ${disabled ? 'bg-gray-500' : ''}"`}>
             <Listbox.Button
               className={`
-                relative w-full cursor-pointer rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm focus:outline-none focus:ring-0 sm:text-sm
+                relative w-full cursor-pointer rounded-md border border-gray-300 py-2 pl-3 pr-10 text-left shadow-sm focus:outline-none focus:ring-0 sm:text-sm
                 ${selected?.value ? "" : "text-gray-500"} 
-                ${disabled ? 'bg-gray-200' : ''}
+                ${disabled ? 'bg-gray-100' : ''}
               `}
             >
               <span className="block truncate">
