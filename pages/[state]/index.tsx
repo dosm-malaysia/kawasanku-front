@@ -62,9 +62,7 @@ const State: NextPage = ({
     <>
       <Head
         title={`${t(`states.${stateKey}`)} · ${t("title")}`}
-        keywords={`${t(
-          `states.${stateKey}`
-        )} ${areaType} kawasanku statistics dosm`}
+        keywords={`${t(`states.${stateKey}`)} kawasanku statistics dosm`}
       />
       <Introduction
         stateKey={stateKey}
