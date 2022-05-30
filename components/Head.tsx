@@ -21,7 +21,7 @@ const Head: FunctionComponent<HeadProps> = ({ title, keywords }) => {
       "kawasanku kawasan dosm dataset population statistics malaysia",
     domain: "kawasanku.dosm.gov.my",
     url: "https://kawasanku.dosm.gov.my",
-    image: "https://kawasanku.dosm.gov.my/static/og-kawasanku.png",
+    image: "https://kawasanku.dosm.gov.my/static/jata_512.png",
   };
 
   return (

@@ -140,3 +140,10 @@ export interface IBarChartData {
 //   },
 //   // ...
 // ];
+
+export interface AnalyticsEvent {
+  action: string;
+  category: string;
+  label: string;
+  value: string;
+}
