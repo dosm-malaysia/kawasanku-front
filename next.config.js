@@ -6,8 +6,8 @@ module.exports = {
   reactStrictMode: true,
   i18n,
   pwa: {
-      dest: "public",
-      register: true,
-      skipWaiting: true
-  }
+    dest: "public",
+    register: true,
+    skipWaiting: true,
+  },
 };

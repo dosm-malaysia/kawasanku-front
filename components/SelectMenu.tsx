@@ -19,18 +19,22 @@ const SelectMenu = ({
   selected,
   placeholder,
   onChange,
-  disabled
+  disabled,
 }: SelectMenuProps) => {
   return (
-    <Listbox value={selected?.value} onChange={onChange} disabled={disabled ?? false}>
+    <Listbox
+      value={selected?.value}
+      onChange={onChange}
+      disabled={disabled ?? false}
+    >
       {({ open }) => (
         <>
-          <div className={`relative mt-1 ${disabled ? 'bg-gray-500' : ''}"`}>
+          <div className={`relative mt-1 ${disabled ? "bg-gray-500" : ""}"`}>
             <Listbox.Button
               className={`
                 relative w-full cursor-pointer rounded-md border border-gray-300 py-2 pl-3 pr-10 text-left shadow-sm focus:outline-none focus:ring-0 sm:text-sm
                 ${selected?.value ? "" : "text-gray-500"} 
-                ${disabled ? 'bg-gray-100' : ''}
+                ${disabled ? "bg-gray-100" : ""}
               `}
             >
               <span className="block truncate">

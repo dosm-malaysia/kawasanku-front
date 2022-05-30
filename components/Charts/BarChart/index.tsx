@@ -31,7 +31,7 @@ const BarChart = ({ data }: BarChartProps) => {
           colors={["#465570", "#2A3343", "#8F9EB9", "#62789D"]}
           enableLabel={false}
           axisBottom={{
-            format: (value) => formatKOrM(Math.abs(value)),
+            format: value => formatKOrM(Math.abs(value)),
           }}
           tooltip={({ id, formattedValue, color }) => {
             return (

@@ -13,7 +13,7 @@ import { Option } from "../components/Dropdowns/interface";
 import { translateDoughnutChart } from "../lib/helpers";
 import { AREA_TYPES, MALAYSIA, STATES_KEY } from "../lib/constants";
 import { getGeojson, getJitterplots, getSnapshot } from "../lib/api";
-import Head from 'next/head';
+import Head from "next/head";
 
 const BarChart = dynamic(() => import("../components/Charts/BarChart"), {
   ssr: false,
@@ -54,12 +54,11 @@ const Home: NextPage = ({
         backgroundColor="bg-gray-100"
         className="flex flex-col pt-5 md:pt-14"
       >
-
-          {/* BAR CHART TITLE */}
+        {/* BAR CHART TITLE */}
         <div className="mb-5 flex w-full flex-col items-start justify-between gap-2 md:mb-7 md:flex-row md:items-center md:gap-0">
           <h3 className="section-title">
             {t("section1_title1")}{" "}
-            <span className="underline capitalize">{t("malaysia")}</span>{" "}
+            <span className="capitalize underline">{t("malaysia")}</span>{" "}
             {t("section1_title2")}
           </h3>
           <p className="text-sm text-gray-400">{t("census_2020")}</p>
@@ -97,7 +96,7 @@ const Home: NextPage = ({
       </Container>
       <Container
         backgroundColor="bg-white md:bg-gray-100"
-        className="pb-5 px-0 md:rounded-lg"
+        className="px-0 pb-5 md:rounded-lg"
       >
         <Card className="relative overflow-visible rounded-lg md:border">
           {/* SPOTLIGHT */}
@@ -118,9 +117,8 @@ const Home: NextPage = ({
 };
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
-    const translationReq = serverSideTranslations(locale!, ["common"]);
-    
-  
+  const translationReq = serverSideTranslations(locale!, ["common"]);
+
   const geoReq = getGeojson(MALAYSIA);
   const snapshotReq = getSnapshot({ area: MALAYSIA });
   // get data accross state level as default (use any state for area param)
@@ -140,7 +138,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
   // GEOJSON
   const geojson = res[1];
 
-   // DOUGHNUT CHARTS DATA
+  // DOUGHNUT CHARTS DATA
   const doughnutCharts = res[2].doughnut_charts;
   const sex = doughnutCharts.sex;
   const ethnicity = doughnutCharts.ethnicity;
@@ -171,21 +169,21 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
 
   // JITTERPLOTS DATA
   const jitterplotData = res[3];
-//    */
+  //    */
 
   return {
     props: {
       geojson,
-    //   DOUGHNUT CHARTS DATA
+      //   DOUGHNUT CHARTS DATA
       sex: translatedSex,
       ethnicity: translatedEthnicity,
       nationality: translatedNationality,
       religion: translatedReligion,
       maritalStatus: translatedMaritalStatus,
       ageGroup: translatedAgeGroup,
-    //   PYRAMID CHART DATA
+      //   PYRAMID CHART DATA
       barChartData: pyramidCharts,
-    //   JITTERPLOT DATA
+      //   JITTERPLOT DATA
       jitterplotData,
       ...translation,
     },

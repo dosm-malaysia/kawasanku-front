@@ -6,7 +6,7 @@ const PercentileOverlay = () => {
         <div className="absolute top-0 left-0 col-span-4 flex w-full items-center justify-center text-accent">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="-mt-0.5 h-3 w-3 rotate-180 z-10"
+            className="z-10 -mt-0.5 h-3 w-3 rotate-180"
             fill="#13293d"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -25,16 +25,17 @@ const PercentileOverlay = () => {
             <div
               key={index}
               className={
-                index === 8 
-                  ? "border-r bg-gray-200 bg-opacity-20 border-gray-300"
+                index === 8
+                  ? "border-r border-gray-300 bg-gray-200 bg-opacity-20"
                   : index === 7
-                  ? "border-l border-accent bg-gray-200 bg-opacity-20" 
+                  ? "border-l border-accent bg-gray-200 bg-opacity-20"
                   : index === 6
-                  ? "border-r border-accent bg-gray-200 bg-opacity-20" 
+                  ? "border-r border-accent bg-gray-200 bg-opacity-20"
                   : index === 5
-                  ? "border-l bg-gray-200 bg-opacity-20 border-gray-300" : ""
-                  
-                //   : index === 6 
+                  ? "border-l border-gray-300 bg-gray-200 bg-opacity-20"
+                  : ""
+
+                //   : index === 6
                 //   ? "border-r border-l border-r-accent bg-gray-200 bg-opacity-20 border-gray-300"
                 //   : index === 8
                 //   ? "border-r border-l border-l-accent bg-gray-200 bg-opacity-20 border-gray-300"

@@ -10,14 +10,19 @@ interface ComboBoxProps {
   placeholder?: string;
 }
 
-const ComboBox = ({ options, selected, onChange, placeholder }: ComboBoxProps) => {
+const ComboBox = ({
+  options,
+  selected,
+  onChange,
+  placeholder,
+}: ComboBoxProps) => {
   const { t } = useTranslation();
   const [query, setQuery] = useState("");
 
   const filteredOptions =
     query === ""
       ? options
-      : options.filter((option) =>
+      : options.filter(option =>
           option.label
             .toLowerCase()
             .replace(/\s+/g, "")
@@ -33,7 +38,7 @@ const ComboBox = ({ options, selected, onChange, placeholder }: ComboBoxProps) =
               placeholder={placeholder}
               className="w-full border-none py-2 pl-3 pr-10 text-sm leading-5 text-gray-900 focus:outline-none focus:ring-0"
               displayValue={(option: Option) => option?.label}
-              onChange={(event) => setQuery(event.target.value)}
+              onChange={event => setQuery(event.target.value)}
             />
             <Combobox.Button className="absolute inset-y-0 right-0 flex items-center pr-2">
               <svg
@@ -65,7 +70,7 @@ const ComboBox = ({ options, selected, onChange, placeholder }: ComboBoxProps) =
                   {t("no_results")}
                 </div>
               ) : (
-                filteredOptions.map((option) => (
+                filteredOptions.map(option => (
                   <Combobox.Option
                     key={option.value}
                     className={({ active }) =>

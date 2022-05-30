@@ -16,8 +16,8 @@ module.exports = {
         0.5: "0.5px",
       },
       gridTemplateColumns: {
-        '14': 'repeat(14, minmax(0, 1fr))',
-      }
+        14: "repeat(14, minmax(0, 1fr))",
+      },
     },
   },
   plugins: [],

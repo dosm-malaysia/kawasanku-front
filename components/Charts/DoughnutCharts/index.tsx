@@ -31,7 +31,7 @@ const DoughnutChart = ({ title, data }: DoughnutChartProps) => {
           borderColor="white"
           enableArcLinkLabels={false}
           arcLabelsSkipAngle={15}
-          valueFormat={(value) => `${value.toFixed(0)}%`}
+          valueFormat={value => `${value.toFixed(0)}%`}
           legends={[
             {
               anchor: "right",

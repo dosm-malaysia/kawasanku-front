@@ -2,7 +2,7 @@
 // GEOJSON
 // -----------------------------------------------------------------------------
 export interface IGeojson {
-  mys: any
+  mys: any;
   name: string;
   area_type: string;
   shape_type: string;
