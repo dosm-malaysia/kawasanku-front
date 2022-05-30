@@ -169,7 +169,6 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
 
   // JITTERPLOTS DATA
   const jitterplotData = res[3];
-  //    */
 
   return {
     props: {

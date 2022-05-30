@@ -91,47 +91,27 @@ const Area: NextPage = ({
           </h3>
           <p className="text-sm text-gray-400">{t("census_2020")}</p>
         </div>
-        <div className="mb-10 flex w-full flex-col gap-4 md:mb-15 lg:flex-row">
-          {/* hide pyramid for all area types */}
-          {/* BAR CHART (DISTRICT ONLY) */}
-          {/* {areaType === GEO_FILTER.District && (
-            <div className="w-full lg:w-1/3">
-              <Card className="rounded-lg border">
-                <BarChart data={barChartData} />
-              </Card>
-            </div>
-          )} */}
-          {/* DOUGHNUT CHARTS */}
-          <div className="w-full">
-            <div className="grid grid-cols-1 overflow-hidden rounded-lg border md:grid-cols-3 md:grid-rows-2">
-              <DoughnutChart title={t("doughnut.metric_1")} data={sex} />
-              <DoughnutChart title={t("doughnut.metric_2")} data={ethnicity} />
-              <DoughnutChart
-                title={t("doughnut.metric_3")}
-                data={nationality}
-              />
-              {areaType === GEO_FILTER.District ? (
-                <>
-                  <DoughnutChart
-                    title={t("doughnut.metric_4")}
-                    data={religion}
-                  />
-                  <DoughnutChart
-                    title={t("doughnut.metric_5")}
-                    data={maritalStatus}
-                  />
-                </>
-              ) : (
-                <>
-                  <DoughnutChart
-                    title={t("doughnut.metric_7")}
-                    data={housing}
-                  />
-                  <DoughnutChart title={t("doughnut.metric_8")} data={labour} />
-                </>
-              )}
-              <DoughnutChart title={t("doughnut.metric_6")} data={ageGroup} />
-            </div>
+        {/* DOUGHNUT CHARTS */}
+        <div className="mb-10 w-full md:mb-15">
+          <div className="grid grid-cols-1 overflow-hidden rounded-lg border md:grid-cols-3 md:grid-rows-2">
+            <DoughnutChart title={t("doughnut.metric_1")} data={sex} />
+            <DoughnutChart title={t("doughnut.metric_2")} data={ethnicity} />
+            <DoughnutChart title={t("doughnut.metric_3")} data={nationality} />
+            {areaType === GEO_FILTER.District ? (
+              <>
+                <DoughnutChart title={t("doughnut.metric_4")} data={religion} />
+                <DoughnutChart
+                  title={t("doughnut.metric_5")}
+                  data={maritalStatus}
+                />
+              </>
+            ) : (
+              <>
+                <DoughnutChart title={t("doughnut.metric_7")} data={housing} />
+                <DoughnutChart title={t("doughnut.metric_8")} data={labour} />
+              </>
+            )}
+            <DoughnutChart title={t("doughnut.metric_6")} data={ageGroup} />
           </div>
         </div>
         {/* JITTERPLOT TITLE */}
