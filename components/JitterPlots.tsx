@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useMemo } from "react";
+import React from "react";
 import { useTranslation } from "next-i18next";
 
 import { AREA_TYPES } from "../lib/constants";
@@ -204,20 +204,25 @@ const Jitterplots = ({
             currentLocation={currentLocation}
             tooltip={t("jitterplot.metric_18.tooltip")}
           />
-          <JitterPlot
-            label={t("jitterplot.metric_19.label")}
-            data={data.metric_19}
-            comparisons={comparisons}
-            currentLocation={currentLocation}
-            tooltip={t("jitterplot.metric_19.tooltip")}
-          />
-          <JitterPlot
-            label={t("jitterplot.metric_20.label")}
-            data={data.metric_20}
-            comparisons={comparisons}
-            currentLocation={currentLocation}
-            tooltip={t("jitterplot.metric_20.tooltip")}
-          />
+          {/* NOTE: no data for district level */}
+          {areaType !== AREA_TYPES.District && (
+            <>
+              <JitterPlot
+                label={t("jitterplot.metric_19.label")}
+                data={data.metric_19}
+                comparisons={comparisons}
+                currentLocation={currentLocation}
+                tooltip={t("jitterplot.metric_19.tooltip")}
+              />
+              <JitterPlot
+                label={t("jitterplot.metric_20.label")}
+                data={data.metric_20}
+                comparisons={comparisons}
+                currentLocation={currentLocation}
+                tooltip={t("jitterplot.metric_20.tooltip")}
+              />
+            </>
+          )}
           <JitterPlot
             label={t("jitterplot.metric_21.label")}
             data={data.metric_21}
@@ -231,20 +236,25 @@ const Jitterplots = ({
             {t("jitterplot.title_4")}
           </span>
           {/* SECTION 4 METRICS */}
-          <JitterPlot
-            label={t("jitterplot.metric_22.label")}
-            data={data.metric_22}
-            comparisons={comparisons}
-            currentLocation={currentLocation}
-            tooltip={t("jitterplot.metric_22.tooltip")}
-          />
-          <JitterPlot
-            label={t("jitterplot.metric_23.label")}
-            data={data.metric_23}
-            comparisons={comparisons}
-            currentLocation={currentLocation}
-            tooltip={t("jitterplot.metric_23.tooltip")}
-          />
+          {/* NOTE: no data for district level */}
+          {areaType !== AREA_TYPES.District && (
+            <>
+              <JitterPlot
+                label={t("jitterplot.metric_22.label")}
+                data={data.metric_22}
+                comparisons={comparisons}
+                currentLocation={currentLocation}
+                tooltip={t("jitterplot.metric_22.tooltip")}
+              />
+              <JitterPlot
+                label={t("jitterplot.metric_23.label")}
+                data={data.metric_23}
+                comparisons={comparisons}
+                currentLocation={currentLocation}
+                tooltip={t("jitterplot.metric_23.tooltip")}
+              />
+            </>
+          )}
           <JitterPlot
             label={t("jitterplot.metric_24.label")}
             data={data.metric_24}
