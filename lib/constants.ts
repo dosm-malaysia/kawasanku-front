@@ -17,18 +17,19 @@ export const LANG = [
   },
 ];
 
+// only used for dropdown
 export enum GEO_FILTER {
   District = "district",
   Parliament = "parlimen",
   Dun = "dun",
 }
 
+// used for comparisons
 export enum AREA_TYPES {
   State = "state",
-  National = "national",
   District = "district",
-  Parliament = "parliament",
-  Dun = "assembly",
+  Parliament = "parlimen",
+  Dun = "dun",
 }
 
 export enum STATES {
