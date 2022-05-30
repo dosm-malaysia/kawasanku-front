@@ -6,7 +6,7 @@ import type {
 } from "next";
 import { useState } from "react";
 import dynamic from "next/dynamic";
-import Head from 'next/head'
+import Head from "next/head";
 import { ParsedUrlQuery } from "querystring";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -64,7 +64,9 @@ const Area: NextPage = ({
   return (
     <>
       <Head>
-        <title>{areaName} &middot; {t("title")}</title>
+        <title>
+          {areaName} &middot; {t("title")}
+        </title>
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
@@ -90,8 +92,7 @@ const Area: NextPage = ({
           <p className="text-sm text-gray-400">{t("census_2020")}</p>
         </div>
         <div className="mb-10 flex w-full flex-col gap-4 md:mb-15 lg:flex-row">
-
-            {/* hide pyramid for all area types */}
+          {/* hide pyramid for all area types */}
           {/* BAR CHART (DISTRICT ONLY) */}
           {/* {areaType === GEO_FILTER.District && (
             <div className="w-full lg:w-1/3">
@@ -134,7 +135,7 @@ const Area: NextPage = ({
           </div>
         </div>
         {/* JITTERPLOT TITLE */}
-        <div className="mb-6 flex w-full flex-col items-start justify-between gap-2 md:mb-7 lg:flex-row md:items-center md:gap-0">
+        <div className="mb-6 flex w-full flex-col items-start justify-between gap-2 md:mb-7 md:items-center md:gap-0 lg:flex-row">
           <h3 className="section-title">
             {t("section2_title2_1")}{" "}
             <span className="underline">{areaName}</span>{" "}
@@ -183,7 +184,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const zh: AreaPathsType = [];
   const ta: AreaPathsType = [];
 
-  areaPaths.forEach((area) => {
+  areaPaths.forEach(area => {
     // area returned as "/state/area"
     const areaArr = area.substring(1).split("/");
 

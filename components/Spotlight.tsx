@@ -21,7 +21,7 @@ const Spotlight = ({
 }: SpotlightProps) => {
   const { t } = useTranslation();
   const [options, setOptions] = useState<Option[]>(
-    Object.values(STATES_KEY).map((state) => {
+    Object.values(STATES_KEY).map(state => {
       return { label: t(`states.${state}`), value: state };
     })
   );
@@ -34,15 +34,15 @@ const Spotlight = ({
 
   const handleClearComparison = (removedOption: Option) => {
     setJitterComparisons(
-      jitterComparisons.filter((option) => option.value !== removedOption.value)
+      jitterComparisons.filter(option => option.value !== removedOption.value)
     );
   };
 
   useEffect(() => {
     if (areaType)
       getAreaOptions({ filter: areaType })
-        .then((res) => setOptions(res))
-        .catch((err) => console.log(err));
+        .then(res => setOptions(res))
+        .catch(err => console.log(err));
 
     // if (currentLocation) {
     //     setJitterComparisons([currentLocation])
@@ -53,7 +53,11 @@ const Spotlight = ({
     <div className="mb-6 flex flex-col items-center justify-between gap-4 md:flex-row md:gap-0">
       <div className="flex h-full w-full items-center justify-between gap-2 md:w-auto">
         <p className="text-sm">{t("spotlight")}:</p>
-        <ComboBox options={options} onChange={handleComparisons} placeholder={t('spotlight_placeholder')}></ComboBox>
+        <ComboBox
+          options={options}
+          onChange={handleComparisons}
+          placeholder={t("spotlight_placeholder")}
+        ></ComboBox>
       </div>
       <div className="flex w-full flex-wrap items-start gap-3 md:w-auto md:items-center">
         {/* CURRENT LOCATION */}

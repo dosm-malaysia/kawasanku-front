@@ -27,12 +27,12 @@ const GeoFilters = ({ stateKey, areaType, areaKey, area }: GeoFiltersProps) => {
 
   useEffect(() => {
     if (stateKey && selectedAreaType) {
-      getAreaOptions({ state: stateKey, filter: selectedAreaType }).then(
-        (res) => setOptions(res)
+      getAreaOptions({ state: stateKey, filter: selectedAreaType }).then(res =>
+        setOptions(res)
       );
     } else if (!stateKey || (stateKey && !selectedAreaType)) {
       setOptions(
-        Object.values(STATES_KEY).map((state) => {
+        Object.values(STATES_KEY).map(state => {
           return { label: t(`states.${state}`), value: state };
         })
       );
@@ -42,7 +42,7 @@ const GeoFilters = ({ stateKey, areaType, areaKey, area }: GeoFiltersProps) => {
   return (
     <div className="flex flex-col gap-4">
       <SelectMenu
-        options={Object.values(STATES_KEY).map((state) => {
+        options={Object.values(STATES_KEY).map(state => {
           return { label: t(`states.${state}`), value: state };
         })}
         selected={
@@ -53,11 +53,11 @@ const GeoFilters = ({ stateKey, areaType, areaKey, area }: GeoFiltersProps) => {
               }
             : undefined
         }
-        onChange={(newStateKey) => router.push(`/${newStateKey}`)}
+        onChange={newStateKey => router.push(`/${newStateKey}`)}
         placeholder={t("filter1_placeholder")}
       />
       <SelectMenu
-        options={Object.values(GEO_FILTER).map((filter) => {
+        options={Object.values(GEO_FILTER).map(filter => {
           return { label: t(filter), value: filter };
         })}
         selected={
@@ -68,7 +68,7 @@ const GeoFilters = ({ stateKey, areaType, areaKey, area }: GeoFiltersProps) => {
               }
             : undefined
         }
-        onChange={(newAreaType) =>
+        onChange={newAreaType =>
           newAreaType ? setSelectedAreaType(newAreaType) : {}
         }
         disabled={!query.state}
@@ -84,7 +84,7 @@ const GeoFilters = ({ stateKey, areaType, areaKey, area }: GeoFiltersProps) => {
               }
             : undefined
         }
-        onChange={(newArea) =>
+        onChange={newArea =>
           newArea ? router.push(`/${stateKey}/${newArea}`) : {}
         }
         disabled={!selectedAreaType}

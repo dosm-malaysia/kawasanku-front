@@ -1,22 +1,22 @@
 {
-    "name": "KAWASANKU | DOSM",
-    "short_name": "KAWASANKU",
-    "description": "Kawasanku dashboard is intended to give citizens, policymakers, and the international community an accessible way to explore the dataset",
-    "icons": [
-        {
-            "src": "/static/jata_192.png",
-            "sizes": "192x192",
-            "type": "image/png"
-        },
-        {
-            "src": "/static/jata_512.png",
-            "sizes": "512x512",
-            "type": "image/png"
-        }
-    ],
-    "theme_color": "#13293D",
-    "background_color": "#FFFFFF",
-    "start_url": "/",
-    "display": "standalone",
-    "orientation": "portrait"
+  "name": "KAWASANKU | DOSM",
+  "short_name": "KAWASANKU",
+  "description": "Kawasanku dashboard is intended to give citizens, policymakers, and the international community an accessible way to explore the dataset",
+  "icons": [
+    {
+      "src": "/static/jata_192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/jata_512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#13293D",
+  "background_color": "#FFFFFF",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait"
 }

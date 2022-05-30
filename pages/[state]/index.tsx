@@ -24,7 +24,7 @@ import Spotlight from "../../components/Spotlight";
 import Introduction from "../../components/Introduction";
 import { Option } from "../../components/Dropdowns/interface";
 import { translateDoughnutChart } from "../../lib/helpers";
-import Head from 'next/head'
+import Head from "next/head";
 
 const BarChart = dynamic(() => import("../../components/Charts/BarChart"), {
   ssr: false,
@@ -57,7 +57,9 @@ const State: NextPage = ({
   return (
     <>
       <Head>
-        <title>{t(`states.${stateKey}`)} &middot; {t("title")}</title>
+        <title>
+          {t(`states.${stateKey}`)} &middot; {t("title")}
+        </title>
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
@@ -119,7 +121,7 @@ const State: NextPage = ({
       </Container>
       <Container
         backgroundColor="bg-white md:bg-gray-100"
-        className="pb-5 px-0 md:pb-8 md:rounded-lg"
+        className="px-0 pb-5 md:rounded-lg md:pb-8"
       >
         <Card className="relative overflow-visible rounded-lg md:border">
           {/* SPOTLIGHT */}
@@ -136,7 +138,10 @@ const State: NextPage = ({
             areaType={areaType}
             data={jitterplotData}
             comparisons={jitterComparisons}
-            currentLocation={{ label: t(`states.${stateKey}`), value: stateKey }}
+            currentLocation={{
+              label: t(`states.${stateKey}`),
+              value: stateKey,
+            }}
           />
         </Card>
       </Container>
@@ -154,7 +159,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const zh: StatePathsType = [];
   const ta: StatePathsType = [];
 
-  statePaths.forEach((state) => {
+  statePaths.forEach(state => {
     // state returned as "/state"
     const formattedState = state.substring(1);
     en.push({ params: { state: formattedState } });

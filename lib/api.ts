@@ -12,18 +12,18 @@ export const API = axios.create({
 });
 
 export const getStatePaths = async () =>
-  await API.get<string[]>("/links?type=state").then((res) => res.data);
+  await API.get<string[]>("/links?type=state").then(res => res.data);
 
 export const getAreaPaths = async () =>
   await API.get<{ district: string[]; parlimen: string[]; dun: string[] }>(
     "/links"
-  ).then((res) => {
+  ).then(res => {
     const { district, parlimen, dun } = res.data;
     return [...district, ...parlimen, ...dun];
   });
 
 export const getGeojson = async (area: string) =>
-  await API.get<IGeojson>(`/geo?area=${area}`).then((res) => {
+  await API.get<IGeojson>(`/geo?area=${area}`).then(res => {
     const geojsonData = res.data;
     return {
       type: "FeatureCollection",
@@ -47,9 +47,9 @@ export const getSnapshot = async ({ area }: GetSnapshotReq) =>
   await API.get<{
     doughnut_charts: { [key: string]: IDoughnutChartData[] }[];
     pyramid_charts: IBarChartData[];
-  }>(`/snapshot?area=${area}`).then((res) => {
+  }>(`/snapshot?area=${area}`).then(res => {
     const new_doughnut_charts: { [key: string]: IDoughnutChartData[] } = {};
-    res.data.doughnut_charts.forEach((chart) => {
+    res.data.doughnut_charts.forEach(chart => {
       Object.entries(chart).forEach(([key, value]) => {
         new_doughnut_charts[key] = value;
       });
@@ -65,12 +65,12 @@ type GetJitterplotsReq = {
 export const getJitterplots = async ({ area }: GetJitterplotsReq) =>
   await API.get<{ [key: string]: IJitterplotData[] }[]>(
     `/jitter?area=${area}`
-  ).then((res) => {
+  ).then(res => {
     const new_jitterplots: { [key: string]: IJitterplotData[] } = {};
 
-    Object.values(res.data).forEach((metric) => {
+    Object.values(res.data).forEach(metric => {
       Object.entries(metric).forEach(([key, value]) => {
-          new_jitterplots[key] = value;
+        new_jitterplots[key] = value;
       });
     });
 
@@ -88,9 +88,9 @@ export const getAreaOptions = async ({ state, filter }: GetAreaOptionsReq) =>
       state,
       filter,
     },
-  }).then((res) => res.data);
+  }).then(res => res.data);
 
 export const getAreaType = async (area: string) =>
   await API.get<{ area_type: string; area_name: string }>(
     `/area-type?area=${area}`
-  ).then((res) => res.data);
+  ).then(res => res.data);

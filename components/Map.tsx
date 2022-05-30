@@ -79,8 +79,8 @@ const GoogleMap: React.FC<GoogleMapProps> = ({ center, zoom, geojson }) => {
 
       // FIT MAP TO GEOJSON BOUNDS
       let bounds = new google.maps.LatLngBounds();
-      map.data.forEach((feature) => {
-        feature.getGeometry()?.forEachLatLng((latLng) => {
+      map.data.forEach(feature => {
+        feature.getGeometry()?.forEachLatLng(latLng => {
           bounds?.extend(latLng);
         });
       });

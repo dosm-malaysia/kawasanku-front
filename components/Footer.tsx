@@ -14,12 +14,12 @@ const Footer = () => {
           <Image src="/static/jata_logo.png" width={128} height={96} />
         </div>
         <div>
-          <div className="text-sm md:text-lg font-semibold uppercase">
+          <div className="text-sm font-semibold uppercase md:text-lg">
             <p>{t("dosm")}</p>
             <p>{t("pmo")}</p>
           </div>
           <br />
-          <p className='text-xs md:text-base'>{t("copyrights")}</p>
+          <p className="text-xs md:text-base">{t("copyrights")}</p>
           <p className="text-xs md:text-base">
             {t("open_data")}:{" "}
             <a
