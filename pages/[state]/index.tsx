@@ -18,13 +18,13 @@ import {
   getAreaType,
 } from "../../lib/api";
 
+import Head from "../../components/Head";
 import Card from "../../components/Card";
 import Container from "../../components/Container";
 import Spotlight from "../../components/Spotlight";
 import Introduction from "../../components/Introduction";
 import { Option } from "../../components/Dropdowns/interface";
 import { translateDoughnutChart } from "../../lib/helpers";
-import Head from "next/head";
 
 const BarChart = dynamic(() => import("../../components/Charts/BarChart"), {
   ssr: false,
@@ -56,13 +56,12 @@ const State: NextPage = ({
 
   return (
     <>
-      <Head>
-        <title>
-          {t(`states.${stateKey}`)} &middot; {t("title")}
-        </title>
-        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
+      <Head
+        title={`${t(`states.${stateKey}`)} · ${t("title")}`}
+        keywords={`${t(
+          `states.${stateKey}`
+        )} ${areaType} kawasanku statistics dosm`}
+      />
       <Introduction
         stateKey={stateKey}
         state={t(`states.${stateKey}`)}

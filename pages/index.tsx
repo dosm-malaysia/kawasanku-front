@@ -13,7 +13,7 @@ import { Option } from "../components/Dropdowns/interface";
 import { translateDoughnutChart } from "../lib/helpers";
 import { AREA_TYPES, MALAYSIA, STATES_KEY } from "../lib/constants";
 import { getGeojson, getJitterplots, getSnapshot } from "../lib/api";
-import Head from "next/head";
+import Head from "../components/Head";
 
 const BarChart = dynamic(() => import("../components/Charts/BarChart"), {
   ssr: false,
@@ -43,11 +43,7 @@ const Home: NextPage = ({
 
   return (
     <>
-      <Head>
-        <title>{t("title")}</title>
-        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
+      <Head title={t("title")} />
       <Introduction geojson={geojson} />
       {/* CHARTS */}
       <Container
