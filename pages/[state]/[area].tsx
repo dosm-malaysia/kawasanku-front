@@ -6,7 +6,6 @@ import type {
 } from "next";
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
-import Head from "next/head";
 import { ParsedUrlQuery } from "querystring";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -22,6 +21,7 @@ import { AREA_TYPES } from "../../lib/constants";
 import { IDoughnutCharts } from "../../lib/interfaces";
 import { translateDoughnutChart } from "../../lib/helpers";
 
+import Head from "../../components/Head";
 import Card from "../../components/Card";
 import Container from "../../components/Container";
 import Spotlight from "../../components/Spotlight";
@@ -67,13 +67,12 @@ const Area: NextPage = ({
 
   return (
     <>
-      <Head>
-        <title>
-          {areaName} &middot; {t("title")}
-        </title>
-        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
+      <Head
+        title={`${areaName} · ${t("title")}`}
+        keywords={`${areaName} ${t(
+          `states.${stateKey}`
+        )} ${areaType} kawasanku statistics dosm`}
+      />
       <Introduction
         stateKey={stateKey}
         state={t(`states.${stateKey}`)}
