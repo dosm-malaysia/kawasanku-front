@@ -5,7 +5,6 @@ import { appWithTranslation } from "next-i18next";
 import Script from "next/script";
 import Layout from "../components/Layout";
 import EmbedLayout from "../components/EmbedLayout";
-import AreaOptionsContextProvider from "../contexts/AreaOptionsContext";
 import { pageview } from "../lib/helpers";
 
 function App({ Component, pageProps, router }: AppProps) {
@@ -51,9 +50,7 @@ function App({ Component, pageProps, router }: AppProps) {
         </EmbedLayout>
       ) : (
         <Layout>
-          <AreaOptionsContextProvider>
-            <Component {...pageProps} />
-          </AreaOptionsContextProvider>
+          <Component {...pageProps} />
         </Layout>
       )}
     </>

@@ -5,9 +5,8 @@ import { useTranslation } from "next-i18next";
 import { getAreaOptions } from "../lib/api";
 import { GEO_FILTER, STATES_KEY } from "../lib/constants";
 
-import { useAreaOptions } from "../contexts/AreaOptionsContext";
-
 import SelectMenu from "./SelectMenu";
+import { Option } from "./Dropdowns/interface";
 
 interface GeoFiltersProps {
   stateKey?: string;
@@ -17,13 +16,13 @@ interface GeoFiltersProps {
 }
 
 const GeoFilters = ({ stateKey, areaType, areaKey, area }: GeoFiltersProps) => {
-  const router = useRouter();
   const { t } = useTranslation();
-  const { options, setOptions } = useAreaOptions();
+  const router = useRouter();
   const { query } = router;
 
   // options for area type: district, parlimen, dun
   const [selectedAreaType, setSelectedAreaType] = useState(areaType);
+  const [options, setOptions] = useState<Option[]>([]);
 
   useEffect(() => {
     if (stateKey && selectedAreaType) {
