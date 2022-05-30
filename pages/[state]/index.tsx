@@ -4,7 +4,7 @@ import type {
   InferGetStaticPropsType,
   NextPage,
 } from "next";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { ParsedUrlQuery } from "querystring";
 import { useTranslation } from "next-i18next";
@@ -25,6 +25,7 @@ import Introduction from "../../components/Introduction";
 import { Option } from "../../components/Dropdowns/interface";
 import { translateDoughnutChart } from "../../lib/helpers";
 import Head from "next/head";
+import { AREA_TYPES } from "../../lib/constants";
 
 const BarChart = dynamic(() => import("../../components/Charts/BarChart"), {
   ssr: false,
@@ -40,7 +41,6 @@ const JitterPlots = dynamic(() => import("../../components/JitterPlots"), {
 const State: NextPage = ({
   stateKey,
   geojson,
-  areaType,
   barChartData,
   sex,
   ethnicity,
@@ -53,6 +53,10 @@ const State: NextPage = ({
   const { t } = useTranslation();
 
   const [jitterComparisons, setJitterComparisons] = useState<Option[]>([]);
+
+  useEffect(() => {
+    setJitterComparisons([]);
+  }, [stateKey]);
 
   return (
     <>
@@ -113,7 +117,7 @@ const State: NextPage = ({
             {t("section2_title2_1")}{" "}
             <span className="underline">{t(`states.${stateKey}`)}</span>{" "}
             {t("section2_title2_2", {
-              area_types: t(`area_types.${areaType}`),
+              area_types: t(`area_types.${AREA_TYPES.State}`),
             })}
           </h3>
           <p className="text-sm text-gray-400">{t("census_2020")}</p>
@@ -135,7 +139,7 @@ const State: NextPage = ({
           />
           {/* JITTERPLOTS */}
           <JitterPlots
-            areaType={areaType}
+            areaType={AREA_TYPES.State}
             data={jitterplotData}
             comparisons={jitterComparisons}
             currentLocation={{
@@ -182,14 +186,12 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
   const geoReq = getGeojson(state);
   const snapshotReq = getSnapshot({ area: state });
   const jitterplotsReq = getJitterplots({ area: state });
-  const areaTypeReq = getAreaType(state);
 
   const res = await Promise.all([
     translationReq,
     geoReq,
     snapshotReq,
     jitterplotsReq,
-    areaTypeReq,
   ]);
 
   // TRANSLATION
@@ -232,13 +234,10 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
   // JITTERPLOTS DATA
   const jitterplotData = res[3];
 
-  const areaType = res[4].area_type;
-
   return {
     props: {
       stateKey: state,
       geojson,
-      areaType,
       // DOUGHNUT CHARTS DATA
       sex: translatedSex,
       ethnicity: translatedEthnicity,

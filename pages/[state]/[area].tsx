@@ -4,7 +4,7 @@ import type {
   InferGetStaticPropsType,
   NextPage,
 } from "next";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import Head from "next/head";
 import { ParsedUrlQuery } from "querystring";
@@ -18,7 +18,7 @@ import {
   getAreaType,
   getAreaPaths,
 } from "../../lib/api";
-import { GEO_FILTER } from "../../lib/constants";
+import { AREA_TYPES } from "../../lib/constants";
 import { IDoughnutCharts } from "../../lib/interfaces";
 import { translateDoughnutChart } from "../../lib/helpers";
 
@@ -61,6 +61,10 @@ const Area: NextPage = ({
 
   const [jitterComparisons, setJitterComparisons] = useState<Option[]>([]);
 
+  useEffect(() => {
+    setJitterComparisons([]);
+  }, [areaKey]);
+
   return (
     <>
       <Head>
@@ -97,7 +101,7 @@ const Area: NextPage = ({
             <DoughnutChart title={t("doughnut.metric_1")} data={sex} />
             <DoughnutChart title={t("doughnut.metric_2")} data={ethnicity} />
             <DoughnutChart title={t("doughnut.metric_3")} data={nationality} />
-            {areaType === GEO_FILTER.District ? (
+            {areaType === AREA_TYPES.District ? (
               <>
                 <DoughnutChart title={t("doughnut.metric_4")} data={religion} />
                 <DoughnutChart
@@ -196,6 +200,7 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
 
   const translationReq = serverSideTranslations(locale!, ["common"]);
   const geoReq = getGeojson(area);
+  // TODO: use get doughnut data only since no pyramid chart is shown on this page
   const snapshotReq = getSnapshot({ area });
   const jitterplotsReq = getJitterplots({ area: area });
   const areaTypeReq = getAreaType(area);
