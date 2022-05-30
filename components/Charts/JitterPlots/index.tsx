@@ -30,21 +30,21 @@ const JitterPlot = ({
   onHoverOut,
 }: JitterPlotProps) => {
   const [plot, setPlot] = useState(data);
+
   useEffect(() => {
-    let temp = plot.filter(item =>
+    let highlights: IJitterplotData[] = [];
+    let others: IJitterplotData[] = [];
+
+    plot.forEach(item => {
       [...comparisons, currentLocation].some(
         highlight => highlight?.label === item.id
       )
-    );
-    setPlot([
-      ...plot.filter(item =>
-        [...comparisons, currentLocation].some(
-          highlight => highlight?.label !== item.id
-        )
-      ),
-      ...temp,
-    ]);
-  }, [comparisons]);
+        ? highlights.push(item)
+        : others.push(item);
+    });
+
+    setPlot([...others, ...highlights]);
+  }, [comparisons, currentLocation]);
 
   return (
     <>
