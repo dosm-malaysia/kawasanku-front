@@ -50,7 +50,7 @@ const JitterPlot = ({
     <>
       {(!isNaN(plot[0].data[0].x) || plot[0].data[0].x) && (
         <div className="flex h-full w-full flex-col items-center gap-2 overflow-visible md:flex-row md:gap-0">
-          <div className="z-10 flex w-full items-center space-x-2 overflow-visible bg-white py-2 text-sm md:z-auto md:w-1/3">
+          <div className="relative flex w-full items-center space-x-2 overflow-visible bg-white py-2 text-sm md:w-1/3">
             <p>{label}</p>
             {tooltip && <Tooltip>{tooltip}</Tooltip>}
           </div>
