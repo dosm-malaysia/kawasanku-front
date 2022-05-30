@@ -32,6 +32,7 @@ function App({ Component, pageProps, router }: AppProps) {
         src="https://www.googletagmanager.com/gtag/js?id=G-DQMEKPCKD5"
       />
       <Script
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: `
               window.dataLayer = window.dataLayer || [];
