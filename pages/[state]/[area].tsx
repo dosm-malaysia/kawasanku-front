@@ -21,12 +21,12 @@ import { AREA_TYPES } from "../../lib/constants";
 import { IDoughnutCharts } from "../../lib/interfaces";
 import { translateDoughnutChart } from "../../lib/helpers";
 
-import Head from "../../components/Head";
 import Card from "../../components/Card";
+import Metadata from "../../components/Metadata";
 import Container from "../../components/Container";
-import Spotlight from "../../components/Spotlight";
 import Introduction from "../../components/Introduction";
 import { Option } from "../../components/Dropdowns/interface";
+import Spotlight from "../../components/Charts/Jitterplot/Spotlight";
 
 const DoughnutChart = dynamic(
   () => import("../../components/Charts/Doughnut"),
@@ -66,7 +66,7 @@ const Area: NextPage = ({
 
   return (
     <>
-      <Head
+      <Metadata
         title={`${areaName} · ${t("title")}`}
         keywords={`${areaName} ${t(
           `states.${stateKey}`

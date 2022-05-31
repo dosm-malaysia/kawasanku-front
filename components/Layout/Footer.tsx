@@ -1,6 +1,7 @@
-import { useTranslation } from "next-i18next";
 import Image from "next/image";
-import Container from "./Container";
+import { useTranslation } from "next-i18next";
+
+import Container from "../Container";
 
 const Footer = () => {
   const { t } = useTranslation();

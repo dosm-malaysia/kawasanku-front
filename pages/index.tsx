@@ -4,12 +4,12 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 
-import Head from "../components/Head";
 import Card from "../components/Card";
+import Metadata from "../components/Metadata";
 import Container from "../components/Container";
-import Spotlight from "../components/Spotlight";
 import Introduction from "../components/Introduction";
 import { Option } from "../components/Dropdowns/interface";
+import Spotlight from "../components/Charts/Jitterplot/Spotlight";
 
 import { translateDoughnutChart } from "../lib/helpers";
 import { AREA_TYPES, MALAYSIA, STATES_KEY } from "../lib/constants";
@@ -45,7 +45,7 @@ const Home: NextPage = ({
 
   return (
     <>
-      <Head title={t("title")} />
+      <Metadata title={t("title")} />
       <Introduction geojson={geojson} />
       {/* CHARTS */}
       <Container

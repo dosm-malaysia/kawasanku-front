@@ -1,9 +1,9 @@
-import { useTranslation } from "next-i18next";
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/router";
+import { useTranslation } from "next-i18next";
 
-import { LANG } from "../lib/constants";
+import { LANG } from "../../lib/constants";
 
 const Header = () => {
   const router = useRouter();
@@ -21,7 +21,7 @@ const Header = () => {
             </div>
             {/* SITE NAME */}
             <h1 className="text-lg font-semibold uppercase md:text-xl">
-              Kawasanku
+              kawasanku
             </h1>
           </div>
         </Link>

@@ -1,5 +1,6 @@
-import { Fragment } from "react";
+import { Fragment, FunctionComponent } from "react";
 import { Listbox, Transition } from "@headlessui/react";
+
 import { Option } from "./interface";
 
 interface SelectProps {
@@ -10,13 +11,13 @@ interface SelectProps {
   onChange: (value?: string) => void;
 }
 
-const Select = ({
+const Select: FunctionComponent<SelectProps> = ({
   options,
   selected,
   placeholder,
   onChange,
   disabled,
-}: SelectProps) => {
+}) => {
   return (
     <Listbox
       value={selected?.value}

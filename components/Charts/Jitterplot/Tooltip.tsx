@@ -1,8 +1,10 @@
+import { FunctionComponent } from "react";
+
 interface TooltipProps {
   children: React.ReactNode;
 }
 
-const Tooltip = ({ children }: TooltipProps) => {
+const Tooltip: FunctionComponent<TooltipProps> = ({ children }) => {
   return (
     <div className="tooltip">
       <svg

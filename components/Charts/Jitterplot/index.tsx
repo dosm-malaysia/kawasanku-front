@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 import { ResponsiveScatterPlotCanvas } from "@nivo/scatterplot";
 
 import { IJitterplotData } from "../../../lib/interfaces";
@@ -14,13 +14,13 @@ interface JitterPlotProps {
   currentLocation?: Option;
 }
 
-const JitterPlot = ({
+const JitterPlot: FunctionComponent<JitterPlotProps> = ({
   label,
   data,
   comparisons,
   tooltip,
   currentLocation,
-}: JitterPlotProps) => {
+}) => {
   const [plot, setPlot] = useState(data);
 
   useEffect(() => {

@@ -17,12 +17,12 @@ import {
   getJitterplots,
 } from "../../lib/api";
 
-import Head from "../../components/Head";
 import Card from "../../components/Card";
+import Metadata from "../../components/Metadata";
 import Container from "../../components/Container";
-import Spotlight from "../../components/Spotlight";
 import Introduction from "../../components/Introduction";
 import { Option } from "../../components/Dropdowns/interface";
+import Spotlight from "../../components/Charts/Jitterplot/Spotlight";
 
 import { AREA_TYPES } from "../../lib/constants";
 import { translateDoughnutChart } from "../../lib/helpers";
@@ -63,7 +63,7 @@ const State: NextPage = ({
 
   return (
     <>
-      <Head
+      <Metadata
         title={`${t(`states.${stateKey}`)} · ${t("title")}`}
         keywords={`${t(`states.${stateKey}`)} kawasanku statistics dosm`}
       />

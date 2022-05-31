@@ -1,5 +1,5 @@
-import React from "react";
 import { useTranslation } from "next-i18next";
+import React, { FunctionComponent } from "react";
 
 import { AREA_TYPES } from "../../../lib/constants";
 import { IJitterplots } from "../../../lib/interfaces";
@@ -16,12 +16,12 @@ interface JitterplotsProps {
   currentLocation?: Option;
 }
 
-const Jitterplots = ({
+const Jitterplots: FunctionComponent<JitterplotsProps> = ({
   areaType,
   data,
   comparisons,
   currentLocation,
-}: JitterplotsProps) => {
+}) => {
   const { t } = useTranslation();
 
   return (

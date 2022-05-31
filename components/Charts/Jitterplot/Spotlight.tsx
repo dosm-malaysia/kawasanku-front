@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
 import { useTranslation } from "next-i18next";
+import { FunctionComponent, useEffect, useState } from "react";
 
-import ComboBox from "./Dropdowns/ComboBox";
-import { Option } from "../components/Dropdowns/interface";
-import { getAreaOptions } from "../lib/api";
-import { STATES_KEY } from "../lib/constants";
+import { getAreaOptions } from "../../../lib/api";
+import { STATES_KEY } from "../../../lib/constants";
+
+import ComboBox from "../../Dropdowns/ComboBox";
+import { Option } from "../../Dropdowns/interface";
 
 interface SpotlightProps {
   areaType?: string;
@@ -13,12 +14,12 @@ interface SpotlightProps {
   setJitterComparisons: React.Dispatch<React.SetStateAction<Option[]>>;
 }
 
-const Spotlight = ({
+const Spotlight: FunctionComponent<SpotlightProps> = ({
   areaType,
   currentLocation,
   jitterComparisons,
   setJitterComparisons,
-}: SpotlightProps) => {
+}) => {
   const { t } = useTranslation();
   const [options, setOptions] = useState<Option[]>(
     Object.values(STATES_KEY).map(state => {

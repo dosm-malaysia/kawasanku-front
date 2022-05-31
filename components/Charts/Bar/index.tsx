@@ -1,3 +1,4 @@
+import { FunctionComponent } from "react";
 import { useTranslation } from "next-i18next";
 import { BarDatum, ResponsiveBarCanvas } from "@nivo/bar";
 
@@ -8,7 +9,7 @@ interface BarChartProps {
   data: BarDatum extends IBarChartData[] ? IBarChartData[] : BarDatum[];
 }
 
-const BarChart = ({ data }: BarChartProps) => {
+const BarChart: FunctionComponent<BarChartProps> = ({ data }) => {
   const { t } = useTranslation();
 
   return (
