@@ -12,7 +12,7 @@ const Header = () => {
 
   return (
     <div className="fixed top-0 z-40 flex h-14 w-full items-center justify-center bg-accent">
-      <nav className="flex w-full max-w-screen-xl items-center justify-between p-3 text-white">
+      <nav className="flex w-full max-w-screen-xl items-center justify-between p-3 text-white lg:px-6">
         <Link href={`/${locale === defaultLocale ? "" : locale}`}>
           <div className="flex cursor-pointer items-center justify-center gap-4">
             {/* LOGO */}

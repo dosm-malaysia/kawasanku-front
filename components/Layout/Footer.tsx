@@ -8,7 +8,7 @@ const Footer = () => {
   return (
     <Container
       backgroundColor="bg-accent"
-      className="flex items-center justify-between py-6 px-3 text-white lg:py-10 lg:px-0"
+      className="flex items-center justify-between py-6 text-white lg:py-10"
     >
       <div className="flex items-start justify-start gap-4">
         <div className="flex w-12 items-center justify-center">

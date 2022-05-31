@@ -37,7 +37,7 @@ const Introduction: FunctionComponent<IntroductionProps> = ({
       backgroundColor="bg-white"
       className="flex flex-col gap-7 pt-18 pb-5 lg:flex-row lg:gap-16 lg:pt-28 lg:pb-14"
     >
-      <div className="w-full md:px-0 lg:w-1/3">
+      <div className="w-full lg:w-1/3">
         {/* TITLE */}
         <h2 className="mb-4 text-xl font-semibold">{t("header")}</h2>
         {/* DESCRIPTION */}

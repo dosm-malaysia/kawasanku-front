@@ -12,7 +12,7 @@ const Container: FunctionComponent<ContainerProps> = ({
   children,
 }) => (
   <div className={`flex h-full w-full justify-center ${backgroundColor}`}>
-    <div className={`h-full w-full max-w-screen-xl px-3 ${className}`}>
+    <div className={`h-full w-full max-w-screen-xl px-3 lg:px-6 ${className}`}>
       {children}
     </div>
   </div>
