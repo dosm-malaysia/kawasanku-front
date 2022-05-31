@@ -32,6 +32,20 @@ const DoughnutChart = ({ title, data }: DoughnutChartProps) => {
           enableArcLinkLabels={false}
           arcLabelsSkipAngle={15}
           valueFormat={value => `${value.toFixed(0)}%`}
+          tooltip={({ datum: { label, value, color } }) => {
+            return (
+              <div className="flex items-center justify-center rounded-[2px] bg-white py-[5px] px-[9px] shadow">
+                <div
+                  className="mr-2 h-3 w-3"
+                  style={{ backgroundColor: color }}
+                />
+                <p>
+                  {label}:{" "}
+                  <span className="font-bold">{value.toFixed(1)}%</span>
+                </p>
+              </div>
+            );
+          }}
           legends={[
             {
               anchor: "right",
