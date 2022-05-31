@@ -49,8 +49,8 @@ const JitterPlot = ({
   return (
     <>
       {(!isNaN(plot[0].data[0].x) || plot[0].data[0].x) && (
-        <div className="flex h-full w-full flex-col items-center gap-2 overflow-visible md:flex-row md:gap-0">
-          <div className="relative flex w-full items-center space-x-2 overflow-visible bg-white py-2 text-sm md:w-1/3">
+        <div className="flex h-full w-full flex-col items-center gap-2 md:flex-row md:gap-0">
+          <div className="relative flex w-full items-center space-x-2 bg-white py-2 text-sm md:w-1/3">
             <p>{label}</p>
             {tooltip && <Tooltip>{tooltip}</Tooltip>}
           </div>
@@ -106,9 +106,23 @@ const JitterPlot = ({
                 // GRAY
                 else node.color = "#E0E0E0CC";
               }}
-              tooltip={({ node: { serieId } }) => {
+              tooltip={({ node: { serieId, xValue } }) => {
                 return (
-                  <div className="flex items-center justify-center rounded bg-accent py-[5px] px-[9px] text-sm text-white shadow">
+                  <div
+                    className={`
+                      flex min-w-max origin-center items-center justify-center rounded bg-accent py-[5px] px-[9px] text-sm text-white shadow 
+                      ${
+                        xValue > 0.6
+                          ? "absolute bottom-2 right-0 md:static md:inset-auto"
+                          : ""
+                      }
+                      ${
+                        xValue < -0.6
+                          ? "absolute bottom-2 left-0 md:static md:inset-auto"
+                          : ""
+                      }
+                    `}
+                  >
                     <p className="">{serieId}</p>
                   </div>
                 );

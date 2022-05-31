@@ -94,7 +94,7 @@ const Home: NextPage = ({
         backgroundColor="bg-white md:bg-gray-100"
         className="px-0 pb-5 md:rounded-lg"
       >
-        <Card className="relative overflow-visible rounded-lg md:border">
+        <Card className="relative overflow-hidden rounded-lg md:border">
           {/* SPOTLIGHT */}
           <Spotlight
             jitterComparisons={jitterComparisons}
