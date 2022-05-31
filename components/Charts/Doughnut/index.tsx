@@ -1,5 +1,8 @@
 import { ResponsivePie } from "@nivo/pie";
+import { FunctionComponent } from "react";
+
 import { IDoughnutChartData } from "../../../lib/interfaces";
+
 import Card from "../../Card";
 
 interface DoughnutChartProps {
@@ -7,7 +10,10 @@ interface DoughnutChartProps {
   data: IDoughnutChartData[];
 }
 
-const DoughnutChart = ({ title, data }: DoughnutChartProps) => {
+const DoughnutChart: FunctionComponent<DoughnutChartProps> = ({
+  title,
+  data,
+}) => {
   return (
     <Card className="border-0.5">
       {title && <p className="text-sm">{title}</p>}

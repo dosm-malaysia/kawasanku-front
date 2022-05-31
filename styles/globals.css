@@ -2,14 +2,62 @@
 @tailwind components;
 @tailwind utilities;
 
-.section-title {
-  @apply text-xl font-semibold;
+/* SNAPSHOT STYLES */
+.snapshot-container {
+  @apply flex flex-col pt-5 md:pt-14;
+}
+
+.snapshot-container-background {
+  @apply bg-gray-100;
+}
+
+.snapshot-container {
+  @apply flex flex-col pt-5 md:pt-14;
+}
+
+.snapshot-layout {
+  @apply mb-10 flex w-full flex-col gap-4 md:mb-15 lg:flex-row;
+}
+
+/* JITTERPLOT STYLES */
+.jitterplot-container-background {
+  @apply bg-white md:bg-gray-100;
+}
+
+.jitterplot-container {
+  @apply sm:mb-10 md:rounded-lg;
+}
+
+.jitterplot-card-padding {
+  @apply px-0 pt-4 pb-10 sm:p-4;
+}
+
+.jitterplot-card {
+  @apply relative overflow-hidden rounded-lg md:border;
+}
+
+/* TITLE _STYLES */
+.bar-chart-title {
+  @apply mb-5 flex w-full flex-col items-start justify-between gap-2 md:mb-7 md:flex-row md:items-center md:gap-0;
 }
 
 .doughnut-chart-title {
   @apply text-sm font-bold;
 }
 
+.jitterplot-title {
+  @apply mb-6 flex w-full flex-col items-start justify-between gap-2 md:mb-7 md:flex-row md:items-center md:gap-0;
+}
+
+.census-text {
+  @apply text-sm text-gray-400;
+}
+
+.section-title {
+  @apply text-xl font-semibold;
+}
+
+/* TOOLTIP STYLES */
 .tooltip {
   @apply relative overflow-visible;
 }

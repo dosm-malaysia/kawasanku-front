@@ -1,6 +1,7 @@
-import { Children, Fragment, useState } from "react";
-import { Combobox, Transition } from "@headlessui/react";
 import { useTranslation } from "next-i18next";
+import { Combobox, Transition } from "@headlessui/react";
+import { Fragment, FunctionComponent, useState } from "react";
+
 import { Option } from "./interface";
 
 interface ComboBoxProps {
@@ -10,12 +11,12 @@ interface ComboBoxProps {
   placeholder?: string;
 }
 
-const ComboBox = ({
+const ComboBox: FunctionComponent<ComboBoxProps> = ({
   options,
   selected,
   onChange,
   placeholder,
-}: ComboBoxProps) => {
+}) => {
   const { t } = useTranslation();
   const [query, setQuery] = useState("");
 

@@ -1,9 +1,9 @@
-import { useTranslation } from "next-i18next";
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/router";
+import { useTranslation } from "next-i18next";
 
-import { LANG } from "../lib/constants";
+import { LANG } from "../../lib/constants";
 
 const Header = () => {
   const router = useRouter();
@@ -12,7 +12,7 @@ const Header = () => {
 
   return (
     <div className="fixed top-0 z-40 flex h-14 w-full items-center justify-center bg-accent">
-      <nav className="flex w-full max-w-screen-xl items-center justify-between p-3 text-white">
+      <nav className="flex w-full max-w-screen-xl items-center justify-between p-3 text-white lg:px-6">
         <Link href={`/${locale === defaultLocale ? "" : locale}`}>
           <div className="flex cursor-pointer items-center justify-center gap-4">
             {/* LOGO */}
@@ -21,7 +21,7 @@ const Header = () => {
             </div>
             {/* SITE NAME */}
             <h1 className="text-lg font-semibold uppercase md:text-xl">
-              Kawasanku
+              kawasanku
             </h1>
           </div>
         </Link>

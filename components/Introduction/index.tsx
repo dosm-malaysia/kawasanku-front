@@ -1,10 +1,11 @@
-import { useTranslation } from "next-i18next";
-import { useRouter } from "next/router";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { FunctionComponent } from "react";
+import { useTranslation } from "next-i18next";
 
-import Container from "./Container";
-import GeoFilters from "./GeoFilters";
 import Map from "./Map";
+import Container from "../Container";
+import GeoFilters from "./GeoFilters";
 
 interface IntroductionProps {
   stateKey?: string;
@@ -15,14 +16,14 @@ interface IntroductionProps {
   geojson: any;
 }
 
-const Introduction = ({
+const Introduction: FunctionComponent<IntroductionProps> = ({
   stateKey,
   state,
   areaType,
   areaKey,
   area,
   geojson,
-}: IntroductionProps) => {
+}) => {
   const router = useRouter();
   const { t } = useTranslation();
   const { query, locale, defaultLocale } = router;
@@ -36,7 +37,7 @@ const Introduction = ({
       backgroundColor="bg-white"
       className="flex flex-col gap-7 pt-18 pb-5 lg:flex-row lg:gap-16 lg:pt-28 lg:pb-14"
     >
-      <div className="w-full md:px-0 lg:w-1/3">
+      <div className="w-full lg:w-1/3">
         {/* TITLE */}
         <h2 className="mb-4 text-xl font-semibold">{t("header")}</h2>
         {/* DESCRIPTION */}

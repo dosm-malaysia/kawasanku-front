@@ -1,12 +1,12 @@
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 import { useTranslation } from "next-i18next";
+import { FunctionComponent, useEffect, useState } from "react";
 
-import { getAreaOptions } from "../lib/api";
-import { GEO_FILTER, STATES_KEY } from "../lib/constants";
+import { getAreaOptions } from "../../lib/api";
+import { GEO_FILTER, STATES_KEY } from "../../lib/constants";
 
-import SelectMenu from "./SelectMenu";
-import { Option } from "./Dropdowns/interface";
+import SelectMenu from "../Dropdowns/Select";
+import { Option } from "../Dropdowns/interface";
 
 interface GeoFiltersProps {
   stateKey?: string;
@@ -15,7 +15,12 @@ interface GeoFiltersProps {
   area?: string;
 }
 
-const GeoFilters = ({ stateKey, areaType, areaKey, area }: GeoFiltersProps) => {
+const GeoFilters: FunctionComponent<GeoFiltersProps> = ({
+  stateKey,
+  areaType,
+  areaKey,
+  area,
+}) => {
   const { t } = useTranslation();
   const router = useRouter();
   const { query } = router;

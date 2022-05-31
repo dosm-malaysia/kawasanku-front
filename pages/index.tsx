@@ -1,40 +1,40 @@
-import React, { useState } from "react";
 import dynamic from "next/dynamic";
-import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
+import React, { useState } from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 
 import Card from "../components/Card";
+import Metadata from "../components/Metadata";
 import Container from "../components/Container";
-import Spotlight from "../components/Spotlight";
 import Introduction from "../components/Introduction";
 import { Option } from "../components/Dropdowns/interface";
+import Spotlight from "../components/Charts/Jitterplot/Spotlight";
 
 import { translateDoughnutChart } from "../lib/helpers";
 import { AREA_TYPES, MALAYSIA, STATES_KEY } from "../lib/constants";
 import { getGeojson, getJitterplots, getSnapshot } from "../lib/api";
-import Head from "../components/Head";
 
-const BarChart = dynamic(() => import("../components/Charts/BarChart"), {
+const BarChart = dynamic(() => import("../components/Charts/Bar"), {
   ssr: false,
 });
-const DoughnutChart = dynamic(
-  () => import("../components/Charts/DoughnutCharts"),
-  { ssr: false }
+const DoughnutCharts = dynamic(
+  () => import("../components/Charts/Doughnut/DoughnutCharts"),
+  {
+    ssr: false,
+  }
 );
-const JitterPlots = dynamic(() => import("../components/JitterPlots"), {
-  ssr: false,
-});
+const Jitterplots = dynamic(
+  () => import("../components/Charts/Jitterplot/Jitterplots"),
+  {
+    ssr: false,
+  }
+);
 
 const Home: NextPage = ({
   geojson,
   barChartData,
-  sex,
-  ethnicity,
-  nationality,
-  religion,
-  maritalStatus,
-  ageGroup,
+  doughnutChartData,
   jitterplotData,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { t } = useTranslation();
@@ -43,23 +43,25 @@ const Home: NextPage = ({
 
   return (
     <>
-      <Head title={t("title")} />
+      {/* METADATA */}
+      <Metadata title={t("title")} />
+      {/* INTRODUCTION */}
       <Introduction geojson={geojson} />
-      {/* CHARTS */}
+      {/* SNAPSHOT */}
       <Container
-        backgroundColor="bg-gray-100"
-        className="flex flex-col pt-5 md:pt-14"
+        backgroundColor="snapshot-container-background"
+        className="snapshot-container"
       >
         {/* BAR CHART TITLE */}
-        <div className="mb-5 flex w-full flex-col items-start justify-between gap-2 md:mb-7 md:flex-row md:items-center md:gap-0">
+        <div className="bar-chart-title">
           <h3 className="section-title">
             {t("section1_title1")}{" "}
-            <span className="capitalize underline">{t("malaysia")}</span>{" "}
+            <span className="underline">{t("malaysia")}</span>{" "}
             {t("section1_title2")}
           </h3>
-          <p className="text-sm text-gray-400">{t("census_2020")}</p>
+          <p className="census-text">{t("census_2020")}</p>
         </div>
-        <div className="mb-10 flex w-full flex-col gap-4 md:mb-15 lg:flex-row">
+        <div className="snapshot-layout">
           {/* BAR CHART */}
           <div className="w-full lg:w-1/3">
             <Card className="rounded-lg border">
@@ -68,43 +70,27 @@ const Home: NextPage = ({
           </div>
           {/* DOUGHNUT CHARTS */}
           <div className="w-full lg:w-2/3">
-            <div className="grid grid-cols-1 overflow-hidden rounded-lg border md:grid-cols-3 md:grid-rows-2">
-              <DoughnutChart title={t("doughnut.metric_1")} data={sex} />
-              <DoughnutChart title={t("doughnut.metric_2")} data={ethnicity} />
-              <DoughnutChart
-                title={t("doughnut.metric_3")}
-                data={nationality}
-              />
-              <DoughnutChart title={t("doughnut.metric_4")} data={religion} />
-              <DoughnutChart
-                title={t("doughnut.metric_5")}
-                data={maritalStatus}
-              />
-              <DoughnutChart title={t("doughnut.metric_6")} data={ageGroup} />
-            </div>
+            <DoughnutCharts {...doughnutChartData} />
           </div>
         </div>
         {/* JITTERPLOT TITLE */}
-        <div className="mb-6 flex w-full flex-col items-start justify-between gap-2 md:mb-7 md:flex-row md:items-center md:gap-0">
+        <div className="jitterplot-title">
           <h3 className="section-title">{t("section2_title1")}</h3>
-          <p className="text-sm text-gray-400">{t("census_2020")}</p>
+          <p className="census-text">{t("census_2020")}</p>
         </div>
       </Container>
       <Container
-        backgroundColor="bg-white md:bg-gray-100"
-        className="sm:mb-10 md:rounded-lg"
+        backgroundColor="jitterplot-container-background"
+        className="jitterplot-container"
       >
-        <Card
-          padding="px-0 pt-4 pb-10 sm:p-4"
-          className="relative overflow-hidden rounded-lg md:border"
-        >
+        <Card padding="jitterplot-card-padding" className="jitterplot-card">
           {/* SPOTLIGHT */}
           <Spotlight
             jitterComparisons={jitterComparisons}
             setJitterComparisons={setJitterComparisons}
           />
           {/* JITTERPLOTS */}
-          <JitterPlots
+          <Jitterplots
             areaType={AREA_TYPES.State}
             data={jitterplotData}
             comparisons={jitterComparisons}
@@ -172,16 +158,18 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
       geojson,
-      //   DOUGHNUT CHARTS DATA
-      sex: translatedSex,
-      ethnicity: translatedEthnicity,
-      nationality: translatedNationality,
-      religion: translatedReligion,
-      maritalStatus: translatedMaritalStatus,
-      ageGroup: translatedAgeGroup,
-      //   PYRAMID CHART DATA
+      // DOUGHNUT CHARTS DATA
+      doughnutChartData: {
+        sex: translatedSex,
+        ethnicity: translatedEthnicity,
+        nationality: translatedNationality,
+        religion: translatedReligion,
+        marital: translatedMaritalStatus,
+        agegroup: translatedAgeGroup,
+      },
+      // PYRAMID CHART DATA
       barChartData: pyramidCharts,
-      //   JITTERPLOT DATA
+      // JITTERPLOT DATA
       jitterplotData,
       ...translation,
     },

@@ -1,5 +1,5 @@
-import { useRef, useEffect } from "react";
 import { Wrapper, Status } from "@googlemaps/react-wrapper";
+import { useRef, useEffect, FunctionComponent } from "react";
 
 const API_KEY = process.env.NEXT_PUBLIC_GMAPS_API_KEY;
 if (API_KEY === undefined) throw new Error("Google Maps API key required.");
@@ -8,7 +8,7 @@ interface MapProps {
   geojson: any;
 }
 
-const Map = ({ geojson }: MapProps) => {
+const Map: FunctionComponent<MapProps> = ({ geojson }) => {
   const render = (status: Status) => {
     switch (status) {
       case Status.LOADING:

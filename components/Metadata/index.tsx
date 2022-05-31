@@ -1,13 +1,13 @@
-import { useTranslation } from "next-i18next";
-import { FunctionComponent } from "react";
 import NextHead from "next/head";
+import { FunctionComponent } from "react";
+import { useTranslation } from "next-i18next";
 
-interface HeadProps {
+interface MetadataProps {
   title: string;
   keywords?: string;
 }
 
-const Head: FunctionComponent<HeadProps> = ({ title, keywords }) => {
+const Metadata: FunctionComponent<MetadataProps> = ({ title, keywords }) => {
   const { t } = useTranslation();
 
   const META = {
@@ -51,4 +51,4 @@ const Head: FunctionComponent<HeadProps> = ({ title, keywords }) => {
   );
 };
 
-export default Head;
+export default Metadata;

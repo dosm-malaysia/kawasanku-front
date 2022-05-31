@@ -4,8 +4,8 @@ import type {
   InferGetStaticPropsType,
   NextPage,
 } from "next";
-import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
 import { ParsedUrlQuery } from "querystring";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -17,28 +17,28 @@ import {
   getAreaType,
   getAreaPaths,
 } from "../../lib/api";
-import { AREA_TYPES } from "../../lib/constants";
 import { IDoughnutCharts } from "../../lib/interfaces";
 import { translateDoughnutChart } from "../../lib/helpers";
 
-import Head from "../../components/Head";
 import Card from "../../components/Card";
+import Metadata from "../../components/Metadata";
 import Container from "../../components/Container";
-import Spotlight from "../../components/Spotlight";
-import ShareButton from "../../components/Share/Button";
 import Introduction from "../../components/Introduction";
 import { Option } from "../../components/Dropdowns/interface";
+import Spotlight from "../../components/Charts/Jitterplot/Spotlight";
 
-const BarChart = dynamic(() => import("../../components/Charts/BarChart"), {
-  ssr: false,
-});
-const DoughnutChart = dynamic(
-  () => import("../../components/Charts/DoughnutCharts"),
-  { ssr: false }
+const DoughnutCharts = dynamic(
+  () => import("../../components/Charts/Doughnut/DoughnutCharts"),
+  {
+    ssr: false,
+  }
 );
-const JitterPlots = dynamic(() => import("../../components/JitterPlots"), {
-  ssr: false,
-});
+const Jitterplots = dynamic(
+  () => import("../../components/Charts/Jitterplot/Jitterplots"),
+  {
+    ssr: false,
+  }
+);
 
 const Area: NextPage = ({
   stateKey,
@@ -46,15 +46,7 @@ const Area: NextPage = ({
   areaKey,
   areaType,
   areaName,
-  barChartData,
-  sex,
-  ethnicity,
-  nationality,
-  ageGroup,
-  religion,
-  maritalStatus,
-  housing,
-  labour,
+  doughnutChartData,
   jitterplotData,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { t } = useTranslation();
@@ -67,12 +59,14 @@ const Area: NextPage = ({
 
   return (
     <>
-      <Head
+      {/* METADATA */}
+      <Metadata
         title={`${areaName} · ${t("title")}`}
         keywords={`${areaName} ${t(
           `states.${stateKey}`
         )} ${areaType} kawasanku statistics dosm`}
       />
+      {/* INTRODUCTION */}
       <Introduction
         stateKey={stateKey}
         state={t(`states.${stateKey}`)}
@@ -81,44 +75,25 @@ const Area: NextPage = ({
         area={areaName}
         geojson={geojson}
       />
-      {/* CHARTS */}
+      {/* SNAPSHOT */}
       <Container
-        backgroundColor="bg-gray-100"
-        className="flex flex-col px-4 pt-5 md:pt-14"
+        backgroundColor="snapshot-container-background"
+        className="snapshot-container"
       >
         {/* BAR CHART TITLE */}
-        <div className="mb-5 flex w-full flex-col items-start justify-between gap-2 md:mb-7 md:flex-row md:items-center md:gap-0">
+        <div className="bar-chart-title">
           <h3 className="section-title">
             {t("section1_title1")} <span className="underline">{areaName}</span>{" "}
             {t("section1_title2")}
           </h3>
-          <p className="text-sm text-gray-400">{t("census_2020")}</p>
+          <p className="census-text">{t("census_2020")}</p>
         </div>
         {/* DOUGHNUT CHARTS */}
         <div className="mb-10 w-full md:mb-15">
-          <div className="grid grid-cols-1 overflow-hidden rounded-lg border md:grid-cols-3 md:grid-rows-2">
-            <DoughnutChart title={t("doughnut.metric_1")} data={sex} />
-            <DoughnutChart title={t("doughnut.metric_2")} data={ethnicity} />
-            <DoughnutChart title={t("doughnut.metric_3")} data={nationality} />
-            {areaType === AREA_TYPES.District ? (
-              <>
-                <DoughnutChart title={t("doughnut.metric_4")} data={religion} />
-                <DoughnutChart
-                  title={t("doughnut.metric_5")}
-                  data={maritalStatus}
-                />
-              </>
-            ) : (
-              <>
-                <DoughnutChart title={t("doughnut.metric_7")} data={housing} />
-                <DoughnutChart title={t("doughnut.metric_8")} data={labour} />
-              </>
-            )}
-            <DoughnutChart title={t("doughnut.metric_6")} data={ageGroup} />
-          </div>
+          <DoughnutCharts {...doughnutChartData} />
         </div>
         {/* JITTERPLOT TITLE */}
-        <div className="mb-6 flex w-full flex-col items-start justify-between gap-2 md:mb-7 md:items-center md:gap-0 lg:flex-row">
+        <div className="jitterplot-title">
           <h3 className="section-title">
             {t("section2_title2_1")}{" "}
             <span className="underline">{areaName}</span>{" "}
@@ -126,17 +101,14 @@ const Area: NextPage = ({
               area_types: t(`area_types.${areaType}`),
             })}
           </h3>
-          <p className="text-sm text-gray-400">{t("census_2020")}</p>
+          <p className="census-text">{t("census_2020")}</p>
         </div>
       </Container>
       <Container
-        backgroundColor="bg-white md:bg-gray-100"
-        className="sm:mb-10 md:rounded-lg"
+        backgroundColor="jitterplot-container-background"
+        className="jitterplot-container"
       >
-        <Card
-          padding="px-0 pt-4 pb-10 sm:p-4"
-          className="relative overflow-hidden rounded-lg md:border"
-        >
+        <Card padding="jitterplot-card-padding" className="jitterplot-card">
           {/* SPOTLIGHT */}
           <Spotlight
             areaType={areaType}
@@ -145,7 +117,7 @@ const Area: NextPage = ({
             setJitterComparisons={setJitterComparisons}
           />
           {/* JITTERPLOTS */}
-          <JitterPlots
+          <Jitterplots
             areaType={areaType}
             data={jitterplotData}
             comparisons={jitterComparisons}
@@ -276,14 +248,16 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
       areaType,
       areaName,
       // DOUGHNUT CHARTS DATA
-      sex: translatedSex,
-      ethnicity: translatedEthnicity,
-      nationality: translatedNationality,
-      ageGroup: translatedAgeGroup,
-      religion: translatedReligion,
-      maritalStatus: translatedMaritalStatus,
-      housing: translatedHousing,
-      labour: translatedLabour,
+      doughnutChartData: {
+        sex: translatedSex,
+        ethnicity: translatedEthnicity,
+        nationality: translatedNationality,
+        religion: translatedReligion,
+        marital: translatedMaritalStatus,
+        agegroup: translatedAgeGroup,
+        housing: translatedHousing,
+        labour: translatedLabour,
+      },
       // PYRAMID CHART DATA
       barChartData: pyramidCharts,
       // JITTERPLOT DATA

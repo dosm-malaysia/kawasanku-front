@@ -1,3 +1,4 @@
+import { FunctionComponent } from "react";
 import { useTranslation } from "next-i18next";
 
 import { AREA_TYPES } from "../../../lib/constants";
@@ -6,7 +7,7 @@ interface IndicatorsProps {
   areaType: AREA_TYPES;
 }
 
-const Indicators = ({ areaType }: IndicatorsProps) => {
+const Indicators: FunctionComponent<IndicatorsProps> = ({ areaType }) => {
   const { t } = useTranslation();
 
   return (

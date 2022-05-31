@@ -1,34 +1,26 @@
-import {
-  ResponsiveScatterPlotCanvas,
-  ScatterPlotMouseHandler,
-} from "@nivo/scatterplot";
-import { useEffect, useState } from "react";
-import { IJitterplotData } from "../../../lib/interfaces";
-import { Option } from "../../Dropdowns/interface";
-import Tooltip from "../../Tooltip";
+import { FunctionComponent, useEffect, useState } from "react";
+import { ResponsiveScatterPlotCanvas } from "@nivo/scatterplot";
 
-interface JitterPlotProps {
+import { IJitterplotData } from "../../../lib/interfaces";
+
+import Tooltip from "./Tooltip";
+import { Option } from "../../Dropdowns/interface";
+
+interface JitterplotProps {
   label: string;
   data: IJitterplotData[];
   comparisons: Option[];
   tooltip?: string;
   currentLocation?: Option;
-  // TODO: sync hovers
-  hoverNode?: any;
-  onHoverIn?: ScatterPlotMouseHandler<{ x: number; y: number }>;
-  onHoverOut?: ScatterPlotMouseHandler<{ x: number; y: number }>;
 }
 
-const JitterPlot = ({
+const Jitterplot: FunctionComponent<JitterplotProps> = ({
   label,
   data,
   comparisons,
   tooltip,
   currentLocation,
-  hoverNode,
-  onHoverIn,
-  onHoverOut,
-}: JitterPlotProps) => {
+}) => {
   const [plot, setPlot] = useState(data);
 
   useEffect(() => {
@@ -143,4 +135,4 @@ const JitterPlot = ({
   );
 };
 
-export default JitterPlot;
+export default Jitterplot;

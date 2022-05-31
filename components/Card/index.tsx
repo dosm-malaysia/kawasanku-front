@@ -1,10 +1,16 @@
+import { FunctionComponent } from "react";
+
 interface CardProps {
   padding?: string;
   className?: string;
   children: React.ReactNode;
 }
 
-const Card = ({ padding, className, children }: CardProps) => (
+const Card: FunctionComponent<CardProps> = ({
+  padding,
+  className,
+  children,
+}) => (
   <div
     className={`
       h-full w-full bg-white 
