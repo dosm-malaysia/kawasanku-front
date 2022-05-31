@@ -1,11 +1,10 @@
-import {
-  ResponsiveScatterPlotCanvas,
-  ScatterPlotMouseHandler,
-} from "@nivo/scatterplot";
 import { useEffect, useState } from "react";
+import { ResponsiveScatterPlotCanvas } from "@nivo/scatterplot";
+
 import { IJitterplotData } from "../../../lib/interfaces";
+
+import Tooltip from "./Tooltip";
 import { Option } from "../../Dropdowns/interface";
-import Tooltip from "../../Tooltip";
 
 interface JitterPlotProps {
   label: string;

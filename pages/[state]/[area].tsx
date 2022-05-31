@@ -4,8 +4,8 @@ import type {
   InferGetStaticPropsType,
   NextPage,
 } from "next";
-import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
 import { ParsedUrlQuery } from "querystring";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -25,20 +25,19 @@ import Head from "../../components/Head";
 import Card from "../../components/Card";
 import Container from "../../components/Container";
 import Spotlight from "../../components/Spotlight";
-import ShareButton from "../../components/Share/Button";
 import Introduction from "../../components/Introduction";
 import { Option } from "../../components/Dropdowns/interface";
 
-const BarChart = dynamic(() => import("../../components/Charts/BarChart"), {
-  ssr: false,
-});
 const DoughnutChart = dynamic(
-  () => import("../../components/Charts/DoughnutCharts"),
+  () => import("../../components/Charts/Doughnut"),
   { ssr: false }
 );
-const JitterPlots = dynamic(() => import("../../components/JitterPlots"), {
-  ssr: false,
-});
+const JitterPlots = dynamic(
+  () => import("../../components/Charts/Jitterplot/Jitterplots"),
+  {
+    ssr: false,
+  }
+);
 
 const Area: NextPage = ({
   stateKey,

@@ -1,5 +1,4 @@
 import { useTranslation } from "next-i18next";
-
 import { AREA_TYPES } from "../../../lib/constants";
 
 interface IndicatorsProps {

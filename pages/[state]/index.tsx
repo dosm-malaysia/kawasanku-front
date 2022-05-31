@@ -4,8 +4,8 @@ import type {
   InferGetStaticPropsType,
   NextPage,
 } from "next";
-import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
 import { ParsedUrlQuery } from "querystring";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -15,7 +15,6 @@ import {
   getGeojson,
   getStatePaths,
   getJitterplots,
-  getAreaType,
 } from "../../lib/api";
 
 import Head from "../../components/Head";
@@ -24,19 +23,23 @@ import Container from "../../components/Container";
 import Spotlight from "../../components/Spotlight";
 import Introduction from "../../components/Introduction";
 import { Option } from "../../components/Dropdowns/interface";
-import { translateDoughnutChart } from "../../lib/helpers";
-import { AREA_TYPES } from "../../lib/constants";
 
-const BarChart = dynamic(() => import("../../components/Charts/BarChart"), {
+import { AREA_TYPES } from "../../lib/constants";
+import { translateDoughnutChart } from "../../lib/helpers";
+
+const BarChart = dynamic(() => import("../../components/Charts/Bar"), {
   ssr: false,
 });
 const DoughnutChart = dynamic(
-  () => import("../../components/Charts/DoughnutCharts"),
+  () => import("../../components/Charts/Doughnut"),
   { ssr: false }
 );
-const JitterPlots = dynamic(() => import("../../components/JitterPlots"), {
-  ssr: false,
-});
+const JitterPlots = dynamic(
+  () => import("../../components/Charts/Jitterplot/Jitterplots"),
+  {
+    ssr: false,
+  }
+);
 
 const State: NextPage = ({
   stateKey,

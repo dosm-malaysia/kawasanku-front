@@ -1,9 +1,10 @@
-import React, { useState } from "react";
 import dynamic from "next/dynamic";
-import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
+import React, { useState } from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 
+import Head from "../components/Head";
 import Card from "../components/Card";
 import Container from "../components/Container";
 import Spotlight from "../components/Spotlight";
@@ -13,18 +14,19 @@ import { Option } from "../components/Dropdowns/interface";
 import { translateDoughnutChart } from "../lib/helpers";
 import { AREA_TYPES, MALAYSIA, STATES_KEY } from "../lib/constants";
 import { getGeojson, getJitterplots, getSnapshot } from "../lib/api";
-import Head from "../components/Head";
 
-const BarChart = dynamic(() => import("../components/Charts/BarChart"), {
+const BarChart = dynamic(() => import("../components/Charts/Bar"), {
   ssr: false,
 });
-const DoughnutChart = dynamic(
-  () => import("../components/Charts/DoughnutCharts"),
-  { ssr: false }
+const DoughnutChart = dynamic(() => import("../components/Charts/Doughnut"), {
+  ssr: false,
+});
+const JitterPlots = dynamic(
+  () => import("../components/Charts/Jitterplot/Jitterplots"),
+  {
+    ssr: false,
+  }
 );
-const JitterPlots = dynamic(() => import("../components/JitterPlots"), {
-  ssr: false,
-});
 
 const Home: NextPage = ({
   geojson,
