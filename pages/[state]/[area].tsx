@@ -131,9 +131,12 @@ const Area: NextPage = ({
       </Container>
       <Container
         backgroundColor="bg-white md:bg-gray-100"
-        className="pb-5 md:pb-8"
+        className="sm:mb-10 md:rounded-lg"
       >
-        <Card className="relative overflow-visible rounded-lg md:border">
+        <Card
+          padding="px-0 pt-4 pb-10 sm:p-4"
+          className="relative overflow-hidden rounded-lg md:border"
+        >
           {/* SPOTLIGHT */}
           <Spotlight
             areaType={areaType}

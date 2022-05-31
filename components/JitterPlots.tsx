@@ -48,13 +48,13 @@ const Jitterplots = ({
     <>
       {/* MEDIAN INDICATORS */}
       <Indicators areaType={areaType} />
-      <div className="relative h-full w-full overflow-visible">
+      <div className="relative h-full w-full">
         {/* JITTERPLOT CHARTS */}
         <div className="relative flex h-full w-full flex-col gap-2">
           {/* PERCENTILE OVERLAY */}
           <PercentileOverlay />
           {/* SECTION 1 TITLE */}
-          <span className="z-10 inline-block w-fit bg-white font-semibold text-accent">
+          <span className="inline-block w-fit bg-white font-semibold text-accent">
             {t("jitterplot.title_1")}
           </span>
           {/* SECTION 1 METRICS */}
@@ -117,7 +117,7 @@ const Jitterplots = ({
           />
 
           {/* SECTION 2 TITLE */}
-          <span className="z-10 inline-block w-fit bg-white pt-2 font-semibold text-accent">
+          <span className="inline-block w-fit bg-white pt-2 font-semibold text-accent">
             {t("jitterplot.title_2")}
           </span>
           {/* SECTION 2 METRICS */}
@@ -172,7 +172,7 @@ const Jitterplots = ({
           />
 
           {/* SECTION 3 TITLE */}
-          <span className="z-10 w-fit bg-white pt-2 font-semibold text-accent">
+          <span className="w-fit bg-white pt-2 font-semibold text-accent">
             {t("jitterplot.title_3")}
           </span>
           {/* SECTION 3 METRICS */}
@@ -232,7 +232,7 @@ const Jitterplots = ({
           />
 
           {/* SECTION 4 TITLE */}
-          <span className="z-10 w-fit bg-white pt-2 font-semibold text-accent">
+          <span className="w-fit bg-white pt-2 font-semibold text-accent">
             {t("jitterplot.title_4")}
           </span>
           {/* SECTION 4 METRICS */}

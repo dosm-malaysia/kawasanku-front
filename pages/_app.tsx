@@ -50,7 +50,7 @@ function App({ Component, pageProps, router }: AppProps) {
         </EmbedLayout>
       ) : (
         <Layout>
-          <Component {...pageProps} />
+          <Component {...pageProps} key={router.asPath} />
         </Layout>
       )}
     </>

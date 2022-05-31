@@ -82,7 +82,7 @@ const Introduction = ({
           areaType={areaType}
         />
       </div>
-      <div className="flex w-full flex-col px-4 lg:w-2/3 lg:px-0">
+      <div className="flex w-full flex-col lg:w-2/3">
         <div className="mb-4 flex items-center gap-3">
           {/* ICON */}
           <svg
