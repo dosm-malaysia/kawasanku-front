@@ -16,11 +16,6 @@ interface JitterplotsProps {
   currentLocation?: Option;
 }
 
-const DEFAULT_NODE_STYLE = {
-  size: 16,
-  color: "#E0E0E0CC",
-};
-
 const Jitterplots = ({
   areaType,
   data,
@@ -28,21 +23,6 @@ const Jitterplots = ({
   currentLocation,
 }: JitterplotsProps) => {
   const { t } = useTranslation();
-
-  // TODO: sync hover
-  //   const [hoverNode, setHoverNode] = useState(null)
-  //   const syncHoverIn = useCallback((node) => { setHoverNode(node.id) }, [setHoverNode])
-  //   const syncHoverOut = useCallback(() => { setHoverNode(null)}, [setHoverNode])
-
-  //   const syncHighlightNode = useMemo(() => (node: any) => {
-  //     if (hoverNode !== null && hoverNode === node.id) {
-  //         return {
-  //             size: 32,
-  //             color: "#13293d"
-  //         }
-  //     }
-  //     return DEFAULT_NODE_STYLE
-  //   }, [hoverNode])
 
   return (
     <>
@@ -63,21 +43,14 @@ const Jitterplots = ({
             data={data.metric_1}
             comparisons={comparisons}
             currentLocation={currentLocation}
-            // hoverNode={syncHighlightNode}
-            // onHoverIn={syncHoverIn}
-            // onHoverOut={syncHoverOut}
             tooltip={t("jitterplot.metric_1.tooltip")}
           />
-
           <JitterPlot
             label={t("jitterplot.metric_2.label")}
             data={data.metric_2}
             comparisons={comparisons}
             currentLocation={currentLocation}
             tooltip={t("jitterplot.metric_2.tooltip")}
-            // hoverNode={syncHighlightNode}
-            // onHoverIn={syncHoverIn}
-            // onHoverOut={syncHoverOut}
           />
           <JitterPlot
             label={t("jitterplot.metric_3.label")}
@@ -86,7 +59,6 @@ const Jitterplots = ({
             currentLocation={currentLocation}
             tooltip={t("jitterplot.metric_3.tooltip")}
           />
-
           <JitterPlot
             label={t("jitterplot.metric_4.label")}
             data={data.metric_4}
@@ -115,7 +87,6 @@ const Jitterplots = ({
             currentLocation={currentLocation}
             tooltip={t("jitterplot.metric_7.tooltip")}
           />
-
           {/* SECTION 2 TITLE */}
           <span className="inline-block w-fit bg-white pt-2 font-semibold text-accent">
             {t("jitterplot.title_2")}
@@ -170,7 +141,6 @@ const Jitterplots = ({
             currentLocation={currentLocation}
             tooltip={t("jitterplot.metric_14.tooltip")}
           />
-
           {/* SECTION 3 TITLE */}
           <span className="w-fit bg-white pt-2 font-semibold text-accent">
             {t("jitterplot.title_3")}
@@ -230,7 +200,6 @@ const Jitterplots = ({
             currentLocation={currentLocation}
             tooltip={t("jitterplot.metric_21.tooltip")}
           />
-
           {/* SECTION 4 TITLE */}
           <span className="w-fit bg-white pt-2 font-semibold text-accent">
             {t("jitterplot.title_4")}

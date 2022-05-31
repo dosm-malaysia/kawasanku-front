@@ -19,7 +19,7 @@ function App({ Component, pageProps, router }: AppProps) {
     };
   }, [router.events]);
 
-  // Triggers pageview analytics for SPA-level navigation
+  // trigger pageview analytics for SPA-level navigation
   const handleRouteChange = (url: string) => {
     pageview(url);
   };

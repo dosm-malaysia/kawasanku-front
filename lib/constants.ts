@@ -32,25 +32,6 @@ export enum AREA_TYPES {
   Dun = "dun",
 }
 
-export enum STATES {
-  JOHOR = "Johor",
-  KEDAH = "Kedah",
-  KELANTAN = "Kelantan",
-  MELAKA = "Melaka",
-  NEGERI_SEMBILAN = "Negeri Sembilan",
-  PAHANG = "Pahang",
-  PERAK = "Perak",
-  PERLIS = "Perlis",
-  PULAU_PINANG = "Pulau Pinang",
-  SABAH = "Sabah",
-  SARAWAK = "Sarawak",
-  SELANGOR = "Selangor",
-  TERRENGGAU = "Terengganu",
-  KUALA_LUMPUR = "W.P. Kuala Lumpur",
-  LABUAN = "W.P. Labuan",
-  PUTRAJAYA = "W.P. Putrajaya",
-}
-
 export enum STATES_KEY {
   JOHOR = "jhr",
   KEDAH = "kdh",

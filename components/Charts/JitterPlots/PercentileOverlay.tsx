@@ -34,14 +34,6 @@ const PercentileOverlay = () => {
                   : index === 5
                   ? "border-l border-gray-300 bg-gray-200 bg-opacity-20"
                   : ""
-
-                //   : index === 6
-                //   ? "border-r border-l border-r-accent bg-gray-200 bg-opacity-20 border-gray-300"
-                //   : index === 8
-                //   ? "border-r border-l border-l-accent bg-gray-200 bg-opacity-20 border-gray-300"
-                //   : index === 13
-                //   ? "border-opacity-50 border-l border-l-gray-300"
-                //   : ""
               }
             />
           ))}

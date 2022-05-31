@@ -13,10 +13,6 @@ interface JitterPlotProps {
   comparisons: Option[];
   tooltip?: string;
   currentLocation?: Option;
-  // TODO: sync hovers
-  hoverNode?: any;
-  onHoverIn?: ScatterPlotMouseHandler<{ x: number; y: number }>;
-  onHoverOut?: ScatterPlotMouseHandler<{ x: number; y: number }>;
 }
 
 const JitterPlot = ({
@@ -25,9 +21,6 @@ const JitterPlot = ({
   comparisons,
   tooltip,
   currentLocation,
-  hoverNode,
-  onHoverIn,
-  onHoverOut,
 }: JitterPlotProps) => {
   const [plot, setPlot] = useState(data);
 

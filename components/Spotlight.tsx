@@ -43,10 +43,6 @@ const Spotlight = ({
       getAreaOptions({ filter: areaType })
         .then(res => setOptions(res))
         .catch(err => console.log(err));
-
-    // if (currentLocation) {
-    //     setJitterComparisons([currentLocation])
-    // }
   }, [areaType]);
 
   return (
