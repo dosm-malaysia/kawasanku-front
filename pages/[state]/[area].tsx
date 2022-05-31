@@ -17,7 +17,6 @@ import {
   getAreaType,
   getAreaPaths,
 } from "../../lib/api";
-import { AREA_TYPES } from "../../lib/constants";
 import { IDoughnutCharts } from "../../lib/interfaces";
 import { translateDoughnutChart } from "../../lib/helpers";
 
@@ -28,9 +27,11 @@ import Introduction from "../../components/Introduction";
 import { Option } from "../../components/Dropdowns/interface";
 import Spotlight from "../../components/Charts/Jitterplot/Spotlight";
 
-const DoughnutChart = dynamic(
-  () => import("../../components/Charts/Doughnut"),
-  { ssr: false }
+const DoughnutCharts = dynamic(
+  () => import("../../components/Charts/Doughnut/DoughnutCharts"),
+  {
+    ssr: false,
+  }
 );
 const JitterPlots = dynamic(
   () => import("../../components/Charts/Jitterplot/Jitterplots"),
@@ -45,15 +46,7 @@ const Area: NextPage = ({
   areaKey,
   areaType,
   areaName,
-  barChartData,
-  sex,
-  ethnicity,
-  nationality,
-  ageGroup,
-  religion,
-  maritalStatus,
-  housing,
-  labour,
+  doughnutChartData,
   jitterplotData,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { t } = useTranslation();
@@ -97,26 +90,7 @@ const Area: NextPage = ({
         </div>
         {/* DOUGHNUT CHARTS */}
         <div className="mb-10 w-full md:mb-15">
-          <div className="grid grid-cols-1 overflow-hidden rounded-lg border md:grid-cols-3 md:grid-rows-2">
-            <DoughnutChart title={t("doughnut.metric_1")} data={sex} />
-            <DoughnutChart title={t("doughnut.metric_2")} data={ethnicity} />
-            <DoughnutChart title={t("doughnut.metric_3")} data={nationality} />
-            {areaType === AREA_TYPES.District ? (
-              <>
-                <DoughnutChart title={t("doughnut.metric_4")} data={religion} />
-                <DoughnutChart
-                  title={t("doughnut.metric_5")}
-                  data={maritalStatus}
-                />
-              </>
-            ) : (
-              <>
-                <DoughnutChart title={t("doughnut.metric_7")} data={housing} />
-                <DoughnutChart title={t("doughnut.metric_8")} data={labour} />
-              </>
-            )}
-            <DoughnutChart title={t("doughnut.metric_6")} data={ageGroup} />
-          </div>
+          <DoughnutCharts {...doughnutChartData} />
         </div>
         {/* JITTERPLOT TITLE */}
         <div className="jitterplot-title">
@@ -274,14 +248,16 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
       areaType,
       areaName,
       // DOUGHNUT CHARTS DATA
-      sex: translatedSex,
-      ethnicity: translatedEthnicity,
-      nationality: translatedNationality,
-      ageGroup: translatedAgeGroup,
-      religion: translatedReligion,
-      maritalStatus: translatedMaritalStatus,
-      housing: translatedHousing,
-      labour: translatedLabour,
+      doughnutChartData: {
+        sex: translatedSex,
+        ethnicity: translatedEthnicity,
+        nationality: translatedNationality,
+        religion: translatedReligion,
+        marital: translatedMaritalStatus,
+        agegroup: translatedAgeGroup,
+        housing: translatedHousing,
+        labour: translatedLabour,
+      },
       // PYRAMID CHART DATA
       barChartData: pyramidCharts,
       // JITTERPLOT DATA

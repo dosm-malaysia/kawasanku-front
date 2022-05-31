@@ -18,9 +18,12 @@ import { getGeojson, getJitterplots, getSnapshot } from "../lib/api";
 const BarChart = dynamic(() => import("../components/Charts/Bar"), {
   ssr: false,
 });
-const DoughnutChart = dynamic(() => import("../components/Charts/Doughnut"), {
-  ssr: false,
-});
+const DoughnutCharts = dynamic(
+  () => import("../components/Charts/Doughnut/DoughnutCharts"),
+  {
+    ssr: false,
+  }
+);
 const JitterPlots = dynamic(
   () => import("../components/Charts/Jitterplot/Jitterplots"),
   {
@@ -31,12 +34,7 @@ const JitterPlots = dynamic(
 const Home: NextPage = ({
   geojson,
   barChartData,
-  sex,
-  ethnicity,
-  nationality,
-  religion,
-  maritalStatus,
-  ageGroup,
+  doughnutChartData,
   jitterplotData,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { t } = useTranslation();
@@ -72,20 +70,7 @@ const Home: NextPage = ({
           </div>
           {/* DOUGHNUT CHARTS */}
           <div className="w-full lg:w-2/3">
-            <div className="grid grid-cols-1 overflow-hidden rounded-lg border md:grid-cols-3 md:grid-rows-2">
-              <DoughnutChart title={t("doughnut.metric_1")} data={sex} />
-              <DoughnutChart title={t("doughnut.metric_2")} data={ethnicity} />
-              <DoughnutChart
-                title={t("doughnut.metric_3")}
-                data={nationality}
-              />
-              <DoughnutChart title={t("doughnut.metric_4")} data={religion} />
-              <DoughnutChart
-                title={t("doughnut.metric_5")}
-                data={maritalStatus}
-              />
-              <DoughnutChart title={t("doughnut.metric_6")} data={ageGroup} />
-            </div>
+            <DoughnutCharts {...doughnutChartData} />
           </div>
         </div>
         {/* JITTERPLOT TITLE */}
@@ -174,12 +159,14 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
     props: {
       geojson,
       // DOUGHNUT CHARTS DATA
-      sex: translatedSex,
-      ethnicity: translatedEthnicity,
-      nationality: translatedNationality,
-      religion: translatedReligion,
-      maritalStatus: translatedMaritalStatus,
-      ageGroup: translatedAgeGroup,
+      doughnutChartData: {
+        sex: translatedSex,
+        ethnicity: translatedEthnicity,
+        nationality: translatedNationality,
+        religion: translatedReligion,
+        marital: translatedMaritalStatus,
+        agegroup: translatedAgeGroup,
+      },
       // PYRAMID CHART DATA
       barChartData: pyramidCharts,
       // JITTERPLOT DATA
