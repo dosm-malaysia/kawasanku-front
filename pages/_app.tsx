@@ -1,16 +1,15 @@
 import "../styles/globals.css";
-import type { AppProps } from "next/app";
-import { useEffect } from "react";
-import { appWithTranslation } from "next-i18next";
+
 import Script from "next/script";
-import Layout from "../components/Layout";
-import EmbedLayout from "../components/EmbedLayout";
+import { useEffect } from "react";
+import type { AppProps } from "next/app";
+import { appWithTranslation } from "next-i18next";
+
 import { pageview } from "../lib/helpers";
 
-function App({ Component, pageProps, router }: AppProps) {
-  const { pathname } = router;
-  const isEmbed = pathname.includes("embed");
+import Layout from "../components/Layout";
 
+function App({ Component, pageProps, router }: AppProps) {
   useEffect(() => {
     router.events.on("routeChangeComplete", handleRouteChange);
 
@@ -44,15 +43,9 @@ function App({ Component, pageProps, router }: AppProps) {
           `,
         }}
       />
-      {isEmbed ? (
-        <EmbedLayout>
-          <Component {...pageProps} />
-        </EmbedLayout>
-      ) : (
-        <Layout>
-          <Component {...pageProps} key={router.asPath} />
-        </Layout>
-      )}
+      <Layout>
+        <Component {...pageProps} key={router.asPath} />
+      </Layout>
     </>
   );
 }
