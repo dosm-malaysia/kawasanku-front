@@ -1,26 +1,22 @@
 import { Fragment } from "react";
 import { Listbox, Transition } from "@headlessui/react";
+import { Option } from "./interface";
 
-export interface SelectMenuOption {
-  label: string;
-  value: string;
-}
-
-interface SelectMenuProps {
-  options: SelectMenuOption[];
-  selected?: SelectMenuOption;
+interface SelectProps {
+  options: Option[];
+  selected?: Option;
   placeholder?: string;
   disabled?: boolean;
   onChange: (value?: string) => void;
 }
 
-const SelectMenu = ({
+const Select = ({
   options,
   selected,
   placeholder,
   onChange,
   disabled,
-}: SelectMenuProps) => {
+}: SelectProps) => {
   return (
     <Listbox
       value={selected?.value}
@@ -96,4 +92,4 @@ const SelectMenu = ({
   );
 };
 
-export default SelectMenu;
+export default Select;

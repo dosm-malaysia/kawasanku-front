@@ -1,6 +1,7 @@
-import { Children, Fragment, useState } from "react";
-import { Combobox, Transition } from "@headlessui/react";
+import { Fragment, useState } from "react";
 import { useTranslation } from "next-i18next";
+import { Combobox, Transition } from "@headlessui/react";
+
 import { Option } from "./interface";
 
 interface ComboBoxProps {
