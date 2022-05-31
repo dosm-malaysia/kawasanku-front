@@ -6,7 +6,7 @@ import { IJitterplotData } from "../../../lib/interfaces";
 import Tooltip from "./Tooltip";
 import { Option } from "../../Dropdowns/interface";
 
-interface JitterPlotProps {
+interface JitterplotProps {
   label: string;
   data: IJitterplotData[];
   comparisons: Option[];
@@ -14,7 +14,7 @@ interface JitterPlotProps {
   currentLocation?: Option;
 }
 
-const JitterPlot: FunctionComponent<JitterPlotProps> = ({
+const Jitterplot: FunctionComponent<JitterplotProps> = ({
   label,
   data,
   comparisons,
@@ -135,4 +135,4 @@ const JitterPlot: FunctionComponent<JitterPlotProps> = ({
   );
 };
 
-export default JitterPlot;
+export default Jitterplot;

@@ -36,7 +36,7 @@ const DoughnutCharts = dynamic(
     ssr: false,
   }
 );
-const JitterPlots = dynamic(
+const Jitterplots = dynamic(
   () => import("../../components/Charts/Jitterplot/Jitterplots"),
   {
     ssr: false,
@@ -124,7 +124,7 @@ const State: NextPage = ({
             setJitterComparisons={setJitterComparisons}
           />
           {/* JITTERPLOTS */}
-          <JitterPlots
+          <Jitterplots
             areaType={AREA_TYPES.State}
             data={jitterplotData}
             comparisons={jitterComparisons}
