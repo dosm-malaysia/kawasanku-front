@@ -45,23 +45,25 @@ const Home: NextPage = ({
 
   return (
     <>
+      {/* METADATA */}
       <Metadata title={t("title")} />
+      {/* INTRODUCTION */}
       <Introduction geojson={geojson} />
-      {/* CHARTS */}
+      {/* SNAPSHOT */}
       <Container
-        backgroundColor="bg-gray-100"
-        className="flex flex-col pt-5 md:pt-14"
+        backgroundColor="snapshot-container-background"
+        className="snapshot-container"
       >
         {/* BAR CHART TITLE */}
-        <div className="mb-5 flex w-full flex-col items-start justify-between gap-2 md:mb-7 md:flex-row md:items-center md:gap-0">
+        <div className="bar-chart-title">
           <h3 className="section-title">
             {t("section1_title1")}{" "}
-            <span className="capitalize underline">{t("malaysia")}</span>{" "}
+            <span className="underline">{t("malaysia")}</span>{" "}
             {t("section1_title2")}
           </h3>
-          <p className="text-sm text-gray-400">{t("census_2020")}</p>
+          <p className="census-text">{t("census_2020")}</p>
         </div>
-        <div className="mb-10 flex w-full flex-col gap-4 md:mb-15 lg:flex-row">
+        <div className="snapshot-layout">
           {/* BAR CHART */}
           <div className="w-full lg:w-1/3">
             <Card className="rounded-lg border">
@@ -87,19 +89,16 @@ const Home: NextPage = ({
           </div>
         </div>
         {/* JITTERPLOT TITLE */}
-        <div className="mb-6 flex w-full flex-col items-start justify-between gap-2 md:mb-7 md:flex-row md:items-center md:gap-0">
+        <div className="jitterplot-title">
           <h3 className="section-title">{t("section2_title1")}</h3>
-          <p className="text-sm text-gray-400">{t("census_2020")}</p>
+          <p className="census-text">{t("census_2020")}</p>
         </div>
       </Container>
       <Container
-        backgroundColor="bg-white md:bg-gray-100"
-        className="sm:mb-10 md:rounded-lg"
+        backgroundColor="jitterplot-container-background"
+        className="jitterplot-container"
       >
-        <Card
-          padding="px-0 pt-4 pb-10 sm:p-4"
-          className="relative overflow-hidden rounded-lg md:border"
-        >
+        <Card padding="jitterplot-card-padding" className="jitterplot-card">
           {/* SPOTLIGHT */}
           <Spotlight
             jitterComparisons={jitterComparisons}
@@ -174,16 +173,16 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
       geojson,
-      //   DOUGHNUT CHARTS DATA
+      // DOUGHNUT CHARTS DATA
       sex: translatedSex,
       ethnicity: translatedEthnicity,
       nationality: translatedNationality,
       religion: translatedReligion,
       maritalStatus: translatedMaritalStatus,
       ageGroup: translatedAgeGroup,
-      //   PYRAMID CHART DATA
+      // PYRAMID CHART DATA
       barChartData: pyramidCharts,
-      //   JITTERPLOT DATA
+      // JITTERPLOT DATA
       jitterplotData,
       ...translation,
     },

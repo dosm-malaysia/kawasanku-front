@@ -66,12 +66,14 @@ const Area: NextPage = ({
 
   return (
     <>
+      {/* METADATA */}
       <Metadata
         title={`${areaName} · ${t("title")}`}
         keywords={`${areaName} ${t(
           `states.${stateKey}`
         )} ${areaType} kawasanku statistics dosm`}
       />
+      {/* INTRODUCTION */}
       <Introduction
         stateKey={stateKey}
         state={t(`states.${stateKey}`)}
@@ -80,18 +82,18 @@ const Area: NextPage = ({
         area={areaName}
         geojson={geojson}
       />
-      {/* CHARTS */}
+      {/* SNAPSHOT */}
       <Container
-        backgroundColor="bg-gray-100"
-        className="flex flex-col px-4 pt-5 md:pt-14"
+        backgroundColor="snapshot-container-background"
+        className="snapshot-container"
       >
         {/* BAR CHART TITLE */}
-        <div className="mb-5 flex w-full flex-col items-start justify-between gap-2 md:mb-7 md:flex-row md:items-center md:gap-0">
+        <div className="bar-chart-title">
           <h3 className="section-title">
             {t("section1_title1")} <span className="underline">{areaName}</span>{" "}
             {t("section1_title2")}
           </h3>
-          <p className="text-sm text-gray-400">{t("census_2020")}</p>
+          <p className="census-text">{t("census_2020")}</p>
         </div>
         {/* DOUGHNUT CHARTS */}
         <div className="mb-10 w-full md:mb-15">
@@ -117,7 +119,7 @@ const Area: NextPage = ({
           </div>
         </div>
         {/* JITTERPLOT TITLE */}
-        <div className="mb-6 flex w-full flex-col items-start justify-between gap-2 md:mb-7 md:items-center md:gap-0 lg:flex-row">
+        <div className="jitterplot-title">
           <h3 className="section-title">
             {t("section2_title2_1")}{" "}
             <span className="underline">{areaName}</span>{" "}
@@ -125,17 +127,14 @@ const Area: NextPage = ({
               area_types: t(`area_types.${areaType}`),
             })}
           </h3>
-          <p className="text-sm text-gray-400">{t("census_2020")}</p>
+          <p className="census-text">{t("census_2020")}</p>
         </div>
       </Container>
       <Container
-        backgroundColor="bg-white md:bg-gray-100"
-        className="sm:mb-10 md:rounded-lg"
+        backgroundColor="jitterplot-container-background"
+        className="jitterplot-container"
       >
-        <Card
-          padding="px-0 pt-4 pb-10 sm:p-4"
-          className="relative overflow-hidden rounded-lg md:border"
-        >
+        <Card padding="jitterplot-card-padding" className="jitterplot-card">
           {/* SPOTLIGHT */}
           <Spotlight
             areaType={areaType}
