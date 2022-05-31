@@ -11,6 +11,11 @@ import Layout from "../components/Layout";
 
 function App({ Component, pageProps, router }: AppProps) {
   useEffect(() => {
+    // trigger pageview analytics for SPA-level navigation
+    const handleRouteChange = (url: string) => {
+      pageview(url);
+    };
+
     router.events.on("routeChangeComplete", handleRouteChange);
 
     return () => {
@@ -18,16 +23,11 @@ function App({ Component, pageProps, router }: AppProps) {
     };
   }, [router.events]);
 
-  // trigger pageview analytics for SPA-level navigation
-  const handleRouteChange = (url: string) => {
-    pageview(url);
-  };
-
   return (
     <>
       <Script
         strategy="afterInteractive"
-        src="https://www.googletagmanager.com/gtag/js?id=G-DQMEKPCKD5"
+        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_TAG}`}
       />
       <Script
         strategy="afterInteractive"
