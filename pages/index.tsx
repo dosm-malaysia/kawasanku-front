@@ -104,7 +104,7 @@ const Home: NextPage = ({
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const translationReq = serverSideTranslations(locale!, ["common"]);
 
-  const geoReq = getGeojson(MALAYSIA);
+  const geoReq = getGeojson({ area: MALAYSIA });
   const snapshotReq = getSnapshot({ area: MALAYSIA });
   // get data accross state level as default (use any state for area param)
   const jitterplotsReq = getJitterplots({ area: STATES_KEY.JOHOR });

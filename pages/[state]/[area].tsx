@@ -174,7 +174,7 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
   const { state, area } = params as IParams;
 
   const translationReq = serverSideTranslations(locale!, ["common"]);
-  const geoReq = getGeojson(area);
+  const geoReq = getGeojson({ area });
   const doughnutChartsReq = getDoughnutCharts({ state, area });
   const jitterplotsReq = getJitterplots({ area: area });
   const stateTypeReq = getAreaType(state);

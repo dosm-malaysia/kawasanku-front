@@ -22,7 +22,11 @@ export const getAreaPaths = async () =>
     return [...district, ...parlimen, ...dun];
   });
 
-export const getGeojson = async (area: string) =>
+type GetGeojsonReq = {
+  area: string;
+};
+
+export const getGeojson = async ({ area }: GetGeojsonReq) =>
   await API.get<IGeojson>(`/geo?area=${area}`).then(res => {
     const geojsonData = res.data;
     return {
