@@ -1,6 +1,7 @@
 import { FunctionComponent } from "react";
 import { useTranslation } from "next-i18next";
 
+import { capitalize } from "../../../lib/helpers";
 import { AREA_TYPES } from "../../../lib/constants";
 
 interface IndicatorsProps {
@@ -16,6 +17,7 @@ const Indicators: FunctionComponent<IndicatorsProps> = ({ areaType }) => {
       <div className="flex w-full items-center md:w-2/3">
         {/* WORSE THAN MEDIAN */}
         <div className="flex w-1/3 items-center justify-start text-gray-400 md:justify-center">
+          {/* LEFT ARROW ICON */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="mr-1 h-2.5 w-2.5 -rotate-90 transform"
@@ -36,8 +38,10 @@ const Indicators: FunctionComponent<IndicatorsProps> = ({ areaType }) => {
         </div>
         {/* MEDIAN */}
         <div className="flex w-1/3 flex-col items-center text-accent">
-          <p className="text-center text-base font-semibold capitalize">
-            {t("median", { area_type: t(`area_types.${areaType}`) })}
+          <p className="text-center text-base font-semibold">
+            {t("median", {
+              area_type: capitalize(t(`area_types.${areaType}`)),
+            })}
           </p>
         </div>
         {/* BETTER THAN MEDIAN */}
@@ -45,6 +49,7 @@ const Indicators: FunctionComponent<IndicatorsProps> = ({ areaType }) => {
           <p className="text-right text-xs text-gray-400 md:text-sm">
             {t("better_than_median")}
           </p>
+          {/* RIGHT ARROW ICON */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="ml-1 h-2.5 w-2.5 rotate-90 transform"

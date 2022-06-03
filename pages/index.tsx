@@ -56,7 +56,7 @@ const Home: NextPage = ({
         <div className="bar-chart-title">
           <h3 className="section-title">
             {t("section1_title1")}{" "}
-            <span className="underline">{t("malaysia")}</span>{" "}
+            <span className="capitalize underline">{t("malaysia")}</span>{" "}
             {t("section1_title2")}
           </h3>
           <p className="census-text">{t("census_2020")}</p>
