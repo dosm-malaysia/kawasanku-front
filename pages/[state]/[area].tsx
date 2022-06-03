@@ -11,11 +11,11 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 import {
-  getSnapshot,
   getGeojson,
   getJitterplots,
   getAreaType,
   getAreaPaths,
+  getDoughnutCharts,
 } from "../../lib/api";
 import { AREA_TYPES } from "../../lib/constants";
 import { IDoughnutCharts } from "../../lib/interfaces";
@@ -175,8 +175,7 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
 
   const translationReq = serverSideTranslations(locale!, ["common"]);
   const geoReq = getGeojson(area);
-  // TODO: use get doughnut data only since no pyramid chart is shown on this page
-  const snapshotReq = getSnapshot({ area });
+  const doughnutChartsReq = getDoughnutCharts({ state, area });
   const jitterplotsReq = getJitterplots({ area: area });
   const stateTypeReq = getAreaType(state);
   const areaTypeReq = getAreaType(area);
@@ -184,7 +183,7 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
   const res = await Promise.all([
     translationReq,
     geoReq,
-    snapshotReq,
+    doughnutChartsReq,
     jitterplotsReq,
     stateTypeReq,
     areaTypeReq,
@@ -214,7 +213,7 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
   const areaName = res[5].area_name;
 
   // DOUGHNUT CHARTS DATA
-  const doughnutCharts = res[2].doughnut_charts as unknown as IDoughnutCharts;
+  const doughnutCharts = res[2] as unknown as IDoughnutCharts;
   const sex = doughnutCharts.sex;
   const ethnicity = doughnutCharts.ethnicity;
   const nationality = doughnutCharts.nationality;
