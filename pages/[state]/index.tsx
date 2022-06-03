@@ -15,6 +15,7 @@ import {
   getGeojson,
   getStatePaths,
   getJitterplots,
+  getAreaType,
 } from "../../lib/api";
 
 import Card from "../../components/Card";
@@ -172,13 +173,23 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
   const geoReq = getGeojson(state);
   const snapshotReq = getSnapshot({ area: state });
   const jitterplotsReq = getJitterplots({ area: state });
+  const areaTypeReq = getAreaType(state);
 
   const res = await Promise.all([
     translationReq,
     geoReq,
     snapshotReq,
     jitterplotsReq,
+    areaTypeReq,
   ]);
+
+  // CHECK IF STATE PARAMS ARE VALID
+  const isState = res[4].area_type === AREA_TYPES.State;
+
+  if (!isState)
+    return {
+      notFound: true,
+    };
 
   // TRANSLATION
   const translation = res[0];

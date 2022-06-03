@@ -17,6 +17,7 @@ import {
   getAreaType,
   getAreaPaths,
 } from "../../lib/api";
+import { AREA_TYPES } from "../../lib/constants";
 import { IDoughnutCharts } from "../../lib/interfaces";
 import { translateDoughnutChart } from "../../lib/helpers";
 
@@ -177,6 +178,7 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
   // TODO: use get doughnut data only since no pyramid chart is shown on this page
   const snapshotReq = getSnapshot({ area });
   const jitterplotsReq = getJitterplots({ area: area });
+  const stateTypeReq = getAreaType(state);
   const areaTypeReq = getAreaType(area);
 
   const res = await Promise.all([
@@ -184,8 +186,21 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
     geoReq,
     snapshotReq,
     jitterplotsReq,
+    stateTypeReq,
     areaTypeReq,
   ]);
+
+  // CHECK IF STATE AND AREA PARAMS ARE VALID
+  const isState = res[4].area_type === AREA_TYPES.State;
+  const isArea =
+    res[5].area_type === AREA_TYPES.District ||
+    res[5].area_type === AREA_TYPES.Parliament ||
+    res[5].area_type === AREA_TYPES.Dun;
+
+  if (!isState || !isArea)
+    return {
+      notFound: true,
+    };
 
   // TRANSLATION
   const translation = res[0];
@@ -195,9 +210,8 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
   // GEOJSON
   const geojson = res[1];
 
-  // AREA INFORMATION
-  const areaType = res[4].area_type;
-  const areaName = res[4].area_name;
+  const areaType = res[5].area_type;
+  const areaName = res[5].area_name;
 
   // DOUGHNUT CHARTS DATA
   const doughnutCharts = res[2].doughnut_charts as unknown as IDoughnutCharts;
