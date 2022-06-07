@@ -11,7 +11,7 @@ interface DoughnutChartProps {
 }
 
 interface LegendItemProps {
-  color?: string;
+  color: string;
   children: string;
 }
 
@@ -28,7 +28,6 @@ const DoughnutChart: FunctionComponent<DoughnutChartProps> = ({
   title,
   data,
 }) => {
-  console.log(data);
   return (
     <Card className="border-0.5">
       {title && <p className="pb-1 text-sm">{title}</p>}
