@@ -3,6 +3,7 @@ import { useTranslation } from "next-i18next";
 import { FunctionComponent, useEffect, useState } from "react";
 
 import { getAreaOptions } from "../../lib/api";
+import { isFederalTerritory } from "../../lib/helpers";
 import { GEO_FILTER, STATES_KEY } from "../../lib/constants";
 
 import SelectMenu from "../Dropdowns/Select";
@@ -25,26 +26,44 @@ const GeoFilters: FunctionComponent<GeoFiltersProps> = ({
   const router = useRouter();
   const { query } = router;
 
+  const defaultGeoFilters = Object.values(GEO_FILTER).map(filter => {
+    return { label: t(filter), value: filter };
+  });
+
   // options for area type: district, parlimen, dun
   const [selectedAreaType, setSelectedAreaType] = useState(areaType);
   const [options, setOptions] = useState<Option[]>([]);
+
+  const [geoFilterOptions, setGeoFilterOptions] = useState(
+    Object.values(GEO_FILTER).map(filter => {
+      return { label: t(filter), value: filter };
+    })
+  );
+
+  // HIDE DUN OPTION IF SELECTED STATE IS A FEDERAL TERRITORY
+  useEffect(() => {
+    if (stateKey && isFederalTerritory(stateKey)) {
+      setGeoFilterOptions(
+        defaultGeoFilters.filter(
+          geoFilter => geoFilter.value !== GEO_FILTER.Dun
+        )
+      );
+    } else if (stateKey && !isFederalTerritory(stateKey)) {
+      setGeoFilterOptions(defaultGeoFilters);
+    }
+  }, [stateKey]);
 
   useEffect(() => {
     if (stateKey && selectedAreaType) {
       getAreaOptions({ state: stateKey, filter: selectedAreaType }).then(res =>
         setOptions(res)
       );
-    } else if (!stateKey || (stateKey && !selectedAreaType)) {
-      setOptions(
-        Object.values(STATES_KEY).map(state => {
-          return { label: t(`states.${state}`), value: state };
-        })
-      );
     }
   }, [stateKey, selectedAreaType]);
 
   return (
     <div className="flex flex-col gap-4">
+      {/* SELECT STATE */}
       <SelectMenu
         options={Object.values(STATES_KEY).map(state => {
           return { label: t(`states.${state}`), value: state };
@@ -60,10 +79,9 @@ const GeoFilters: FunctionComponent<GeoFiltersProps> = ({
         onChange={newStateKey => router.push(`/${newStateKey}`)}
         placeholder={t("filter1_placeholder")}
       />
+      {/* SELECT GEO FILTER */}
       <SelectMenu
-        options={Object.values(GEO_FILTER).map(filter => {
-          return { label: t(filter), value: filter };
-        })}
+        options={geoFilterOptions}
         selected={
           selectedAreaType
             ? {
@@ -78,6 +96,7 @@ const GeoFilters: FunctionComponent<GeoFiltersProps> = ({
         disabled={!query.state}
         placeholder={t("filter2_placeholder")}
       />
+      {/* SELECT SUB-NATIONAL AREA */}
       <SelectMenu
         options={options.sort((a, b) => a.label.localeCompare(b.label))}
         selected={
