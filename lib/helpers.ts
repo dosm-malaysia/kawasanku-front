@@ -1,3 +1,4 @@
+import { STATES_KEY } from "./constants";
 import { AnalyticsEvent, IDoughnutChartData } from "./interfaces";
 
 export const translateDoughnutChart = (
@@ -35,4 +36,12 @@ export const event = ({ action, category, label, value }: AnalyticsEvent) => {
 
 export const capitalize = (s: string) => {
   return s.charAt(0).toUpperCase() + s.slice(1);
+};
+
+export const isFederalTerritory = (stateKey: string) => {
+  return (
+    stateKey === STATES_KEY.KUALA_LUMPUR ||
+    stateKey === STATES_KEY.LABUAN ||
+    stateKey === STATES_KEY.PUTRAJAYA
+  );
 };
