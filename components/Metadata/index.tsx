@@ -12,7 +12,7 @@ const Metadata: FunctionComponent<MetadataProps> = ({ title, keywords }) => {
 
   const META = {
     title: title,
-    icon: "favicon.ico",
+    icon: "/favicon.ico",
     description: t("header"),
     author: "Department of Statistics Malaysia",
     themeColor: "#13293D",
