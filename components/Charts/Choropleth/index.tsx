@@ -29,7 +29,7 @@ const ChoroplethChart: FunctionComponent<ChoroplethChartProps> = ({
             : parlimenGeojson.features
         }
         margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
-        colors={metric ? getChoroplethColors(metric) : []}
+        colors={metric ? getChoroplethColors(metric) : ["#FFF"]}
         domain={[0, 100]}
         unknownColor="#fff"
         valueFormat=".2s"
