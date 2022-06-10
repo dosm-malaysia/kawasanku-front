@@ -51,4 +51,19 @@ export enum STATES_KEY {
   PUTRAJAYA = "pjy",
 }
 
+export enum CHOROPLETH_METRICS {
+  MaxElevation = "max_elevation",
+  Ruggedness = "ruggedness",
+  Treecover = "treecover",
+  Treeloss = "treeloss",
+  Nightlights = "nightlights",
+  PopulationDensity = "population_density",
+  IncomeMean = "income_mean",
+  ExpenditureMean = "expenditure_mean",
+  Gini = "gini",
+  Poverty = "poverty",
+  Electricity = "electricity",
+  Water = "water",
+}
+
 export const MALAYSIA = "mys";
