@@ -141,6 +141,14 @@ export interface IBarChartData {
 //   // ...
 // ];
 
+// -----------------------------------------------------------------------------
+// CHOROPLETH CHART
+// -----------------------------------------------------------------------------
+export interface IChoroplethData {
+  id: string;
+  value: number;
+}
+
 export interface AnalyticsEvent {
   action: string;
   category: string;
