@@ -8,7 +8,7 @@ interface SelectProps {
   selected?: Option;
   placeholder?: string;
   disabled?: boolean;
-  onChange: (value?: string) => void;
+  onChange: (value: string) => void;
 }
 
 const Select: FunctionComponent<SelectProps> = ({
