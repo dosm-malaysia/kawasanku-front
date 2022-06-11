@@ -191,8 +191,8 @@
             "tooltip": "包括公有和私有的杂货店。相当于马来西亚标准工业分类(MSIC) 2008年1.0版的粮食商店。"
         }
     },
-    "choropleth_title": "A geographic visualisation of key indicators",
-    "indicator": "Indicator",
+    "choropleth_title": "可视化地图上的特定指针",
+    "indicator": "指标",
     "min": "极少",
     "max": "最大",
     "choropleth_metric_placeholder": "选择指标",
