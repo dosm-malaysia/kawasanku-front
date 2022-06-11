@@ -133,3 +133,10 @@ export const CHOROPLETH_RED_PURPLE_SCALE = [
   "#7A0177",
   "#49006A",
 ];
+
+export enum BREAKPOINTS {
+  SM = 640,
+  MD = 768,
+  LG = 1024,
+  XL = 1440,
+}

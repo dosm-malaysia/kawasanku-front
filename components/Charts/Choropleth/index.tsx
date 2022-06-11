@@ -1,9 +1,14 @@
 import { FunctionComponent } from "react";
 import { ResponsiveChoroplethCanvas } from "@nivo/geo";
+import { useWindowWidth } from "@react-hook/window-size";
 
 import { IChoroplethData } from "../../../lib/interfaces";
 import { getChoroplethColors } from "../../../lib/helpers";
-import { CHOROPLETH_METRICS, GEO_FILTER } from "../../../lib/constants";
+import {
+  BREAKPOINTS,
+  CHOROPLETH_METRICS,
+  GEO_FILTER,
+} from "../../../lib/constants";
 
 import dunGeojson from "../../../geojson/dun.json";
 import parlimenGeojson from "../../../geojson/parlimen.json";
@@ -19,8 +24,11 @@ const ChoroplethChart: FunctionComponent<ChoroplethChartProps> = ({
   geoFilter,
   data,
 }) => {
+  const width = useWindowWidth();
+  const isMobile = width < BREAKPOINTS.MD;
+
   return (
-    <div className="h-[588px]">
+    <div className="h-[388px] sm:h-[588px]">
       <ResponsiveChoroplethCanvas
         data={data}
         features={
@@ -33,8 +41,8 @@ const ChoroplethChart: FunctionComponent<ChoroplethChartProps> = ({
         domain={[0, 100]}
         unknownColor="#fff"
         valueFormat=".2s"
-        projectionScale={3000}
-        projectionTranslation={[0.5, 1.04]}
+        projectionScale={isMobile ? 1750 : 3000}
+        projectionTranslation={[0.5, isMobile ? 0.97 : 1.04]}
         projectionRotation={[-114, 0, 0]}
         borderWidth={0.5}
         borderColor="#13293d"
