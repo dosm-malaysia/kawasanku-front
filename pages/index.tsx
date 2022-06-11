@@ -53,7 +53,7 @@ const Home: NextPage = ({
         className="snapshot-container"
       >
         {/* BAR CHART TITLE */}
-        <div className="bar-chart-title">
+        <div className="section-title-layout">
           <h3 className="section-title">
             {t("section1_title1")}{" "}
             <span className="capitalize underline">{t("malaysia")}</span>{" "}
@@ -74,7 +74,7 @@ const Home: NextPage = ({
           </div>
         </div>
         {/* JITTERPLOT TITLE */}
-        <div className="jitterplot-title">
+        <div className="section-title-layout">
           <h3 className="section-title">{t("section2_title1")}</h3>
           <p className="census-text">{t("census_2020")}</p>
         </div>
