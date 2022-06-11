@@ -54,7 +54,7 @@ const Spotlight: FunctionComponent<SpotlightProps> = ({
           options={options}
           onChange={handleComparisons}
           placeholder={t("spotlight_placeholder")}
-        ></ComboBox>
+        />
       </div>
       <div className="flex w-full flex-wrap items-start gap-3 md:w-auto md:items-center">
         {/* CURRENT LOCATION */}
