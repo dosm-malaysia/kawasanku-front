@@ -38,11 +38,13 @@ const ChoroplethChart: FunctionComponent<ChoroplethChartProps> = ({
         projectionRotation={[-114, 0, 0]}
         borderWidth={0.5}
         borderColor="#13293d"
-        tooltip={({
-          feature: {
-            data: { id },
-          },
-        }) => <div className="nivo-tooltip">{id}</div>}
+        tooltip={({ feature: { data } }) => {
+          return data?.id ? (
+            <div className="nivo-tooltip">{data.id}</div>
+          ) : (
+            <></>
+          );
+        }}
       />
     </div>
   );

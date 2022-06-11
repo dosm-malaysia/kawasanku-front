@@ -27,7 +27,6 @@ import Container from "../../components/Container";
 import Introduction from "../../components/Introduction";
 import { Option } from "../../components/Dropdowns/interface";
 import Spotlight from "../../components/Charts/Jitterplot/Spotlight";
-import ChoroplethSection from "../../components/Charts/Choropleth/Section";
 
 const DoughnutCharts = dynamic(
   () => import("../../components/Charts/Doughnut/DoughnutCharts"),
@@ -127,9 +126,6 @@ const Area: NextPage = ({
           />
         </Card>
       </Container>
-      {(areaType === AREA_TYPES.Parliament || areaType === AREA_TYPES.Dun) && (
-        <ChoroplethSection />
-      )}
     </>
   );
 };
