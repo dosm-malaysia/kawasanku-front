@@ -191,8 +191,8 @@
             "tooltip": "Termasuk kedai runcit milikan awam dan swasta. Bersamaan dengan Kedai Runcit berdasarkan Piawaian Klasifikasi Industri Malaysia 2008 Ver. 1.0."
         }
     },
-    "choropleth_title": "A geographic visualisation of key indicators",
-    "indicator": "Indicator",
+    "choropleth_title": "Visualisasi penunjuk tertentu pada peta",
+    "indicator": "Indikator",
     "min": "Minimum",
     "max": "Maksimum",
     "choropleth_metric_placeholder": "Pilih indikator",
