@@ -76,16 +76,14 @@ const ChoroplethSection = () => {
               </div>
             </div>
             {/* PARLIAMENT CHECKBOX */}
-            <div
-              onClick={() => setGeoFilter(GEO_FILTER.Parliament)}
-              className="relative flex w-full items-center md:w-auto"
-            >
+            <div className="relative flex w-full items-center md:w-auto">
               <div className="flex h-5 items-center">
                 <input
                   id="parliament"
                   name="parliament"
                   type="checkbox"
                   checked={geoFilter === GEO_FILTER.Parliament}
+                  onChange={() => setGeoFilter(GEO_FILTER.Parliament)}
                   className="h-5 w-5 cursor-pointer rounded-full border-gray-300 text-accent focus:outline-none focus:ring-0 focus:ring-transparent"
                 />
               </div>
@@ -96,16 +94,14 @@ const ChoroplethSection = () => {
               </div>
             </div>
             {/* DUN CHECKBOX */}
-            <div
-              onClick={() => setGeoFilter(GEO_FILTER.Dun)}
-              className="relative flex w-full items-center md:w-auto"
-            >
+            <div className="relative flex w-full items-center md:w-auto">
               <div className="flex h-5 items-center">
                 <input
                   id="dun"
                   name="dun"
                   type="checkbox"
                   checked={geoFilter === GEO_FILTER.Dun}
+                  onChange={() => setGeoFilter(GEO_FILTER.Dun)}
                   className="h-5 w-5 cursor-pointer rounded-full border-gray-300 text-accent focus:outline-none focus:ring-0 focus:ring-transparent"
                 />
               </div>

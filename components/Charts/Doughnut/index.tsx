@@ -66,7 +66,9 @@ const DoughnutChart: FunctionComponent<DoughnutChartProps> = ({
         {data.length > 0 && (
           <div className="col-span-5 flex flex-col justify-center gap-1">
             {data.map((item, index) => (
-              <LegendItem color={colorScheme[index]}>{item.id}</LegendItem>
+              <LegendItem key={index} color={colorScheme[index]}>
+                {item.id}
+              </LegendItem>
             ))}
           </div>
         )}
