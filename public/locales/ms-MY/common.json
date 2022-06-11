@@ -192,6 +192,26 @@
       "tooltip": "Termasuk kedai runcit milikan awam dan swasta. Bersamaan dengan Kedai Runcit berdasarkan Piawaian Klasifikasi Industri Malaysia 2008 Ver. 1.0."
     }
   },
+  "choropleth_title": "A geographic visualisation of key indicators",
+  "indicator": "Indicator",
+  "min": "Min",
+  "max": "Max",
+  "choropleth_metric_placeholder": "Select metric",
+  "choropleth_geo_filter_placeholder": "Select area",
+  "choropleth": {
+    "max_elevation": "Max elevation",
+    "ruggedness": "Ruggedness",
+    "treecover": "Treecover",
+    "treeloss": "Treeloss",
+    "nightlights": "Nightlights",
+    "population_density": "Population density",
+    "income_mean": "Income mean",
+    "expenditure_mean": "Expenditure mean",
+    "gini": "Gini",
+    "poverty": "Poverty",
+    "electricity": "Electricity",
+    "water": "Water"
+  },
   "share": "Kongsi",
   "dosm": "Jabatan Perdana Menteri",
   "pmo": "Jabatan Perangkaan Malaysia",
