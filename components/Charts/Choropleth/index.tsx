@@ -20,7 +20,7 @@ const ChoroplethChart: FunctionComponent<ChoroplethChartProps> = ({
   data,
 }) => {
   return (
-    <div className="h-96">
+    <div className="h-[588px]">
       <ResponsiveChoroplethCanvas
         data={data}
         features={
@@ -33,19 +33,16 @@ const ChoroplethChart: FunctionComponent<ChoroplethChartProps> = ({
         domain={[0, 100]}
         unknownColor="#fff"
         valueFormat=".2s"
-        projectionScale={2000}
-        projectionTranslation={[0.5, 1.05]}
+        projectionScale={3000}
+        projectionTranslation={[0.5, 1.04]}
         projectionRotation={[-114, 0, 0]}
         borderWidth={0.5}
-        borderColor="#101b42"
-        legends={[
-          {
-            anchor: "right",
-            direction: "column",
-            itemHeight: 14,
-            itemWidth: 100,
+        borderColor="#13293d"
+        tooltip={({
+          feature: {
+            data: { id },
           },
-        ]}
+        }) => <div className="nivo-tooltip">{id}</div>}
       />
     </div>
   );

@@ -25,7 +25,7 @@
 }
 
 .jitterplot-container {
-  @apply sm:mb-10 md:rounded-lg;
+  @apply mb-10 md:mb-15 md:rounded-lg;
 }
 
 .jitterplot-card-padding {
@@ -84,4 +84,8 @@
 
 .tooltip:hover .tooltip-content {
   @apply visible;
+}
+
+.nivo-tooltip {
+  @apply flex min-w-max origin-center items-center justify-center rounded bg-accent py-[5px] px-[9px] text-sm text-white shadow;
 }

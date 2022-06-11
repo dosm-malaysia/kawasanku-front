@@ -1,4 +1,12 @@
-import { CHOROPLETH_METRICS, STATES_KEY } from "./constants";
+import {
+  CHOROPLETH_BLUE_SCALE,
+  CHOROPLETH_GREEN_SCALE,
+  CHOROPLETH_METRICS,
+  CHOROPLETH_RED_PURPLE_SCALE,
+  CHOROPLETH_RED_SCALE,
+  CHOROPLETH_YELLOW_GREEN_BLUE_SCALE,
+  STATES_KEY,
+} from "./constants";
 import { AnalyticsEvent, IDoughnutChartData } from "./interfaces";
 
 export const translateDoughnutChart = (
@@ -54,78 +62,22 @@ export const getChoroplethColors = (choropleth: CHOROPLETH_METRICS) => {
     choropleth === CHOROPLETH_METRICS.Gini ||
     choropleth === CHOROPLETH_METRICS.Poverty
   ) {
-    // reds (inverted)
-    return [
-      "#67000D",
-      "#A40F15",
-      "#CA191D",
-      "#EF3B2C",
-      "#FB694A",
-      "#FC9272",
-      "#FBBCA1",
-      "#FEE0D2",
-      "#FFF5F0",
-      "#FFFFFF",
-    ];
+    // reds
+    return CHOROPLETH_RED_SCALE;
   } else if (choropleth === CHOROPLETH_METRICS.Treecover) {
-    // greens (inverted)
-    return [
-      "#00451B",
-      "#026C2C",
-      "#238B44",
-      "#42AB5D",
-      "#74C476",
-      "#A2D89B",
-      "#C8E8BF",
-      "#E5F5E0",
-      "#F7FCF5",
-      "#FFFFFF",
-    ];
+    // greens
+    return CHOROPLETH_GREEN_SCALE;
   } else if (choropleth === CHOROPLETH_METRICS.Water) {
-    // blues (inverted)
-    return [
-      "#092F6B",
-      "#08529C",
-      "#2270B5",
-      "#4292C6",
-      "#6AAED6",
-      "#9DCAE0",
-      "#C7DAEF",
-      "#DEEBF7",
-      "#F7FBFF",
-      "#FFFFFF",
-    ];
+    // blues
+    return CHOROPLETH_BLUE_SCALE;
   } else if (
     choropleth === CHOROPLETH_METRICS.Nightlights ||
     choropleth === CHOROPLETH_METRICS.Electricity
   ) {
-    // yellow_green_blue (inverted)
-    return [
-      "#061E58",
-      "#215FA8",
-      "#215FA8",
-      "#1D91C0",
-      "#41B6C4",
-      "#7FCDBB",
-      "#C7E9B4",
-      "#EDF8B1",
-      "#FFFFD9",
-      "#FFFFFF",
-    ];
+    // yellow_green_blue
+    return CHOROPLETH_YELLOW_GREEN_BLUE_SCALE;
   } else {
     // red_purple
-    return [
-      "#FFFFFF",
-      "#FFF7F2",
-      "#FDE0DD",
-      "#FBC5C0",
-      "#FBC5C0",
-      "#FA9FB5",
-      "#F768A1",
-      "#DD3597",
-      "#AD017E",
-      "#7A0177",
-      "#49006A",
-    ];
+    return CHOROPLETH_RED_PURPLE_SCALE;
   }
 };
