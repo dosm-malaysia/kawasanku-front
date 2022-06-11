@@ -25,11 +25,11 @@
 }
 
 .jitterplot-container {
-  @apply mb-10 md:mb-15 md:rounded-lg;
+  @apply md:rounded-lg;
 }
 
 .jitterplot-card-padding {
-  @apply px-0 pt-4 pb-10 sm:p-4;
+  @apply px-0 py-4 sm:p-4;
 }
 
 .jitterplot-card {
