@@ -25,7 +25,7 @@ const ChoroplethChart: FunctionComponent<ChoroplethChartProps> = ({
   data,
 }) => {
   const width = useWindowWidth();
-  const isMobile = width < BREAKPOINTS.MD;
+  const isMobile = width < BREAKPOINTS.SM;
 
   return (
     <div className="h-[388px] sm:h-[588px]">

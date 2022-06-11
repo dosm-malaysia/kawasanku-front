@@ -27,7 +27,7 @@ const ChoroplethSection = () => {
 
   const choroplethMetricOptons = Object.values(CHOROPLETH_METRICS).map(
     metric => ({
-      label: t(metric),
+      label: t(`choropleth.${metric}`),
       value: metric,
     })
   );
@@ -50,23 +50,24 @@ const ChoroplethSection = () => {
 
   return (
     <Container backgroundColor="bg-gray-100 pb-15">
+      {/* TODO: change name to section-title-layout */}
       <div className="bar-chart-title">
         <h3 className="section-title">{t("choropleth_title")}</h3>
         <p className="census-text">{t("census_2020")}</p>
       </div>
       <Card className="rounded-lg border">
-        <div className="flex h-full w-full items-center gap-7">
+        <div className="flex h-full w-full flex-col items-center gap-2 md:flex-row md:gap-7">
           {/* INDICATOR */}
-          <div className="flex h-full w-auto items-center gap-2">
+          <div className="flex h-full w-full items-center gap-2 md:w-auto">
             <p className="text-sm">{t("indicator")}:</p>
-            <div className="w-[238px]">
+            <div className="w-full md:w-[238px]">
               <SelectMenu
                 placeholder={t("choropleth_metric_placeholder")}
                 options={choroplethMetricOptons}
                 selected={
                   metric
                     ? {
-                        label: t(metric),
+                        label: t(`choropleth.${metric}`),
                         value: metric,
                       }
                     : undefined
@@ -78,7 +79,7 @@ const ChoroplethSection = () => {
           {/* PARLIAMENT CHECKBOX */}
           <div
             onClick={() => setGeoFilter(GEO_FILTER.Parliament)}
-            className="relative flex items-start"
+            className="relative flex w-full items-center md:w-auto"
           >
             <div className="flex h-5 items-center">
               <input
@@ -98,7 +99,7 @@ const ChoroplethSection = () => {
           {/* DUN CHECKBOX */}
           <div
             onClick={() => setGeoFilter(GEO_FILTER.Dun)}
-            className="relative flex items-start"
+            className="relative flex w-full items-center md:w-auto"
           >
             <div className="flex h-5 items-center">
               <input
