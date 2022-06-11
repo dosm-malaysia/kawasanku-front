@@ -25,11 +25,11 @@
 }
 
 .jitterplot-container {
-  @apply sm:mb-10 md:rounded-lg;
+  @apply md:rounded-lg;
 }
 
 .jitterplot-card-padding {
-  @apply px-0 pt-4 pb-10 sm:p-4;
+  @apply px-0 py-4 sm:p-4;
 }
 
 .jitterplot-card {
@@ -37,24 +37,20 @@
 }
 
 /* TITLE _STYLES */
-.bar-chart-title {
+.section-title-layout {
   @apply mb-5 flex w-full flex-col items-start justify-between gap-2 md:mb-7 md:flex-row md:items-center md:gap-0;
+}
+
+.section-title {
+  @apply text-xl font-semibold;
 }
 
 .doughnut-chart-title {
   @apply text-sm font-bold;
 }
 
-.jitterplot-title {
-  @apply mb-6 flex w-full flex-col items-start justify-between gap-2 md:mb-7 md:flex-row md:items-center md:gap-0;
-}
-
 .census-text {
   @apply text-sm text-gray-400;
-}
-
-.section-title {
-  @apply text-xl font-semibold;
 }
 
 /* TOOLTIP STYLES */
@@ -84,4 +80,8 @@
 
 .tooltip:hover .tooltip-content {
   @apply visible;
+}
+
+.nivo-tooltip {
+  @apply flex min-w-max origin-center items-center justify-center rounded bg-accent py-[5px] px-[9px] text-sm text-white shadow;
 }

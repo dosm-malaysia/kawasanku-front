@@ -2,6 +2,7 @@ import axios from "axios";
 import {
   IAreaOptions,
   IBarChartData,
+  IChoroplethData,
   IDoughnutChartData,
   IGeojson,
   IJitterplotData,
@@ -123,3 +124,16 @@ export const getAreaType = async (area: string) =>
   await API.get<{ area_type: string; area_name: string }>(
     `/area-type?area=${area}`
   ).then(res => res.data);
+
+type GetChoroplethReq = {
+  metric: string;
+  geoFilter: string;
+};
+
+export const getChoropleth = async ({ metric, geoFilter }: GetChoroplethReq) =>
+  await API.get<IChoroplethData[]>("/choropleth", {
+    params: {
+      metric: metric,
+      filter: geoFilter,
+    },
+  }).then(res => res.data);

@@ -102,7 +102,7 @@ const Jitterplot: FunctionComponent<JitterplotProps> = ({
                 return (
                   <div
                     className={`
-                      flex min-w-max origin-center items-center justify-center rounded bg-accent py-[5px] px-[9px] text-sm text-white shadow 
+                      nivo-tooltip 
                       ${
                         xValue > 0.6
                           ? "absolute bottom-2 right-0 md:static md:inset-auto"

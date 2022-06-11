@@ -191,6 +191,26 @@
       "tooltip": "பொது மற்றும் தனியார் மளிகை கடைகளை கணக்கில் கொண்டுள்ளது. மலேசிய தரநிலை தொழில்துறை வகைப்பாடு (MSIC) 2008 தரவின்படி ஆய்வு செய்யப்பட்டது."
     }
   },
+  "choropleth_title": "A geographic visualisation of key indicators",
+  "indicator": "Indicator",
+  "min": "Min",
+  "max": "Max",
+  "choropleth_metric_placeholder": "Select metric",
+  "choropleth_geo_filter_placeholder": "Select area",
+  "choropleth": {
+    "max_elevation": "Max elevation",
+    "ruggedness": "Ruggedness",
+    "treecover": "Treecover",
+    "treeloss": "Treeloss",
+    "nightlights": "Nightlights",
+    "population_density": "Population density",
+    "income_mean": "Income mean",
+    "expenditure_mean": "Expenditure mean",
+    "gini": "Gini",
+    "poverty": "Poverty",
+    "electricity": "Electricity",
+    "water": "Water"
+  },
   "share": "பகிர்க",
   "dosm": "Prime Minister's Department",
   "pmo": "Department of Statistics Malaysia",

@@ -90,9 +90,7 @@ const GeoFilters: FunctionComponent<GeoFiltersProps> = ({
               }
             : undefined
         }
-        onChange={newAreaType =>
-          newAreaType ? setSelectedAreaType(newAreaType) : {}
-        }
+        onChange={newAreaType => setSelectedAreaType(newAreaType)}
         disabled={!query.state}
         placeholder={t("filter2_placeholder")}
       />

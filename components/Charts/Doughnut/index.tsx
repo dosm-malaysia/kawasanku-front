@@ -48,7 +48,7 @@ const DoughnutChart: FunctionComponent<DoughnutChartProps> = ({
             valueFormat={value => `${value.toFixed(1)}%`}
             tooltip={({ datum: { label, value, color } }) => {
               return (
-                <div className="flex items-center justify-center rounded-[2px] bg-white py-[5px] px-[9px] shadow">
+                <div className="flex items-center justify-center rounded-[2px] bg-white py-[5px] px-[9px] text-sm shadow">
                   <div
                     className="mr-2 h-3 w-3"
                     style={{ backgroundColor: color }}
@@ -66,7 +66,9 @@ const DoughnutChart: FunctionComponent<DoughnutChartProps> = ({
         {data.length > 0 && (
           <div className="col-span-5 flex flex-col justify-center gap-1">
             {data.map((item, index) => (
-              <LegendItem color={colorScheme[index]}>{item.id}</LegendItem>
+              <LegendItem key={index} color={colorScheme[index]}>
+                {item.id}
+              </LegendItem>
             ))}
           </div>
         )}

@@ -78,7 +78,7 @@ const State: NextPage = ({
         className="snapshot-container"
       >
         {/* BAR CHART TITLE */}
-        <div className="bar-chart-title">
+        <div className="section-title-layout">
           <h3 className="section-title">
             {t("section1_title1")}{" "}
             <span className="underline">{t(`states.${stateKey}`)}</span>{" "}
@@ -99,7 +99,7 @@ const State: NextPage = ({
           </div>
         </div>
         {/* JITTERPLOT TITLE */}
-        <div className="jitterplot-title">
+        <div className="section-title-layout">
           <h3 className="section-title">
             {t("section2_title2_1")}{" "}
             <span className="underline">{t(`states.${stateKey}`)}</span>{" "}
