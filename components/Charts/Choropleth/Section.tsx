@@ -38,10 +38,7 @@ const ChoroplethSection = () => {
         metric,
         geoFilter,
       })
-        .then(data => {
-          setData(data);
-          console.log(data);
-        })
+        .then(data => setData(data))
         .catch(err => console.log(err));
     } else {
       setData([]);
