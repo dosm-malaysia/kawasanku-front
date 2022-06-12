@@ -22,12 +22,21 @@ const Footer = () => {
           <br />
           <p className="text-xs md:text-base">{t("copyrights")}</p>
           <p className="text-xs md:text-base">
-            {t("open_data")}:{" "}
+            {t("open_source")}:{" "}
             <a
               href="https://github.com/dosm-malaysia/kawasanku"
               target="_blank"
             >
-              <span className="underline">kawasanku</span>
+              <span className="underline">KAWASANKU</span>
+            </a>
+          </p>
+          <p className="text-xs md:text-base">
+            {t("open_data")}:{" "}
+            <a
+              href="https://github.com/dosm-malaysia/data-open"
+              target="_blank"
+            >
+              <span className="underline">DOSM GitHub</span>
             </a>
           </p>
         </div>
