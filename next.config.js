@@ -1,8 +1,9 @@
 /** @type {import('next').NextConfig} */
 
+const withImages = require("next-images");
 const { i18n } = require("./next-i18next.config");
 
-module.exports = {
+module.exports = withImages({
   reactStrictMode: true,
   i18n,
   pwa: {
@@ -10,4 +11,4 @@ module.exports = {
     register: true,
     skipWaiting: true,
   },
-};
+});

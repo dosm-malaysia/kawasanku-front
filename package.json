@@ -22,6 +22,7 @@
     "axios": "^0.27.2",
     "next": "latest",
     "next-i18next": "^11.0.0",
+    "next-images": "^1.8.4",
     "next-pwa": "^5.5.2",
     "prop-types": "^15.8.1",
     "querystring": "^0.2.1",
