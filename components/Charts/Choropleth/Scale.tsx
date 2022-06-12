@@ -10,12 +10,12 @@ const ChoroplethScale: FunctionComponent<ChoroplethScaleProps> = ({
 }) => {
   const { t } = useTranslation();
 
-  const scale = colorScale || Array(10).fill("#FFFFFF");
+  const scale = colorScale || Array(9).fill("#FFFFFF");
 
   return (
     <>
       {/* COLOR SCALE */}
-      <div className="grid h-3 w-full grid-cols-11">
+      <div className="grid h-3 w-full grid-cols-10">
         {scale.slice(0, -1).map((color, index) => {
           return (
             <div
@@ -34,13 +34,13 @@ const ChoroplethScale: FunctionComponent<ChoroplethScaleProps> = ({
           );
         })}
       </div>
-      <div className="grid grid-cols-11 text-xs">
+      <div className="grid grid-cols-10 text-xs">
         {/* MIN */}
         <div className="col-span-2 col-start-1 flex w-full items-center">
           <p className="w-full text-center">{t("min")}</p>
         </div>
         {/* MAX */}
-        <div className="col-span-2 col-start-10 flex w-full items-center">
+        <div className="col-span-2 col-start-9 flex w-full items-center">
           <p className="w-full text-center">{t("max")}</p>
         </div>
       </div>
