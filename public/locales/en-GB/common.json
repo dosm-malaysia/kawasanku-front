@@ -191,7 +191,7 @@
             "tooltip": "Includes both publicly and privately owned grocery stores. Equivalent to Provision Stores based on the Malaysia Standard Industrial Classification (MSIC) 2008 Ver 1.0."
         }
     },
-    "choropleth_title": "A geographic visualisation of key indicators",
+    "choropleth_title": "A geographic visualisation of selected indicators",
     "indicator": "Indicator",
     "min": "Minimum",
     "max": "Maximum",
