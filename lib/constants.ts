@@ -69,7 +69,6 @@ export enum CHOROPLETH_METRICS {
 }
 
 export const CHOROPLETH_RED_SCALE = [
-  "#FFFFFF",
   "#FFF5F0",
   "#FEE0D2",
   "#FBBCA1",
@@ -82,7 +81,6 @@ export const CHOROPLETH_RED_SCALE = [
 ];
 
 export const CHOROPLETH_GREEN_SCALE = [
-  "#FFFFFF",
   "#F7FCF5",
   "#E5F5E0",
   "#C8E8BF",
@@ -95,7 +93,6 @@ export const CHOROPLETH_GREEN_SCALE = [
 ];
 
 export const CHOROPLETH_BLUE_SCALE = [
-  "#FFFFFF",
   "#F7FBFF",
   "#DEEBF7",
   "#C7DAEF",
@@ -117,12 +114,9 @@ export const CHOROPLETH_YELLOW_GREEN_BLUE_SCALE = [
   "#C7E9B4",
   "#EDF8B1",
   "#FFFFD9",
-  "#FFFFFF",
 ];
 
 export const CHOROPLETH_RED_PURPLE_SCALE = [
-  "#FFFFFF",
-  "#FFF7F2",
   "#FDE0DD",
   "#FBC5C0",
   "#FBC5C0",

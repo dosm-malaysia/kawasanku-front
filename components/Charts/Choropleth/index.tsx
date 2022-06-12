@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import { ResponsiveChoroplethCanvas } from "@nivo/geo";
+import { ResponsiveChoropleth } from "@nivo/geo";
 import { useWindowWidth } from "@react-hook/window-size";
 
 import { IChoroplethData } from "../../../lib/interfaces";
@@ -29,7 +29,7 @@ const ChoroplethChart: FunctionComponent<ChoroplethChartProps> = ({
 
   return (
     <div className="h-[388px] sm:h-[588px]">
-      <ResponsiveChoroplethCanvas
+      <ResponsiveChoropleth
         data={data}
         features={
           geoFilter === GEO_FILTER.Dun
@@ -44,8 +44,8 @@ const ChoroplethChart: FunctionComponent<ChoroplethChartProps> = ({
         projectionScale={isMobile ? 1750 : 3000}
         projectionTranslation={[0.5, isMobile ? 0.97 : 1.04]}
         projectionRotation={[-114, 0, 0]}
-        borderWidth={0.5}
-        borderColor="#13293d"
+        borderWidth={metric ? 0.1 : 0.25}
+        borderColor={metric ? "#f2f2f2" : "#13293d"}
         tooltip={({ feature: { data } }) => {
           return data?.id ? (
             <div className="nivo-tooltip">{data.id}</div>
