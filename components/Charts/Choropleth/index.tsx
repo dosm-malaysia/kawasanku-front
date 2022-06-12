@@ -4,6 +4,7 @@ import { useWindowWidth } from "@react-hook/window-size";
 
 import { IChoroplethData } from "../../../lib/interfaces";
 import { getChoroplethColors } from "../../../lib/helpers";
+import { getChoroplethBorderColor } from "../../../lib/helpers";
 import {
   BREAKPOINTS,
   CHOROPLETH_METRICS,
@@ -45,7 +46,7 @@ const ChoroplethChart: FunctionComponent<ChoroplethChartProps> = ({
         projectionTranslation={[0.5, isMobile ? 0.97 : 1.04]}
         projectionRotation={[-114, 0, 0]}
         borderWidth={metric ? 0.1 : 0.25}
-        borderColor={metric ? "#f2f2f2" : "#13293d"}
+        borderColor={metric ? getChoroplethBorderColor(metric) : "#13293d"}
         tooltip={({ feature: { data } }) => {
           return data?.id ? (
             <div className="nivo-tooltip">{data.id}</div>
