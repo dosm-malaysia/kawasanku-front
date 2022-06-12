@@ -81,3 +81,15 @@ export const getChoroplethColors = (choropleth: CHOROPLETH_METRICS) => {
     return CHOROPLETH_RED_PURPLE_SCALE;
   }
 };
+
+export const getChoroplethBorderColor = (choropleth: CHOROPLETH_METRICS) => {
+  if (
+    choropleth === CHOROPLETH_METRICS.Electricity 
+  ) {
+    // darker border
+    return #ffffff;
+  } else {
+    // regular light border
+    return #f2f2f2;
+  }
+};
