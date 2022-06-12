@@ -171,7 +171,7 @@
             "tooltip": ""
         },
         "metric_24": {
-            "label": "Hospital per 1000 populasi",
+            "label": "Hospital per 1000 penduduk",
             "tooltip": "Termasuk semua hospital awam dan swasta yang beroperasi setakat 1 Mei 2022. Data berikut diperoleh daripada Kementerian Kesihatan Malaysia (KKM). Analisa geospatial telah dilaksanakan oleh DOSM."
         },
         "metric_25": {
@@ -191,7 +191,7 @@
             "tooltip": "Termasuk kedai runcit milikan awam dan swasta. Bersamaan dengan Kedai Runcit berdasarkan Piawaian Klasifikasi Industri Malaysia 2008 Ver. 1.0."
         }
     },
-    "choropleth_title": "Visualisasi penunjuk tertentu pada peta",
+    "choropleth_title": "Visualisasi geografi indikator terpilih",
     "indicator": "Indikator",
     "min": "Minimum",
     "max": "Maksimum",
