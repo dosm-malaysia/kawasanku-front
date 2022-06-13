@@ -1,242 +1,242 @@
 {
-    "title": "KAWASANKU | DOSM",
-    "header": "Learn about your area today!",
-    "description": "Is my area poor or rich? Is it densely populated? Does it have adequate public services? It is DOSM's mission to bring the answers to these questions to the rakyat's fingertips. Following the completion of Population and Housing Census of Malaysia 2020 (MyCensus 2020), DOSM released population data at Parliament Constituency and State Legislative Assembly level for the first time in history. The Kawasanku dashboard is intended to give citizens, policymakers, and the international community an accessible way to explore the dataset.",
-    "filter_title": "Find my area",
-    "filter_clear": "Clear selection",
-    "filter1_placeholder": "Select state",
-    "filter2_placeholder": "Select geo-filter",
-    "filter3_placeholder": "Select area",
-    "map_infotip": "",
-    "district": "District",
-    "parlimen": "Parliament Constituency",
-    "dun": "State Legislative Assembly (DUN)",
-    "section1_title1": "What does the population of",
-    "section1_title2": "look like?",
-    "pyramid": {
-        "male": "Male",
-        "male_surplus": "Male surplus",
-        "female": "Female",
-        "female_surplus": "Female surplus"
+  "title": "KAWASANKU | DOSM",
+  "header": "Learn about your area today!",
+  "description": "Is my area poor or rich? Is it densely populated? Does it have adequate public services? It is DOSM's mission to bring the answers to these questions to the rakyat's fingertips. Following the completion of Population and Housing Census of Malaysia 2020 (MyCensus 2020), DOSM released population data at Parliament Constituency and State Legislative Assembly level for the first time in history. The Kawasanku dashboard is intended to give citizens, policymakers, and the international community an accessible way to explore the dataset.",
+  "filter_title": "Find my area",
+  "filter_clear": "Clear selection",
+  "filter1_placeholder": "Select state",
+  "filter2_placeholder": "Select geo-filter",
+  "filter3_placeholder": "Select area",
+  "map_infotip": "",
+  "district": "District",
+  "parlimen": "Parliament Constituency",
+  "dun": "State Legislative Assembly (DUN)",
+  "section1_title1": "What does the population of",
+  "section1_title2": "look like?",
+  "pyramid": {
+    "male": "Male",
+    "male_surplus": "Male surplus",
+    "female": "Female",
+    "female_surplus": "Female surplus"
+  },
+  "doughnut": {
+    "metric_1": "Sex",
+    "metric_2": "Ethnicity",
+    "metric_3": "Nationality",
+    "metric_4": "Religion",
+    "metric_5": "Marital status",
+    "metric_6": "Age group",
+    "metric_7": "Occupied dwellings",
+    "metric_8": "Employment status",
+    "sex_male": "Male",
+    "sex_female": "Female",
+    "ethnicity_bumi": "Bumiputera",
+    "ethnicity_chinese": "Chinese",
+    "ethnicity_indian": "Indian",
+    "ethnicity_other": "Other",
+    "nationality_local": "Citizen",
+    "nationality_foreign": "Non-citizen",
+    "religion_muslim": "Muslim",
+    "religion_christian": "Christian",
+    "religion_buddhist": "Buddhist",
+    "religion_hindu": "Hindu",
+    "religion_other": "Other",
+    "religion_atheist": "No religion",
+    "marital_never_married": "Single",
+    "marital_married": "Married",
+    "marital_widowed": "Widowed",
+    "marital_divorced": "Divorced",
+    "agegroup_child": "Child",
+    "agegroup_working": "Working",
+    "agegroup_elderly": "Elderly",
+    "housing_owned": "Owned",
+    "housing_rented": "Rented",
+    "housing_quarters": "Quarters",
+    "labour_working": "Working",
+    "labour_unemployed": "Unemployed",
+    "labour_out": "Out of labour force"
+  },
+  "census_2020": "Data correct as of MyCensus 2020",
+  "section2_title1": "A comparison of key variables across states",
+  "section2_title2_1": "How does",
+  "section2_title2_2": "compare to other {{area_types}}?",
+  "area_types": {
+    "state": "states",
+    "district": "districts",
+    "parlimen": "constituencies",
+    "dun": "DUNs"
+  },
+  "spotlight": "Spotlight",
+  "spotlight_placeholder": "Select up to 3 options",
+  "no_results": "No results found",
+  "median": "Median among {{area_type}}",
+  "better_than_median": "Above the median",
+  "worse_than_median": "Below the median",
+  "jitterplot": {
+    "title_1": "Geography",
+    "title_2": "Population",
+    "title_3": "Economy",
+    "title_4": "Public Services",
+    "dislaimer": "Note: Dispersions across variables are not intended to be perfectly comparable",
+    "metric_1": {
+      "label": "Land area",
+      "tooltip": ""
     },
-    "doughnut": {
-        "metric_1": "Sex",
-        "metric_2": "Ethnicity",
-        "metric_3": "Nationality",
-        "metric_4": "Religion",
-        "metric_5": "Marital status",
-        "metric_6": "Age group",
-        "metric_7": "Occupied dwellings",
-        "metric_8": "Employment status",
-        "sex_male": "Male",
-        "sex_female": "Female",
-        "ethnicity_bumi": "Bumiputera",
-        "ethnicity_chinese": "Chinese",
-        "ethnicity_indian": "Indian",
-        "ethnicity_other": "Other",
-        "nationality_local": "Citizen",
-        "nationality_foreign": "Non-citizen",
-        "religion_muslim": "Muslim",
-        "religion_christian": "Christian",
-        "religion_buddhist": "Buddhist",
-        "religion_hindu": "Hindu",
-        "religion_other": "Other",
-        "religion_atheist": "No religion",
-        "marital_never_married": "Single",
-        "marital_married": "Married",
-        "marital_widowed": "Widowed",
-        "marital_divorced": "Divorced",
-        "agegroup_child": "Child",
-        "agegroup_working": "Working",
-        "agegroup_elderly": "Elderly",
-        "housing_owned": "Owned",
-        "housing_rented": "Rented",
-        "housing_quarters": "Quarters",
-        "labour_working": "Working",
-        "labour_unemployed": "Unemployed",
-        "labour_out": "Out of labour force"
+    "metric_2": {
+      "label": "Maximum elevation",
+      "tooltip": "Topobathy data was derived from the freely available Global Multi-resolution Terrain Elevation Data 2010 (GMTED2010) dataset, at 7.5 arc-second resolution. Geospatial analysis was conducted by DOSM."
     },
-    "census_2020": "Data correct as of MyCensus 2020",
-    "section2_title1": "A comparison of key variables across states",
-    "section2_title2_1": "How does",
-    "section2_title2_2": "compare to other {{area_types}}?",
-    "area_types": {
-        "state": "states",
-        "district": "districts",
-        "parlimen": "constituencies",
-        "dun": "DUNs"
+    "metric_3": {
+      "label": "Terrain Ruggedness Index",
+      "tooltip": "Terrain ruggedness indicates how jagged or flat an area is, on average. TRI was computed following Riley et al. (1999), using the freely available GMTED2010 dataset at 30 arc-second resolution. Geospatial analysis was conducted by DOSM."
     },
-    "spotlight": "Spotlight",
-    "spotlight_placeholder": "Select up to 3 options",
-    "no_results": "No results found",
-    "median": "Median among {{area_type}}",
-    "better_than_median": "Above the median",
-    "worse_than_median": "Below the median",
-    "jitterplot": {
-        "title_1": "Geography",
-        "title_2": "Population",
-        "title_3": "Economy",
-        "title_4": "Public Services",
-        "dislaimer": "Note: Dispersions across variables are not intended to be perfectly comparable",
-        "metric_1": {
-            "label": "Land area",
-            "tooltip": ""
-        },
-        "metric_2": {
-            "label": "Maximum elevation",
-            "tooltip": "Topobathy data was derived from the freely available Global Multi-resolution Terrain Elevation Data 2010 (GMTED2010) dataset, at 7.5 arc-second resolution. Geospatial analysis was conducted by DOSM."
-        },
-        "metric_3": {
-            "label": "Terrain Ruggedness Index",
-            "tooltip": "Terrain ruggedness indicates how jagged or flat an area is, on average. TRI was computed following Riley et al. (1999), using the freely available GMTED2010 dataset at 30 arc-second resolution. Geospatial analysis was conducted by DOSM."
-        },
-        "metric_4": {
-            "label": "Surface covered in water",
-            "tooltip": "Water cover data was derived from EC JRC and Google's freely available Global Surface Water dataset under the Copernicus Programme (Pekel et al., 2016). Geospatial analysis was conducted by DOSM."
-        },
-        "metric_5": {
-            "label": "Surface covered in forest",
-            "tooltip": "Tree cover data was derived from UMD, Google, USGS and NASA's freely available Global Forest Change dataset (Hansen et al., 2013). Geospatial analysis was conducted by DOSM."
-        },
-        "metric_6": {
-            "label": "Forest loss between 2000 to 2021",
-            "tooltip": "Tree loss data was derived from UMD, Google, USGS and NASA's freely available Global Forest Change dataset (Hansen et al., 2013). Geospatial analysis was conducted by DOSM."
-        },
-        "metric_7": {
-            "label": "Intensity of lights at night",
-            "tooltip": "Night lights intensity data was derived from the freely available global VIIRS Nighttime Light dataset (Elvidge et al., 2020). Geospatial analysis was conducted by DOSM."
-        },
-        "metric_8": {
-            "label": "Population density",
-            "tooltip": ""
-        },
-        "metric_9": {
-            "label": "Female to male ratio",
-            "tooltip": ""
-        },
-        "metric_10": {
-            "label": "Average household size",
-            "tooltip": ""
-        },
-        "metric_11": {
-            "label": "Live births per 1000 women",
-            "tooltip": ""
-        },
-        "metric_12": {
-            "label": "Deaths per 1000 people",
-            "tooltip": ""
-        },
-        "metric_13": {
-            "label": "Young-age dependency ratio",
-            "tooltip": "Ratio of young-age (0-14) to working age (15-64) population"
-        },
-        "metric_14": {
-            "label": "Old-age dependency ratio",
-            "tooltip": "Ratio of old-age (65+) to working age (15-64) population"
-        },
-        "metric_15": {
-            "label": "Household income",
-            "tooltip": "Estimated based on the 2020 Household Income, Expenditure and Basic Amenities (HIES/BA) Survey data. There may be relatively high standard errors for certain electoral areas. "
-        },
-        "metric_16": {
-            "label": "Household expenditure",
-            "tooltip": ""
-        },
-        "metric_17": {
-            "label": "Inequality (Gini coefficient)",
-            "tooltip": ""
-        },
-        "metric_18": {
-            "label": "Incidence of poverty",
-            "tooltip": "A person or household was classified as poor if their income fell below the 2019 Poverty Line Income."
-        },
-        "metric_19": {
-            "label": "Unemployment rate",
-            "tooltip": "Labour force indicators by electoral area were estimated based on 2020 Labour Force Survey data and the estimated population factors for 2020. This data should be used with caution due to relatively high standard errors for certain electoral areas. "
-        },
-        "metric_20": {
-            "label": "Labour force participation rate",
-            "tooltip": ""
-        },
-        "metric_21": {
-            "label": "Working age population %",
-            "tooltip": ""
-        },
-        "metric_22": {
-            "label": "Access to electricity",
-            "tooltip": "Includes both 24-hour supply and intermittent supply"
-        },
-        "metric_23": {
-            "label": "Access to piped water at home",
-            "tooltip": ""
-        },
-        "metric_24": {
-            "label": "Hospitals per 1000 people",
-            "tooltip": "Includes all public and private hospitals in operation as of 1 May 2022. Data on hospitals was sourced from the Ministry of Health Malaysia. Geospatial analysis was conducted by DOSM."
-        },
-        "metric_25": {
-            "label": "Health clinics per 1000 people",
-            "tooltip": "Includes all public and private clinics in operation as of 1 May 2022. Data on clinics was sourced from the Ministry of Health Malaysia. Geospatial analysis was conducted by DOSM."
-        },
-        "metric_26": {
-            "label": "Schools per 1000 children",
-            "tooltip": "Includes all public schools in operation as of 1 May 2022. Data on schools was sourced from the Ministry of Education. Geospatial analysis was conducted by DOSM."
-        },
-        "metric_27": {
-            "label": "Police and fire stations per 1000 people",
-            "tooltip": "Includes police and fire stations in operation as of 1 May 2022. Data on police and fire stations were sourced from the Royal Malaysian Police and the Fire and Rescue Department of Malaysia respectively. Geospatial analysis was conducted by DOSM."
-        },
-        "metric_28": {
-            "label": "Grocery stores per 1000 people",
-            "tooltip": "Includes both publicly and privately owned grocery stores. Equivalent to Provision Stores based on the Malaysia Standard Industrial Classification (MSIC) 2008 Ver 1.0."
-        }
+    "metric_4": {
+      "label": "Surface covered in water",
+      "tooltip": "Water cover data was derived from EC JRC and Google's freely available Global Surface Water dataset under the Copernicus Programme (Pekel et al., 2016). Geospatial analysis was conducted by DOSM."
     },
-    "choropleth_title": "A geographic visualisation of selected indicators",
-    "indicator": "Indicator",
-    "min": "Minimum",
-    "max": "Maximum",
-    "choropleth_metric_placeholder": "Select indicator",
-    "choropleth_geo_filter_placeholder": "Select area",
-    "choropleth": {
-        "max_elevation": "Maximum elevation",
-        "ruggedness": "Terrain Ruggedness Index",
-        "treecover": "Surface covered in forest",
-        "treeloss": "Forest loss between 2000 to 2021",
-        "nightlights": "Intensity of lights at night",
-        "population_density": "Population density",
-        "income_mean": "Household income",
-        "expenditure_mean": "Household expenditure",
-        "gini": "Inequality (Gini coefficient)",
-        "poverty": "Incidence of poverty",
-        "electricity": "Access to electricity",
-        "water": "Access to piped water at home"
+    "metric_5": {
+      "label": "Surface covered in forest",
+      "tooltip": "Tree cover data was derived from UMD, Google, USGS and NASA's freely available Global Forest Change dataset (Hansen et al., 2013). Geospatial analysis was conducted by DOSM."
     },
-    "share": "Share",
-    "dosm": "Prime Minister's Department",
-    "pmo": "Department of Statistics Malaysia",
-    "copyrights": "© 2020 Department of Statistics Malaysia",
-    "open_data": "Open data",
-    "open_source": "Open source",
-    "facebook": "Facebook",
-    "twitter": "Twitter",
-    "embed": "Embed",
-    "copy_link": "Copy link",
-    "states": {
-        "jhr": "Johor",
-        "kdh": "Kedah",
-        "ktn": "Kelantan",
-        "mlk": "Melaka",
-        "nsn": "Negeri Sembilan",
-        "phg": "Pahang",
-        "prk": "Perak",
-        "pls": "Perlis",
-        "png": "Pulau Pinang",
-        "sbh": "Sabah",
-        "swk": "Sarawak",
-        "sgr": "Selangor",
-        "trg": "Terengganu",
-        "kul": "W.P. Kuala Lumpur",
-        "lbn": "W.P. Labuan",
-        "pjy": "W.P. Putrajaya"
+    "metric_6": {
+      "label": "Forest loss between 2000 to 2021",
+      "tooltip": "Tree loss data was derived from UMD, Google, USGS and NASA's freely available Global Forest Change dataset (Hansen et al., 2013). Geospatial analysis was conducted by DOSM."
+    },
+    "metric_7": {
+      "label": "Intensity of lights at night",
+      "tooltip": "Night lights intensity data was derived from the freely available global VIIRS Nighttime Light dataset (Elvidge et al., 2020). Geospatial analysis was conducted by DOSM."
+    },
+    "metric_8": {
+      "label": "Population density",
+      "tooltip": ""
+    },
+    "metric_9": {
+      "label": "Female to male ratio",
+      "tooltip": ""
+    },
+    "metric_10": {
+      "label": "Average household size",
+      "tooltip": ""
+    },
+    "metric_11": {
+      "label": "Live births per 1000 women",
+      "tooltip": ""
+    },
+    "metric_12": {
+      "label": "Deaths per 1000 people",
+      "tooltip": ""
+    },
+    "metric_13": {
+      "label": "Young-age dependency ratio",
+      "tooltip": "Ratio of young-age (0-14) to working age (15-64) population"
+    },
+    "metric_14": {
+      "label": "Old-age dependency ratio",
+      "tooltip": "Ratio of old-age (65+) to working age (15-64) population"
+    },
+    "metric_15": {
+      "label": "Household income",
+      "tooltip": "Estimated based on the 2020 Household Income, Expenditure and Basic Amenities (HIES/BA) Survey data. There may be relatively high standard errors for certain electoral areas. "
+    },
+    "metric_16": {
+      "label": "Household expenditure",
+      "tooltip": ""
+    },
+    "metric_17": {
+      "label": "Inequality (Gini coefficient)",
+      "tooltip": ""
+    },
+    "metric_18": {
+      "label": "Incidence of poverty",
+      "tooltip": "A person or household was classified as poor if their income fell below the 2019 Poverty Line Income."
+    },
+    "metric_19": {
+      "label": "Unemployment rate",
+      "tooltip": "Labour force indicators by electoral area were estimated based on 2020 Labour Force Survey data and the estimated population factors for 2020. This data should be used with caution due to relatively high standard errors for certain electoral areas. "
+    },
+    "metric_20": {
+      "label": "Labour force participation rate",
+      "tooltip": ""
+    },
+    "metric_21": {
+      "label": "Working age population %",
+      "tooltip": ""
+    },
+    "metric_22": {
+      "label": "Access to electricity",
+      "tooltip": "Includes both 24-hour supply and intermittent supply"
+    },
+    "metric_23": {
+      "label": "Access to piped water at home",
+      "tooltip": ""
+    },
+    "metric_24": {
+      "label": "Hospitals per 1000 people",
+      "tooltip": "Includes all public and private hospitals in operation as of 1 May 2022. Data on hospitals was sourced from the Ministry of Health Malaysia. Geospatial analysis was conducted by DOSM."
+    },
+    "metric_25": {
+      "label": "Health clinics per 1000 people",
+      "tooltip": "Includes all public and private clinics in operation as of 1 May 2022. Data on clinics was sourced from the Ministry of Health Malaysia. Geospatial analysis was conducted by DOSM."
+    },
+    "metric_26": {
+      "label": "Schools per 1000 children",
+      "tooltip": "Includes all public schools in operation as of 1 May 2022. Data on schools was sourced from the Ministry of Education. Geospatial analysis was conducted by DOSM."
+    },
+    "metric_27": {
+      "label": "Police and fire stations per 1000 people",
+      "tooltip": "Includes police and fire stations in operation as of 1 May 2022. Data on police and fire stations were sourced from the Royal Malaysian Police and the Fire and Rescue Department of Malaysia respectively. Geospatial analysis was conducted by DOSM."
+    },
+    "metric_28": {
+      "label": "Grocery stores per 1000 people",
+      "tooltip": "Includes both publicly and privately owned grocery stores. Equivalent to Provision Stores based on the Malaysia Standard Industrial Classification (MSIC) 2008 Ver 1.0."
     }
+  },
+  "choropleth_title": "A geographic visualisation of selected indicators",
+  "indicator": "Indicator",
+  "min": "Minimum",
+  "max": "Maximum",
+  "choropleth_metric_placeholder": "Select indicator",
+  "choropleth_geo_filter_placeholder": "Select area",
+  "choropleth": {
+    "max_elevation": "Maximum elevation",
+    "ruggedness": "Terrain Ruggedness Index",
+    "treecover": "Surface covered in forest",
+    "treeloss": "Forest loss between 2000 to 2021",
+    "nightlights": "Intensity of lights at night",
+    "population_density": "Population density",
+    "income_mean": "Household income",
+    "expenditure_mean": "Household expenditure",
+    "gini": "Inequality (Gini coefficient)",
+    "poverty": "Incidence of poverty",
+    "electricity": "Access to electricity",
+    "water": "Access to piped water at home"
+  },
+  "share": "Share",
+  "dosm": "Department of Statistics Malaysia",
+  "pmo": "Prime Minister's Department",
+  "copyrights": "© 2020 Department of Statistics Malaysia",
+  "open_data": "Open data",
+  "open_source": "Open source",
+  "facebook": "Facebook",
+  "twitter": "Twitter",
+  "embed": "Embed",
+  "copy_link": "Copy link",
+  "states": {
+    "jhr": "Johor",
+    "kdh": "Kedah",
+    "ktn": "Kelantan",
+    "mlk": "Melaka",
+    "nsn": "Negeri Sembilan",
+    "phg": "Pahang",
+    "prk": "Perak",
+    "pls": "Perlis",
+    "png": "Pulau Pinang",
+    "sbh": "Sabah",
+    "swk": "Sarawak",
+    "sgr": "Selangor",
+    "trg": "Terengganu",
+    "kul": "W.P. Kuala Lumpur",
+    "lbn": "W.P. Labuan",
+    "pjy": "W.P. Putrajaya"
+  }
 }
