@@ -45,10 +45,10 @@
     "marital_never_married": "Single",
     "marital_married": "Married",
     "marital_widowed": "Widowed",
-    "marital_divorced": "Divorced",
-    "agegroup_child": "Child",
-    "agegroup_working": "Working",
-    "agegroup_elderly": "Elderly",
+    "marital_divorced": "Divorced/separated",
+    "agegroup_child": "Young age",
+    "agegroup_working": "Working age",
+    "agegroup_elderly": "Old age",
     "housing_owned": "Owned",
     "housing_rented": "Rented",
     "housing_quarters": "Quarters",
@@ -111,7 +111,7 @@
       "tooltip": ""
     },
     "metric_9": {
-      "label": "Female to male ratio",
+      "label": "Sex ratio (males per 100 females)",
       "tooltip": ""
     },
     "metric_10": {
@@ -119,11 +119,11 @@
       "tooltip": ""
     },
     "metric_11": {
-      "label": "Live births per 1000 women",
+      "label": "Live births per 1000 people",
       "tooltip": ""
     },
     "metric_12": {
-      "label": "Deaths per 1000 people",
+      "label": "Death rate",
       "tooltip": ""
     },
     "metric_13": {
