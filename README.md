@@ -1,6 +1,6 @@
 # KAWASANKU
 
-> The official Malaysian government dashboard for the Census 2020 survey.
+> The official Malaysian government dashboard for MyCensus 2020 and related data.
 
 ![Screenshot of KAWASANKU homepage](/public/static/dashboard.png)
 
