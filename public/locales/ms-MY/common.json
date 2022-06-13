@@ -1,7 +1,7 @@
 {
   "title": "KAWASANKU | DOSM",
   "header": "Kenali kawasan anda!",
-  "description": "Adakah kawasanku lebih baik berbanding kawasan lain? Bagaimanakah keadaan tenaga buruhnya? Adakah kemudahan awam mencukupi? DOSM mempunyai misi untuk memastikan jawapan kepada persoalan sebegini di hujung jari rakyat. Menerusi kejayaan Banci Penduduk dan Perumahan Malaysia 2020 (MyCensus 2020), DOSM buat pertama kali dalam sejarah menerbitkan data populasi penduduk di peringkat Parlimen dan Dewan Undangan Negeri (DUN). Dashboard Kawasanku bertujuan untuk membolehkan rakyat, penggubal dasar dan komuniti antarabangsa menerokai set data tersebut.",
+  "description": "Adakah kawasanku lebih baik berbanding kawasan lain? Adakah penduduknya padat? Bagaimanakah keadaan tenaga buruhnya? Adakah kemudahan awam mencukupi? DOSM mempunyai misi untuk memastikan jawapan kepada persoalan sebegini di hujung jari rakyat. Menerusi kejayaan Banci Penduduk dan Perumahan Malaysia 2020 (MyCensus 2020), DOSM buat pertama kali dalam sejarah menerbitkan data populasi penduduk di peringkat Parlimen dan Dewan Undangan Negeri (DUN). Dashboard Kawasanku bertujuan untuk membolehkan rakyat, penggubal dasar dan komuniti antarabangsa menerokai set data tersebut.",
   "filter_title": "Cari kawasanku",
   "filter_clear": "Kosongkan pilihan",
   "filter1_placeholder": "Pilih negeri",
@@ -215,7 +215,7 @@
   "dosm": "Jabatan Perangkaan Malaysia",
   "pmo": "Jabatan Perdana Menteri",
   "copyrights": "© 2022 Jabatan Perangkaan Malaysia",
-  "open_data": "Data terbuka",
+  "open_data": "Muat turun data",
   "open_source": "Sumber terbuka",
   "facebook": "Facebook",
   "twitter": "Twitter",
