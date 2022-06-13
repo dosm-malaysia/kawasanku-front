@@ -42,13 +42,13 @@
     "religion_hindu": "Hindu",
     "religion_other": "Lain-lain",
     "religion_atheist": "Tiada agama",
-    "marital_never_married": "Bujang",
+    "marital_never_married": "Tidak pernah berkahwin",
     "marital_married": "Kahwin",
     "marital_widowed": "Balu/Duda",
     "marital_divorced": "Bercerai/berpisah",
     "agegroup_child": "Umur muda",
-    "agegroup_working": "Bekerja",
-    "agegroup_elderly": "Tua",
+    "agegroup_working": "Umur bekerja",
+    "agegroup_elderly": "Umur tua",
     "housing_owned": "Dimiliki",
     "housing_rented": "Disewa",
     "housing_quarters": "Kuarters",
@@ -111,7 +111,7 @@
       "tooltip": ""
     },
     "metric_9": {
-      "label": "Nisbah jantina (perempuan per 100 lelaki)",
+      "label": "Nisbah jantina (lelaki bagi setiap 100 perempuan)",
       "tooltip": ""
     },
     "metric_10": {
@@ -119,11 +119,11 @@
       "tooltip": ""
     },
     "metric_11": {
-      "label": "Kelahiran hidup per 1000 perempuan",
+      "label": "Kelahiran hidup bagi setiap 1000 penduduk",
       "tooltip": ""
     },
     "metric_12": {
-      "label": "Kematian per 1000 penduduk",
+      "label": "Kadar kematian",
       "tooltip": ""
     },
     "metric_13": {
@@ -171,23 +171,23 @@
       "tooltip": ""
     },
     "metric_24": {
-      "label": "Hospital per 1000 penduduk",
+      "label": "Hospital bagi setiap 1000 penduduk",
       "tooltip": "Termasuk semua hospital awam dan swasta yang beroperasi setakat 1 Mei 2022. Data berikut diperoleh daripada Kementerian Kesihatan Malaysia (KKM). Analisa geospatial telah dilaksanakan oleh DOSM."
     },
     "metric_25": {
-      "label": "Klinik kesihatan per 1000 penduduk",
+      "label": "Klinik kesihatan bagi setiap 1000 penduduk",
       "tooltip": "Termasuk semua klinik awam dan swasta yang beroperasi setakat 1 Mei 2022. Data berikut diperoleh daripada Kementerian Kesihatan Malaysia (KKM). Analisa geospatial telah dilaksanakan oleh DOSM."
     },
     "metric_26": {
-      "label": "Sekolah per 1000 kanak-kanak",
+      "label": "Sekolah bagi setiap 1000 kanak-kanak",
       "tooltip": "Termasuk semua sekolah yang beroperasi setakat 1 Mei 2022. Data berikut diperoleh daripada Kementerian Pendidikan Malaysia (KPM). Analisa geospatial telah dilaksanakan oleh DOSM."
     },
     "metric_27": {
-      "label": "Balai polis dan balai bomba per 1000 penduduk",
+      "label": "Balai polis dan balai bomba bagi setiap 1000 penduduk",
       "tooltip": "Termasuk balai polis dan bomba yang beroperasi setakat 1 Mei 2022. Data berikut diperoleh daripada Polis Diraja Malaysia (PDRM) dan Jabatan Bomba dan Penyelamat Malaysia. Analisa geospatial telah dilaksanakan oleh DOSM."
     },
     "metric_28": {
-      "label": "Kedai runcit per 1000 penduduk",
+      "label": "Kedai runcit bagi setiap 1000 penduduk",
       "tooltip": "Termasuk kedai runcit milikan awam dan swasta. Bersamaan dengan Kedai Runcit berdasarkan Piawaian Klasifikasi Industri Malaysia 2008 Ver. 1.0."
     }
   },
