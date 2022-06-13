@@ -16,8 +16,8 @@ const Footer = () => {
         </div>
         <div>
           <div className="text-sm font-semibold uppercase md:text-lg">
-            <p>{t("dosm")}</p>
             <p>{t("pmo")}</p>
+            <p>{t("dosm")}</p>
           </div>
           <br />
           <p className="text-xs md:text-base">{t("copyrights")}</p>

@@ -111,7 +111,7 @@
       "tooltip": ""
     },
     "metric_9": {
-      "label": "男女比例 (女:男）",
+      "label": "男女比例 (男:女）",
       "tooltip": ""
     },
     "metric_10": {
@@ -123,7 +123,7 @@
       "tooltip": ""
     },
     "metric_12": {
-      "label": "每1000个人的死亡率",
+      "label": "死亡率",
       "tooltip": ""
     },
     "metric_13": {
