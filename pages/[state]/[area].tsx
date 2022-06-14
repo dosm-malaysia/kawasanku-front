@@ -15,7 +15,8 @@ import {
   getJitterplots,
   getAreaType,
   getAreaPaths,
-  getDoughnutCharts,
+  getSnapshot,
+  //   getDoughnutCharts,
 } from "../../lib/api";
 import { AREA_TYPES } from "../../lib/constants";
 import { IDoughnutCharts } from "../../lib/interfaces";
@@ -175,7 +176,9 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
 
   const translationReq = serverSideTranslations(locale!, ["common"]);
   const geoReq = getGeojson({ area });
-  const doughnutChartsReq = getDoughnutCharts({ state, area });
+  // TODO: improvement - replace getSnapshot with getDoughnutCharts, amend params to inclde areaType [dun, district, parlimen]
+  //   const doughnutChartsReq = getDoughnutCharts({ state, area });
+  const doughnutChartsReq = getSnapshot({ area });
   const jitterplotsReq = getJitterplots({ area: area });
   const stateTypeReq = getAreaType(state);
   const areaTypeReq = getAreaType(area);
@@ -213,7 +216,7 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
   const areaName = res[5].area_name;
 
   // DOUGHNUT CHARTS DATA
-  const doughnutCharts = res[2] as unknown as IDoughnutCharts;
+  const doughnutCharts = res[2].doughnut_charts as unknown as IDoughnutCharts;
   const sex = doughnutCharts.sex;
   const ethnicity = doughnutCharts.ethnicity;
   const nationality = doughnutCharts.nationality;
