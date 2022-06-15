@@ -11,8 +11,10 @@ import {
   GEO_FILTER,
 } from "../../../lib/constants";
 
-import dunGeojson from "../../../geojson/dun.json";
-import parlimenGeojson from "../../../geojson/parlimen.json";
+import dunGeojson_mobile from "../../../geojson/dun_mobile.json";
+import parlimenGeojson_mobile from "../../../geojson/parlimen_mobile.json";
+import dunGeojson_desktop from "../../../geojson/dun_desktop.json";
+import parlimenGeojson_desktop from "../../../geojson/parlimen_desktop.json";
 
 interface ChoroplethChartProps {
   metric?: CHOROPLETH_METRICS;
@@ -33,9 +35,10 @@ const ChoroplethChart: FunctionComponent<ChoroplethChartProps> = ({
       <ResponsiveChoropleth
         data={data}
         features={
-          geoFilter === GEO_FILTER.Dun
-            ? dunGeojson.features
-            : parlimenGeojson.features
+          geoFilter === GEO_FILTER.Dun && isMobile ? dunGeojson_mobile.features :
+          geoFilter === GEO_FILTER.Dun ? dunGeojson_desktop.features :
+          isMobile ? parlimenGeojson_mobile.features : 
+          parlimenGeojson_desktop.features
         }
         margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
         colors={metric ? getChoroplethColors(metric) : ["#FFF"]}
@@ -43,7 +46,7 @@ const ChoroplethChart: FunctionComponent<ChoroplethChartProps> = ({
         unknownColor="#fff"
         valueFormat=".2s"
         projectionScale={isMobile ? 1750 : 3000}
-        projectionTranslation={[0.5, isMobile ? 0.97 : 1.04]}
+        projectionTranslation={[isMobile ? 0.5 : 0.63, isMobile ? 0.97 : 0.85]}
         projectionRotation={[-114, 0, 0]}
         borderWidth={metric ? 0.1 : 0.25}
         borderColor={metric ? getChoroplethBorderColor(metric) : "#13293d"}
