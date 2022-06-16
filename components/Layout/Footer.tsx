@@ -33,10 +33,10 @@ const Footer = () => {
           <p className="text-xs md:text-base">
             {t("open_data")}:{" "}
             <a
-              href="https://docs.google.com/spreadsheets/d/100Gwpv1oMja-nlzlr6B0TMt83wV6xc7K/edit?usp=sharing"
+              href="https://github.com/dosm-malaysia/data-open"
               target="_blank"
             >
-              <span className="underline">xlsx (Excel)</span>
+              <span className="underline">DOSM GitHub</span>
             </a>
           </p>
         </div>
