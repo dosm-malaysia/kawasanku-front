@@ -63,31 +63,6 @@ export const getSnapshot = async ({ area }: GetSnapshotReq) =>
     return { ...res.data, doughnut_charts: formattedDoughnutCharts };
   });
 
-type GetDoughnutChartsReq = {
-  state: string;
-  area: string;
-};
-
-export const getDoughnutCharts = async ({
-  state,
-  area,
-}: GetDoughnutChartsReq) =>
-  await API.get<{ [key: string]: IDoughnutChartData[] }[]>("/doughnut", {
-    params: {
-      state,
-      area,
-    },
-  }).then(res => {
-    const formattedDoughnutCharts: { [key: string]: IDoughnutChartData[] } = {};
-    res.data.forEach(chart => {
-      Object.entries(chart).forEach(([key, value]) => {
-        formattedDoughnutCharts[key] = value;
-      });
-    });
-
-    return formattedDoughnutCharts;
-  });
-
 type GetJitterplotsReq = {
   area: string;
 };
