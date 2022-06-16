@@ -113,8 +113,12 @@ const Area: NextPage = ({
         <Card padding="jitterplot-card-padding" className="jitterplot-card">
           {/* SPOTLIGHT */}
           <Spotlight
+            stateKey={stateKey}
             areaType={areaType}
-            currentLocation={{ label: areaName, value: areaKey }}
+            currentLocation={{
+              label: `${areaName}, ${stateKey.toUpperCase()}`,
+              value: areaKey,
+            }}
             jitterComparisons={jitterComparisons}
             setJitterComparisons={setJitterComparisons}
           />
@@ -177,7 +181,7 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
   const translationReq = serverSideTranslations(locale!, ["common"]);
   const geoReq = getGeojson({ area });
   // TODO: improvement - replace getSnapshot with getDoughnutCharts, amend params to inclde areaType [dun, district, parlimen]
-  //   const doughnutChartsReq = getDoughnutCharts({ state, area });
+  // const doughnutChartsReq = getDoughnutCharts({ state, area });
   const doughnutChartsReq = getSnapshot({ area });
   const jitterplotsReq = getJitterplots({ area: area });
   const stateTypeReq = getAreaType(state);

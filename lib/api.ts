@@ -110,13 +110,19 @@ export const getJitterplots = async ({ area }: GetJitterplotsReq) =>
 type GetAreaOptionsReq = {
   state?: string;
   filter: string;
+  withState?: boolean;
 };
 
-export const getAreaOptions = async ({ state, filter }: GetAreaOptionsReq) =>
+export const getAreaOptions = async ({
+  state,
+  filter,
+  withState,
+}: GetAreaOptionsReq) =>
   await API.get<IAreaOptions[]>("/dropdown", {
     params: {
       state,
       filter,
+      ...(withState && { with_state: withState }),
     },
   }).then(res => res.data);
 

@@ -8,6 +8,7 @@ import ComboBox from "../../Dropdowns/ComboBox";
 import { Option } from "../../Dropdowns/interface";
 
 interface SpotlightProps {
+  stateKey?: string;
   areaType?: string;
   currentLocation?: Option;
   jitterComparisons: Option[];
@@ -15,6 +16,7 @@ interface SpotlightProps {
 }
 
 const Spotlight: FunctionComponent<SpotlightProps> = ({
+  stateKey,
   areaType,
   currentLocation,
   jitterComparisons,
@@ -41,7 +43,7 @@ const Spotlight: FunctionComponent<SpotlightProps> = ({
 
   useEffect(() => {
     if (areaType)
-      getAreaOptions({ filter: areaType })
+      getAreaOptions({ filter: areaType, state: stateKey, withState: true })
         .then(res => setOptions(res))
         .catch(err => console.log(err));
   }, [areaType]);
