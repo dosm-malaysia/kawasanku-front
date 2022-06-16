@@ -1,7 +1,7 @@
 {
   "title": "KAWASANKU | DOSM",
   "header": "认识您的地区！",
-  "description": "随着马来西亚2020年人口与住房普查 (MyCensus 2020)的完成，人口与住房局有史以来首次发布国议会选区和州立法议会层面的人口数据， 也借此机会成立了Kawasanku Dashboard以让公民、政策制定者以及国际社会更轻易地探索此数据集。",
+  "description": "我的地区比其他地区好吗？它的人口统计特征是什么？它的劳动力状况如何？公共设施是否充足？统计局的使命是确保这些问题的答案触手可及。随着2020年马来西亚人口与住房普查 (MyCensus 2020)成功的完成，统计局有史以来首次发布国会和州议会层面的人口数据。Kawasanku统计图解主要目的是要为公民、政策制定者和国际社会提供一种探索数据集的便捷方式。",
   "filter_title": "寻找我的地区",
   "filter_clear": "清空选项",
   "filter1_placeholder": "选择州属",
@@ -119,7 +119,7 @@
       "tooltip": ""
     },
     "metric_11": {
-      "label": "每1000个女性的活产率",
+      "label": "每1000个人的活产婴儿人数",
       "tooltip": ""
     },
     "metric_12": {
@@ -215,7 +215,7 @@
   "dosm": "Department of Statistics Malaysia",
   "pmo": "Prime Minister's Department",
   "copyrights": "© 2022 Department of Statistics Malaysia",
-  "open_data": "下载数据",
+  "open_data": "开放数据",
   "open_source": "开放源码",
   "facebook": "Facebook",
   "twitter": "Twitter",
