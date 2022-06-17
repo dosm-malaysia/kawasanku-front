@@ -68,7 +68,7 @@ const Select: FunctionComponent<SelectProps> = ({
                     key={index}
                     className={({ active }) => `
                         ${active ? "bg-gray-100" : ""}
-                        relative cursor-pointer select-none py-2 pl-3 pr-9
+                        relative cursor-pointer select-none py-2 px-3
                     `}
                     value={option.value}
                   >

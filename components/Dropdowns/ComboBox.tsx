@@ -75,7 +75,7 @@ const ComboBox: FunctionComponent<ComboBoxProps> = ({
                   <Combobox.Option
                     key={option.value}
                     className={({ active }) =>
-                      `relative cursor-pointer select-none py-2 pl-10 pr-4 ${
+                      `relative cursor-pointer select-none py-2 px-3 ${
                         active ? "bg-gray-100" : ""
                       }`
                     }
