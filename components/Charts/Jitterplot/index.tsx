@@ -78,25 +78,16 @@ const Jitterplot: FunctionComponent<JitterplotProps> = ({
                 return 8;
               }}
               onMouseEnter={node => {
-                if (comparisons.some(item => item.label === node.serieId))
-                  return;
-                node.color = "#13293d";
+                if (!comparisons.some(item => item.label === node.serieId))
+                  node.color = "#13293d";
               }}
               onMouseLeave={node => {
-                // ACCENT
-                if (currentLocation?.label === node.serieId)
-                  node.color = "#13293d";
-                // RED
-                else if (comparisons[0]?.label === node.serieId)
-                  node.color = "#D44647";
-                // BLUE
-                else if (comparisons[1]?.label === node.serieId)
-                  node.color = "#EC9E29";
-                // YELLOW
-                else if (comparisons[2]?.label === node.serieId)
-                  node.color = "#2873E8";
-                // GRAY
-                else node.color = "#E0E0E0CC";
+                if (
+                  ![...comparisons, currentLocation].some(
+                    item => item?.label === node.serieId
+                  )
+                )
+                  node.color = "#E0E0E0";
               }}
               tooltip={({ node: { serieId, xValue } }) => {
                 return (
@@ -121,11 +112,10 @@ const Jitterplot: FunctionComponent<JitterplotProps> = ({
               }}
               colors={({ serieId }) => {
                 if (currentLocation?.label === serieId) return "#13293d";
-
-                if (comparisons[0]?.label === serieId) return "#D44647";
+                else if (comparisons[0]?.label === serieId) return "#D44647";
                 else if (comparisons[2]?.label === serieId) return "#EC9E29";
                 else if (comparisons[1]?.label === serieId) return "#2873E8";
-                else return "#E0E0E0CC";
+                else return "#E0E0E0";
               }}
             />
           </div>
