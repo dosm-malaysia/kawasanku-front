@@ -77,7 +77,7 @@ const ChoroplethSection = () => {
           {/* CHOROPLETH CHART */}
           <ChoroplethChart
             data={data}
-            feature="district"
+            feature={GEO_FILTER.District}
             color={CHOROPLETH_RED_SCALE}
           />
           {/* CHOROPLETH SCALE */}

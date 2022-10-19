@@ -13,11 +13,11 @@ export const API = axios.create({
 });
 
 export const getStatePaths = async () =>
-  await API.get<string[]>("/links?type=state").then(res => res.data);
+  await API.get<string[]>("/links/?type=state").then(res => res.data);
 
 export const getAreaPaths = async () =>
   await API.get<{ district: string[]; parlimen: string[]; dun: string[] }>(
-    "/links"
+    "/links/"
   ).then(res => {
     const { district, parlimen, dun } = res.data;
     return [...district, ...parlimen, ...dun];
@@ -103,7 +103,7 @@ export const getAreaOptions = async ({
 
 export const getAreaType = async (area: string) =>
   await API.get<{ area_type: string; area_name: string }>(
-    `/area-type?area=${area}`
+    `/area-type/?area=${area}`
   ).then(res => res.data);
 
 type GetChoroplethReq = {
@@ -124,7 +124,7 @@ export const getChoropleth = async ({
     .then(res => res.data)
     .catch(e => console.error(e));
 
-export const getChoroPrices = async (item: string) =>
+export const getChoroPrices = async (item: string): Promise<any> =>
   await API.get<IChoroplethData[]>("/choropleth-prices/", {
     params: {
       item,
