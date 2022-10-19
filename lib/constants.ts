@@ -68,7 +68,7 @@ export enum CHOROPLETH_METRICS {
   Water = "water",
 }
 
-export const CHOROPLETH_PRICE_OPTION = Array(30)
+export const CHOROPLETH_PRICE_OPTION = Array(31)
   .fill(0)
   .map((_, index) => `item${index + 1}`);
 

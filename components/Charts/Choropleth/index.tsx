@@ -1,9 +1,9 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useMemo } from "react";
 import { ResponsiveChoropleth } from "@nivo/geo";
 import { useWindowWidth } from "@react-hook/window-size";
 
 import { IChoroplethData } from "../../../lib/interfaces";
-import { getChoroplethColors } from "../../../lib/helpers";
+import { getChoroplethColors, numFormat } from "../../../lib/helpers";
 import { getChoroplethBorderColor } from "../../../lib/helpers";
 import {
   BREAKPOINTS,
@@ -23,6 +23,7 @@ interface ChoroplethChartProps {
   feature?: GEO_FILTER;
   color?: any;
   data: IChoroplethData[];
+  unitY?: string;
 }
 
 type ChoroplethConfigType = {
@@ -38,6 +39,7 @@ const ChoroplethChart: FunctionComponent<ChoroplethChartProps> = ({
   feature,
   color,
   data,
+  unitY,
 }) => {
   const width = useWindowWidth();
   const isMobile = width < BREAKPOINTS.SM;
@@ -81,6 +83,14 @@ const ChoroplethChart: FunctionComponent<ChoroplethChartProps> = ({
     }
   };
 
+  const maxAuto = useMemo(
+    () =>
+      data.length
+        ? data.reduce((a, b) => (a.value > b.value ? a : b)).value
+        : 100,
+    [data]
+  );
+
   return (
     <div className="h-[388px] sm:h-[588px]">
       <ResponsiveChoropleth
@@ -88,7 +98,7 @@ const ChoroplethChart: FunctionComponent<ChoroplethChartProps> = ({
         features={getChoroplethFeatures()}
         margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
         colors={choroplethConfig.colors}
-        domain={[0, 100]}
+        domain={[0, maxAuto]}
         unknownColor="#fff"
         valueFormat=".2s"
         projectionScale={choroplethConfig.projectionScale}
@@ -98,7 +108,17 @@ const ChoroplethChart: FunctionComponent<ChoroplethChartProps> = ({
         borderColor={choroplethConfig.borderColor}
         tooltip={({ feature: { data } }) => {
           return data?.id ? (
-            <div className="nivo-tooltip">{data.id}</div>
+            <div className="nivo-tooltip">
+              {data.id}:{" "}
+              {data.value === -1 ? (
+                "-"
+              ) : (
+                <>
+                  {unitY}
+                  {numFormat(data.value, "standard", 2)}
+                </>
+              )}
+            </div>
           ) : (
             <></>
           );

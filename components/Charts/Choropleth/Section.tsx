@@ -49,7 +49,7 @@ const ChoroplethSection = () => {
       <Container backgroundColor="bg-gray-100" className="mt-10">
         <div className="section-title-layout">
           <h3 className="section-title">{t("choropleth_title")}</h3>
-          <p className="census-text">{t("census_2020")}</p>
+          <p className="census-text">{t("census_2020", { year: 2020 })}</p>
         </div>
       </Container>
       <Container backgroundColor="bg-white md:bg-gray-100" className="md:mb-10">

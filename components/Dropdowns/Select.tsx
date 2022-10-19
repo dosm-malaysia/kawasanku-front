@@ -9,6 +9,7 @@ interface SelectProps {
   placeholder?: string;
   disabled?: boolean;
   onChange: (value: string) => void;
+  loading?: boolean;
 }
 
 const Select: FunctionComponent<SelectProps> = ({
@@ -17,6 +18,7 @@ const Select: FunctionComponent<SelectProps> = ({
   placeholder,
   onChange,
   disabled,
+  loading,
 }) => {
   return (
     <Listbox
@@ -34,8 +36,11 @@ const Select: FunctionComponent<SelectProps> = ({
                 ${disabled ? "bg-gray-100" : ""}
               `}
             >
-              <span className="block truncate">
+              <span className="flex items-center gap-2 truncate">
                 {selected?.label ?? placeholder}
+                {loading && (
+                  <div className="mr-3 h-4 w-4 animate-spin rounded-[50%] border-2 border-gray-200 border-t-accent" />
+                )}
               </span>
               <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2 text-gray-500">
                 <svg

@@ -15949,8 +15949,8 @@
     },
     {
       "type": "Feature",
-      "id": "Larut Dan Matang",
-      "properties": { "district": "Larut Dan Matang" },
+      "id": "Larut dan Matang",
+      "properties": { "district": "Larut dan Matang" },
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [

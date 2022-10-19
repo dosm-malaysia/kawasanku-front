@@ -87,7 +87,7 @@ const Area: NextPage = ({
             {t("section1_title1")} <span className="underline">{areaName}</span>{" "}
             {t("section1_title2")}
           </h3>
-          <p className="census-text">{t("census_2020")}</p>
+          <p className="census-text">{t("census_2020", { year: 2020 })}</p>
         </div>
         {/* DOUGHNUT CHARTS */}
         <div className="mb-10 w-full md:mb-15">
@@ -102,7 +102,7 @@ const Area: NextPage = ({
               area_types: t(`area_types.${areaType}`),
             })}
           </h3>
-          <p className="census-text">{t("census_2020")}</p>
+          <p className="census-text">{t("census_2020", { year: 2020 })}</p>
         </div>
       </Container>
       <Container

@@ -59,7 +59,7 @@ const Home: NextPage = ({
             <span className="capitalize underline">{t("malaysia")}</span>{" "}
             {t("section1_title2")}
           </h3>
-          <p className="census-text">{t("census_2020")}</p>
+          <p className="census-text">{t("census_2020", { year: 2020 })}</p>
         </div>
         <div className="snapshot-layout">
           {/* BAR CHART */}
@@ -76,7 +76,7 @@ const Home: NextPage = ({
         {/* JITTERPLOT TITLE */}
         <div className="section-title-layout">
           <h3 className="section-title">{t("section2_title1")}</h3>
-          <p className="census-text">{t("census_2020")}</p>
+          <p className="census-text">{t("census_2020", { year: 2020 })}</p>
         </div>
       </Container>
       <Container
