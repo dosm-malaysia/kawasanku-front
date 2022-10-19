@@ -56,7 +56,7 @@
     "labour_unemployed": "失业",
     "labour_out": "缺乏劳动能力"
   },
-  "census_2020": "数据取于2020年MyCensus普查",
+  "census_2020": "数据取于{{ year }}年MyCensus普查",
   "section2_title1": "各州关键变数的比较",
   "section2_title2_1": "",
   "section2_title2_2": "如何与其他{{area_types}}比较?",

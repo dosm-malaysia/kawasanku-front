@@ -84,7 +84,7 @@ const State: NextPage = ({
             <span className="underline">{t(`states.${stateKey}`)}</span>{" "}
             {t("section1_title2")}
           </h3>
-          <p className="census-text">{t("census_2020")}</p>
+          <p className="census-text">{t("census_2020", { year: 2020 })}</p>
         </div>
         <div className="snapshot-layout">
           {/* BAR CHART */}
@@ -107,7 +107,7 @@ const State: NextPage = ({
               area_types: t(`area_types.${AREA_TYPES.State}`),
             })}
           </h3>
-          <p className="census-text">{t("census_2020")}</p>
+          <p className="census-text">{t("census_2020", { year: 2020 })}</p>
         </div>
       </Container>
       <Container

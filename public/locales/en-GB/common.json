@@ -56,7 +56,7 @@
     "labour_unemployed": "Unemployed",
     "labour_out": "Out of labour force"
   },
-  "census_2020": "Data correct as of MyCensus 2020",
+  "census_2020": "Data correct as of MyCensus {{year}}",
   "section2_title1": "A comparison of key variables across states",
   "section2_title2_1": "How does",
   "section2_title2_2": "compare to other {{area_types}}?",

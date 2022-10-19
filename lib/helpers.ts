@@ -95,3 +95,16 @@ export const getChoroplethBorderColor = (
     return "#f2f2f2";
   }
 };
+
+export const numFormat = (
+  value: number,
+  type?: any,
+  precision: number = 0
+): string => {
+  const formatter = Intl.NumberFormat("en", {
+    notation: type ? type : "compact",
+    maximumFractionDigits: precision,
+    minimumFractionDigits: precision,
+  });
+  return formatter.format(value);
+};
