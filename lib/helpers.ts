@@ -54,7 +54,9 @@ export const isFederalTerritory = (stateKey: string) => {
   );
 };
 
-export const getChoroplethColors = (choropleth: CHOROPLETH_METRICS) => {
+export const getChoroplethColors = (
+  choropleth: CHOROPLETH_METRICS | string
+) => {
   if (
     choropleth === CHOROPLETH_METRICS.MaxElevation ||
     choropleth === CHOROPLETH_METRICS.Ruggedness ||
@@ -82,10 +84,10 @@ export const getChoroplethColors = (choropleth: CHOROPLETH_METRICS) => {
   }
 };
 
-export const getChoroplethBorderColor = (choropleth: CHOROPLETH_METRICS) => {
-  if (
-    choropleth === CHOROPLETH_METRICS.Electricity 
-  ) {
+export const getChoroplethBorderColor = (
+  choropleth: CHOROPLETH_METRICS | string
+) => {
+  if (choropleth === CHOROPLETH_METRICS.Electricity) {
     // darker border
     return "#636161";
   } else {

@@ -15,10 +15,13 @@ import dunGeojsonMobile from "../../../geojson/dun_mobile.json";
 import dunGeojsonDesktop from "../../../geojson/dun_desktop.json";
 import parlimenGeojsonMobile from "../../../geojson/parlimen_mobile.json";
 import parlimenGeojsonDesktop from "../../../geojson/parlimen_desktop.json";
+import districtGeojsonMobile from "../../../geojson/district_mobile.json";
+import districtGeojsonDesktop from "../../../geojson/district_desktop.json";
 
 interface ChoroplethChartProps {
-  metric?: CHOROPLETH_METRICS;
-  geoFilter?: GEO_FILTER.Parliament | GEO_FILTER.Dun;
+  metric?: string;
+  feature?: GEO_FILTER;
+  color?: any;
   data: IChoroplethData[];
 }
 
@@ -32,7 +35,8 @@ type ChoroplethConfigType = {
 
 const ChoroplethChart: FunctionComponent<ChoroplethChartProps> = ({
   metric,
-  geoFilter,
+  feature,
+  color,
   data,
 }) => {
   const width = useWindowWidth();
@@ -40,7 +44,8 @@ const ChoroplethChart: FunctionComponent<ChoroplethChartProps> = ({
   const isTablet = width <= BREAKPOINTS.MD;
 
   const choroplethConfig: ChoroplethConfigType = {
-    colors: metric ? getChoroplethColors(metric) : ["#FFF"],
+    colors:
+      color && data ? color : metric ? getChoroplethColors(metric) : ["#FFF"],
     projectionScale: isMobile ? 1750 : 3000,
     projectionTranslation: [
       isMobile ? 0.5 : isTablet ? 0.52 : 0.65,
@@ -52,11 +57,27 @@ const ChoroplethChart: FunctionComponent<ChoroplethChartProps> = ({
 
   const getChoroplethFeatures = () => {
     if (isTablet) {
-      if (geoFilter === GEO_FILTER.Dun) return dunGeojsonMobile.features;
-      else return parlimenGeojsonMobile.features;
+      switch (feature) {
+        case GEO_FILTER.Dun:
+          return dunGeojsonMobile.features;
+        case GEO_FILTER.District:
+          return districtGeojsonMobile.features;
+        case GEO_FILTER.Parliament:
+          return parlimenGeojsonMobile.features;
+        default:
+          return parlimenGeojsonMobile.features;
+      }
     } else {
-      if (geoFilter === GEO_FILTER.Dun) return dunGeojsonDesktop.features;
-      else return parlimenGeojsonDesktop.features;
+      switch (feature) {
+        case GEO_FILTER.Dun:
+          return dunGeojsonDesktop.features;
+        case GEO_FILTER.District:
+          return districtGeojsonDesktop.features;
+        case GEO_FILTER.Parliament:
+          return parlimenGeojsonDesktop.features;
+        default:
+          return parlimenGeojsonDesktop.features;
+      }
     }
   };
 

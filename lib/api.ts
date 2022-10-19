@@ -13,11 +13,11 @@ export const API = axios.create({
 });
 
 export const getStatePaths = async () =>
-  await API.get<string[]>("/links?type=state").then(res => res.data);
+  await API.get<string[]>("/links/?type=state").then(res => res.data);
 
 export const getAreaPaths = async () =>
   await API.get<{ district: string[]; parlimen: string[]; dun: string[] }>(
-    "/links"
+    "/links/"
   ).then(res => {
     const { district, parlimen, dun } = res.data;
     return [...district, ...parlimen, ...dun];
@@ -28,7 +28,7 @@ type GetGeojsonReq = {
 };
 
 export const getGeojson = async ({ area }: GetGeojsonReq) =>
-  await API.get<IGeojson>(`/geo?area=${area}`).then(res => {
+  await API.get<IGeojson>(`/geo/?area=${area}`).then(res => {
     const geojsonData = res.data;
     return {
       type: "FeatureCollection",
@@ -52,7 +52,7 @@ export const getSnapshot = async ({ area }: GetSnapshotReq) =>
   await API.get<{
     doughnut_charts: { [key: string]: IDoughnutChartData[] }[];
     pyramid_charts: IBarChartData[];
-  }>(`/snapshot?area=${area}`).then(res => {
+  }>(`/snapshot/?area=${area}`).then(res => {
     const formattedDoughnutCharts: { [key: string]: IDoughnutChartData[] } = {};
     res.data.doughnut_charts.forEach(chart => {
       Object.entries(chart).forEach(([key, value]) => {
@@ -69,7 +69,7 @@ type GetJitterplotsReq = {
 
 export const getJitterplots = async ({ area }: GetJitterplotsReq) =>
   await API.get<{ [key: string]: IJitterplotData[] }[]>(
-    `/jitter?area=${area}`
+    `/jitter/?area=${area}`
   ).then(res => {
     const new_jitterplots: { [key: string]: IJitterplotData[] } = {};
 
@@ -93,7 +93,7 @@ export const getAreaOptions = async ({
   filter,
   withState,
 }: GetAreaOptionsReq) =>
-  await API.get<IAreaOptions[]>("/dropdown", {
+  await API.get<IAreaOptions[]>("/dropdown/", {
     params: {
       state,
       filter,
@@ -103,7 +103,7 @@ export const getAreaOptions = async ({
 
 export const getAreaType = async (area: string) =>
   await API.get<{ area_type: string; area_name: string }>(
-    `/area-type?area=${area}`
+    `/area-type/?area=${area}`
   ).then(res => res.data);
 
 type GetChoroplethReq = {
@@ -111,10 +111,24 @@ type GetChoroplethReq = {
   geoFilter: string;
 };
 
-export const getChoropleth = async ({ metric, geoFilter }: GetChoroplethReq) =>
-  await API.get<IChoroplethData[]>("/choropleth", {
+export const getChoropleth = async ({
+  metric,
+  geoFilter,
+}: GetChoroplethReq): Promise<any> =>
+  await API.get<IChoroplethData[]>("/choropleth/", {
     params: {
       metric: metric,
       filter: geoFilter,
     },
-  }).then(res => res.data);
+  })
+    .then(res => res.data)
+    .catch(e => console.error(e));
+
+export const getChoroPrices = async (item: string): Promise<any> =>
+  await API.get<IChoroplethData[]>("/choropleth-prices/", {
+    params: {
+      item,
+    },
+  })
+    .then(res => res.data)
+    .catch(e => console.error(e));
