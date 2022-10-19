@@ -19,11 +19,9 @@ const ChoroplethChart = dynamic(() => import("."), {
 const ChoroplethSection = () => {
   const { t } = useTranslation();
 
-  const [data, setData] = useState<IChoroplethData[]>([]);
-  const [metric, setMetric] = useState<CHOROPLETH_METRICS>();
-  const [geoFilter, setGeoFilter] = useState<
-    GEO_FILTER.Parliament | GEO_FILTER.Dun
-  >(GEO_FILTER.Parliament);
+  const [data, setData] = useState([]);
+  const [metric, setMetric] = useState<string>("");
+  const [geoFilter, setGeoFilter] = useState<string>("parlimen");
 
   const choroplethMetricOptons = Object.values(CHOROPLETH_METRICS).map(
     metric => ({
@@ -34,16 +32,17 @@ const ChoroplethSection = () => {
 
   useEffect(() => {
     if (metric && geoFilter) {
-      getChoropleth({
-        metric,
-        geoFilter,
-      })
-        .then(data => setData(data))
-        .catch(err => console.log(err));
+      fetchData();
     } else {
       setData([]);
     }
   }, [metric, geoFilter]);
+
+  const fetchData = async () => {
+    if (!metric && !geoFilter) return;
+    const result = await getChoropleth({ metric, geoFilter });
+    setData(result);
+  };
 
   return (
     <>
@@ -71,7 +70,7 @@ const ChoroplethSection = () => {
                         }
                       : undefined
                   }
-                  onChange={metric => setMetric(metric as CHOROPLETH_METRICS)}
+                  onChange={metric => setMetric(metric)}
                 />
               </div>
             </div>
@@ -113,7 +112,11 @@ const ChoroplethSection = () => {
             </div>
           </div>
           {/* CHOROPLETH CHART */}
-          <ChoroplethChart metric={metric} geoFilter={geoFilter} data={data} />
+          <ChoroplethChart
+            metric={metric}
+            feature={geoFilter as GEO_FILTER}
+            data={data}
+          />
           {/* CHOROPLETH SCALE */}
           <div className="flex h-full w-full justify-end">
             <div className="w-full sm:w-1/3">

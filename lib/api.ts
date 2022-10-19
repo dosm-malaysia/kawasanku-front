@@ -111,17 +111,24 @@ type GetChoroplethReq = {
   geoFilter: string;
 };
 
-export const getChoropleth = async ({ metric, geoFilter }: GetChoroplethReq) =>
+export const getChoropleth = async ({
+  metric,
+  geoFilter,
+}: GetChoroplethReq): Promise<any> =>
   await API.get<IChoroplethData[]>("/choropleth/", {
     params: {
       metric: metric,
       filter: geoFilter,
     },
-  }).then(res => res.data);
+  })
+    .then(res => res.data)
+    .catch(e => console.error(e));
 
 export const getChoroPrices = async (item: string) =>
   await API.get<IChoroplethData[]>("/choropleth-prices/", {
     params: {
       item,
     },
-  }).then(res => res.data);
+  })
+    .then(res => res.data)
+    .catch(e => console.error(e));

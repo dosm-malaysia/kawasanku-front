@@ -19,10 +19,9 @@ import districtGeojsonMobile from "../../../geojson/district_mobile.json";
 import districtGeojsonDesktop from "../../../geojson/district_desktop.json";
 
 interface ChoroplethChartProps {
-  metric?: CHOROPLETH_METRICS;
-  feature?: "dun" | "parlimen" | "district";
+  metric?: string;
+  feature?: GEO_FILTER;
   color?: any;
-  geoFilter?: GEO_FILTER.Parliament | GEO_FILTER.Dun;
   data: IChoroplethData[];
 }
 
@@ -36,7 +35,6 @@ type ChoroplethConfigType = {
 
 const ChoroplethChart: FunctionComponent<ChoroplethChartProps> = ({
   metric,
-  geoFilter,
   feature,
   color,
   data,
@@ -59,13 +57,27 @@ const ChoroplethChart: FunctionComponent<ChoroplethChartProps> = ({
 
   const getChoroplethFeatures = () => {
     if (isTablet) {
-      if (feature === "district") return districtGeojsonMobile.features;
-      if (geoFilter === GEO_FILTER.Dun) return dunGeojsonMobile.features;
-      else return parlimenGeojsonMobile.features;
+      switch (feature) {
+        case GEO_FILTER.Dun:
+          return dunGeojsonMobile.features;
+        case GEO_FILTER.District:
+          return districtGeojsonMobile.features;
+        case GEO_FILTER.Parliament:
+          return parlimenGeojsonMobile.features;
+        default:
+          return parlimenGeojsonMobile.features;
+      }
     } else {
-      if (feature === "district") return districtGeojsonDesktop.features;
-      if (geoFilter === GEO_FILTER.Dun) return dunGeojsonDesktop.features;
-      else return parlimenGeojsonDesktop.features;
+      switch (feature) {
+        case GEO_FILTER.Dun:
+          return dunGeojsonDesktop.features;
+        case GEO_FILTER.District:
+          return districtGeojsonDesktop.features;
+        case GEO_FILTER.Parliament:
+          return parlimenGeojsonDesktop.features;
+        default:
+          return parlimenGeojsonDesktop.features;
+      }
     }
   };
 

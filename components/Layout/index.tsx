@@ -3,7 +3,7 @@ import { FunctionComponent } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import ChoroplethSection from "../Charts/Choropleth/Section";
-import ChoroplethPrice from "../Charts/Choropleth/SectionPrice";
+// import ChoroplethPrice from "../Charts/Choropleth/SectionPrice";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -18,7 +18,7 @@ const Layout: FunctionComponent<LayoutProps> = ({ children }) => {
       {children}
       {/* CHOROPLETH */}
       <ChoroplethSection />
-      <ChoroplethPrice />
+      {/* <ChoroplethPrice /> */}
       {/* FOOTER */}
       <Footer />
     </div>
