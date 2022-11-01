@@ -4,6 +4,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import ChoroplethSection from "../Charts/Choropleth/Section";
 import ChoroplethPrice from "../Charts/Choropleth/SectionPrice";
+import ChoroplethSDG from "../Charts/Choropleth/SectionSDG";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -19,6 +20,7 @@ const Layout: FunctionComponent<LayoutProps> = ({ children }) => {
       {/* CHOROPLETH */}
       <ChoroplethSection />
       <ChoroplethPrice />
+      <ChoroplethSDG />
       {/* FOOTER */}
       <Footer />
     </div>
