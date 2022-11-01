@@ -132,3 +132,12 @@ export const getChoroPrices = async (item: string): Promise<any> =>
   })
     .then(res => res.data)
     .catch(e => console.error(e));
+
+export const getChoroSDG = async (sdg: string): Promise<any> =>
+  await API.get<IChoroplethData[]>("/choropleth-sdg/", {
+    params: {
+      sdg,
+    },
+  })
+    .then(res => res.data)
+    .catch(e => console.error(e));

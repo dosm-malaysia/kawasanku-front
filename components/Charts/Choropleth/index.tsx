@@ -24,6 +24,7 @@ interface ChoroplethChartProps {
   color?: any;
   data: IChoroplethData[];
   unitY?: string;
+  decimal?: number;
 }
 
 type ChoroplethConfigType = {
@@ -40,6 +41,7 @@ const ChoroplethChart: FunctionComponent<ChoroplethChartProps> = ({
   color,
   data,
   unitY,
+  decimal = 0,
 }) => {
   const width = useWindowWidth();
   const isMobile = width < BREAKPOINTS.SM;
@@ -115,7 +117,7 @@ const ChoroplethChart: FunctionComponent<ChoroplethChartProps> = ({
               ) : (
                 <>
                   {unitY}
-                  {numFormat(data.value, "standard", 2)}
+                  {numFormat(data.value, "standard", decimal)}
                 </>
               )}
             </div>
