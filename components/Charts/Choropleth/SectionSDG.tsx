@@ -23,7 +23,7 @@ const ChoroplethSection = () => {
   const [selected, setSelected] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const choroplethSdgOptions = generateOption("sdg", 31).map(item => ({
+  const choroplethSdgOptions = generateOption("sdg", 15).map(item => ({
     label: t(`choropleth_sdg.${item}`),
     value: item,
   }));
