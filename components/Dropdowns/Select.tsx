@@ -36,7 +36,7 @@ const Select: FunctionComponent<SelectProps> = ({
                 ${disabled ? "bg-gray-100" : ""}
               `}
             >
-              <span className="flex items-center gap-2 truncate">
+              <span className="flex items-center gap-2">
                 {selected?.label ?? placeholder}
                 {loading && (
                   <div className="mr-3 h-4 w-4 animate-spin rounded-[50%] border-2 border-gray-200 border-t-accent" />

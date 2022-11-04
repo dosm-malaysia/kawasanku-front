@@ -56,7 +56,7 @@ const ChoroplethSection = () => {
             {/* INDICATOR */}
             <div className="flex h-full w-full items-center gap-2 md:w-auto">
               <p className="text-sm">{t("choropleth_sdg_indicator")}:</p>
-              <div className="w-full md:w-[238px]">
+              <div className="w-full md:w-[240px]">
                 <SelectMenu
                   placeholder={t("choropleth_sdg_indicator_placeholder")}
                   options={choroplethSdgOptions}
