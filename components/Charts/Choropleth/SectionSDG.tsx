@@ -77,9 +77,7 @@ const ChoroplethSection = () => {
 
           {/* CHOROPLETH CHART */}
           <ChoroplethChart
-            data={data.map(item =>
-              item.value !== null ? item : { ...item, value: -1 }
-            )}
+            data={data}
             feature={GEO_FILTER.District}
             color={CHOROPLETH_BLUE_SCALE}
           />

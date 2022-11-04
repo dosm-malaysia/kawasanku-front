@@ -93,6 +93,7 @@ export const CHOROPLETH_GREEN_SCALE = [
 ];
 
 export const CHOROPLETH_BLUE_SCALE = [
+  "#FFFFFF",
   "#F7FBFF",
   "#DEEBF7",
   "#C7DAEF",

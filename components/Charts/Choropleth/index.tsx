@@ -85,10 +85,15 @@ const ChoroplethChart: FunctionComponent<ChoroplethChartProps> = ({
     }
   };
 
+  const _data = useMemo(
+    () =>
+      data.map(item => (item.value === null ? { ...item, value: -1 } : item)),
+    [data]
+  );
   const maxAuto = useMemo(
     () =>
-      data.length
-        ? data.reduce((a, b) => (a.value > b.value ? a : b)).value
+      _data.length
+        ? _data.reduce((a: any, b: any) => (a.value > b.value ? a : b)).value
         : 100,
     [data]
   );
@@ -96,11 +101,11 @@ const ChoroplethChart: FunctionComponent<ChoroplethChartProps> = ({
   return (
     <div className="h-[388px] sm:h-[588px]">
       <ResponsiveChoropleth
-        data={data}
+        data={_data}
         features={getChoroplethFeatures()}
         margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
         colors={choroplethConfig.colors}
-        domain={[0, maxAuto]}
+        domain={[0, maxAuto ?? 100]}
         unknownColor="#fff"
         valueFormat=".2s"
         projectionScale={choroplethConfig.projectionScale}
