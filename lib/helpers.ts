@@ -96,6 +96,11 @@ export const getChoroplethBorderColor = (
   }
 };
 
+export const generateOption = (prefix: string, count: number) =>
+  Array(count)
+    .fill(0)
+    .map((_, index) => `${prefix}${index + 1}`);
+
 export const numFormat = (
   value: number,
   type?: any,

@@ -68,10 +68,6 @@ export enum CHOROPLETH_METRICS {
   Water = "water",
 }
 
-export const CHOROPLETH_PRICE_OPTION = Array(31)
-  .fill(0)
-  .map((_, index) => `item${index + 1}`);
-
 export const CHOROPLETH_RED_SCALE = [
   "#FFF5F0",
   "#FEE0D2",
@@ -97,6 +93,7 @@ export const CHOROPLETH_GREEN_SCALE = [
 ];
 
 export const CHOROPLETH_BLUE_SCALE = [
+  "#FFFFFF",
   "#F7FBFF",
   "#DEEBF7",
   "#C7DAEF",

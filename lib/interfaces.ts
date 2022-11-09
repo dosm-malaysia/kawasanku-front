@@ -146,7 +146,7 @@ export interface IBarChartData {
 // -----------------------------------------------------------------------------
 export interface IChoroplethData {
   id: string;
-  value: number;
+  value: number | null;
 }
 
 export interface AnalyticsEvent {
