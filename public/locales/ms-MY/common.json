@@ -247,7 +247,7 @@
     "item30": "1 Roti Canai",
     "item31": "1 Teh Tarik"
   },
-  "choropleth_sdg_title": "Visualisasi geografi idikator SDG terpilih",
+  "choropleth_sdg_title": "Visualisasi geografi indikator SDG terpilih",
   "choropleth_sdg_indicator": "Indikator SDG",
   "choropleth_sdg_indicator_placeholder": "Pilih indikator",
   "choropleth_sdg": {
