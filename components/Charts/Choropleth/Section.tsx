@@ -116,6 +116,7 @@ const ChoroplethSection = () => {
             metric={metric}
             feature={geoFilter as GEO_FILTER}
             data={data}
+            showValue={false}
           />
           {/* CHOROPLETH SCALE */}
           <div className="flex h-full w-full justify-end">

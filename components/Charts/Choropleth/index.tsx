@@ -25,6 +25,7 @@ interface ChoroplethChartProps {
   data: IChoroplethData[];
   unitY?: string;
   decimal?: number;
+  showValue?: boolean;
 }
 
 type ChoroplethConfigType = {
@@ -42,6 +43,7 @@ const ChoroplethChart: FunctionComponent<ChoroplethChartProps> = ({
   data,
   unitY,
   decimal = 0,
+  showValue = true,
 }) => {
   const width = useWindowWidth();
   const isMobile = width < BREAKPOINTS.SM;
@@ -116,13 +118,18 @@ const ChoroplethChart: FunctionComponent<ChoroplethChartProps> = ({
         tooltip={({ feature: { data } }) => {
           return data?.id ? (
             <div className="nivo-tooltip">
-              {data.id}:{" "}
-              {data.value === -1 ? (
-                "-"
-              ) : (
+              {data.id}
+              {showValue && (
                 <>
-                  {unitY}
-                  {numFormat(data.value, "standard", decimal)}
+                  {": "}
+                  {data.value === -1 ? (
+                    "-"
+                  ) : (
+                    <>
+                      {unitY}
+                      {numFormat(data.value, "standard", decimal)}
+                    </>
+                  )}
                 </>
               )}
             </div>
