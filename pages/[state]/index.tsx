@@ -27,6 +27,7 @@ import Spotlight from "../../components/Charts/Jitterplot/Spotlight";
 
 import { AREA_TYPES } from "../../lib/constants";
 import { translateDoughnutChart } from "../../lib/helpers";
+import DateSignature from "../../components/DateSignature";
 
 const BarChart = dynamic(() => import("../../components/Charts/Bar"), {
   ssr: false,
@@ -84,7 +85,10 @@ const State: NextPage = ({
             <span className="underline">{t(`states.${stateKey}`)}</span>{" "}
             {t("section1_title2")}
           </h3>
-          <p className="census-text">{t("census_2020", { year: 2020 })}</p>
+          <DateSignature
+            date="2020"
+            option={{ year: "numeric", month: undefined, day: undefined }}
+          />
         </div>
         <div className="snapshot-layout">
           {/* BAR CHART */}
@@ -107,7 +111,10 @@ const State: NextPage = ({
               area_types: t(`area_types.${AREA_TYPES.State}`),
             })}
           </h3>
-          <p className="census-text">{t("census_2020", { year: 2020 })}</p>
+          <DateSignature
+            date="2020"
+            option={{ year: "numeric", month: undefined, day: undefined }}
+          />
         </div>
       </Container>
       <Container

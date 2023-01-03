@@ -10,6 +10,7 @@ import Container from "../components/Container";
 import Introduction from "../components/Introduction";
 import { Option } from "../components/Dropdowns/interface";
 import Spotlight from "../components/Charts/Jitterplot/Spotlight";
+import DateSignature from "../components/DateSignature";
 
 import { translateDoughnutChart } from "../lib/helpers";
 import { AREA_TYPES, MALAYSIA, STATES_KEY } from "../lib/constants";
@@ -59,7 +60,10 @@ const Home: NextPage = ({
             <span className="capitalize underline">{t("malaysia")}</span>{" "}
             {t("section1_title2")}
           </h3>
-          <p className="census-text">{t("census_2020", { year: 2020 })}</p>
+          <DateSignature
+            date="2020"
+            option={{ year: "numeric", month: undefined, day: undefined }}
+          />
         </div>
         <div className="snapshot-layout">
           {/* BAR CHART */}
@@ -76,7 +80,10 @@ const Home: NextPage = ({
         {/* JITTERPLOT TITLE */}
         <div className="section-title-layout">
           <h3 className="section-title">{t("section2_title1")}</h3>
-          <p className="census-text">{t("census_2020", { year: 2020 })}</p>
+          <DateSignature
+            date="2020"
+            option={{ year: "numeric", month: undefined, day: undefined }}
+          />
         </div>
       </Container>
       <Container
