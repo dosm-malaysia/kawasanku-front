@@ -11,6 +11,7 @@ import Card from "../../Card";
 import ChoroplethScale from "./Scale";
 import Container from "../../Container";
 import SelectMenu from "../../Dropdowns/Select";
+import DateSignature from "../../DateSignature";
 
 const ChoroplethChart = dynamic(() => import("."), {
   ssr: false,
@@ -47,7 +48,7 @@ const ChoroplethSection = () => {
       <Container backgroundColor="bg-gray-100" className="mt-10">
         <div className="section-title-layout">
           <h3 className="section-title">{t("choropleth_price_title")}</h3>
-          <p className="census-text">{t("census_2020", { year: 2021 })}</p>
+          <DateSignature />
         </div>
       </Container>
       <Container backgroundColor="bg-white md:bg-gray-100" className="md:mb-10">

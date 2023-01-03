@@ -27,6 +27,7 @@ import Container from "../../components/Container";
 import Introduction from "../../components/Introduction";
 import { Option } from "../../components/Dropdowns/interface";
 import Spotlight from "../../components/Charts/Jitterplot/Spotlight";
+import DateSignature from "../../components/DateSignature";
 
 const DoughnutCharts = dynamic(
   () => import("../../components/Charts/Doughnut/DoughnutCharts"),
@@ -87,7 +88,10 @@ const Area: NextPage = ({
             {t("section1_title1")} <span className="underline">{areaName}</span>{" "}
             {t("section1_title2")}
           </h3>
-          <p className="census-text">{t("census_2020", { year: 2020 })}</p>
+          <DateSignature
+            date="2020"
+            option={{ year: "numeric", month: undefined, day: undefined }}
+          />
         </div>
         {/* DOUGHNUT CHARTS */}
         <div className="mb-10 w-full md:mb-15">
@@ -102,7 +106,10 @@ const Area: NextPage = ({
               area_types: t(`area_types.${areaType}`),
             })}
           </h3>
-          <p className="census-text">{t("census_2020", { year: 2020 })}</p>
+          <DateSignature
+            date="2020"
+            option={{ year: "numeric", month: undefined, day: undefined }}
+          />
         </div>
       </Container>
       <Container
