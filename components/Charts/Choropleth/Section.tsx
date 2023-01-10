@@ -51,7 +51,7 @@ const ChoroplethSection = () => {
         <div className="section-title-layout">
           <h3 className="section-title">{t("choropleth_title")}</h3>
           <DateSignature
-            date="2020"
+            date="2020/11/1"
             option={{ year: "numeric", month: undefined, day: undefined }}
           />
         </div>

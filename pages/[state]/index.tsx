@@ -166,7 +166,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
     ta.push({ params: { state: formattedState }, locale: "zh-CN" });
   });
 
-  return { paths: [...en, ...ms, ...zh, ...ta], fallback: false };
+  // return { paths: [...en, ...ms, ...zh, ...ta], fallback: false };
+  return { paths: [], fallback: "blocking" };
 };
 
 interface IParams extends ParsedUrlQuery {
