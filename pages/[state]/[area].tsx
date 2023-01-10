@@ -177,7 +177,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   });
 
   //   return { paths: [...en, ...ms, ...zh, ...ta], fallback: false };
-  return { paths: [], fallback: false };
+  return { paths: [], fallback: "blocking" };
 };
 
 interface IParams extends ParsedUrlQuery {
