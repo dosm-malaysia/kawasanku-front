@@ -7,7 +7,7 @@ interface DateSignatureProps {
 }
 
 const DateSignature: FunctionComponent<DateSignatureProps> = ({
-  date = "2022-11-1",
+  date = "2022/11/1",
   option = {
     year: "numeric",
     month: "long",
