@@ -185,114 +185,121 @@ interface IParams extends ParsedUrlQuery {
   area: string;
 }
 
+/**
+ * @deprecated Redirect to open.dosm.gov.my/kawasanku
+ */
 export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
-  const { state, area } = params as IParams;
-
-  const translationReq = serverSideTranslations(locale!, ["common"]);
-  const geoReq = getGeojson({ area });
-  const doughnutChartsReq = getSnapshot({ area });
-  const jitterplotsReq = getJitterplots({ area: area });
-  const stateTypeReq = getAreaType(state);
-  const areaTypeReq = getAreaType(area);
-
-  const res = await Promise.all([
-    translationReq,
-    geoReq,
-    doughnutChartsReq,
-    jitterplotsReq,
-    stateTypeReq,
-    areaTypeReq,
-  ]);
-
-  // CHECK IF STATE AND AREA PARAMS ARE VALID
-  const isState = res[4].area_type === AREA_TYPES.State;
-  const isArea =
-    res[5].area_type === AREA_TYPES.District ||
-    res[5].area_type === AREA_TYPES.Parliament ||
-    res[5].area_type === AREA_TYPES.Dun;
-
-  if (!isState || !isArea)
-    return {
-      notFound: true,
-    };
-
-  // TRANSLATION
-  const translation = res[0];
-  const translationStore =
-    translation._nextI18Next.initialI18nStore[locale!]["common"];
-
-  // GEOJSON
-  const geojson = res[1];
-
-  const areaType = res[5].area_type;
-  const areaName = res[5].area_name;
-
-  // DOUGHNUT CHARTS DATA
-  const doughnutCharts = res[2].doughnut_charts as unknown as IDoughnutCharts;
-  const sex = doughnutCharts.sex;
-  const ethnicity = doughnutCharts.ethnicity;
-  const nationality = doughnutCharts.nationality;
-  const ageGroup = doughnutCharts.agegroup;
-  const religion = doughnutCharts.religion; // district only
-  const maritalStatus = doughnutCharts.marital; // district only
-  const housing = doughnutCharts.housing; // parliament and assembly only
-  const labour = doughnutCharts.labour; // parliament and assembly only
-
-  // TRANSLATED DOUGHNUT CHARTS DATA
-  const translatedSex = translateDoughnutChart(translationStore, sex);
-  const translatedEthnicity = translateDoughnutChart(
-    translationStore,
-    ethnicity
-  );
-  const translatedNationality = translateDoughnutChart(
-    translationStore,
-    nationality
-  );
-  const translatedAgeGroup = translateDoughnutChart(translationStore, ageGroup);
-  const translatedReligion = religion
-    ? translateDoughnutChart(translationStore, religion)
-    : null;
-  const translatedMaritalStatus = maritalStatus
-    ? translateDoughnutChart(translationStore, maritalStatus)
-    : null;
-  const translatedHousing = housing
-    ? translateDoughnutChart(translationStore, housing)
-    : null;
-  const translatedLabour = labour
-    ? translateDoughnutChart(translationStore, labour)
-    : null;
-
-  // PYRAMID CHART DATA
-  const pyramidCharts = res[2].pyramid_charts ?? null; // district only
-
-  // JITTERPLOTS DATA
-  const jitterplotData = res[3];
-
   return {
-    props: {
-      stateKey: state,
-      geojson,
-      areaKey: area,
-      areaType,
-      areaName,
-      // DOUGHNUT CHARTS DATA
-      doughnutChartData: {
-        sex: translatedSex,
-        ethnicity: translatedEthnicity,
-        nationality: translatedNationality,
-        religion: translatedReligion,
-        marital: translatedMaritalStatus,
-        agegroup: translatedAgeGroup,
-        housing: translatedHousing,
-        labour: translatedLabour,
-      },
-      // PYRAMID CHART DATA
-      barChartData: pyramidCharts,
-      // JITTERPLOT DATA
-      jitterplotData,
-      ...translation,
-    },
+    notFound: true,
   };
+
+  //   const { state, area } = params as IParams;
+
+  //   const translationReq = serverSideTranslations(locale!, ["common"]);
+  //   const geoReq = getGeojson({ area });
+  //   const doughnutChartsReq = getSnapshot({ area });
+  //   const jitterplotsReq = getJitterplots({ area: area });
+  //   const stateTypeReq = getAreaType(state);
+  //   const areaTypeReq = getAreaType(area);
+
+  //   const res = await Promise.all([
+  //     translationReq,
+  //     geoReq,
+  //     doughnutChartsReq,
+  //     jitterplotsReq,
+  //     stateTypeReq,
+  //     areaTypeReq,
+  //   ]);
+
+  //   // CHECK IF STATE AND AREA PARAMS ARE VALID
+  //   const isState = res[4].area_type === AREA_TYPES.State;
+  //   const isArea =
+  //     res[5].area_type === AREA_TYPES.District ||
+  //     res[5].area_type === AREA_TYPES.Parliament ||
+  //     res[5].area_type === AREA_TYPES.Dun;
+
+  //   if (!isState || !isArea)
+  //     return {
+  //       notFound: true,
+  //     };
+
+  //   // TRANSLATION
+  //   const translation = res[0];
+  //   const translationStore =
+  //     translation._nextI18Next.initialI18nStore[locale!]["common"];
+
+  //   // GEOJSON
+  //   const geojson = res[1];
+
+  //   const areaType = res[5].area_type;
+  //   const areaName = res[5].area_name;
+
+  //   // DOUGHNUT CHARTS DATA
+  //   const doughnutCharts = res[2].doughnut_charts as unknown as IDoughnutCharts;
+  //   const sex = doughnutCharts.sex;
+  //   const ethnicity = doughnutCharts.ethnicity;
+  //   const nationality = doughnutCharts.nationality;
+  //   const ageGroup = doughnutCharts.agegroup;
+  //   const religion = doughnutCharts.religion; // district only
+  //   const maritalStatus = doughnutCharts.marital; // district only
+  //   const housing = doughnutCharts.housing; // parliament and assembly only
+  //   const labour = doughnutCharts.labour; // parliament and assembly only
+
+  //   // TRANSLATED DOUGHNUT CHARTS DATA
+  //   const translatedSex = translateDoughnutChart(translationStore, sex);
+  //   const translatedEthnicity = translateDoughnutChart(
+  //     translationStore,
+  //     ethnicity
+  //   );
+  //   const translatedNationality = translateDoughnutChart(
+  //     translationStore,
+  //     nationality
+  //   );
+  //   const translatedAgeGroup = translateDoughnutChart(translationStore, ageGroup);
+  //   const translatedReligion = religion
+  //     ? translateDoughnutChart(translationStore, religion)
+  //     : null;
+  //   const translatedMaritalStatus = maritalStatus
+  //     ? translateDoughnutChart(translationStore, maritalStatus)
+  //     : null;
+  //   const translatedHousing = housing
+  //     ? translateDoughnutChart(translationStore, housing)
+  //     : null;
+  //   const translatedLabour = labour
+  //     ? translateDoughnutChart(translationStore, labour)
+  //     : null;
+
+  //   // PYRAMID CHART DATA
+  //   const pyramidCharts = res[2].pyramid_charts ?? null; // district only
+
+  //   // JITTERPLOTS DATA
+  //   const jitterplotData = res[3];
+
+  //   return {
+  //     props: {
+  //       stateKey: state,
+  //       geojson,
+  //       areaKey: area,
+  //       areaType,
+  //       areaName,
+  //       // DOUGHNUT CHARTS DATA
+  //       doughnutChartData: {
+  //         sex: translatedSex,
+  //         ethnicity: translatedEthnicity,
+  //         nationality: translatedNationality,
+  //         religion: translatedReligion,
+  //         marital: translatedMaritalStatus,
+  //         agegroup: translatedAgeGroup,
+  //         housing: translatedHousing,
+  //         labour: translatedLabour,
+  //       },
+  //       // PYRAMID CHART DATA
+  //       barChartData: pyramidCharts,
+  //       // JITTERPLOT DATA
+  //       jitterplotData,
+  //       ...translation,
+  //     },
+  //   };
 };
 
 export default Area;

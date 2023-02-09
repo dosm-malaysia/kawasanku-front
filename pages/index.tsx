@@ -108,79 +108,85 @@ const Home: NextPage = ({
   );
 };
 
+/**
+ * @deprecated Redirect to open.dosm.gov.my/kawasanku
+ */
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  const translationReq = serverSideTranslations(locale!, ["common"]);
-
-  const geoReq = getGeojson({ area: MALAYSIA });
-  const snapshotReq = getSnapshot({ area: MALAYSIA });
-  // get data accross state level as default (use any state for area param)
-  const jitterplotsReq = getJitterplots({ area: STATES_KEY.JOHOR });
-  const res = await Promise.all([
-    translationReq,
-    geoReq,
-    snapshotReq,
-    jitterplotsReq,
-  ]);
-
-  // TRANSLATION
-  const translation = res[0];
-  const translationStore =
-    translation._nextI18Next.initialI18nStore[locale!]["common"];
-
-  // GEOJSON
-  const geojson = res[1];
-
-  // DOUGHNUT CHARTS DATA
-  const doughnutCharts = res[2].doughnut_charts;
-  const sex = doughnutCharts.sex;
-  const ethnicity = doughnutCharts.ethnicity;
-  const nationality = doughnutCharts.nationality;
-  const religion = doughnutCharts.religion;
-  const maritalStatus = doughnutCharts.marital;
-  const ageGroup = doughnutCharts.agegroup;
-
-  // TRANSLATED DOUGHNUT CHARTS DATA
-  const translatedSex = translateDoughnutChart(translationStore, sex);
-  const translatedEthnicity = translateDoughnutChart(
-    translationStore,
-    ethnicity
-  );
-  const translatedNationality = translateDoughnutChart(
-    translationStore,
-    nationality
-  );
-  const translatedReligion = translateDoughnutChart(translationStore, religion);
-  const translatedMaritalStatus = translateDoughnutChart(
-    translationStore,
-    maritalStatus
-  );
-  const translatedAgeGroup = translateDoughnutChart(translationStore, ageGroup);
-
-  // PYRAMID CHART DATA
-  const pyramidCharts = res[2].pyramid_charts;
-
-  // JITTERPLOTS DATA
-  const jitterplotData = res[3];
-
   return {
-    props: {
-      geojson,
-      // DOUGHNUT CHARTS DATA
-      doughnutChartData: {
-        sex: translatedSex,
-        ethnicity: translatedEthnicity,
-        nationality: translatedNationality,
-        religion: translatedReligion,
-        marital: translatedMaritalStatus,
-        agegroup: translatedAgeGroup,
-      },
-      // PYRAMID CHART DATA
-      barChartData: pyramidCharts,
-      // JITTERPLOT DATA
-      jitterplotData,
-      ...translation,
-    },
+    notFound: true,
   };
+  //   const translationReq = serverSideTranslations(locale!, ["common"]);
+
+  //   const geoReq = getGeojson({ area: MALAYSIA });
+  //   const snapshotReq = getSnapshot({ area: MALAYSIA });
+  //   // get data accross state level as default (use any state for area param)
+  //   const jitterplotsReq = getJitterplots({ area: STATES_KEY.JOHOR });
+  //   const res = await Promise.all([
+  //     translationReq,
+  //     geoReq,
+  //     snapshotReq,
+  //     jitterplotsReq,
+  //   ]);
+
+  //   // TRANSLATION
+  //   const translation = res[0];
+  //   const translationStore =
+  //     translation._nextI18Next.initialI18nStore[locale!]["common"];
+
+  //   // GEOJSON
+  //   const geojson = res[1];
+
+  //   // DOUGHNUT CHARTS DATA
+  //   const doughnutCharts = res[2].doughnut_charts;
+  //   const sex = doughnutCharts.sex;
+  //   const ethnicity = doughnutCharts.ethnicity;
+  //   const nationality = doughnutCharts.nationality;
+  //   const religion = doughnutCharts.religion;
+  //   const maritalStatus = doughnutCharts.marital;
+  //   const ageGroup = doughnutCharts.agegroup;
+
+  //   // TRANSLATED DOUGHNUT CHARTS DATA
+  //   const translatedSex = translateDoughnutChart(translationStore, sex);
+  //   const translatedEthnicity = translateDoughnutChart(
+  //     translationStore,
+  //     ethnicity
+  //   );
+  //   const translatedNationality = translateDoughnutChart(
+  //     translationStore,
+  //     nationality
+  //   );
+  //   const translatedReligion = translateDoughnutChart(translationStore, religion);
+  //   const translatedMaritalStatus = translateDoughnutChart(
+  //     translationStore,
+  //     maritalStatus
+  //   );
+  //   const translatedAgeGroup = translateDoughnutChart(translationStore, ageGroup);
+
+  //   // PYRAMID CHART DATA
+  //   const pyramidCharts = res[2].pyramid_charts;
+
+  //   // JITTERPLOTS DATA
+  //   const jitterplotData = res[3];
+
+  //   return {
+  //     props: {
+  //       geojson,
+  //       // DOUGHNUT CHARTS DATA
+  //       doughnutChartData: {
+  //         sex: translatedSex,
+  //         ethnicity: translatedEthnicity,
+  //         nationality: translatedNationality,
+  //         religion: translatedReligion,
+  //         marital: translatedMaritalStatus,
+  //         agegroup: translatedAgeGroup,
+  //       },
+  //       // PYRAMID CHART DATA
+  //       barChartData: pyramidCharts,
+  //       // JITTERPLOT DATA
+  //       jitterplotData,
+  //       ...translation,
+  //     },
+  //   };
 };
 
 export default Home;
