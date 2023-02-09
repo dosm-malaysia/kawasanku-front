@@ -173,92 +173,97 @@ export const getStaticPaths: GetStaticPaths = async () => {
 interface IParams extends ParsedUrlQuery {
   state: string;
 }
-
+/**
+ * @deprecated Redirect to open.dosm.gov.my/kawasanku
+ */
 export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
-  const { state } = params as IParams;
-
-  const translationReq = serverSideTranslations(locale!, ["common"]);
-  const geoReq = getGeojson({ area: state });
-  const snapshotReq = getSnapshot({ area: state });
-  const jitterplotsReq = getJitterplots({ area: state });
-  const areaTypeReq = getAreaType(state);
-
-  const res = await Promise.all([
-    translationReq,
-    geoReq,
-    snapshotReq,
-    jitterplotsReq,
-    areaTypeReq,
-  ]);
-
-  // CHECK IF STATE PARAMS ARE VALID
-  const isState = res[4].area_type === AREA_TYPES.State;
-
-  if (!isState)
-    return {
-      notFound: true,
-    };
-
-  // TRANSLATION
-  const translation = res[0];
-  const translationStore =
-    translation._nextI18Next.initialI18nStore[locale!]["common"];
-
-  // GEOJSON
-  const geojson = res[1];
-
-  // DOUGHNUT CHARTS DATA
-  const doughnutCharts = res[2].doughnut_charts;
-  const sex = doughnutCharts.sex;
-  const ethnicity = doughnutCharts.ethnicity;
-  const nationality = doughnutCharts.nationality;
-  const religion = doughnutCharts.religion;
-  const maritalStatus = doughnutCharts.marital;
-  const ageGroup = doughnutCharts.agegroup;
-
-  // TRANSLATED DOUGHNUT CHARTS DATA
-  const translatedSex = translateDoughnutChart(translationStore, sex);
-  const translatedEthnicity = translateDoughnutChart(
-    translationStore,
-    ethnicity
-  );
-  const translatedNationality = translateDoughnutChart(
-    translationStore,
-    nationality
-  );
-  const translatedReligion = translateDoughnutChart(translationStore, religion);
-  const translatedMaritalStatus = translateDoughnutChart(
-    translationStore,
-    maritalStatus
-  );
-  const translatedAgeGroup = translateDoughnutChart(translationStore, ageGroup);
-
-  // PYRAMID CHART DATA
-  const pyramidCharts = res[2].pyramid_charts;
-
-  // JITTERPLOTS DATA
-  const jitterplotData = res[3];
-
   return {
-    props: {
-      stateKey: state,
-      geojson,
-      // DOUGHNUT CHARTS DATA
-      doughnutChartData: {
-        sex: translatedSex,
-        ethnicity: translatedEthnicity,
-        nationality: translatedNationality,
-        religion: translatedReligion,
-        marital: translatedMaritalStatus,
-        agegroup: translatedAgeGroup,
-      },
-      // PYRAMID CHART DATA
-      barChartData: pyramidCharts,
-      // JITTERPLOT DATA
-      jitterplotData,
-      ...translation,
-    },
+    notFound: true,
   };
+  //   const { state } = params as IParams;
+
+  //   const translationReq = serverSideTranslations(locale!, ["common"]);
+  //   const geoReq = getGeojson({ area: state });
+  //   const snapshotReq = getSnapshot({ area: state });
+  //   const jitterplotsReq = getJitterplots({ area: state });
+  //   const areaTypeReq = getAreaType(state);
+
+  //   const res = await Promise.all([
+  //     translationReq,
+  //     geoReq,
+  //     snapshotReq,
+  //     jitterplotsReq,
+  //     areaTypeReq,
+  //   ]);
+
+  //   // CHECK IF STATE PARAMS ARE VALID
+  //   const isState = res[4].area_type === AREA_TYPES.State;
+
+  //   if (!isState)
+  //     return {
+  //       notFound: true,
+  //     };
+
+  //   // TRANSLATION
+  //   const translation = res[0];
+  //   const translationStore =
+  //     translation._nextI18Next.initialI18nStore[locale!]["common"];
+
+  //   // GEOJSON
+  //   const geojson = res[1];
+
+  //   // DOUGHNUT CHARTS DATA
+  //   const doughnutCharts = res[2].doughnut_charts;
+  //   const sex = doughnutCharts.sex;
+  //   const ethnicity = doughnutCharts.ethnicity;
+  //   const nationality = doughnutCharts.nationality;
+  //   const religion = doughnutCharts.religion;
+  //   const maritalStatus = doughnutCharts.marital;
+  //   const ageGroup = doughnutCharts.agegroup;
+
+  //   // TRANSLATED DOUGHNUT CHARTS DATA
+  //   const translatedSex = translateDoughnutChart(translationStore, sex);
+  //   const translatedEthnicity = translateDoughnutChart(
+  //     translationStore,
+  //     ethnicity
+  //   );
+  //   const translatedNationality = translateDoughnutChart(
+  //     translationStore,
+  //     nationality
+  //   );
+  //   const translatedReligion = translateDoughnutChart(translationStore, religion);
+  //   const translatedMaritalStatus = translateDoughnutChart(
+  //     translationStore,
+  //     maritalStatus
+  //   );
+  //   const translatedAgeGroup = translateDoughnutChart(translationStore, ageGroup);
+
+  //   // PYRAMID CHART DATA
+  //   const pyramidCharts = res[2].pyramid_charts;
+
+  //   // JITTERPLOTS DATA
+  //   const jitterplotData = res[3];
+
+  //   return {
+  //     props: {
+  //       stateKey: state,
+  //       geojson,
+  //       // DOUGHNUT CHARTS DATA
+  //       doughnutChartData: {
+  //         sex: translatedSex,
+  //         ethnicity: translatedEthnicity,
+  //         nationality: translatedNationality,
+  //         religion: translatedReligion,
+  //         marital: translatedMaritalStatus,
+  //         agegroup: translatedAgeGroup,
+  //       },
+  //       // PYRAMID CHART DATA
+  //       barChartData: pyramidCharts,
+  //       // JITTERPLOT DATA
+  //       jitterplotData,
+  //       ...translation,
+  //     },
+  //   };
 };
 
 export default State;
